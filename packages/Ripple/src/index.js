@@ -1,7 +1,8 @@
-import { h, Component } from 'preact'
-import { bind } from 'decko'
+import Inferno   from 'inferno'
+import Component from 'inferno-component'
+import { bind }  from 'decko'
 
-class Ripple extends Component {
+export class Ripple extends Component {
   state = {
     ripples: []
   }
@@ -62,7 +63,6 @@ class Ripple extends Component {
   removeRipple(id) {
     const { ripples } = this.state
 
-    console.log("Removig ripple: #", id)
     ripples[id] = undefined
     this.setState({ ripples })
   }
@@ -99,11 +99,14 @@ class Ripple extends Component {
 
   @bind
   createNewRipple(x, y) {
-    const id      = this.state.ripples.length
+    const id               = this.state.ripples.length
+    const self             = this
+    const { parent }       = this
     const { rippleStyles } = this.getStyles()
-    const { parent } = this
-    const { ripples, timeouts } = this.state
-    const self = this
+    const {
+      ripples,
+      timeouts
+    } = this.state
 
     const ripple = {
       animationEnded: false,
@@ -128,7 +131,6 @@ class Ripple extends Component {
     const { offsetX, offsetY } = event
 
     this.createNewRipple(offsetX, offsetY)
-
   }
 
   @bind
@@ -137,7 +139,8 @@ class Ripple extends Component {
       startingSize,
       scaleTiming,
       opacityTiming,
-      easing
+      easing,
+      opacity
     } = this.props
 
     const styles = {
@@ -154,7 +157,7 @@ class Ripple extends Component {
         height: startingSize || 10,
         width: startingSize || 10,
         background: 'gray',
-        opacity: .35,
+        opacity: opacity || .25,
         transition: `
           transform ${scaleTiming / 100 || .5}s,
           opacity ${opacityTiming / 100 || .25}s
@@ -178,3 +181,5 @@ class Ripple extends Component {
     </div>
   }
 }
+
+window.Ripple = Ripple

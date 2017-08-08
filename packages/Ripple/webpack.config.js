@@ -28,14 +28,13 @@ let config = {
 		new webpack.optimize.ModuleConcatenationPlugin()
 	],
 
-	devtool: 'source-map'
+	devtool: 'source-map',
+	target: 'web'
 }
 
 if(process.env.NODE_ENV == 'production') {
 	config.plugins.push(new BabiliPlugin())
   config.plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
-
-	config.devtool = 'source-map'
 }
 
 module.exports = config
