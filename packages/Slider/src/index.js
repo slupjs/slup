@@ -82,33 +82,33 @@ export class Slider extends Component {
       background: 'rgba(0, 0, 0, .2)',
 
       track: {
-    		position: 'absolute',
-    		height: 3,
+        position: 'absolute',
+        height: 3,
         width: progress + '%',
-    		background: '#2196F3'
+        background: '#2196F3'
       },
 
-    	thumb: {
-    		position: 'absolute',
-    		height: 14,
-    		width: 14,
+      thumb: {
+        position: 'absolute',
+        height: 14,
+        width: 14,
         left: progress + '%',
         marginLeft: -7,
-    		background: '#2196F3',
-    		borderRadius: '50%'
+        background: '#2196F3',
+        borderRadius: '50%'
       },
 
       ring: {
-    		position: 'absolute',
-    		height: 28,
-    		width: 28,
+        position: 'absolute',
+        height: 28,
+        width: 28,
         left: progress + '%',
         marginLeft: -14,
-    		background: focus || keyFocus
+        background: focus || keyFocus
           ? 'rgba(0, 0, 0, .1)'
           : 'transparent',
         transition: 'background .35s',
-    		borderRadius: '50%'
+        borderRadius: '50%'
       }
     }
 
