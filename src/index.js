@@ -6,7 +6,7 @@ import { Ripple } from '../packages/Ripple/src/index'
 class Tester extends Component {
   render() {
     return(
-      <div style={{ position: 'relative', height: 200, width: 400 }}>
+      <div style={{ position: 'relative', height: 200, width: 500 }}>
         <Ripple />
       </div>
     )

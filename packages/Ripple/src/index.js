@@ -56,15 +56,23 @@ export class Ripple extends Component {
     ripples[id].styles = _styles
     this.setState({ ripples })
 
-    setTimeout(e => this.removeRipple(id), opacityTiming || 250)
+    setTimeout(e => this.removeRipple(id), opacityTiming || 300)
   }
 
   @bind
   removeRipple(id) {
     const { ripples } = this.state
-
-    ripples[id] = undefined
+    const { opacityTiming } = this.props
+    const _styles = {
+      ...ripples[id].styles,
+      opacity: '0'
+    }
+    ripples[id].styles = _styles
     this.setState({ ripples })
+    setTimeout(() => {
+      ripples[id] = undefined
+      this.setState({ ripples })
+    }, 10000)
   }
 
   @bind
@@ -72,7 +80,12 @@ export class Ripple extends Component {
     const { ripples } = this.state
 
     ripples[id].animationEnded = true
+    ripples.removable = true
     this.setState({ ripples })
+
+    if (ripples[id].removable) {
+      this.removeRipple
+    }
 
     // This will just work if the user has
     // fired the mouseup event
@@ -85,16 +98,15 @@ export class Ripple extends Component {
     const { scaleTiming } = this.props
     const self = this
 
-    setTimeout(e => this.animationEnded(id), scaleTiming || 500)
+    setTimeout(e => this.animationEnded(id), scaleTiming || 400)
 
     const _styles = {
       ...ripples[id].styles,
-      transform: 'scale(100)'
+      transform: 'scale(50)'
     }
 
     ripples[id].styles = _styles
     setTimeout( () => self.setState({ ripples }), 1)
-
   }
 
   @bind
@@ -146,8 +158,8 @@ export class Ripple extends Component {
     const styles = {
       zIndex: -1,
       position: 'absolute',
-      left: 0, top: 0,
-      bottom: 0, right: 0,
+      height: '100%',
+      width: '100%',
       overflow: 'hidden',
       background: 'red',
 
@@ -156,17 +168,16 @@ export class Ripple extends Component {
         position: 'absolute',
         height: startingSize || 10,
         width: startingSize || 10,
-        background: 'gray',
+        background: '#9E9E9E',
         opacity: opacity || .25,
         transition: `
-          transform ${scaleTiming / 100 || .5}s,
-          opacity ${opacityTiming / 100 || .25}s
+          transform ${scaleTiming / 100 || .900}s,
+          opacity ${opacityTiming / 100 || .300}s
         `,
-        transitionTimingFunction: easing || 'ease-in-out',
-        borderRadius: '50%'
+        transitionTimingFunction: easing || 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+        borderRadius: '50%',
       }
     }
-
     return styles
   }
 
@@ -181,5 +192,3 @@ export class Ripple extends Component {
     </div>
   }
 }
-
-window.Ripple = Ripple
