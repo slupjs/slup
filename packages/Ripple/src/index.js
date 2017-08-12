@@ -54,6 +54,7 @@ export class Ripple extends Component {
     }
 
     ripples[id].styles = _styles
+
     this.setState({ ripples })
 
     setTimeout(e => this.removeRipple(id), opacityTiming || 300)
@@ -62,15 +63,16 @@ export class Ripple extends Component {
   @bind
   removeRipple(id) {
     const { ripples } = this.state
-    const { opacityTiming } = this.props
+
     const _styles = {
       ...ripples[id].styles,
       opacity: '0'
     }
-    ripples[id].styles = _styles
-    this.setState({ ripples })
+
     setTimeout(() => {
+      ripples[id].styles = undefined
       ripples[id] = undefined
+
       this.setState({ ripples })
     }, 10000)
   }
@@ -102,7 +104,7 @@ export class Ripple extends Component {
 
     const _styles = {
       ...ripples[id].styles,
-      transform: 'scale(50)'
+      transform: 'scale(100)'
     }
 
     ripples[id].styles = _styles
@@ -169,7 +171,7 @@ export class Ripple extends Component {
         height: startingSize || 10,
         width: startingSize || 10,
         background: '#9E9E9E',
-        opacity: opacity || .25,
+        opacity: opacity || .3,
         transition: `
           transform ${scaleTiming / 100 || .900}s,
           opacity ${opacityTiming / 100 || .300}s
@@ -178,6 +180,7 @@ export class Ripple extends Component {
         borderRadius: '50%',
       }
     }
+
     return styles
   }
 
@@ -185,10 +188,10 @@ export class Ripple extends Component {
     const styles = this.getStyles()
     const { ripples } = this.state
 
-    return <div ref={e => this.ripple = e} style={styles} >
+    return (<div ref={e => this.ripple = e} style={styles}>
       {ripples.filter(Boolean).map(({ styles }, i) => {
         return <span key={i} style={styles} />
       })}
-    </div>
+    </div>)
   }
 }
