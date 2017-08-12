@@ -103,14 +103,14 @@ export class Ripple extends Component {
   @bind
   startScaling(id) {
     const { ripples } = this.state
-    const { scaleTiming } = this.props
+    const { scaleTiming, scaleSize } = this.props
     const self = this
 
     setTimeout(e => self.handleAnimationEnded(id), scaleTiming || 400)
 
     const _styles = {
       ...ripples[id].styles,
-      transform: 'scale(100)'
+      transform: `scale(${scaleSize || 100})`
     }
 
     ripples[id].styles = _styles
