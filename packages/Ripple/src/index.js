@@ -123,6 +123,7 @@ export class Ripple extends Component {
     } = this.state
 
     const ripple = {
+      id,
       animationEnded: false,
       removable: false,
       styles: {
@@ -188,10 +189,12 @@ export class Ripple extends Component {
     const styles = this.getStyles()
     const { ripples } = this.state
 
-    return (<div ref={e => this.ripple = e} style={styles}>
-      {ripples.filter(Boolean).map(({ styles }, i) => {
-        return <span key={i} style={styles} />
-      })}
-    </div>)
+    return(
+      <div ref={e => this.ripple = e} style={styles} >
+        {ripples.filter(Boolean).map(({ styles, id }) => {
+          return <span key={id} style={styles} />
+        })}
+      </div>
+    )
   }
 }
