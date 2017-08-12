@@ -6,11 +6,31 @@ export class Slider extends Component {
   state = {
     focus: false,
     keyFocus: false,
-    progress: 40
   }
 
+  // Helper functions
   vise = (min, value, max) =>
     Math.min(Math.max(min, value), max)
+
+  capitalize = (string) =>
+    string.charAt(0).toUpperCase() + string.slice(1)
+
+  componentWillMount() {
+    document.addEventListener(
+      'mousemove',
+      this.handleMouseMove,
+      { passive: true }
+    )
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener(
+      'mousemove',
+      this.handleMouseMove,
+      { passive: true }
+    )
+  }
+
 
   @bind
   moveSlider({ clientX }) {
@@ -18,19 +38,30 @@ export class Slider extends Component {
     const percentage = (clientX - offsetLeft) / clientWidth
     const progress = this.vise(0, percentage, 1) * 100
 
-    this.setState({ progress })
+    this.emit('change', progress)
+  }
+
+  emit(type, value) {
+    const eventName = 'on' + this.capitalize(type)
+    if(typeof this.props[eventName] == 'function') {
+      this.props[eventName](value)
+    }
   }
 
   @bind
   handleMouseDown(e) {
+    // Set the state and emit the focus event
     this.setState({ focus: true })
+    this.emit('focus')
 
     this.moveSlider(e)
   }
 
   @bind
   handleMouseUp(e) {
+    // Set the state and emit the blur event
     this.setState({ focus: false })
+    this.emit('blur')
   }
 
   @bind
@@ -42,25 +73,34 @@ export class Slider extends Component {
 
   @bind
   handleKeyDown({ keyCode }) {
-    let { keyFocus, progress } = this.state
+    const { vise } = this
+    let { value } = this.props
+    let { keyFocus } = this.state
 
     switch (keyCode) {
 
       // Enter: Focs/unfocus
       case 13:
         this.setState({ keyFocus: !keyFocus })
+        this.emit('focus')
       break
 
       // Forward: increment of 1
+      case 40:
       case 39:
-        if(keyFocus && progress != 100)
-          this.setState({ progress: progress+1 })
+        if(keyFocus) {
+          const _value = vise(0, value + 1, 100)
+          this.emit('change', _value)
+        }
       break
 
       // Backwards: decrease of 1
+      case 38:
       case 37:
-        if(keyFocus && progress != 0)
-          this.setState({ progress: progress-1 })
+        if(keyFocus) {
+          const _value = vise(0, value - 1, 100)
+          this.emit('change', _value)
+        }
       break
       default:
       break
@@ -69,7 +109,18 @@ export class Slider extends Component {
 
   @bind
   getStyles() {
-    const { progress, keyFocus, focus } = this.state
+    const { keyFocus, focus } = this.state
+
+    // Take values for both the customization
+    // and the calculation of the progress value
+    const {
+      value,
+      max,
+      background,
+      color
+    } = this.props
+
+    const progress = (value / max) * 100
 
     const styles = {
       position: 'relative',
@@ -79,13 +130,13 @@ export class Slider extends Component {
       height: 3,
       margin: 16,
       width: '100%',
-      background: 'rgba(0, 0, 0, .2)',
+      background: `rgba(${background || '0, 0, 0'}, .2)`,
 
       track: {
         position: 'absolute',
         height: 3,
         width: progress + '%',
-        background: '#2196F3'
+        background: color || '#2196F3'
       },
 
       thumb: {
@@ -94,8 +145,8 @@ export class Slider extends Component {
         width: 14,
         left: progress + '%',
         marginLeft: -7,
-        background: '#2196F3',
-        borderRadius: '50%'
+        borderRadius: '50%',
+        background: color || '#2196F3'
       },
 
       ring: {
@@ -104,11 +155,11 @@ export class Slider extends Component {
         width: 28,
         left: progress + '%',
         marginLeft: -14,
+        transition: 'background .35s',
+        borderRadius: '50%',
         background: focus || keyFocus
           ? 'rgba(0, 0, 0, .1)'
-          : 'transparent',
-        transition: 'background .35s',
-        borderRadius: '50%'
+          : 'transparent'
       }
     }
 
@@ -128,7 +179,6 @@ export class Slider extends Component {
       <div
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
         onKeyDown={handleKeyDown}
         ref={e => this.slider = e}
         tabIndex={0}
