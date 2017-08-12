@@ -8,20 +8,26 @@ export class Ripple extends Component {
   }
 
   componentDidMount() {
-    this.parent = this.ripple.parentElement
-
-    const { parent, handleMouseDown } = this
-    parent.addEventListener('mousedown', handleMouseDown)
+    const { handleMouseDown } = this
+    this.ripple.addEventListener(
+      'mousedown',
+      handleMouseDown,
+      { passive: true }
+    )
   }
 
   componentWillUnmount() {
-    const { parent, handleMouseDown } = this
-    parent.removeEventListener('mousedown', handleMouseDown)
+    const { handleMouseDown } = this
+    this.ripple.removeEventListener(
+      'mousedown',
+      handleMouseDown,
+      { passive: true }
+    )
   }
 
   @bind
   createListener(id) {
-    const { parent, startRemoval }  = this
+    const { ripple, startRemoval }  = this
     const { ripples } = this.state
 
     const handler = function() {
@@ -30,10 +36,10 @@ export class Ripple extends Component {
       // This will just work if the
       // animation has ended
       startRemoval(id)
-      parent.removeEventListener('mouseup', handler)
+      ripple.removeEventListener('mouseup', handler, { passive: true})
     }
 
-    parent.addEventListener('mouseup', handler)
+    ripple.addEventListener('mouseup', handler, { passive: true})
   }
 
   @bind
@@ -54,6 +60,7 @@ export class Ripple extends Component {
     }
 
     ripples[id].styles = _styles
+
     this.setState({ ripples })
 
     setTimeout(e => this.removeRipple(id), opacityTiming || 300)
@@ -62,21 +69,22 @@ export class Ripple extends Component {
   @bind
   removeRipple(id) {
     const { ripples } = this.state
-    const { opacityTiming } = this.props
+
     const _styles = {
       ...ripples[id].styles,
       opacity: '0'
     }
-    ripples[id].styles = _styles
-    this.setState({ ripples })
+
     setTimeout(() => {
+      ripples[id].styles = undefined
       ripples[id] = undefined
+
       this.setState({ ripples })
     }, 10000)
   }
 
   @bind
-  animationEnded(id) {
+  handleAnimationEnded(id) {
     const { ripples } = this.state
 
     ripples[id].animationEnded = true
@@ -95,25 +103,23 @@ export class Ripple extends Component {
   @bind
   startScaling(id) {
     const { ripples } = this.state
-    const { scaleTiming } = this.props
+    const { scaleTiming, scaleSize } = this.props
     const self = this
 
-    setTimeout(e => this.animationEnded(id), scaleTiming || 400)
+    setTimeout(e => self.handleAnimationEnded(id), scaleTiming || 400)
 
     const _styles = {
       ...ripples[id].styles,
-      transform: 'scale(50)'
+      transform: `scale(${scaleSize || 100})`
     }
 
     ripples[id].styles = _styles
-    setTimeout( () => self.setState({ ripples }), 1)
+    setTimeout(() => self.setState({ ripples }), 1)
   }
 
   @bind
   createNewRipple(x, y) {
     const id               = this.state.ripples.length
-    const self             = this
-    const { parent }       = this
     const { rippleStyles } = this.getStyles()
     const {
       ripples,
@@ -153,24 +159,23 @@ export class Ripple extends Component {
       scaleTiming,
       opacityTiming,
       easing,
-      opacity
+      opacity,
+      background
     } = this.props
 
     const styles = {
-      zIndex: -1,
       position: 'absolute',
-      height: '100%',
-      width: '100%',
+      top: 0, left: 0,
+      right: 0, bottom: 0,
       overflow: 'hidden',
-      background: 'red',
 
       rippleStyles: {
         zIndex: -1,
         position: 'absolute',
         height: startingSize || 10,
         width: startingSize || 10,
-        background: '#9E9E9E',
-        opacity: opacity || .25,
+        background: background || '#9E9E9E',
+        opacity: opacity || .3,
         transition: `
           transform ${scaleTiming / 100 || .900}s,
           opacity ${opacityTiming / 100 || .300}s
@@ -179,17 +184,25 @@ export class Ripple extends Component {
         borderRadius: '50%',
       }
     }
+
     return styles
   }
 
   render() {
     const styles = this.getStyles()
     const { ripples } = this.state
+    const { handleMouseDown } = this
 
-    return <div ref={e => this.ripple = e} style={styles} >
-      {ripples.filter(Boolean).map(({ styles, id }) => {
-        return <span key={id} style={styles} />
-      })}
-    </div>
+    return(
+      <div onMouseDown={handleMouseDown} ref={e => this.ripple = e} style={styles} >
+        {ripples.filter(Boolean).map(({ styles, id }) => {
+          return <div
+            onMouseDown={e => e.preventDefault()}
+            key={id}
+            style={styles}
+          />
+        })}
+      </div>
+    )
   }
 }

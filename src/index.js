@@ -21,8 +21,13 @@ class Tester extends Component {
       <section>
 
         {/* Ripple demo */}
-        <div style={{ position: 'relative', height: 200, width: 500 }}>
-
+        <div style={{
+          position: 'relative',
+          background: 'blue',
+          zIndex: 100,
+          height: 200,
+          width: 500 }}
+        >
           <Ripple />
         </div>
 
@@ -34,6 +39,7 @@ class Tester extends Component {
             onChange={this.handleChange.bind(this)}
           />
         </div>
+
       </section>
     )
   }
