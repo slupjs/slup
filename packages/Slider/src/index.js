@@ -86,7 +86,7 @@ export class Slider extends Component {
       break
 
       // Forward: increment of 1
-      case 40:
+      case 38:
       case 39:
         if(keyFocus) {
           const _value = vise(0, value + 1, 100)
@@ -95,7 +95,7 @@ export class Slider extends Component {
       break
 
       // Backwards: decrease of 1
-      case 38:
+      case 40:
       case 37:
         if(keyFocus) {
           const _value = vise(0, value - 1, 100)
