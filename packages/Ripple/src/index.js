@@ -78,7 +78,7 @@ export class Ripple extends Component {
   }
 
   @bind
-  animationEnded(id) {
+  handleAnimationEnded(id) {
     const { ripples } = this.state
 
     ripples[id].animationEnded = true
@@ -100,7 +100,7 @@ export class Ripple extends Component {
     const { scaleTiming } = this.props
     const self = this
 
-    setTimeout(e => this.animationEnded(id), scaleTiming || 400)
+    setTimeout(e => this.handleAnimationEnded(id), scaleTiming || 400)
 
     const _styles = {
       ...ripples[id].styles,
@@ -155,23 +155,23 @@ export class Ripple extends Component {
       scaleTiming,
       opacityTiming,
       easing,
-      opacity
+      opacity,
+      background
     } = this.props
 
     const styles = {
-      zIndex: -1,
+      zIndex: 100,
       position: 'absolute',
-      height: '100%',
-      width: '100%',
+      top: 0, left: 0,
+      right: 0, bottom: 0,
       overflow: 'hidden',
-      background: 'red',
 
       rippleStyles: {
-        zIndex: -1,
+        zIndex: 100,
         position: 'absolute',
         height: startingSize || 10,
         width: startingSize || 10,
-        background: '#9E9E9E',
+        background: background || '#9E9E9E',
         opacity: opacity || .3,
         transition: `
           transform ${scaleTiming / 100 || .900}s,
