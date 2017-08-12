@@ -9,6 +9,7 @@ class Tester extends Component {
       <div style={{
         position: 'relative',
         background: 'blue',
+        zIndex: 100,
         height: 200,
         width: 500 }}>
         <Ripple />
