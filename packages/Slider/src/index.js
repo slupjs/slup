@@ -21,12 +21,22 @@ export class Slider extends Component {
       this.handleMouseMove,
       { passive: true }
     )
+    document.addEventListener(
+      'mouseup',
+      this.handleMouseUp,
+      { passive: true }
+    )
   }
 
   componentWillUnmount() {
     document.removeEventListener(
       'mousemove',
       this.handleMouseMove,
+      { passive: true }
+    )
+    document.removeEventListener(
+      'mouseup',
+      this.handleMouseUp,
       { passive: true }
     )
   }
@@ -178,7 +188,6 @@ export class Slider extends Component {
     return(
       <div
         onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
         onKeyDown={handleKeyDown}
         ref={e => this.slider = e}
         tabIndex={0}
