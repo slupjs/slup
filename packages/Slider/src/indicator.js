@@ -25,7 +25,7 @@ export class Indicator extends Component {
       alignItems: 'center',
       background: background || '#2196F3',
       color: color || 'rgba(255, 255, 255, .87)',
-      borderRadius: '49.4%',
+      borderRadius: '48.8%',
       textTransform: 'uppercase',
       fontSize: 12,
       transition: 'display 200ms',
