@@ -135,7 +135,8 @@ export class Slider extends Component {
       value,
       max,
       background,
-      color
+      color,
+      discrete
     } = this.props
 
     const progress = (value / max) * 100
@@ -159,14 +160,15 @@ export class Slider extends Component {
 
       thumb: {
         position: 'absolute',
-        transition: 'height .07s, width .07s, background .3s',
+        transition: 'height .07s, width .07s, background .3s, transform .3s',
         height: focus || keyFocus ? 14 : 10,
         width: focus || keyFocus ? 14 : 10,
         left: progress + '%',
         marginLeft: value == 0 ? -9 : focus || keyFocus ? -7 : -5,
         borderRadius: '50%',
         border: value == 0 ? '2px solid #9e9e9e' : 'none',
-        background: value == 0 ? '#BDBDBD' : color || '#2196F3'
+        background: value == 0 ? '#BDBDBD' : color || '#2196F3',
+        transform: discrete && (focus || keyFocus) ? 'scale(0)' : null
       },
 
       ring: {
@@ -177,7 +179,7 @@ export class Slider extends Component {
         marginLeft: -14,
         transition: 'background .35s',
         borderRadius: '50%',
-        background: focus || keyFocus
+        background: !discrete && focus && keyFocus
           ? 'rgba(0, 0, 0, .1)'
           : 'transparent'
       }
