@@ -2,6 +2,8 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import { bind }  from 'decko'
 
+import { Indicator } from './indicator'
+
 export class Slider extends Component {
   state = {
     focus: false,
@@ -14,6 +16,8 @@ export class Slider extends Component {
 
   capitalize = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1)
+
+  getPercentage = (max) => max / 100
 
   componentWillMount() {
     document.addEventListener(
@@ -45,8 +49,10 @@ export class Slider extends Component {
   @bind
   moveSlider({ clientX }) {
     const { offsetLeft, clientWidth } = this.slider
+    const { max } = this.props
     const percentage = (clientX - offsetLeft) / clientWidth
-    const progress = this.vise(0, percentage, 1) * 100
+
+    const progress = this.vise(0, percentage, 1) * max
 
     this.emit('change', progress)
   }
@@ -84,8 +90,10 @@ export class Slider extends Component {
   @bind
   handleKeyDown({ keyCode }) {
     const { vise } = this
-    let { value } = this.props
+    let { value, max } = this.props
     let { keyFocus } = this.state
+
+    const percentage = this.getPercentage(max)
 
     switch (keyCode) {
 
@@ -99,7 +107,7 @@ export class Slider extends Component {
       case 38:
       case 39:
         if(keyFocus) {
-          const _value = vise(0, value + 1, 100)
+          const _value = vise(0, value + percentage, max)
           this.emit('change', _value)
         }
       break
@@ -108,7 +116,7 @@ export class Slider extends Component {
       case 40:
       case 37:
         if(keyFocus) {
-          const _value = vise(0, value - 1, 100)
+          const _value = vise(0, value - percentage, max)
           this.emit('change', _value)
         }
       break
@@ -176,14 +184,17 @@ export class Slider extends Component {
     return styles
   }
 
-  render() {
+  render({ discrete, value, max, color, background }) {
     const styles = this.getStyles()
+
     const {
       handleMouseDown,
       handleMouseUp,
       handleMouseMove,
       handleKeyDown
     } = this
+
+    const { focus, keyFocus } = this.state
 
     return(
       <div
@@ -201,6 +212,17 @@ export class Slider extends Component {
 
         {/* Ring */}
         <div style={styles.ring} />
+
+        {discrete
+          ? <Indicator
+            value={value}
+            max={max}
+            color={background}
+            background={color}
+            focus={focus || keyFocus}
+          />
+          : null
+        }
       </div>
     )
   }

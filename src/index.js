@@ -7,7 +7,7 @@ import { Slider } from '../packages/Slider/src/index'
 class Tester extends Component {
   state = {
     value: 0,
-    total: 100
+    total: 5000
   }
 
   handleChange(value) {
@@ -36,6 +36,13 @@ class Tester extends Component {
           <Slider
             value={value}
             max={total}
+            onChange={this.handleChange.bind(this)}
+          />
+          <div style={{height: 50}} />
+          <Slider
+            value={value}
+            max={total}
+            discrete={true}
             onChange={this.handleChange.bind(this)}
           />
         </div>
