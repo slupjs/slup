@@ -4,6 +4,8 @@ import { bind }  from 'decko'
 
 
 export class Indicator extends Component {
+
+  @bind
   getStyles() {
     const {
       value,
@@ -33,6 +35,7 @@ export class Indicator extends Component {
       width: 32,
       transformOrigin: 'bottom',
       transform: `translateX(-50%) ${focus ? 'scale(1, 1)' : 'scale(0, 0)'}`,
+
       triangle: {
         position: 'absolute',
         bottom: -7,
@@ -48,13 +51,11 @@ export class Indicator extends Component {
   }
 
   render({ value, max }) {
-    const styles = this.getStyles.bind(this)()
+    const styles = this.getStyles()
 
     return(
       <div
-        style={styles}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}>
+        style={styles}>
         <span>{Math.floor((value / max) * 100)}</span>
         <div style={styles.triangle}></div>
       </div>
