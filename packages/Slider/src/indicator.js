@@ -2,7 +2,6 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import { bind }  from 'decko'
 
-
 export class Indicator extends Component {
 
   @bind
@@ -54,8 +53,7 @@ export class Indicator extends Component {
     const styles = this.getStyles()
 
     return(
-      <div
-        style={styles}>
+      <div style={styles}>
         <span>{Math.floor((value / max) * 100)}</span>
         <div style={styles.triangle}></div>
       </div>
