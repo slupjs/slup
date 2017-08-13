@@ -159,10 +159,11 @@ export class Slider extends Component {
 
       thumb: {
         position: 'absolute',
-        height: 14,
-        width: 14,
+        transition: 'height 80ms, width 80ms',
+        height: focus || keyFocus ? 14 : 10,
+        width: focus || keyFocus ? 14 : 10,
         left: progress + '%',
-        marginLeft: -7,
+        marginLeft: focus || keyFocus ? -7 : -5,
         borderRadius: '50%',
         background: color || '#2196F3'
       },
