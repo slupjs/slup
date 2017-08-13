@@ -179,7 +179,7 @@ export class Slider extends Component {
         marginLeft: -14,
         transition: 'background .35s',
         borderRadius: '50%',
-        background: !discrete && focus && keyFocus
+        background: !discrete && (focus || keyFocus)
           ? 'rgba(0, 0, 0, .1)'
           : 'transparent'
       }
