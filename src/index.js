@@ -3,6 +3,7 @@ import Component from 'inferno-component'
 
 import { Ripple } from '../packages/Ripple/src/index'
 import { Slider } from '../packages/Slider/src/index'
+import { Navbar } from '../packages/Navbar/src/index'
 
 class Tester extends Component {
   state = {
@@ -20,6 +21,9 @@ class Tester extends Component {
     return(
       <section>
 
+        <Navbar backgroundColor='teal' color='red'>Text</Navbar>
+
+        <div style={{height: 50}} />
         {/* Ripple demo */}
         <div style={{
           position: 'relative',
