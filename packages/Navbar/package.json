@@ -1,7 +1,7 @@
 {
   "name": "@slup/navbar",
   "version": "0.0.1",
-  "description": "Material design app bar",
+  "description": "Material design navbar",
   "main": "dist.js",
   "author": "Gejsi",
   "license": "MIT",

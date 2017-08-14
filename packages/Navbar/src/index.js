@@ -6,22 +6,24 @@ export class Navbar extends Component {
 
   @bind
   getStyles() {
-    const { backgroundColor, color } = this.props
+    const { background, color } = this.props
 
     const styles = {
-      boxShadow: '0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)',
+      boxShadow: '0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 10px 0px rgba(0, 0, 0, 0.12)',
       height: 64,
       display: 'flex',
       alignItems: 'center',
       padding: '0 16px',
-      backgroundColor: backgroundColor,
+      background: background,
       color: color
     }
 
     return styles
   }
 
-  render({ children, backgroundColor, color }) {
+  render({ children }) {
     const styles = this.getStyles()
 
     return <div style={styles}>{children}</div>

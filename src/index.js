@@ -21,7 +21,8 @@ class Tester extends Component {
     return(
       <section>
 
-        <Navbar backgroundColor='teal' color='red'>Text</Navbar>
+        {/* Navbar demo */}
+        <Navbar background='teal' color='red'>Text</Navbar>
 
         <div style={{height: 50}} />
         {/* Ripple demo */}
