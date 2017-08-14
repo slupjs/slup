@@ -67,7 +67,11 @@ class Tester extends Component {
         <RaisedButton background='teal'>
           Text
         </RaisedButton>
-        <Fab backgroundColor='rgb(0, 150, 136)' />
+        <Fab background='rgb(0, 150, 136)'>
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+        </Fab>
       </section>
     )
   }
