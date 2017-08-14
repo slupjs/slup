@@ -3,6 +3,10 @@ import Component from 'inferno-component'
 
 import { Ripple } from '../packages/Ripple/src/index'
 import { Slider } from '../packages/Slider/src/index'
+import { Buttons } from '../packages/Buttons/src/index'
+import { RaisedButton } from '../packages/Buttons/src/raisedbutton'
+import { FlatButton } from '../packages/Buttons/src/flatbutton'
+import { Fab } from '../packages/Buttons/src/fab'
 
 class Tester extends Component {
   state = {
@@ -47,6 +51,13 @@ class Tester extends Component {
           />
         </div>
 
+        <Buttons />
+
+        <div style={{height: 50}} />
+
+        <FlatButton hoverColor='aqua' color='black' text='Demo' />
+        <RaisedButton backgroundColor='teal' text='agree' />
+        <Fab backgroundColor='rgb(0, 150, 136)' />
       </section>
     )
   }
