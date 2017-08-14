@@ -2,32 +2,34 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import { bind }  from 'decko'
 
+import { Ripple } from '@slup/ripple'
+
 export class FlatButton extends Component {
-    state = {
-      background: 'transparent'
-    }
+  state = {
+    background: this.props.background || 'transparent'
+  }
 
   @bind
   getStyles() {
-    const { color, backgroundColor } = this.props
+    const { color } = this.props
+    const { background } = this.state
 
     const styles = {
-        position: 'relative',
-        border: 'none',
-        outline: 'none',
-        background: backgroundColor || this.state.background,
-        color: 'rgba(255, 255, 255, .87)',
-        minHeight: 36,
-        minWidth: 88,
-        borderRadius: '2px',
-        textTransform: 'uppercase',
-        fontSize: 14,
-        margin: '0 8px',
-        padding: '0 8px',
-        cursor: 'pointer',
-        transition: 'all 200ms',
-        userSelect: 'none',
-        color: color || 'rgba(255, 255, 255, .87)'
+      position: 'relative',
+      border: 'none',
+      outline: 'none',
+      background: background,
+      color: color || 'rgba(255, 255, 255, .87)',
+      minHeight: 36,
+      minWidth: 88,
+      borderRadius: '2px',
+      textTransform: 'uppercase',
+      fontSize: 14,
+      margin: '0 8px',
+      padding: '0 8px',
+      cursor: 'pointer',
+      transition: 'all 200ms',
+      userSelect: 'none'
     }
 
     return styles
@@ -35,30 +37,35 @@ export class FlatButton extends Component {
 
   @bind
   handleMouseEnter() {
-    const { hoverColor } = this.props
+    const { hover } = this.props
+    const background = hover || '#9e9e9e'
 
-    this.setState({
-      background: hoverColor || '#9e9e9e'
-    })
+    this.setState({ background })
   }
 
   @bind
   handleMouseLeave() {
-    const { backgroundColor } = this.props
+    const { background: _background } = this.props
+    const background = _background || 'transparent'
 
-    this.setState({
-      background: 'transparent'
-    })
+    this.setState({ background })
   }
 
-  render({ hoverColor, color, backgroundColor, text }) {
+  render({ children, ripple, rippleOptions }) {
     const styles = this.getStyles()
 
     return(
       <button
         style={styles}
         onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}>{this.props.text}</button>
+        onMouseLeave={this.handleMouseLeave}
+      >
+        {children}
+        {ripple == false
+          ? null
+          : <Ripple {...rippleOptions} />
+        }
+      </button>
     )
   }
 }
