@@ -64,7 +64,9 @@ class Tester extends Component {
         >
           Test
         </FlatButton>
-        <RaisedButton backgroundColor='teal' text='agree' />
+        <RaisedButton background='teal'>
+          Text
+        </RaisedButton>
         <Fab backgroundColor='rgb(0, 150, 136)' />
       </section>
     )
