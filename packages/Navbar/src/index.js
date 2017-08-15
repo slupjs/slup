@@ -9,37 +9,30 @@ export class Navbar extends Component {
   }
 
   componentDidMount() {
-    if (this.props.reveal) {
-      window.addEventListener('wheel', this.handleWheel)
-    }
+    if (this.props.reveal) window.addEventListener(
+      'wheel', this.handleWheel
+    )
   }
 
   componentWillUnmount() {
-    if (this.props.reveal) {
-      window.addEventListener('wheel', this.handleWheel)
-    }
+    if (this.props.reveal) window.removeEventListener(
+      'wheel', this.handleWheel
+    )
   }
 
   @bind
   handleWheel(e) {
     let delta
 
-    if (e.wheelDelta) {
+    if (e.wheelDelta)
       delta = e.wheelDelta
-    } else {
+    else
       delta = -1 * e.deltaY
-    }
 
-    if (delta < 0) {
-      this.setState({
-        maxHeight: 0
-      })
-
-    } else {
-      this.setState({
-        maxHeight: 64
-      })
-    }
+    if (delta < 0)
+      this.setState({ maxHeight: 0 })
+    else
+      this.setState({ maxHeight: 64 })
   }
 
   @bind
