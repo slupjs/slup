@@ -6,7 +6,8 @@ export class Navbar extends Component {
   previousY = 0
   previousX = 0
   state = {
-    maxHeight: 64
+    maxHeight: 64,
+    height: 56
   }
 
   componentDidMount() {
@@ -48,7 +49,7 @@ export class Navbar extends Component {
       reveal
     } = this.props
 
-    const { maxHeight } = this.state
+    const { maxHeight, height } = this.state
 
     const styles = {
       boxShadow: `
@@ -57,7 +58,7 @@ export class Navbar extends Component {
         0px 1px 10px 0px rgba(0, 0, 0, 0.12)
       `,
       transition: 'max-height 150ms cubic-bezier(0.4, 0.0, 0.2, 1)',
-      height: 64,
+      height: height,
       maxHeight: maxHeight,
       overflow: 'hidden',
       display: 'flex',
@@ -73,6 +74,11 @@ export class Navbar extends Component {
   }
 
   render({ children }) {
+    if (window.matchMedia("(max-width: 960px)").matches)
+      this.setState({ height: 56 })
+    else
+      this.setState({ height: 64 })
+      
     const styles = this.getStyles()
 
     return <div style={styles}>{children}</div>
