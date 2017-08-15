@@ -11,17 +11,25 @@ export class Navbar extends Component {
   }
 
   componentDidMount() {
-    if (this.props.reveal) window.addEventListener(
-      'scroll',
-      this.handleScroll
-    )
+    if (this.props.reveal)
+      window.addEventListener('scroll',this.handleScroll)
+      window.addEventListener('resize', () => {
+        if (window.matchMedia("(max-width: 960px)").matches)
+          this.setState({ height: 56 })
+        else
+          this.setState({ height: 64 })
+      })
   }
 
   componentWillUnmount() {
-    if (this.props.reveal) window.removeEventListener(
-      'scroll',
-      this.handleScroll
-    )
+    if (this.props.reveal)
+      window.removeEventListener('scroll',this.handleScroll)
+      window.removeEventListener('resize', () => {
+        if (window.matchMedia("(max-width: 960px)").matches)
+          this.setState({ height: 56 })
+        else
+          this.setState({ height: 64 })
+      })
   }
 
   @bind
@@ -57,7 +65,7 @@ export class Navbar extends Component {
         0px 4px 5px 0px rgba(0, 0, 0, 0.14),
         0px 1px 10px 0px rgba(0, 0, 0, 0.12)
       `,
-      transition: 'max-height 150ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+      transition: 'max-height 150ms cubic-bezier(0.4, 0.0, 0.2, 1), height 150ms linear',
       height: height,
       maxHeight: maxHeight,
       overflow: 'hidden',
@@ -74,11 +82,6 @@ export class Navbar extends Component {
   }
 
   render({ children }) {
-    if (window.matchMedia("(max-width: 960px)").matches)
-      this.setState({ height: 56 })
-    else
-      this.setState({ height: 64 })
-      
     const styles = this.getStyles()
 
     return <div style={styles}>{children}</div>
