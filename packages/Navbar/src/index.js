@@ -2,6 +2,8 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import { bind }  from 'decko'
 
+let previousPosition = 0
+
 export class Navbar extends Component {
 
   state = {
@@ -10,29 +12,28 @@ export class Navbar extends Component {
 
   componentDidMount() {
     if (this.props.reveal) window.addEventListener(
-      'wheel', this.handleWheel
+      'scroll',
+      this.handleScroll
     )
   }
 
   componentWillUnmount() {
     if (this.props.reveal) window.removeEventListener(
-      'wheel', this.handleWheel
+      'scroll',
+      this.handleScroll
     )
   }
 
   @bind
-  handleWheel(e) {
-    let delta
+  handleScroll(e) {
+    const currentPosition = window.scrollY
 
-    if (e.wheelDelta)
-      delta = e.wheelDelta
-    else
-      delta = -1 * e.deltaY
-
-    if (delta < 0)
-      this.setState({ maxHeight: 0 })
-    else
+    if (currentPosition < previousPosition)
       this.setState({ maxHeight: 64 })
+    else
+      this.setState({ maxHeight: 0 })
+
+    previousPosition = currentPosition
   }
 
   @bind
