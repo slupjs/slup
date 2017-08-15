@@ -10,7 +10,12 @@ module.exports = {
 	},
 
 	resolve: {
-		extensions: [ '.js' ]
+		extensions: [ '.js' ],
+    alias: {
+      '@slup/ripple': join(__dirname, 'packages', 'Ripple', 'src', 'index'),
+      '@slup/slider': join(__dirname, 'packages', 'Slider', 'src', 'index'),
+      '@slup/navbar': join(__dirname, 'packages', 'Navbar', 'src', 'index')
+    }
 	},
 
 	module: {

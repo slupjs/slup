@@ -1,9 +1,9 @@
 import Inferno, { render } from 'inferno'
 import Component from 'inferno-component'
 
-import { Ripple } from '../packages/Ripple/src/index'
-import { Slider } from '../packages/Slider/src/index'
-import { Navbar } from '../packages/Navbar/src/index'
+import { Ripple } from '@slup/ripple'
+import { Slider } from '@slup/slider'
+import { Navbar } from '@slup/navbar'
 
 class Tester extends Component {
   state = {
