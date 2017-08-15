@@ -29,9 +29,9 @@ export class Navbar extends Component {
     const currentY = window.scrollY
 
     // Ignore the horizontal scroll
-    if(currentX !== this.previousX) {
-      this.previousX = currentX
-    }
+    if(currentX !== this.previousX)
+      return this.previousX = currentX
+    
 
     if (currentY < this.previousY)
       this.setState({ maxHeight: 64 })
