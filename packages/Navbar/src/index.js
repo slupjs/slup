@@ -31,7 +31,6 @@ export class Navbar extends Component {
     // Ignore the horizontal scroll
     if(currentX !== this.previousX)
       return this.previousX = currentX
-    
 
     if (currentY < this.previousY)
       this.setState({ maxHeight: 64 })
@@ -45,7 +44,6 @@ export class Navbar extends Component {
   getStyles() {
     const {
       background,
-      color,
       fixed,
       reveal
     } = this.props
@@ -66,7 +64,6 @@ export class Navbar extends Component {
       alignItems: 'center',
       padding: '0 16px',
       background: background || 'transparent',
-      color: color || '#FFFFFF',
       position: fixed || reveal ? 'fixed' : 'absolute',
       right: 0, left: 0,
       zIndex: 998

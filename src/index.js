@@ -22,7 +22,7 @@ class Tester extends Component {
       <section>
 
         {/* Navbar demo */}
-        <Navbar reveal={true} background='teal' color='red'>text</Navbar>
+        <Navbar reveal={true} background='teal'>text</Navbar>
 
         <div style={{height: 50}} />
         {/* Ripple demo */}
