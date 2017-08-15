@@ -2,10 +2,9 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import { bind }  from 'decko'
 
-let previousPosition = 0
-
 export class Navbar extends Component {
-
+  previousY = 0
+  previousX = 0
   state = {
     maxHeight: 64
   }
@@ -25,15 +24,21 @@ export class Navbar extends Component {
   }
 
   @bind
-  handleScroll(e) {
-    const currentPosition = window.scrollY
+  handleScroll() {
+    const currentX = window.scrollX
+    const currentY = window.scrollY
 
-    if (currentPosition < previousPosition)
+    // Ignore the horizontal scroll
+    if(currentX !== this.previousX) {
+      this.previousX = currentX
+    }
+
+    if (currentY < this.previousY)
       this.setState({ maxHeight: 64 })
     else
       this.setState({ maxHeight: 0 })
 
-    previousPosition = currentPosition
+    this.previousY = currentY
   }
 
   @bind
@@ -55,7 +60,7 @@ export class Navbar extends Component {
       `,
       transition: 'max-height 150ms cubic-bezier(0.4, 0.0, 0.2, 1)',
       height: 64,
-      maxHeight,
+      maxHeight: maxHeight,
       overflow: 'hidden',
       display: 'flex',
       alignItems: 'center',
