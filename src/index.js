@@ -22,7 +22,7 @@ class Tester extends Component {
       <section>
 
         {/* Navbar demo */}
-        <Navbar background='teal' color='red'>Text</Navbar>
+        <Navbar fixed={true} background='teal' color='red'><div>text</div><div>text</div></Navbar>
 
         <div style={{height: 50}} />
         {/* Ripple demo */}
@@ -51,6 +51,8 @@ class Tester extends Component {
             onChange={this.handleChange.bind(this)}
           />
         </div>
+
+        <div style={{height: 5000}} />
 
       </section>
     )

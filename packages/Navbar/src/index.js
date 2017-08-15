@@ -6,7 +6,7 @@ export class Navbar extends Component {
 
   @bind
   getStyles() {
-    const { background, color } = this.props
+    const { background, color, fixed } = this.props
 
     const styles = {
       boxShadow: `
@@ -16,10 +16,14 @@ export class Navbar extends Component {
       `,
       height: 64,
       display: 'flex',
+      justifyContent: 'space-between',
       alignItems: 'center',
       padding: '0 16px',
       background: background || 'transparent',
-      color: color || '#FFFFFF'
+      color: color || '#FFFFFF',
+      position: fixed ? 'fixed' : 'absolute',
+      right: 0, left: 0,
+      zIndex: 998
     }
 
     return styles
