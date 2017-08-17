@@ -9,15 +9,13 @@
     "babel-plugin-transform-object-rest-spread": "6.23.0",
     "babel-preset-es2015": "6.24.1",
     "inferno": "3.7.1",
+    "inferno-compat": "3.7.1",
     "inferno-component": "3.7.1",
+    "styled-components": "2.1.2",
     "webpack": "3.5.1",
     "webpack-dev-server": "2.7.1"
   },
   "scripts": {
     "start": "webpack-dev-server --hot"
-  },
-  "dependencies": {
-    "inferno-compat": "^3.7.1",
-    "styled-components": "^2.1.2"
   }
 }

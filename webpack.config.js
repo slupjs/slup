@@ -16,6 +16,8 @@ module.exports = {
       '@slup/slider': join(__dirname, 'packages', 'Slider', 'src', 'index'),
       '@slup/buttons': join(__dirname, 'packages', 'Buttons', 'src', 'index'),
       '@slup/lists': join(__dirname, 'packages', 'Lists', 'src', 'index'),
+
+      
       'react': 'inferno-compat',
       'react-dom': 'inferno-compat'
     }

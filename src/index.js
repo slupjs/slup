@@ -98,13 +98,16 @@ class Tester extends Component {
             </RightContent>
             <Ripple background='red' />
           </ListItem>
-          <ListItem>text
+          <ListItem>
+            text
             <Ripple background='red' />
           </ListItem>
-          <ListItem>text
+          <ListItem>
+            text
             <Ripple background='red' />
           </ListItem>
-          <ListItem>text
+          <ListItem>
+            text
             <Ripple background='red' />
           </ListItem>
         </List>

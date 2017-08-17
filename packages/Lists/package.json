@@ -1,12 +1,11 @@
 {
   "name": "@slup/lists",
   "version": "0.0.1",
-  "description": "Material design lists",
+  "description": "Material design list component written in Inferno",
   "main": "dist.js",
   "author": "Gejsi",
   "license": "MIT",
   "devDependencies": {
-    "@slup/ripple": "^0.0.2",
     "babel-core": "6.25.0",
     "babel-loader": "7.1.1",
     "babel-plugin-inferno": "3.2.0",
@@ -25,9 +24,5 @@
     "compile:watch": "webpack --watch --progress",
     "compile:build": "cross-env NODE_ENV=production webpack --progress",
     "prepublish": "yarn run compile:build"
-  },
-  "dependencies": {
-    "inferno-compat": "^3.7.1",
-    "styled-components": "^2.1.2"
   }
 }

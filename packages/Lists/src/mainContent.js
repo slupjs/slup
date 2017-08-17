@@ -3,7 +3,7 @@ import Component from 'inferno-component'
 import styled    from 'styled-components'
 
 export class MainContent extends Component {
-  render({ children }) {
+  render(props) {
 
     const Div = styled.div`
       display: flex;
@@ -11,6 +11,6 @@ export class MainContent extends Component {
       flex: 1;
     `
 
-    return <Div>{children}</Div>
+    return <Div>{props.children}</Div>
   }
 }
