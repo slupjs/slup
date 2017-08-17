@@ -2,8 +2,6 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from 'styled-components'
 
-import { LeftContent } from './leftContent'
-
 export class ListItem extends Component {
   render(props) {
     const ListItem = styled.li`
