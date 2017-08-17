@@ -15,11 +15,12 @@ export class ListItem extends Component {
       min-height: ${props.twoline ? '72px' : props.threeline ? '88px' : '48px'};
       max-height: 88px;
       position: relative;
+      transition: background 150ms linear;
       &:hover {
-        cursor: pointer;
-        background-color: darken(#fff, 50%);
+        cursor: ${props.hoverable ? 'pointer' : 'text'};
+        background: ${props.hoverable ? 'rgba(158,158,158,0.2)' : 'transparent'};
       }
     `
-    return <ListItem twoline={props.twoline} threeline={props.threeline}>{props.children}</ListItem>
+    return <ListItem hoverable={props.hoverable} twoline={props.twoline} threeline={props.threeline}>{props.children}</ListItem>
   }
 }
