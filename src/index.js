@@ -29,7 +29,11 @@ class Tester extends Component {
   }
 
   render() {
-    const { value, total } = this.state
+    const {
+      value,
+      total,
+      checked
+    } = this.state
 
     return(
       <section>
@@ -86,9 +90,8 @@ class Tester extends Component {
         <form style={{margin: 32}}>
           <Radio
             onClick={this.handleClick.bind(this)}
-            checked={this.state.checked}
-            disabled={false}
-            size={16} />
+            checked={checked}
+          />
         </form>
 
         <div style={{height: 50}} />
