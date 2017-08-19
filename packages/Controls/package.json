@@ -1,7 +1,7 @@
 {
-  "name": "@slup/selection-controls",
+  "name": "@slup/controls",
   "version": "0.0.1",
-  "description": "Material design controls",
+  "description": "Material design controls which include radio button, checkbox and switch",
   "main": "dist.js",
   "author": "LucaT",
   "license": "MIT",

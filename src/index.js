@@ -10,7 +10,7 @@ import {
   Fab
 } from '@slup/buttons'
 
-import { RadioButton } from '@slup/selection-controls'
+import { Radio } from '@slup/controls'
 
 
 class Tester extends Component {
@@ -78,9 +78,8 @@ class Tester extends Component {
 
         <div style={{height: 50}} />
 
-        <form>
-          <RadioButton name="button" style={{margin: 32}} />
-          <RadioButton name="button" style={{margin: 32}} />
+        <form style={{margin: 32}}>
+          <Radio />
         </form>
 
         <div style={{height: 50}} />

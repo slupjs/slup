@@ -16,7 +16,7 @@ module.exports = {
       '@slup/slider': join(__dirname, 'packages', 'Slider', 'src', 'index'),
       '@slup/buttons': join(__dirname, 'packages', 'Buttons', 'src', 'index'),
       '@slup/navbar': join(__dirname, 'packages', 'Navbar', 'src', 'index'),
-      '@slup/selection-controls': join(__dirname, 'packages', 'SelectionControls', 'src', 'index'),
+      '@slup/controls': join(__dirname, 'packages', 'Controls', 'src', 'index'),
 
       // Aliases needed for styled-components
       'react': 'inferno-compat',
