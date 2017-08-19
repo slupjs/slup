@@ -86,7 +86,9 @@ class Tester extends Component {
         <form style={{margin: 32}}>
           <Radio
             onClick={this.handleClick.bind(this)}
-            checked={this.state.checked} />
+            checked={this.state.checked}
+            disabled={false}
+            size={16} />
         </form>
 
         <div style={{height: 50}} />

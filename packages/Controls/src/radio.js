@@ -5,10 +5,10 @@ import { bind }  from 'decko'
 
 
 const Border = styled.div`
-  width: 16px;
-  height: 16px;
+  width: ${props => props.size}px;
+  height: ${props => props.size}px;
   border-radius: 50%;
-  transition: border 200ms linear;
+  transition: border 150ms linear;
   border: 2px solid ${props => props.disabled ? '#9e9e9e' : props.checked ? 'teal' : '#9e9e9e'};
   display: flex;
   justify-content: center;
@@ -18,8 +18,9 @@ const Border = styled.div`
 `
 
 const Circle = styled.div`
-  width: 10px;
-  height: 10px;
+  width: ${props => props.size - 6}px;
+  height: ${props => props.size - 6}px;
+  pointer-events: none;
   background-color: ${props => props.disabled ? '#9e9e9e' : props.checked ? 'teal' : '#9e9e9e'};
   border-radius: 50%;
   transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -28,10 +29,6 @@ const Circle = styled.div`
 
 export class Radio extends Component {
   render(props) {
-    return (
-      <Border onClick={props.onClick} checked={props.checked} disabled={props.disabled}>
-        <Circle checked={props.checked} disabled={props.disabled} />
-      </Border>
-    )
+    return <Border {...props}><Circle {...props} /></Border>
   }
 }
