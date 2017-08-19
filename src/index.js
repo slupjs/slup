@@ -16,11 +16,16 @@ import { Radio } from '@slup/controls'
 class Tester extends Component {
   state = {
     value: 0,
-    total: 5000
+    total: 5000,
+    checked: false
   }
 
   handleChange(value) {
     this.setState({ value })
+  }
+
+  handleClick() {
+    this.setState({ checked: !this.state.checked })
   }
 
   render() {
@@ -79,7 +84,7 @@ class Tester extends Component {
         <div style={{height: 50}} />
 
         <form style={{margin: 32}}>
-          <Radio />
+          <Radio onClick={this.handleClick.bind(this)} checked={this.state.checked} />
         </form>
 
         <div style={{height: 50}} />

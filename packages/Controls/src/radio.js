@@ -1,7 +1,8 @@
 import Inferno   from 'inferno'
 import Component from 'inferno-component'
-import { bind }  from 'decko'
 import styled    from 'styled-components'
+import { bind }  from 'decko'
+
 
 const Border = styled.div`
   width: 16px;
@@ -25,19 +26,11 @@ const Circle = styled.div`
 `
 
 export class Radio extends Component {
-  state = { checked: false }
 
-  @bind
-  handleClick() {
-    const { checked } = this.state
-
-    this.setState({ checked: !checked })
-  }
-
-  render(props) {
+  render() {
     return (
-      <Border onClick={this.handleClick} checked={this.state.checked}>
-        <Circle checked={this.state.checked} />
+      <Border onClick={this.props.onClick} checked={this.props.checked}>
+        <Circle checked={this.props.checked} />
       </Border>
     )
   }
