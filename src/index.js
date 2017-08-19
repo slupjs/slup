@@ -10,6 +10,8 @@ import {
   Fab
 } from '@slup/buttons'
 
+import { RadioButton } from '@slup/selection-controls'
+
 
 class Tester extends Component {
   state = {
@@ -74,13 +76,15 @@ class Tester extends Component {
           Text
         </RaisedButton>
 
-        <Fab background='rgb(0, 150, 136)'>
-          <svg width="24" height="24" viewBox="0 0 24 24">
-            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-          </svg>
-        </Fab>
+        <div style={{height: 50}} />
 
-        <div style={{height: 5000}} />
+        <form>
+          <RadioButton name="button" style={{margin: 32}} />
+          <RadioButton name="button" style={{margin: 32}} />
+        </form>
+
+        <div style={{height: 50}} />
+
       </section>
     )
   }

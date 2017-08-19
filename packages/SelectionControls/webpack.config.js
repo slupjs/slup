@@ -1,7 +1,8 @@
 const webpack           = require('webpack')
+const BabiliPlugin      = require("babili-webpack-plugin")
 const { join }          = require('path')
 
-module.exports = {
+let config = {
   entry: join(__dirname, 'src', 'index'),
 
   output: {
@@ -12,13 +13,6 @@ module.exports = {
   resolve: {
     extensions: [ '.js' ],
     alias: {
-      '@slup/ripple': join(__dirname, 'packages', 'Ripple', 'src', 'index'),
-      '@slup/slider': join(__dirname, 'packages', 'Slider', 'src', 'index'),
-      '@slup/buttons': join(__dirname, 'packages', 'Buttons', 'src', 'index'),
-      '@slup/navbar': join(__dirname, 'packages', 'Navbar', 'src', 'index'),
-      '@slup/selection-controls': join(__dirname, 'packages', 'SelectionControls', 'src', 'index'),
-
-      // Aliases needed for styled-components
       'react': 'inferno-compat',
       'react-dom': 'inferno-compat'
     }
@@ -41,3 +35,10 @@ module.exports = {
   devtool: 'source-map',
   target: 'web'
 }
+
+if(process.env.NODE_ENV == 'production') {
+  config.plugins.push(new BabiliPlugin())
+  config.plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
+}
+
+module.exports = config
