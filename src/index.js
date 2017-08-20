@@ -93,7 +93,10 @@ class Tester extends Component {
             checked={checked}
             style={{margin: 32}}
           />
-          <Checkbox style={{margin: 32}} />
+          <Checkbox
+            onClick={this.handleClick.bind(this)}
+            checked={checked}
+            style={{margin: 32}} />
         </form>
 
         <div style={{height: 50}} />
