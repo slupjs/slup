@@ -1,7 +1,6 @@
 import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from 'styled-components'
-import { bind }  from 'decko'
 
 
 const Border = styled.div`

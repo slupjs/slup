@@ -10,7 +10,7 @@ import {
   Fab
 } from '@slup/buttons'
 
-import { Radio } from '@slup/controls'
+import { Radio, Checkbox } from '@slup/controls'
 
 
 class Tester extends Component {
@@ -87,11 +87,13 @@ class Tester extends Component {
 
         <div style={{height: 50}} />
 
-        <form style={{margin: 32}}>
+        <form>
           <Radio
             onClick={this.handleClick.bind(this)}
             checked={checked}
+            style={{margin: 32}}
           />
+          <Checkbox style={{margin: 32}} />
         </form>
 
         <div style={{height: 50}} />
