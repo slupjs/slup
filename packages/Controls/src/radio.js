@@ -15,7 +15,7 @@ const Border = styled.div`
     ? '#9e9e9e'
     : props.checked
       ? 'teal'
-      : '#9e9e9e'
+      : '#616161'
   };
 	// Children alignment
   display: flex;

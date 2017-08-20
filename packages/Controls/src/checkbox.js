@@ -8,13 +8,20 @@ export const Checkbox = styled.div`
   height: ${props => props.size || 18}px;
   border-radius: 2px;
   box-sizing: border-box;
-  border: 2px solid ${props => props.checked ? 'teal' : '#9e9e9e'};
-  cursor: pointer;
-  background-color: ${props => props.checked ? 'teal' : 'none'};
+  border: 2px solid ${props => props.disabled ? '#9e9e9e' : props.checked ? 'teal' : '#616161'};
+  background-color: ${props => props.disabled && props.checked ? '#9e9e9e' : props.checked ? 'teal' : 'transparent'};
   transition: background-color 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
     border-color 200ms linear;
   outline: none;
   position: relative;
+  cursor: ${props => props.disabled
+	  ? 'not-allowed'
+    : 'pointer'
+  };
+  pointer-events: ${props => props.disabled
+    ? 'none'
+    : 'auto'
+  };
 
   &::before,
   &::after {
@@ -32,14 +39,15 @@ export const Checkbox = styled.div`
 	}
 
   &::after {
-    transform: translate(${props => (props.size / 3.6) || 5}px, ${props => (props.size / 2.3) || 7.8}px)
+    transform: translate(${props => props.size / 5.3 || 3.5}px, ${props => props.size / 2.6 || 7.2}px)
       rotate(44.91deg)
-      ${props => props.checked ? 'scale(.32,.1)' : 'scale(.1, .1)'}
+      ${props => props.checked ? 'scale(.4,.1)' : 'scale(.1, .1)'}
 	}
 
   &::before {
-    transform: translate(${props => (props.size / 2.66) || 6.7}px, ${props => (props.size / 1.5) || 12}px)
+    transition-delay: ${props => props.checked ? '40ms' : '0'};
+    transform: translate(${props => props.size / 2.57 || 7}px, ${props => props.size / 1.6 || 11}px)
       rotate(-45deg)
-      ${props => props.checked ? 'scale(.5612,.1)' : 'scale(.1, .1)'}
+      ${props => props.checked ? 'scale(.6,.1)' : 'scale(.1, .1)'}
   }
 `

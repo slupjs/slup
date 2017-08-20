@@ -96,6 +96,7 @@ class Tester extends Component {
           <Checkbox
             onClick={this.handleClick.bind(this)}
             checked={checked}
+            disabled={false}
             style={{margin: 32}} />
         </form>
 
