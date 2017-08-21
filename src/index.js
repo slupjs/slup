@@ -10,7 +10,10 @@ import {
   Fab
 } from '@slup/buttons'
 
-import { Radio, Checkbox } from '@slup/controls'
+import { Radio,
+  Checkbox,
+  Switch
+} from '@slup/controls'
 
 
 class Tester extends Component {
@@ -90,6 +93,11 @@ class Tester extends Component {
             style={{margin: 32}}
           />
           <Checkbox
+            onChange={this.handleChange.bind(this)}
+            checked={checked}
+            style={{margin: 32}} />
+
+          <Switch
             onChange={this.handleChange.bind(this)}
             checked={checked}
             style={{margin: 32}} />

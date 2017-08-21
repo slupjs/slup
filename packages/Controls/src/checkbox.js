@@ -58,16 +58,10 @@ const Box = styled.div`
 `
 
 export class Checkbox extends Component {
-  state = { focus: false }
-
-  @bind
-  handleFocus() {
-    this.setState({ focus: !this.state.focus })
-  }
 
   @bind
   handleKeyDown({ keyCode }) {
-    if(this.state.focus && keyCode == 32 && this.props.onChange) {
+    if(keyCode == 32 && this.props.onChange) {
       this.props.onChange()
     }
   }
@@ -76,7 +70,6 @@ export class Checkbox extends Component {
     return ( <Box {...props}
       onClick={props.onChange}
       tabIndex={0}
-      onFocus={this.handleFocus}
       onKeyDown={this.handleKeyDown} />
     )
   }
