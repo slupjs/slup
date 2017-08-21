@@ -62,12 +62,12 @@ export class Checkbox extends Component {
 
   @bind
   handleFocus() {
-    this.setState({ focus: !focus })
+    this.setState({ focus: !this.state.focus })
   }
 
   @bind
   handleKeyDown({ keyCode }) {
-    if(!this.state.focus && keyCode == 32 && this.props.onChange) {
+    if(this.state.focus && keyCode == 32 && this.props.onChange) {
       this.props.onChange()
     }
   }

@@ -34,7 +34,7 @@ const Border = styled.div`
 
   &:focus {
     outline: none;
-    
+
     /* Just a temporary shadow */
     transition: box-shadow 200ms linear;
     box-shadow: 0 0 0 15px #9e9e9e;
@@ -42,7 +42,7 @@ const Border = styled.div`
 `
 
 const Circle = styled.div`
-  // Positioning and styling
+  /* Positioning and styling */
   width: ${props =>  (props.size || 16) - 6}px;
   height: ${props => (props.size || 16) - 6}px;
   background-color: ${props => props.disabled
@@ -53,7 +53,7 @@ const Circle = styled.div`
   };
   border-radius: 50%;
 
-  // Transitions and animations
+  /* Transitions and animations */
   transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
   transform: ${props => props.checked
     ? 'scale(1)'
