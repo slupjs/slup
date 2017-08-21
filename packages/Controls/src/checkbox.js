@@ -3,7 +3,7 @@ import Component from 'inferno-component'
 import styled    from 'styled-components'
 import { bind }  from 'decko'
 
-export const Checkbox = styled.div`
+const Box = styled.div`
   width: ${props => props.size || 18}px;
   height: ${props => props.size || 18}px;
   border-radius: 2px;
@@ -45,9 +45,30 @@ export const Checkbox = styled.div`
 	}
 
   &::before {
-    transition-delay: ${props => props.checked ? '40ms' : '0'};
     transform: translate(${props => props.size / 2.57 || 7}px, ${props => props.size / 1.6 || 11}px)
       rotate(-45deg)
       ${props => props.checked ? 'scale(.6,.1)' : 'scale(.1, .1)'}
   }
+
+  &:focus {
+    /* Just a temporary shadow */
+    transition: box-shadow 200ms linear;
+    box-shadow: 0 0 0 15px #9e9e9e;
+  }
 `
+
+export class Checkbox extends Component {
+
+  @bind
+  handleFocus(e) {
+    e.target.addEventListener('keydown', ({ keyCode }) => {
+      if (keyCode == 32) {
+        this.props.onChange()
+      }
+    })
+  }
+
+  render(props) {
+    return <Box {...props} onClick={props.onChange} tabIndex={0} onFocus={this.handleFocus} />
+  }
+}

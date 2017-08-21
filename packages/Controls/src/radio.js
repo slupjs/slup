@@ -4,12 +4,12 @@ import styled    from 'styled-components'
 
 
 const Border = styled.div`
-  // Geometry
+  /* Geometry */
   width: ${props =>  props.size || 16}px;
   height: ${props => props.size || 16}px;
   border-radius: 50%;
 
-  // Border colors and transition
+   /* Border colors and transition */
   transition: border 150ms linear;
   border: 2px solid ${props => props.disabled
     ? '#9e9e9e'
@@ -22,7 +22,7 @@ const Border = styled.div`
   justify-content: center;
   align-items: center;
 
-	// Cursor properties
+	 /* Cursor properties */
   cursor: ${props => props.disabled
 	  ? 'auto'
     : 'pointer'
@@ -31,6 +31,14 @@ const Border = styled.div`
     ? 'none'
     : 'auto'
   };
+
+  &:focus {
+    outline: none;
+    
+    /* Just a temporary shadow */
+    transition: box-shadow 200ms linear;
+    box-shadow: 0 0 0 15px #9e9e9e;
+  }
 `
 
 const Circle = styled.div`
@@ -55,7 +63,7 @@ const Circle = styled.div`
 
 export class Radio extends Component {
   render(props) {
-    return <Border {...props}>
+    return <Border {...props} tabIndex={0} onClick={props.onChange}>
       <Circle
         checked={props.checked}
         disabled={props.disabled}

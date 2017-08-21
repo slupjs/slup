@@ -21,11 +21,7 @@ class Tester extends Component {
   }
 
   handleChange(value) {
-    this.setState({ value })
-  }
-
-  handleClick() {
-    this.setState({ checked: !this.state.checked })
+    this.setState({ value, checked: !this.state.checked })
   }
 
   render() {
@@ -89,14 +85,13 @@ class Tester extends Component {
 
         <form>
           <Radio
-            onClick={this.handleClick.bind(this)}
+            onChange={this.handleChange.bind(this)}
             checked={checked}
             style={{margin: 32}}
           />
           <Checkbox
-            onClick={this.handleClick.bind(this)}
+            onChange={this.handleChange.bind(this)}
             checked={checked}
-            disabled={false}
             style={{margin: 32}} />
         </form>
 
