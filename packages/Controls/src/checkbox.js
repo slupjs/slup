@@ -58,17 +58,26 @@ const Box = styled.div`
 `
 
 export class Checkbox extends Component {
+  state = { focus: false }
 
   @bind
-  handleFocus(e) {
-    e.target.addEventListener('keydown', ({ keyCode }) => {
-      if (keyCode == 32) {
-        this.props.onChange()
-      }
-    })
+  handleFocus() {
+    this.setState({ focus: !focus })
+  }
+
+  @bind
+  handleKeyDown({ keyCode }) {
+    if(!this.state.focus && keyCode == 32 && this.props.onChange) {
+      this.props.onChange()
+    }
   }
 
   render(props) {
-    return <Box {...props} onClick={props.onChange} tabIndex={0} onFocus={this.handleFocus} />
+    return ( <Box {...props}
+      onClick={props.onChange}
+      tabIndex={0}
+      onFocus={this.handleFocus}
+      onKeyDown={this.handleKeyDown} />
+    )
   }
 }
