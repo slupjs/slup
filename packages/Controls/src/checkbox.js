@@ -15,7 +15,7 @@ const Box = styled.div`
   outline: none;
   position: relative;
   cursor: ${props => props.disabled
-	  ? 'not-allowed'
+    ? 'not-allowed'
     : 'pointer'
   };
   pointer-events: ${props => props.disabled
@@ -25,24 +25,24 @@ const Box = styled.div`
 
   &::before,
   &::after {
-		content: '';
-		background: #fff;
-		height: ${props => props.size || 18}px;
-		width: ${props => props.size || 18}px;
-		position: absolute;
+    content: '';
+    background: #fff;
+    height: ${props => props.size || 18}px;
+    width: ${props => props.size || 18}px;
+    position: absolute;
     top: -2px;
-		left: -2px;
+    left: -2px;
     opacity: ${props => props.checked ? '1' : '0'};
-		transform-origin: 0 0;
-		transition: transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1),
+    transform-origin: 0 0;
+    transition: transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1),
       opacity 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
-	}
+  }
 
   &::after {
     transform: translate(${props => props.size / 5.3 || 3.5}px, ${props => props.size / 2.6 || 7.2}px)
       rotate(44.91deg)
       ${props => props.checked ? 'scale(.4,.1)' : 'scale(.1, .1)'}
-	}
+  }
 
   &::before {
     transform: translate(${props => props.size / 2.57 || 7}px, ${props => props.size / 1.6 || 11}px)

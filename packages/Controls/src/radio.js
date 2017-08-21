@@ -17,14 +17,14 @@ const Border = styled.div`
       ? 'teal'
       : '#616161'
   };
-	// Children alignment
+  /* Children alignment */
   display: flex;
   justify-content: center;
   align-items: center;
 
-	 /* Cursor properties */
+  /* Cursor properties */
   cursor: ${props => props.disabled
-	  ? 'auto'
+    ? 'auto'
     : 'pointer'
   };
   pointer-events: ${props => props.disabled
