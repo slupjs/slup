@@ -46,7 +46,7 @@ export class Switch extends Component {
 
   @bind
   handleKeyDown({ keyCode }) {
-    if(keyCode == 32 && this.props.onChange) {
+    if(keyCode == 32 && this.props.onChange && !this.props.disabled) {
       this.props.onChange()
     }
   }
