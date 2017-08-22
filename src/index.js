@@ -20,15 +20,24 @@ import {
 class Tester extends Component {
   state = {
     value: 0,
-    total: 5000
+    total: 5000,
+    visible: false
   }
 
   handleChange(value) {
     this.setState({ value })
   }
 
+  handleClick() {
+    this.setState({ visible: !this.state.visible })
+  }
+
   render() {
-    const { value, total } = this.state
+    const {
+      value,
+      total,
+      visible
+    } = this.state
 
     return(
       <section>
@@ -79,7 +88,7 @@ class Tester extends Component {
         <div style={{height: 50}} />
 
         {/* Lists */}
-        <List>
+        <List visible={true}>
           <ListItem threeline={true} hoverable={true}>
             <LeftContent>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
@@ -96,38 +105,20 @@ class Tester extends Component {
           </ListItem>
           <ListItem>
             text
-            <Ripple background='red' />
-          </ListItem>
-          <ListItem>
-            text
-            <Ripple background='red' />
           </ListItem>
 
           {/* Nested list */}
-          <List>
-            <ListItem nestedTrigger={true} hoverable={true}>
-              <LeftContent>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-              </LeftContent>
-              <MainContent>Hello</MainContent>
-              <RightContent>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-              </RightContent>
-              <Ripple background='red' />
-            </ListItem>
-            <ListItem nested={true}>
-              text
-              <Ripple background='red' />
-            </ListItem>
-            <ListItem nested={true}>
-              text
-              <Ripple background='red' />
-            </ListItem>
-            <ListItem nested={true}>
-              text
-              <Ripple background='red' />
-            </ListItem>
-          </List>
+
+          <ListItem sublist={true}>
+            <ListItem style={{width: '100%'}} hoverable={true} onClick={this.handleClick.bind(this)}>Text</ListItem>
+
+            <List visible={visible}>
+              <ListItem>text</ListItem>
+              <ListItem>text</ListItem>
+              <ListItem>text</ListItem>
+              <ListItem>text</ListItem>
+            </List>
+          </ListItem>
         </List>
 
       </section>
