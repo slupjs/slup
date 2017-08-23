@@ -21,7 +21,7 @@ class Tester extends Component {
   state = {
     value: 0,
     total: 5000,
-    visible: false
+    visible: true
   }
 
   handleChange(value) {
@@ -101,24 +101,22 @@ class Tester extends Component {
             <RightContent>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
             </RightContent>
-            <Ripple background='red' />
           </ListItem>
-          <ListItem>
+          <ListItem rippleOptions={{ background: 'teal' }} hoverable={true}>
             text
           </ListItem>
 
           {/* Nested list */}
 
           <ListItem sublist={true} visible={visible}>
-            <ListItem style={{width: '100%'}} hoverable={true} onClick={this.handleClick.bind(this)}>
-              Text
-              <Ripple background="teal" />
+            <ListItem hoverable={true} onClick={this.handleClick.bind(this)}>
+              NESTED
             </ListItem>
 
             <List>
-              <ListItem>text</ListItem>
-              <ListItem>text</ListItem>
-              <ListItem>text</ListItem>
+              <ListItem nested={true} hoverable={true}>text</ListItem>
+              <ListItem nested={true} hoverable={true}>text</ListItem>
+              <ListItem nested={true} hoverable={true}>text</ListItem>
             </List>
           </ListItem>
         </List>

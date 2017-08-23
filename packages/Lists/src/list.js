@@ -8,5 +8,4 @@ export const List = styled.ul`
   list-style: none;
   width: 100%;
   overflow: hidden;
-  z-index: 100;
 `
