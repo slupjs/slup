@@ -3,12 +3,12 @@ import Component from 'inferno-component'
 
 import { Ripple } from '@slup/ripple'
 import { Slider } from '@slup/slider'
+import { Navbar } from '@slup/navbar'
 import {
   FlatButton,
   RaisedButton,
   Fab
 } from '@slup/buttons'
-
 import {
   List,
   ListItem,
@@ -42,6 +42,10 @@ class Tester extends Component {
     return(
       <section>
 
+        {/* Navbar demo */}
+        <Navbar reveal={true} background='teal'>text</Navbar>
+
+        <div style={{height: 50}} />
         {/* Ripple demo */}
         <div style={{
           position: 'relative',
@@ -70,7 +74,6 @@ class Tester extends Component {
             onChange={this.handleChange.bind(this)}
           />
         </div>
-
         <div style={{height: 50}} />
 
         {/* Buttons demo */}
@@ -81,9 +84,16 @@ class Tester extends Component {
         >
           Test
         </FlatButton>
+
         <RaisedButton background='teal'>
           Text
         </RaisedButton>
+
+        <Fab background='rgb(0, 150, 136)'>
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+        </Fab>
 
         <div style={{height: 50}} />
 
@@ -120,7 +130,8 @@ class Tester extends Component {
             </List>
           </ListItem>
         </List>
-
+  
+        <div style={{height: 5000}} />
       </section>
     )
   }
