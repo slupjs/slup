@@ -50,7 +50,7 @@ const Box = styled.div`
 
   &::before {
     transition: transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
-    transform: translate(${props => props.size / 2.57 || 7}px, ${props => props.size / 1.6 || 11}px)
+    transform: translate(${props => props.size / 2.55 || 7.1}px, ${props => props.size / 1.65 || 11.2}px)
       rotate(-45deg)
       ${props => props.checked ? 'scale(.6,.1)' : 'scale(.1, .1)'}
   }
