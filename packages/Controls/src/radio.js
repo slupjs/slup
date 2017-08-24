@@ -66,8 +66,10 @@ const Wave = styled.div`
   position: absolute;
   z-index: -1;
   pointer-events: none;
+  transition: background 150ms linear,
+    opacity 150ms linear,
+    transform 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
   opacity: ${props => props.opacity};
-  transition: background 150ms linear, opacity 150ms linear, transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
   transform: ${props => props.transform};
   background-color: ${props => props.disabled
     ? 'grey'
@@ -77,44 +79,46 @@ const Wave = styled.div`
 `
 
 export class Radio extends Component {
-
   state = {
     transform: 'scale(0)',
-    opacity: '0.3'
+    opacity: '0.25'
+  }
+
+  @bind
+  createWave() {
+    this.setState({
+      transform: 'scale(3)',
+      opacity: '0.25'
+    })
+  }
+
+  @bind
+  destroyWave() {
+    this.setState({ opacity: '0.05' })
+
+    setTimeout(() => {
+      this.setState({ transform: 'scale(0)' })
+    }, 150)
   }
 
   @bind
   handleMouseDown() {
-    this.setState({
-      transform: 'scale(3)',
-      opacity: '0.3'
-    })
+    this.createWave()
   }
 
   @bind
   handleMouseUp() {
-    this.setState({ opacity: '0.05' })
-
-    setTimeout(() => {
-      this.setState({ transform: 'scale(0)' })
-    },80)
+    this.destroyWave()
   }
 
   @bind
   handleFocus() {
-    this.setState({
-      transform: 'scale(3)',
-      opacity: '0.3'
-    })
+    this.createWave()
   }
 
   @bind
   handleBlur() {
-    this.setState({ opacity: '0.05' })
-
-    setTimeout(() => {
-      this.setState({ transform: 'scale(0)' })
-    },80)
+    this.destroyWave()
   }
 
   render(props) {
@@ -131,11 +135,13 @@ export class Radio extends Component {
         <Circle
           checked={props.checked}
           disabled={props.disabled}
+          size={props.size}
         />
 
         <Wave
           checked={props.checked}
           disabled={props.disabled}
+          size={props.size}
           transform={this.state.transform}
           opacity={this.state.opacity}
         />

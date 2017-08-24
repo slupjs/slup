@@ -54,15 +54,71 @@ const Box = styled.div`
       rotate(-45deg)
       ${props => props.checked ? 'scale(.6,.1)' : 'scale(.1, .1)'}
   }
+`
 
-  &:focus {
-    /* Just a temporary shadow */
-    transition: box-shadow 200ms linear;
-    box-shadow: 0 0 0 15px #9e9e9e;
-  }
+const Wave = styled.div`
+  width: ${props => (props.size || 18) - 2}px;
+  height: ${props => (props.size || 18) - 2}px;
+  background: red;
+  position: absolute;
+  left: -1.5px; top: -1.5px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  transition: background 150ms linear,
+    opacity 150ms linear,
+    transform 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  opacity: ${props => props.opacity};
+  transform: ${props => props.transform};
+  background-color: ${props => props.disabled
+    ? 'grey'
+    : props.checked
+      ? 'teal'
+      : 'grey'};
 `
 
 export class Checkbox extends Component {
+  state = {
+    transform: 'scale(0)',
+    opacity: '0.25'
+  }
+
+  @bind
+  createWave() {
+    this.setState({
+      transform: 'scale(3)',
+      opacity: '0.25'
+    })
+  }
+
+  @bind
+  destroyWave() {
+    this.setState({ opacity: '0.05' })
+
+    setTimeout(() => {
+      this.setState({ transform: 'scale(0)' })
+    }, 150)
+  }
+
+  @bind
+  handleMouseDown() {
+    this.createWave()
+  }
+
+  @bind
+  handleMouseUp() {
+    this.destroyWave()
+  }
+
+  @bind
+  handleFocus() {
+    this.createWave()
+  }
+
+  @bind
+  handleBlur() {
+    this.destroyWave()
+  }
 
   @bind
   handleKeyDown({ keyCode }) {
@@ -72,10 +128,23 @@ export class Checkbox extends Component {
   }
 
   render(props) {
-    return ( <Box {...props}
+    return (
+      <Box {...props}
       onClick={props.onChange}
       tabIndex={0}
-      onKeyDown={this.handleKeyDown} />
+      onKeyDown={this.handleKeyDown}
+      onMouseDown={this.handleMouseDown}
+      onMouseUp={this.handleMouseUp}
+      onFocus={this.handleFocus}
+      onBlur={this.handleBlur}>
+        <Wave
+          checked={props.checked}
+          disabled={props.disabled}
+          size={props.size}
+          transform={this.state.transform}
+          opacity={this.state.opacity}
+        />
+      </Box>
     )
   }
 }
