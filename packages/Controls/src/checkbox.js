@@ -80,14 +80,14 @@ const Wave = styled.div`
 export class Checkbox extends Component {
   state = {
     transform: 'scale(0)',
-    opacity: '0.25'
+    opacity: '0.2'
   }
 
   @bind
   createWave() {
     this.setState({
       transform: 'scale(3)',
-      opacity: '0.25'
+      opacity: '0.2'
     })
   }
 
