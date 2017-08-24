@@ -89,7 +89,7 @@ class Tester extends Component {
 
         {/* Lists */}
         <List>
-          <ListItem threeline={true} hoverable={true}>
+          <ListItem threeline={true} rippleOptions={{ background: 'teal' }}>
             <LeftContent>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
             </LeftContent>
@@ -102,21 +102,21 @@ class Tester extends Component {
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
             </RightContent>
           </ListItem>
-          <ListItem rippleOptions={{ background: 'teal' }} hoverable={true}>
+          <ListItem ripple={false} hoverable={false}>
             text
           </ListItem>
 
           {/* Nested list */}
 
           <ListItem sublist={true} visible={visible}>
-            <ListItem hoverable={true} onClick={this.handleClick.bind(this)}>
+            <ListItem onClick={this.handleClick.bind(this)}>
               NESTED
             </ListItem>
 
             <List>
-              <ListItem nested={true} hoverable={true}>text</ListItem>
-              <ListItem nested={true} hoverable={true}>text</ListItem>
-              <ListItem nested={true} hoverable={true}>text</ListItem>
+              <ListItem nested={true}>text</ListItem>
+              <ListItem nested={true}>text</ListItem>
+              <ListItem nested={true}>text</ListItem>
             </List>
           </ListItem>
         </List>

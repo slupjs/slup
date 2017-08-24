@@ -27,8 +27,8 @@ const Li = styled.li`
   user-select: ${props => props.hoverable ? 'none' : 'auto'};
 
   &:hover {
-    cursor: ${props => props.hoverable ? 'pointer' : 'text'};
-    background: ${props => props.hoverable ? 'rgba(158,158,158,0.2)' : 'transparent'};
+    cursor: ${props => props.hoverable == false || props.sublist ? 'text' : 'pointer'};
+    background: ${props => props.hoverable == false || props.sublist ? 'transparent' : 'rgba(158,158,158,0.2)'};
   }
 `
 
@@ -38,7 +38,7 @@ export class ListItem extends Component {
       <Li  {...props}>
         {props.children}
 
-        {props.ripple || !props.sublist == false
+        {props.ripple === false || props.sublist === true
           ? null
           : <Ripple {...props.rippleOptions} />
         }
