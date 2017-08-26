@@ -127,10 +127,10 @@ export class Radio extends Component {
         {...props}
         tabIndex={0}
         onClick={props.onChange}
-        onMouseDown={this.handleMouseDown}
-        onMouseUp={this.handleMouseUp}
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur}>
+        onMouseDown={this.createWave}
+        onMouseUp={this.destroyWave}
+        onFocus={this.createWave}
+        onBlur={this.destroyWave}>
 
         <Circle
           checked={props.checked}

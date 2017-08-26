@@ -101,26 +101,6 @@ export class Checkbox extends Component {
   }
 
   @bind
-  handleMouseDown() {
-    this.createWave()
-  }
-
-  @bind
-  handleMouseUp() {
-    this.destroyWave()
-  }
-
-  @bind
-  handleFocus() {
-    this.createWave()
-  }
-
-  @bind
-  handleBlur() {
-    this.destroyWave()
-  }
-
-  @bind
   handleKeyDown({ keyCode }) {
     if(keyCode == 32 && this.props.onChange && !this.props.disabled) {
       this.props.onChange()
@@ -133,10 +113,10 @@ export class Checkbox extends Component {
       onClick={props.onChange}
       tabIndex={0}
       onKeyDown={this.handleKeyDown}
-      onMouseDown={this.handleMouseDown}
-      onMouseUp={this.handleMouseUp}
-      onFocus={this.handleFocus}
-      onBlur={this.handleBlur}>
+      onMouseDown={this.createWave}
+      onMouseUp={this.destroyWave}
+      onFocus={this.createWave}
+      onBlur={this.destroyWave}>
         <Wave
           checked={props.checked}
           disabled={props.disabled}
