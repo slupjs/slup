@@ -16,11 +16,16 @@ import {
   MainContent,
   RightContent
 } from '@slup/lists'
+import { Radio,
+  Checkbox,
+  Switch
+} from '@slup/controls'
 
 class Tester extends Component {
   state = {
     value: 0,
     total: 5000,
+    checked: false,
     visible: true
   }
 
@@ -28,6 +33,9 @@ class Tester extends Component {
     this.setState({ value })
   }
 
+  handleControls() {
+    this.setState({ checked: !this.state.checked })
+  }
   handleClick() {
     this.setState({ visible: !this.state.visible })
   }
@@ -36,6 +44,7 @@ class Tester extends Component {
     const {
       value,
       total,
+      checked,
       visible
     } = this.state
 
@@ -89,11 +98,26 @@ class Tester extends Component {
           Text
         </RaisedButton>
 
-        <Fab background='rgb(0, 150, 136)'>
-          <svg width="24" height="24" viewBox="0 0 24 24">
-            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-          </svg>
-        </Fab>
+        <div style={{height: 50}} />
+
+        <form>
+          <Radio
+            onChange={this.handleControls.bind(this)}
+            checked={checked}
+            style={{margin: 32}}
+          />
+          <Checkbox
+            onChange={this.handleControls.bind(this)}
+            checked={checked}
+            style={{margin: 32}} 
+          />
+
+          <Switch
+            onChange={this.handleControls.bind(this)}
+            checked={checked}
+            style={{margin: 32}}
+          />
+        </form>
 
         <div style={{height: 50}} />
 
@@ -132,6 +156,7 @@ class Tester extends Component {
         </List>
   
         <div style={{height: 5000}} />
+
       </section>
     )
   }
