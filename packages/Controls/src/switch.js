@@ -92,14 +92,16 @@ export class Switch extends Component {
 
   render(props) {
     return(
-      <Bar {...props}
+      <Bar 
+        {...props}
         onClick={props.onChange}
         tabIndex={0}
         onKeyDown={this.handleKeyDown}
         onMouseDown={this.createWave}
         onMouseUp={this.destroyWave}
         onFocus={this.createWave}
-        onBlur={this.destroyWave}>
+        onBlur={this.destroyWave}
+      >
         <Thumb
           onClick={props.onChange}
           checked={props.checked}

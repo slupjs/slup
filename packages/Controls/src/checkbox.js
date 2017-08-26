@@ -109,14 +109,16 @@ export class Checkbox extends Component {
 
   render(props) {
     return (
-      <Box {...props}
-      onClick={props.onChange}
-      tabIndex={0}
-      onKeyDown={this.handleKeyDown}
-      onMouseDown={this.createWave}
-      onMouseUp={this.destroyWave}
-      onFocus={this.createWave}
-      onBlur={this.destroyWave}>
+      <Box 
+        {...props}
+        onClick={props.onChange}
+        tabIndex={0}
+        onKeyDown={this.handleKeyDown}
+        onMouseDown={this.createWave}
+        onMouseUp={this.destroyWave}
+        onFocus={this.createWave}
+        onBlur={this.destroyWave}
+      >
         <Wave
           checked={props.checked}
           disabled={props.disabled}

@@ -101,26 +101,6 @@ export class Radio extends Component {
     }, 150)
   }
 
-  @bind
-  handleMouseDown() {
-    this.createWave()
-  }
-
-  @bind
-  handleMouseUp() {
-    this.destroyWave()
-  }
-
-  @bind
-  handleFocus() {
-    this.createWave()
-  }
-
-  @bind
-  handleBlur() {
-    this.destroyWave()
-  }
-
   render(props) {
     return (
       <Border
@@ -130,7 +110,8 @@ export class Radio extends Component {
         onMouseDown={this.createWave}
         onMouseUp={this.destroyWave}
         onFocus={this.createWave}
-        onBlur={this.destroyWave}>
+        onBlur={this.destroyWave}
+      >
 
         <Circle
           checked={props.checked}
