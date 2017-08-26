@@ -9,18 +9,24 @@ import {
   RaisedButton,
   Fab
 } from '@slup/buttons'
-
+import {
+  List,
+  ListItem,
+  LeftContent,
+  MainContent,
+  RightContent
+} from '@slup/lists'
 import { Radio,
   Checkbox,
   Switch
 } from '@slup/controls'
 
-
 class Tester extends Component {
   state = {
     value: 0,
     total: 5000,
-    checked: false
+    checked: false,
+    visible: true
   }
 
   handleChange(value) {
@@ -30,12 +36,16 @@ class Tester extends Component {
   handleControls() {
     this.setState({ checked: !this.state.checked })
   }
+  handleClick() {
+    this.setState({ visible: !this.state.visible })
+  }
 
   render() {
     const {
       value,
       total,
-      checked
+      checked,
+      visible
     } = this.state
 
     return(
@@ -99,15 +109,53 @@ class Tester extends Component {
           <Checkbox
             onChange={this.handleControls.bind(this)}
             checked={checked}
-            style={{margin: 32}} />
+            style={{margin: 32}} 
+          />
 
           <Switch
             onChange={this.handleControls.bind(this)}
             checked={checked}
-            style={{margin: 32}} />
+            style={{margin: 32}}
+          />
         </form>
 
         <div style={{height: 50}} />
+
+        {/* Lists */}
+        <List>
+          <ListItem threeline={true} rippleOptions={{ background: 'teal' }}>
+            <LeftContent>
+              <svg width="24" height="24" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            </LeftContent>
+            <MainContent>
+              <span style="font-size:16px">Hello</span>
+              <span style="font-size:13px">Hello</span>
+              <span style="font-size:13px">Hello</span>
+            </MainContent>
+            <RightContent>
+              <svg width="24" height="24" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            </RightContent>
+          </ListItem>
+          <ListItem ripple={false} hoverable={false}>
+            text
+          </ListItem>
+
+          {/* Nested list */}
+
+          <ListItem sublist={true} visible={visible}>
+            <ListItem rippleOptions={{ background: 'rgba(0, 0, 0, .5)' }} onClick={this.handleClick.bind(this)}>
+              NESTED
+            </ListItem>
+
+            <List>
+              <ListItem nested={true}>text</ListItem>
+              <ListItem nested={true}>text</ListItem>
+              <ListItem nested={true}>text</ListItem>
+            </List>
+          </ListItem>
+        </List>
+  
+        <div style={{height: 5000}} />
 
       </section>
     )
