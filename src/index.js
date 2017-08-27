@@ -20,13 +20,15 @@ import { Radio,
   Checkbox,
   Switch
 } from '@slup/controls'
+import { Sidenav } from '@slup/sidenav'
 
 class Tester extends Component {
   state = {
     value: 0,
     total: 5000,
     checked: false,
-    visible: true
+    visible: true,
+    opened: false
   }
 
   handleChange(value) {
@@ -39,20 +41,30 @@ class Tester extends Component {
   handleClick() {
     this.setState({ visible: !this.state.visible })
   }
+  showSidenav() {
+    this.setState({ opened: !this.state.opened })
+  }
 
   render() {
     const {
       value,
       total,
       checked,
-      visible
+      visible,
+      opened
     } = this.state
 
     return(
       <section>
 
         {/* Navbar demo */}
-        <Navbar reveal={true} background='teal'>text</Navbar>
+        <Navbar reveal={true} background='teal'>
+          <div style="cursor:pointer" onClick={this.showSidenav.bind(this)}>
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+          </div>
+        </Navbar>
+
+        <Sidenav opened={opened} />
 
         <div style={{height: 50}} />
         {/* Ripple demo */}
@@ -109,7 +121,7 @@ class Tester extends Component {
           <Checkbox
             onChange={this.handleControls.bind(this)}
             checked={checked}
-            style={{margin: 32}} 
+            style={{margin: 32}}
           />
 
           <Switch
@@ -154,7 +166,7 @@ class Tester extends Component {
             </List>
           </ListItem>
         </List>
-  
+
         <div style={{height: 5000}} />
 
       </section>
