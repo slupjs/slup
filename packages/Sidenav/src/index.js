@@ -16,7 +16,7 @@ const Drawer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  transform: ${props => props.opened && !props.clicked ? 'translateX(0)' : 'translateX(-105%)'};
+  transform: ${props => props.opened ? 'translateX(0)' : 'translateX(-105%)'};
 
   @media only screen and (max-width: 960px) {
     width: calc(100% - 56px);
@@ -35,23 +35,23 @@ const Overlay = styled.div`
   transition: opacity 150ms linear;
   opacity: .48;
   transition: background 320ms linear;
-  pointer-events: ${props => props.opened && !props.clicked ? 'auto' : 'none'};
-  background: ${props => props.opened && !props.clicked ? 'rgb(33, 33, 33)' : 'transparent'};
+  pointer-events: ${props => props.opened  ? 'auto' : 'none'};
+  background: ${props => props.opened  ? 'rgb(33, 33, 33)' : 'transparent'};
 `
 
 export class Sidenav extends Component {
-  state = { clicked: false }
-
   @bind
-  handleClick() {
-    this.setState({ clicked: !this.state.clicked })
+  handleClick(e) {
+    if(this.props.onClose) {
+      this.props.onClose(e)
+    }
   }
 
   render(props) {
     return (
       <div>
-        <Drawer {...props} clicked={this.state.clicked} />
-        <Overlay {...props} clicked={this.state.clicked} onClick={this.handleClick} />
+        <Drawer {...props} />
+        <Overlay {...props} onClick={this.handleClick} />
       </div>
     )
   }

@@ -41,8 +41,13 @@ class Tester extends Component {
   handleClick() {
     this.setState({ visible: !this.state.visible })
   }
+
   showSidenav() {
     this.setState({ opened: !this.state.opened })
+  }
+
+  hideSidenav() {
+    this.setState({ opened: false })
   }
 
   render() {
@@ -64,7 +69,7 @@ class Tester extends Component {
           </div>
         </Navbar>
 
-        <Sidenav opened={opened} />
+        <Sidenav onClose={this.hideSidenav.bind(this)} opened={opened} />
 
         <div style={{height: 50}} />
         {/* Ripple demo */}
