@@ -44,10 +44,14 @@ class Tester extends Component {
 
   showSidenav() {
     this.setState({ opened: !this.state.opened })
+
+    document.documentElement.style.overflow = 'hidden'
   }
 
   hideSidenav() {
     this.setState({ opened: false })
+
+    document.documentElement.style.overflow = ''
   }
 
   render() {
@@ -69,7 +73,7 @@ class Tester extends Component {
           </div>
         </Navbar>
 
-        <Sidenav onClose={this.hideSidenav.bind(this)} opened={opened} />
+        <Sidenav right={false} onClose={this.hideSidenav.bind(this)} opened={opened} />
 
         <div style={{height: 50}} />
         {/* Ripple demo */}

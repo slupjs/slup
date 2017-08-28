@@ -15,8 +15,9 @@ const Drawer = styled.div`
     0px 6px 30px 5px rgba(0, 0, 0, 0.12);
   position: fixed;
   top: 0;
-  left: 0;
-  transform: ${props => props.opened ? 'translateX(0)' : 'translateX(-105%)'};
+  left: ${props => props.right ? 'auto' : '0'};
+  right: ${props => props.right ? '0' : 'auto'};
+  transform: ${props => props.right && !props.opened ? 'translateX(105%)' : props.opened ? 'translateX(0)' : 'translateX(-105%)'};
 
   @media only screen and (max-width: 960px) {
     width: calc(100% - 56px);
