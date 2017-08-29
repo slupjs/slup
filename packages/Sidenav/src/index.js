@@ -17,7 +17,9 @@ const Drawer = styled.div`
   top: 0;
   left: ${props => props.right ? 'auto' : '0'};
   right: ${props => props.right ? '0' : 'auto'};
-  transform: ${props => props.right && !props.opened ? 'translateX(105%)' : props.opened ? 'translateX(0)' : 'translateX(-105%)'};
+  transform: ${props => props.right && !props.opened ? 'translateX(105%)'
+    : props.opened ? 'translateX(0)'
+    : 'translateX(-105%)'};
 
   @media only screen and (max-width: 960px) {
     width: calc(100% - 56px);
@@ -28,12 +30,10 @@ const Drawer = styled.div`
 const Overlay = styled.div`
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0; left: 0;
   right: 0; bottom: 0;
-  background: pink;
   z-index: 999;
-  transition: opacity 150ms linear;
   opacity: .48;
   transition: background 320ms linear;
   pointer-events: ${props => props.opened  ? 'auto' : 'none'};
@@ -41,6 +41,22 @@ const Overlay = styled.div`
 `
 
 export class Sidenav extends Component {
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyDown)
+  }
+
+  @bind
+  handleKeyDown({ keyCode }) {
+    if (this.props.opened && keyCode == 27) {
+      this.props.onClose()
+    }
+  }
+
   @bind
   handleClick(e) {
     if(this.props.onClose) {
@@ -52,7 +68,7 @@ export class Sidenav extends Component {
     return (
       <div>
         <Drawer {...props} />
-        <Overlay {...props} onClick={this.handleClick} />
+        <Overlay opened={props.opened} onClick={this.handleClick} />
       </div>
     )
   }

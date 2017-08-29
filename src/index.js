@@ -42,16 +42,16 @@ class Tester extends Component {
     this.setState({ visible: !this.state.visible })
   }
 
-  showSidenav() {
+  showSidenav(e) {
     this.setState({ opened: !this.state.opened })
 
-    document.documentElement.style.overflow = 'hidden'
+    document.body.style.overflow = 'hidden'
   }
 
   hideSidenav() {
     this.setState({ opened: false })
 
-    document.documentElement.style.overflow = ''
+    document.body.style.overflow = ''
   }
 
   render() {
@@ -73,7 +73,21 @@ class Tester extends Component {
           </div>
         </Navbar>
 
-        <Sidenav right={false} onClose={this.hideSidenav.bind(this)} opened={opened} />
+        <Sidenav onClose={this.hideSidenav.bind(this)} opened={opened}>
+          <List>
+            <ListItem sublist={true} visible={visible}>
+              <ListItem rippleOptions={{ background: 'rgba(0, 0, 0, .5)' }} onClick={this.handleClick.bind(this)}>
+                NESTED
+              </ListItem>
+
+              <List>
+                <ListItem nested={true}>text</ListItem>
+                <ListItem nested={true}>text</ListItem>
+                <ListItem nested={true}>text</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </Sidenav>
 
         <div style={{height: 50}} />
         {/* Ripple demo */}
@@ -176,7 +190,7 @@ class Tester extends Component {
           </ListItem>
         </List>
 
-        <div style={{height: 5000}} />
+        <div style={{height: 500}} />
 
       </section>
     )
