@@ -73,7 +73,7 @@ class Tester extends Component {
           </div>
         </Navbar>
 
-        <Sidenav onClose={this.hideSidenav.bind(this)} opened={opened}>
+        <Sidenav responsive={true} right={true} onClose={this.hideSidenav.bind(this)} opened={opened}>
           <List>
             <ListItem sublist={true} visible={visible}>
               <ListItem rippleOptions={{ background: 'rgba(0, 0, 0, .5)' }} onClick={this.handleClick.bind(this)}>

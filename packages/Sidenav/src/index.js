@@ -17,7 +17,7 @@ const Drawer = styled.div`
   top: 0;
   left: ${props => props.right ? 'auto' : '0'};
   right: ${props => props.right ? '0' : 'auto'};
-  transform: ${props => props.permanent ? 'translateX(0)'
+  transform: ${props => props.responsive || props.permanent ? 'translateX(0)'
     : props.right && !props.opened ? 'translateX(105%)'
     : props.opened ? 'translateX(0)'
     : 'translateX(-105%)'};
@@ -25,11 +25,14 @@ const Drawer = styled.div`
   @media only screen and (max-width: 960px) {
     width: calc(100% - 56px);
     max-width: 280px;
+    transform: ${props => props.right && !props.opened ? 'translateX(105%)'
+      : props.opened ? 'translateX(0)'
+      : 'translateX(-105%)'};
   }
 `
 
 const Overlay = styled.div`
-  display: ${props => props.permanent ? 'none' : 'block'};
+  display: ${props => props.responsive || props.permanent ? 'none' : 'block'};
   width: 100%;
   height: 100%;
   position: fixed;
@@ -40,6 +43,10 @@ const Overlay = styled.div`
   transition: background 320ms linear;
   pointer-events: ${props => props.opened  ? 'auto' : 'none'};
   background: ${props => props.opened  ? 'rgb(33, 33, 33)' : 'transparent'};
+
+  @media only screen and (max-width: 960px) {
+    display: block;
+  }
 `
 
 export class Sidenav extends Component {
@@ -74,7 +81,7 @@ export class Sidenav extends Component {
     return (
       <div>
         <Drawer {...props} />
-        <Overlay opened={props.opened} permanent={props.permanent} onClick={this.handleClick} />
+        <Overlay opened={props.opened} permanent={props.permanent} responsive={props.responsive} onClick={this.handleClick} />
       </div>
     )
   }
