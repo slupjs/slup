@@ -45,6 +45,10 @@ const Overlay = styled.div`
 export class Sidenav extends Component {
 
   componentDidMount() {
+    if (this.props.opened && !this.props.permanent) {
+      document.body.style.overflow = 'hidden'
+    }
+
     document.addEventListener('keydown', this.handleKeyDown)
   }
 
