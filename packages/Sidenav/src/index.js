@@ -17,7 +17,8 @@ const Drawer = styled.div`
   top: 0;
   left: ${props => props.right ? 'auto' : '0'};
   right: ${props => props.right ? '0' : 'auto'};
-  transform: ${props => props.right && !props.opened ? 'translateX(105%)'
+  transform: ${props => props.permanent ? 'translateX(0)'
+    : props.right && !props.opened ? 'translateX(105%)'
     : props.opened ? 'translateX(0)'
     : 'translateX(-105%)'};
 
@@ -28,6 +29,7 @@ const Drawer = styled.div`
 `
 
 const Overlay = styled.div`
+  display: ${props => props.permanent ? 'none' : 'block'};
   width: 100%;
   height: 100%;
   position: fixed;
@@ -68,7 +70,7 @@ export class Sidenav extends Component {
     return (
       <div>
         <Drawer {...props} />
-        <Overlay opened={props.opened} onClick={this.handleClick} />
+        <Overlay opened={props.opened} permanent={props.permanent} onClick={this.handleClick} />
       </div>
     )
   }
