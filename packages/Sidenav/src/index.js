@@ -17,17 +17,24 @@ const Drawer = styled.div`
   top: 0;
   left: ${props => props.right ? 'auto' : '0'};
   right: ${props => props.right ? '0' : 'auto'};
-  transform: ${props => props.responsive || props.permanent ? 'translateX(0)'
-    : props.right && !props.opened ? 'translateX(105%)'
-    : props.opened ? 'translateX(0)'
-    : 'translateX(-105%)'};
+  transform: ${props => props.responsive || props.permanent 
+    ? 'translateX(0)'
+    : props.right && !props.opened 
+      ? 'translateX(105%)'
+      : props.opened 
+        ? 'translateX(0)'
+        : 'translateX(-105%)'
+  };
 
   @media only screen and (max-width: 960px) {
     width: calc(100% - 56px);
     max-width: 280px;
-    transform: ${props => props.right && !props.opened ? 'translateX(105%)'
-      : props.opened ? 'translateX(0)'
-      : 'translateX(-105%)'};
+    transform: ${props => props.right && !props.opened 
+      ? 'translateX(105%)'
+      : props.opened 
+        ? 'translateX(0)'
+        : 'translateX(-105%)'
+    };
   }
 `
 
