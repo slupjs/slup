@@ -81,7 +81,14 @@ export class Sidenav extends Component {
     return (
       <div>
         <Drawer {...props} />
-        <Overlay opened={props.opened} permanent={props.permanent} responsive={props.responsive} onClick={this.handleClick} />
+        {props.overlay == false
+          ? null
+          : <Overlay
+            opened={props.opened}
+            permanent={props.permanent}
+            responsive={props.responsive}
+            onClick={this.handleClick} />
+        }
       </div>
     )
   }
