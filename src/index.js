@@ -20,13 +20,15 @@ import { Radio,
   Checkbox,
   Switch
 } from '@slup/controls'
+import { Sidenav } from '@slup/sidenav'
 
 class Tester extends Component {
   state = {
     value: 0,
     total: 5000,
     checked: false,
-    visible: true
+    visible: true,
+    opened: false
   }
 
   handleChange(value) {
@@ -40,19 +42,52 @@ class Tester extends Component {
     this.setState({ visible: !this.state.visible })
   }
 
+  showSidenav(e) {
+    this.setState({ opened: !this.state.opened })
+
+    document.body.style.overflow = 'hidden'
+  }
+
+  hideSidenav() {
+    this.setState({ opened: false })
+
+    document.body.style.overflow = ''
+  }
+
   render() {
     const {
       value,
       total,
       checked,
-      visible
+      visible,
+      opened
     } = this.state
 
     return(
       <section>
 
         {/* Navbar demo */}
-        <Navbar reveal={true} background='teal'>text</Navbar>
+        <Navbar reveal={true} background='teal'>
+          <div style="cursor:pointer" onClick={this.showSidenav.bind(this)}>
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+          </div>
+        </Navbar>
+
+        <Sidenav responsive={true} onClose={this.hideSidenav.bind(this)} opened={opened}>
+          <List>
+            <ListItem sublist={true} visible={visible}>
+              <ListItem rippleOptions={{ background: 'rgba(0, 0, 0, .5)' }} onClick={this.handleClick.bind(this)}>
+                NESTED
+              </ListItem>
+
+              <List>
+                <ListItem nested={true}>text</ListItem>
+                <ListItem nested={true}>text</ListItem>
+                <ListItem nested={true}>text</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </Sidenav>
 
         <div style={{height: 50}} />
         {/* Ripple demo */}
@@ -109,7 +144,7 @@ class Tester extends Component {
           <Checkbox
             onChange={this.handleControls.bind(this)}
             checked={checked}
-            style={{margin: 32}} 
+            style={{margin: 32}}
           />
 
           <Switch
@@ -154,7 +189,7 @@ class Tester extends Component {
             </List>
           </ListItem>
         </List>
-  
+
         <div style={{height: 5000}} />
 
       </section>
