@@ -21,6 +21,7 @@ import { Radio,
   Switch
 } from '@slup/controls'
 import { Sidenav } from '@slup/sidenav'
+import { Grid, Col }    from '@slup/grid'
 
 class Tester extends Component {
   state = {
@@ -66,7 +67,7 @@ class Tester extends Component {
     return(
       <section>
 
-        {/* Navbar demo */}
+        {/* Navbar demo
         <Navbar reveal={true} background='teal'>
           <div style="cursor:pointer" onClick={this.showSidenav.bind(this)}>
             <svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
@@ -90,7 +91,7 @@ class Tester extends Component {
         </Sidenav>
 
         <div style={{height: 50}} />
-        {/* Ripple demo */}
+        {/* Ripple demo
         <div style={{
           position: 'relative',
           background: 'blue',
@@ -103,7 +104,7 @@ class Tester extends Component {
 
         <div style={{height: 50}} />
 
-        {/* Slider demo */}
+        {/* Slider demo
         <div style={{ margin: 8, padding: 16 }}>
           <Slider
             value={value}
@@ -120,7 +121,7 @@ class Tester extends Component {
         </div>
         <div style={{height: 50}} />
 
-        {/* Buttons demo */}
+        {/* Buttons demo
 
         <FlatButton
           color='black'
@@ -156,7 +157,7 @@ class Tester extends Component {
 
         <div style={{height: 50}} />
 
-        {/* Lists */}
+        {/* Lists
         <List>
           <ListItem threeline={true} rippleOptions={{ background: 'teal' }}>
             <LeftContent>
@@ -175,7 +176,7 @@ class Tester extends Component {
             text
           </ListItem>
 
-          {/* Nested list */}
+          {/* Nested list
 
           <ListItem sublist={true} visible={visible}>
             <ListItem rippleOptions={{ background: 'rgba(0, 0, 0, .5)' }} onClick={this.handleClick.bind(this)}>
@@ -190,7 +191,37 @@ class Tester extends Component {
           </ListItem>
         </List>
 
-        <div style={{height: 5000}} />
+        <div style={{height: 5000}} /> */}
+
+        <Grid>
+          <Col sm={12}>
+            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+          </Col>
+
+          <Col sm={12} md={4} lg={2}>
+            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+          </Col>
+          <Col sm={12} md={4} lg={8}>
+            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+          </Col>
+          <Col sm={12} md={4} lg={2}>
+            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+          </Col>
+
+          <Col sm={12} md={6} lg={3}>
+            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+          </Col>
+          <Col sm={12} md={6} lg={3}>
+            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+          </Col>
+          <Col sm={12} md={6} lg={3}>
+            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+          </Col>
+          <Col sm={12} md={6} lg={3}>
+            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+          </Col>
+
+        </Grid>
 
       </section>
     )
