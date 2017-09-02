@@ -13,6 +13,13 @@ export const Grid = styled.div`
   : props.flex_end
     ? 'flex-end'
   : 'flex-start'};
+
+  align-items: ${props => props.middle
+  ? 'center'
+  : props.end
+    ? 'flex-end'
+  : 'flex-start'};
+
   flex: 0 0 100%;
   height: auto;
 `
@@ -22,18 +29,18 @@ export const Col = styled.div`
   height: auto;
   transition: margin 150ms linear;
   flex-basis: ${props => 100 / 12 * props.sm}%;
-  margin-left: ${props => props.offset}px;
-  margin-right: ${props => props.pull}px;
+  margin-left: ${props => props.offset};
+  margin-right: ${props => props.pull};
 
   @media only screen and (min-width: 600px) {
     flex-basis: ${props => 100 / 12 * (props.md || props.sm)}%;
-    margin-left: ${props => props.offset_md || 0}px;
-    margin-right: ${props => props.pull_md || 0}px;
+    margin-left: ${props => props.offset_md || 0};
+    margin-right: ${props => props.pull_md || 0};
   }
 
   @media only screen and (min-width: 960px) {
     flex-basis: ${props => 100 / 12 * (props.lg || props.sm)}%;
-    margin-left: ${props => props.offset_lg || 0}px;
-    margin-right: ${props => props.pull_lg || 0}px;
+    margin-left: ${props => props.offset_lg || 0};
+    margin-right: ${props => props.pull_lg || 0};
   }
 `
