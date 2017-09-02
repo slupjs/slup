@@ -192,50 +192,32 @@ class Tester extends Component {
         </List>
 
         <div style={{height: 5000}} /> */}
+        <Navbar reveal={true} background='teal'>
+          <div style="cursor:pointer" onClick={this.showSidenav.bind(this)}>
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+          </div>
+        </Navbar>
+
+        <Sidenav responsive={true} onClose={this.hideSidenav.bind(this)} opened={opened}>
+          <List>
+            <ListItem sublist={true} visible={visible}>
+              <ListItem rippleOptions={{ background: 'rgba(0, 0, 0, .5)' }} onClick={this.handleClick.bind(this)}>
+                NESTED
+              </ListItem>
+
+              <List>
+                <ListItem nested={true}>text</ListItem>
+                <ListItem nested={true}>text</ListItem>
+                <ListItem nested={true}>text</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </Sidenav>
 
         {/* Grid */}
-        <Grid>
-
-          {/* Nested Grid */}
-          <Col sm={12} style={{background:'red'}}>
-            <Grid>
-              <Col sm={4}>
-                <div style={{background:'#ddd', height: 32, margin: 6}}></div>
-              </Col>
-              <Col sm={4}>
-                <div style={{background:'#ddd', height: 32, margin: 6}}></div>
-              </Col>
-              <Col sm={4}>
-                <div style={{background:'#ddd', height: 32, margin: 6}}></div>
-              </Col>
-            </Grid>
-          </Col>
-
-          <Col sm={12} md={4} lg={2}>
-            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
-          </Col>
-          <Col sm={12} md={4} lg={8}>
-            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
-          </Col>
-          <Col sm={12} md={4} lg={2}>
-            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
-          </Col>
-
-          <Col sm={12} md={6} lg={3}>
-            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
-          </Col>
-          <Col sm={12} md={6} lg={3}>
-            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
-          </Col>
-          <Col sm={12} md={6} lg={3}>
-            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
-          </Col>
-          <Col sm={12} md={6} lg={3}>
-            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
-          </Col>
-
+        <Grid style={{paddingTop: 64}}>
           {/* Offset and Pull Column */}
-          <Col sm={6} offset={6} pull={3}>
+          <Col sm={12} offset_lg={320} style={{background:'red'}}>
             <div style={{background:'#ddd', height: 32, margin: 6}}></div>
           </Col>
 
