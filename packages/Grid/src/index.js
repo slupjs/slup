@@ -32,7 +32,7 @@ export const Col = styled.div`
   margin-left: ${props => props.offset || 0};
   margin-right: ${props => props.pull || 0};
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 480px) {
     flex-basis: ${props => 100 / 12 * (props.md || props.sm || 0)}%;
     margin-left: ${props => props.offset_md || 0};
     margin-right: ${props => props.pull_md || 0};
