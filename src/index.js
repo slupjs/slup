@@ -193,9 +193,22 @@ class Tester extends Component {
 
         <div style={{height: 5000}} /> */}
 
+        {/* Grid */}
         <Grid>
-          <Col sm={12}>
-            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+
+          {/* Nested Grid */}
+          <Col sm={12} style={{background:'red'}}>
+            <Grid>
+              <Col sm={4}>
+                <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+              </Col>
+              <Col sm={4}>
+                <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+              </Col>
+              <Col sm={4}>
+                <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+              </Col>
+            </Grid>
           </Col>
 
           <Col sm={12} md={4} lg={2}>
@@ -218,6 +231,11 @@ class Tester extends Component {
             <div style={{background:'#ddd', height: 32, margin: 6}}></div>
           </Col>
           <Col sm={12} md={6} lg={3}>
+            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+          </Col>
+
+          {/* Offset and Pull Column */}
+          <Col sm={6} offset={6} pull={3}>
             <div style={{background:'#ddd', height: 32, margin: 6}}></div>
           </Col>
 
