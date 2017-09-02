@@ -225,11 +225,9 @@ class Tester extends Component {
 
         {/* Grid */}
         <Grid style={{paddingTop: 64}}>
-          {/* Offset and Pull Column */}
-          <Col sm={12} offset_lg={'320px'} style={{background:'red'}}>
-            <div style={{background:'#ddd', height: 32, margin: 6}}></div>
+          <Col sm={12} offset_lg={'320px'} style={{height: 500}}>
+            <div style={{height: 32, background: '#ddd', margin: 6}}></div>
           </Col>
-
         </Grid>
 
       </section>
