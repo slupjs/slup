@@ -21,6 +21,7 @@ import { Radio,
   Switch
 } from '@slup/controls'
 import { Sidenav } from '@slup/sidenav'
+import { Grid, Col }    from '@slup/grid'
 
 class Tester extends Component {
   state = {
@@ -66,7 +67,7 @@ class Tester extends Component {
     return(
       <section>
 
-        {/* Navbar demo */}
+        {/* Navbar demo
         <Navbar reveal={true} background='teal'>
           <div style="cursor:pointer" onClick={this.showSidenav.bind(this)}>
             <svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
@@ -90,7 +91,7 @@ class Tester extends Component {
         </Sidenav>
 
         <div style={{height: 50}} />
-        {/* Ripple demo */}
+        {/* Ripple demo
         <div style={{
           position: 'relative',
           background: 'blue',
@@ -103,7 +104,7 @@ class Tester extends Component {
 
         <div style={{height: 50}} />
 
-        {/* Slider demo */}
+        {/* Slider demo
         <div style={{ margin: 8, padding: 16 }}>
           <Slider
             value={value}
@@ -120,7 +121,7 @@ class Tester extends Component {
         </div>
         <div style={{height: 50}} />
 
-        {/* Buttons demo */}
+        {/* Buttons demo
 
         <FlatButton
           color='black'
@@ -156,7 +157,7 @@ class Tester extends Component {
 
         <div style={{height: 50}} />
 
-        {/* Lists */}
+        {/* Lists
         <List>
           <ListItem threeline={true} rippleOptions={{ background: 'teal' }}>
             <LeftContent>
@@ -175,7 +176,7 @@ class Tester extends Component {
             text
           </ListItem>
 
-          {/* Nested list */}
+          {/* Nested list
 
           <ListItem sublist={true} visible={visible}>
             <ListItem rippleOptions={{ background: 'rgba(0, 0, 0, .5)' }} onClick={this.handleClick.bind(this)}>
@@ -190,7 +191,44 @@ class Tester extends Component {
           </ListItem>
         </List>
 
-        <div style={{height: 5000}} />
+        <div style={{height: 5000}} /> */}
+        <Navbar reveal={true} background='teal'>
+          <Col sm={12} offset_lg={'320px'}>
+            <Grid space_between middle>
+              <Col>
+                <div style="cursor:pointer" onClick={this.showSidenav.bind(this)}>
+                  <svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg> Title
+                </div>
+              </Col>
+              <Col>
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+              </Col>
+            </Grid>
+          </Col>
+        </Navbar>
+
+        <Sidenav responsive={true} onClose={this.hideSidenav.bind(this)} opened={opened}>
+          <List>
+            <ListItem sublist={true} visible={visible}>
+              <ListItem rippleOptions={{ background: 'rgba(0, 0, 0, .5)' }} onClick={this.handleClick.bind(this)}>
+                NESTED
+              </ListItem>
+
+              <List>
+                <ListItem nested={true}>text</ListItem>
+                <ListItem nested={true}>text</ListItem>
+                <ListItem nested={true}>text</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </Sidenav>
+
+        {/* Grid */}
+        <Grid style={{paddingTop: 64}}>
+          <Col sm={12} offset_lg={'320px'} style={{height: 500}}>
+            <div style={{height: 32, background: '#ddd', margin: 6}}></div>
+          </Col>
+        </Grid>
 
       </section>
     )
