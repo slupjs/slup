@@ -59,6 +59,7 @@ export class FlatButton extends Component {
         style={styles}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
+        {...this.props}
       >
         {children}
         {ripple == false

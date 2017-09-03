@@ -74,6 +74,7 @@ export class Fab extends Component {
         style={styles}
         onMouseDown={this.handleMouseDown}
         onMouseUp={this.handleMouseUp}
+        {...this.props}
       >
         {children}
         {ripple == false
