@@ -23,12 +23,12 @@ export const Grid = styled.div`
   : 'flex-start'};
 
   flex: 0 0 100%;
-  height: inherit;
+  height: 100%;
 `
 
 export const Col = styled.div`
   box-sizing: border-box;
-  height: auto;
+  height: inherit;
   transition: margin 150ms linear;
   flex-basis: ${props => 100 / 12 * props.sm || 0}%;
   margin-left: ${props => sanitize(props.offset || 0)};

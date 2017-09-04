@@ -6,18 +6,18 @@ export const generate = (pathname) => {
       return 'Home'
     break
 
-    case pathname.indexOf('components') !== -1: 
+    case pathname.indexOf('components') !== -1:
       return(
         <div>
-          <a>Components</a>
-          {pathname.length > 12 
-            ? ['/', <a>{pathname.replace('/components/', '')}</a>]
+          <a>Components </a>
+          {pathname.length > 12
+            ? ['-', <a style={{textTransform: 'capitalize'}}> {pathname.replace('/components/', '')}</a>]
             : null
           }
         </div>
       )
     break
-    
+
     default:
       return '404 - Not Found'
     break

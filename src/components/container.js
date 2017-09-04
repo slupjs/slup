@@ -13,9 +13,9 @@ export const Container = styled.section`
   background: #424242;
 `
 
-export const Content = ({ children}) => 
-  <Grid style={{ paddingTop: 64, height: '100%' }}>
-    <Col sm={12} offset_lg={320} style={{ height: '100%' }}>
+export const Content = ({ children}) =>
+  <Grid style={{ paddingTop: 64 }}>
+    <Col sm={12} offset_lg={320}>
       {children}
     </Col>
   </Grid>

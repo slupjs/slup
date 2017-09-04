@@ -35,17 +35,19 @@ export class NavBar extends Component {
               <Grid middle space_between>
 
                 {/* Main title */}
-                <div style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  cursor: opened || document.body.offsetWidth > 960
-                    ? 'default'
-                    : 'pointer'
-                }}>
+                <div style={{display: 'flex', alignItems: 'center'}}>
 
-                  <Menu onClick={this.handleOpen} style={{ marginRight: 32 }} />
+                  <Menu onClick={this.handleOpen} style={{
+                    marginRight: 32,
+                    display: document.body.offsetWidth > 960
+                      ? 'none'
+                      : 'block',
+                    cursor: opened || document.body.offsetWidth > 960
+                      ? 'default'
+                      : 'pointer'
+                  }} />
 
-                  <h3 style={{ margin: 0, fontWeight: 'normal' }}>{name}</h3>
+                  <h3 style={{ margin: 0, fontWeight: 'normal', cursor: 'pointer' }}>{name}</h3>
 
                 </div>
 
