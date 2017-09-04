@@ -5,8 +5,9 @@ module.exports = {
   entry: join(__dirname, 'src', 'index'),
 
   output: {
-    path: __dirname,
-    filename: 'dist.js'
+    path: '/',
+    filename: 'dist.js',
+    publicPath: 'http://localhost:8080/'
   },
 
   resolve: {
@@ -37,9 +38,25 @@ module.exports = {
     ]
   },
 
-  plugins: [
+	devServer: {
+		contentBase: './',
+		port: 8080,
+		noInfo: false,
+		hot: true,
+		inline: true,
+		proxy: {
+			'/': {
+				bypass: function (req, res, proxyOptions) {
+					return '/src/index.html'
+				}
+			}
+		}
+  },
+  
+	plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.ModuleConcatenationPlugin()
-  ],
+	],
 
   devtool: 'source-map',
   target: 'web'
