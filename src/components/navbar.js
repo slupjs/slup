@@ -5,12 +5,16 @@ import { bind }         from 'decko'
 import { Col, Grid }    from '@slup/grid'
 import { Navbar }       from '@slup/navbar'
 import { Sidenav }      from '@slup/sidenav'
+import { List, ListItem } from '@slup/lists'
 import { Menu, GitHub } from './icons'
 
 import { generate }     from '../utils/title'
 
 export class NavBar extends Component {
-  state = { opened: false }
+  state = { 
+    opened: false,
+    lists: { components: false }
+  }
 
   @bind
   handleOpen() {
@@ -22,10 +26,19 @@ export class NavBar extends Component {
     this.setState({ opened: false })
   }
 
+  @bind
+  toggleList(name) {
+    const { lists } = this.state
+
+    lists[name] = !lists[name]
+
+    this.setState({ lists })
+  }
+
   render() {
-    const { opened }   = this.state
-    const { pathname } = this.props.history.location
-    const name         = generate(pathname)
+    const { opened, lists } = this.state
+    const { pathname }      = this.props.history.location
+    const name              = generate(pathname)
 
     return(
       <div>
@@ -35,19 +48,22 @@ export class NavBar extends Component {
               <Grid middle space_between>
 
                 {/* Main title */}
-                <div style={{display: 'flex', alignItems: 'center'}}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
 
-                  <Menu onClick={this.handleOpen} style={{
-                    marginRight: 32,
-                    display: document.body.offsetWidth > 960
-                      ? 'none'
-                      : 'block',
-                    cursor: opened || document.body.offsetWidth > 960
-                      ? 'default'
-                      : 'pointer'
-                  }} />
+                  <Menu
+                    onClick={this.handleOpen} 
+                    style={{
+                      marginRight: 32,
+                      display: document.body.offsetWidth > 960
+                        ? 'none'
+                        : 'block',
+                      cursor: opened || document.body.offsetWidth > 960
+                        ? 'default'
+                        : 'pointer'
+                    }} 
+                  />
 
-                  <h3 style={{ margin: 0, fontWeight: 'normal', cursor: 'pointer' }}>{name}</h3>
+                  <h3 style={{ margin: 0, fontWeight: 'normal' }}>{name}</h3>
 
                 </div>
 
@@ -64,8 +80,26 @@ export class NavBar extends Component {
           responsive
           opened={opened}
           onClose={this.handleClose}
+          style={{ background: '#424242' }}
         >
+          <List>
+            <ListItem sublist visible={lists.components}>
+              <ListItem onClick={e => this.toggleList('components')}>Components</ListItem>
 
+              {/* List of components */}
+              <List>
+                <ListItem nested>Buttons</ListItem>
+                <ListItem nested>Controls</ListItem>
+                <ListItem nested>Grid</ListItem>
+                <ListItem nested>Icons</ListItem>
+                <ListItem nested>Lists</ListItem>
+                <ListItem nested>NavBar</ListItem>
+                <ListItem nested>Ripple</ListItem>
+                <ListItem nested>SideNav</ListItem>
+                <ListItem nested>Sliders</ListItem>
+              </List>
+            </ListItem>
+          </List>
         </Sidenav>
       </div>
     )
