@@ -23,7 +23,7 @@ export const Grid = styled.div`
   : 'flex-start'};
 
   flex: 0 0 100%;
-  height: auto;
+  height: inherit;
 `
 
 export const Col = styled.div`

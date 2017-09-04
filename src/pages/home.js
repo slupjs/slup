@@ -28,7 +28,7 @@ export class Home extends Component {
     return(
       <LogoContainer>
         {Logo}
-        <RaisedButton background='#03A9F4' onClick={this.handleClick}>Get started!</RaisedButton>
+        <RaisedButton background='#03A9F4' onClick={this.handleClick}>Get started !</RaisedButton>
       </LogoContainer>
     )
   }
