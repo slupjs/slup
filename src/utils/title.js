@@ -7,15 +7,17 @@ export const generate = (pathname) => {
     break
 
     case pathname.indexOf('components') !== -1:
-      return(
-        <div>
-          <a>Components </a>
-          {pathname.length > 12
-            ? ['-', <a style={{textTransform: 'capitalize'}}> {pathname.replace('/components/', '')}</a>]
-            : null
-          }
-        </div>
-      )
+      const name = pathname.replace('/components/', '')
+      const Name = name.charAt(0).toUpperCase() + name.slice(1)
+
+      return pathname.length > 12
+        ? [
+          <a>Components</a>, // Links to the components list
+          ' - ',             // Separator
+          <a>{Name}</a>      // Links to this specific component
+        ]
+        : 'Components'
+      
     break
 
     default:
