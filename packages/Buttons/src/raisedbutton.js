@@ -15,6 +15,7 @@ const ButtonRaised = styled.button`
   margin: 0 8px;
   padding: 0 8px;
   cursor: pointer;
+  color: white;
   transition: box-shadow 150ms linear;
   user-select: none;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
