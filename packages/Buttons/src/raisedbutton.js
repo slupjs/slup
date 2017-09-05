@@ -34,10 +34,9 @@ export class RaisedButton extends Component {
     return(
       <ButtonRaised {...props}>
         {props.children}
-
         {props.ripple == false
-        ? null
-        : <Ripple {...props.rippleOptions} />
+          ? null
+          : <Ripple {...props.rippleOptions} />
         }
       </ButtonRaised>
     )
