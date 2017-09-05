@@ -4,7 +4,7 @@ import styled    from 'styled-components'
 
 import { Ripple } from '@slup/ripple'
 
-const ButtonFlat = styled.button`
+const FlatBase = styled.button`
   position: relative;
   border: none; outline: none;
   min-height: 36px;
@@ -28,13 +28,13 @@ const ButtonFlat = styled.button`
 export class FlatButton extends Component {
   render(props) {
     return(
-      <ButtonFlat {...props}>
+      <FlatBase {...props}>
         {props.children}
         {props.ripple == false
           ? null
           : <Ripple {...props.rippleOptions} />
         }
-      </ButtonFlat>
+      </FlatBase>
     )
   }
 }

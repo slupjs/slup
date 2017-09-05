@@ -4,7 +4,7 @@ import styled    from 'styled-components'
 
 import { Ripple } from '@slup/ripple'
 
-const ButtonRaised = styled.button`
+const RaisedBase = styled.button`
   position: relative;
   border: none; outline: none;
   min-height: 36px;
@@ -32,13 +32,13 @@ const ButtonRaised = styled.button`
 export class RaisedButton extends Component {
   render(props) {
     return(
-      <ButtonRaised {...props}>
+      <RaisedBase {...props}>
         {props.children}
         {props.ripple == false
           ? null
           : <Ripple {...props.rippleOptions} />
         }
-      </ButtonRaised>
+      </RaisedBase>
     )
   }
 }
