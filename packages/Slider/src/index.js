@@ -1,8 +1,63 @@
 import Inferno   from 'inferno'
 import Component from 'inferno-component'
+import styled    from 'styled-components'
 import { bind }  from 'decko'
 
 import { Indicator } from './indicator'
+
+const Container = styled.div`
+  height: 38px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  outline: none;
+  &:focus {
+    div:nth-child(2) {
+      width: 14px;
+      height: 14px;
+      div {
+        background: rgba(0, 0, 0, .1);
+      }
+    }
+  }
+`
+
+const Line = styled.div`
+  height: 3px;
+  width: 100%;
+  position: absolute;
+  background: black;
+  opacity: .2;
+`
+
+const Thumb = styled.div`
+  transition: height 200ms, width 200ms;
+  width: ${props => props.focus ? '14px' : '10px'};
+  height: ${props => props.focus ? '14px' : '10px'};
+  border-radius: 50%;
+  background: #2196F3;
+  position: absolute;
+  transform: translateX(-50%);
+  left: ${props => (props.value / props.max) * 100}%;
+
+  div {
+    border-radius: 50%;
+    width: inherit;
+    height: inherit;
+    transform: scale(2.5);
+    transition: background 200ms;
+    background: ${props => props.focus || props.keyFocus ? 'rgba(0, 0, 0, .1)' : 'transparent'};
+  }
+`
+
+const Track = styled.div`
+  width: ${props => (props.value / props.max) * 100}%;
+  height: 3px;
+  position: absolute;
+  background: #2196F3;
+  z-index: -1;
+`
 
 export class Slider extends Component {
   state = {
@@ -20,12 +75,12 @@ export class Slider extends Component {
   getPercentage = (max) => max / 100
 
   componentWillMount() {
-    document.addEventListener(
+    document.body.addEventListener(
       'mousemove',
       this.handleMouseMove,
       { passive: true }
     )
-    document.addEventListener(
+    document.body.addEventListener(
       'mouseup',
       this.handleMouseUp,
       { passive: true }
@@ -33,12 +88,12 @@ export class Slider extends Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener(
+    document.body.removeEventListener(
       'mousemove',
       this.handleMouseMove,
       { passive: true }
     )
-    document.removeEventListener(
+    document.body.removeEventListener(
       'mouseup',
       this.handleMouseUp,
       { passive: true }
@@ -88,6 +143,11 @@ export class Slider extends Component {
   }
 
   @bind
+  handleFocus() {
+    this.setState({ keyFocus: true })
+  }
+
+  @bind
   handleKeyDown({ keyCode }) {
     const { vise } = this
     let { value, max } = this.props
@@ -96,12 +156,6 @@ export class Slider extends Component {
     const percentage = this.getPercentage(max)
 
     switch (keyCode) {
-
-      // Enter: Focs/unfocus
-      case 13:
-        this.setState({ keyFocus: !keyFocus })
-        this.emit('focus')
-      break
 
       // Forward: increment of 1
       case 38:
@@ -125,109 +179,46 @@ export class Slider extends Component {
     }
   }
 
-  @bind
-  getStyles() {
-    const { keyFocus, focus } = this.state
-
-    // Take values for both the customization
-    // and the calculation of the progress value
-    const {
-      value,
-      max,
-      background,
-      color,
-      discrete
-    } = this.props
-
-    const progress = (value / max) * 100
-
-    const styles = {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      outline: 'none',
-      height: 3,
-      margin: 16,
-      width: '100%',
-      background: `rgba(${background || '0, 0, 0'}, .2)`,
-
-      track: {
-        position: 'absolute',
-        height: 3,
-        width: progress + '%',
-        background: color || '#2196F3'
-      },
-
-      thumb: {
-        position: 'absolute',
-        transition: 'height .07s, width .07s, background .3s, transform .3s',
-        height: focus || keyFocus ? 14 : 10,
-        width: focus || keyFocus ? 14 : 10,
-        left: progress + '%',
-        marginLeft: value == 0 ? -9 : focus || keyFocus ? -7 : -5,
-        borderRadius: '50%',
-        border: value == 0 ? '2px solid #9e9e9e' : 'none',
-        background: value == 0 ? '#BDBDBD' : color || '#2196F3',
-        transform: discrete && (focus || keyFocus) ? 'scale(0)' : null
-      },
-
-      ring: {
-        position: 'absolute',
-        height: 28,
-        width: 28,
-        left: progress + '%',
-        marginLeft: -14,
-        transition: 'background .35s',
-        borderRadius: '50%',
-        background: !discrete && (focus || keyFocus)
-          ? 'rgba(0, 0, 0, .1)'
-          : 'transparent'
-      }
-    }
-
-    return styles
-  }
-
-  render({ discrete, value, max, color, background }) {
-    const styles = this.getStyles()
-
+  render(props) {
     const {
       handleMouseDown,
       handleMouseUp,
       handleMouseMove,
-      handleKeyDown
+      handleKeyDown,
+      handleFocus
     } = this
 
     const { focus, keyFocus } = this.state
 
     return(
-      <div
+      <Container
+        {...props}
         onMouseDown={handleMouseDown}
         onKeyDown={handleKeyDown}
-        ref={e => this.slider = e}
+        onFocus={handleFocus}
+        innerRef={e => this.slider = e}
         tabIndex={0}
-        style={styles}
       >
+        {/*Main Line*/}
+        <Line />
+
         {/* Thumb */}
-        <div style={styles.thumb} />
+        <Thumb {...props} focus={this.state.focus}>
+          <div />
+        </Thumb>
 
         {/* Track */}
-        <div style={styles.track} />
+        <Track {...props} />
 
-        {/* Ring */}
-        <div style={styles.ring} />
-
-        {discrete
+        {props.discrete
           ? <Indicator
-            value={value}
-            max={max}
-            color={background}
-            background={color}
+            value={props.value}
+            max={props.max}
             focus={focus || keyFocus}
           />
           : null
         }
-      </div>
+      </Container>
     )
   }
 }

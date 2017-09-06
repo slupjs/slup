@@ -4,7 +4,7 @@ import styled    from 'styled-components'
 const Discrete = styled.div`
   position: absolute;
   left: ${props => (props.value / props.max) * 100}%;
-  bottom: 14px;
+  bottom: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,4 +33,3 @@ export const Indicator = (props) =>
   <Discrete {...props}>
     <span>{Math.floor(props.value)}</span>
   </Discrete>
-
