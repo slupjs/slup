@@ -29,6 +29,6 @@ const Discrete = styled.div`
 `
 
 export const Indicator = (props) =>
-  <Discrete {...props} style={{left: (props.value / props.max) * 100 + '%'}}>
+  <Discrete style={{left: (props.value / props.max) * 100 + '%'}}>
     <span>{Math.floor(props.value)}</span>
   </Discrete>

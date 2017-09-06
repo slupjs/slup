@@ -16,14 +16,12 @@ const Container = styled.div`
     div:nth-child(2) {
       width: ${props => props.discrete ? '0' : '14px'};
       height: ${props => props.discrete ? '0' : '14px'};
-      div {
-        background: rgba(0, 0, 0, .1);
-      }
+      box-shadow: ${props => props.discrete ? 'none' : '0 0 0 14px rgba(0, 0, 0, .1)'};
     }
 
     div:last-child {
       transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-      transform: translateX(-50%) scale(1);
+      transform: ${props => props.discrete ? 'translateX(-50%) scale(1)' : 'translateX(-50%) scale(0)'};
     }
   }
 `
@@ -37,22 +35,14 @@ const Line = styled.div`
 `
 
 const Thumb = styled.div`
-  transition: height 300ms, width 300ms;
+  transition: height 300ms, width 300ms, box-shadow 300ms;
   width: ${props => props.focus ? '14px' : '10px'};
   height: ${props => props.focus ? '14px' : '10px'};
   border-radius: 50%;
   background: #2196F3;
   position: absolute;
   transform: translateX(-50%);
-
-  div {
-    border-radius: 50%;
-    width: inherit;
-    height: inherit;
-    transform: scale(2.5);
-    transition: background 200ms;
-    background: ${props => props.focus || props.keyFocus ? 'rgba(0, 0, 0, .1)' : 'transparent'};
-  }
+  box-shadow: none;
 `
 
 const Track = styled.div`
@@ -207,15 +197,12 @@ export class Slider extends Component {
 
         {/* Thumb */}
         <Thumb
-          {...props}
           focus={this.state.focus}
           style={{left: (props.value / props.max) * 100 + '%'}}
-        >
-          <div />
-        </Thumb>
+        />
 
         {/* Track */}
-        <Track {...props} style={{width: (props.value / props.max) * 100 + '%'}} />
+        <Track style={{width: (props.value / props.max) * 100 + '%'}} />
 
         {props.discrete
           ? <Indicator
@@ -223,7 +210,12 @@ export class Slider extends Component {
             max={props.max}
             focus={focus || keyFocus}
           />
-          : null
+          : <Indicator
+            style={{display: 'none'}}
+            value={props.value}
+            max={props.max}
+            focus={focus || keyFocus}
+          />
         }
       </Container>
     )
