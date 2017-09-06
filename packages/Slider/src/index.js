@@ -14,11 +14,16 @@ const Container = styled.div`
   outline: none;
   &:focus {
     div:nth-child(2) {
-      width: 14px;
-      height: 14px;
+      width: ${props => props.discrete ? '0' : '14px'};
+      height: ${props => props.discrete ? '0' : '14px'};
       div {
         background: rgba(0, 0, 0, .1);
       }
+    }
+
+    div:last-child {
+      transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+      transform: translateX(-50%) scale(1);
     }
   }
 `
@@ -32,7 +37,7 @@ const Line = styled.div`
 `
 
 const Thumb = styled.div`
-  transition: height 200ms, width 200ms;
+  transition: height 300ms, width 300ms;
   width: ${props => props.focus ? '14px' : '10px'};
   height: ${props => props.focus ? '14px' : '10px'};
   border-radius: 50%;
