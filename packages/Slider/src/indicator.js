@@ -1,5 +1,4 @@
 import Inferno   from 'inferno'
-import Component from 'inferno-component'
 import styled    from 'styled-components'
 
 const Discrete = styled.div`
@@ -30,12 +29,8 @@ const Discrete = styled.div`
   }
 `
 
-export class Indicator extends Component {
-  render(props) {
-    return(
-      <Discrete {...props}>
-        <span>{Math.floor(props.value)}</span>
-      </Discrete>
-    )
-  }
-}
+export const Indicator = (props) =>
+  <Discrete {...props}>
+    <span>{Math.floor(props.value)}</span>
+  </Discrete>
+
