@@ -30,16 +30,17 @@ const Line = styled.div`
   height: 3px;
   width: 100%;
   position: absolute;
-  background: black;
-  opacity: .2;
+  background: white;
+  opacity: .3;
 `
 
 const Thumb = styled.div`
-  transition: height 300ms, width 300ms, box-shadow 300ms;
+  transition: height 300ms, width 300ms, box-shadow 300ms, background 150ms;
   width: ${props => props.focus ? '14px' : '10px'};
   height: ${props => props.focus ? '14px' : '10px'};
   border-radius: 50%;
-  background: #2196F3;
+  background: ${props => props.value == 0 ? '#424242' : '#2196F3'};
+  border: ${props => props.value == 0 ? '2px solid rgba(250, 250, 250, .3)' : 'none'};
   position: absolute;
   transform: translateX(-50%);
   box-shadow: none;
@@ -49,7 +50,6 @@ const Track = styled.div`
   height: 3px;
   position: absolute;
   background: #2196F3;
-  z-index: -1;
 `
 
 export class Slider extends Component {
@@ -197,7 +197,8 @@ export class Slider extends Component {
 
         {/* Thumb */}
         <Thumb
-          focus={this.state.focus}
+          value={props.value}
+          focus={focus}
           style={{left: (props.value / props.max) * 100 + '%'}}
         />
 
