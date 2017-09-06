@@ -39,7 +39,6 @@ const Thumb = styled.div`
   background: #2196F3;
   position: absolute;
   transform: translateX(-50%);
-  left: ${props => (props.value / props.max) * 100}%;
 
   div {
     border-radius: 50%;
@@ -52,7 +51,6 @@ const Thumb = styled.div`
 `
 
 const Track = styled.div`
-  width: ${props => (props.value / props.max) * 100}%;
   height: 3px;
   position: absolute;
   background: #2196F3;
@@ -203,12 +201,16 @@ export class Slider extends Component {
         <Line />
 
         {/* Thumb */}
-        <Thumb {...props} focus={this.state.focus}>
+        <Thumb
+          {...props}
+          focus={this.state.focus}
+          style={{left: (props.value / props.max) * 100 + '%'}}
+        >
           <div />
         </Thumb>
 
         {/* Track */}
-        <Track {...props} />
+        <Track {...props} style={{width: (props.value / props.max) * 100 + '%'}} />
 
         {props.discrete
           ? <Indicator
