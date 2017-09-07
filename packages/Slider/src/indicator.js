@@ -1,62 +1,34 @@
 import Inferno   from 'inferno'
-import Component from 'inferno-component'
-import { bind }  from 'decko'
+import styled    from 'styled-components'
 
-export class Indicator extends Component {
+const Discrete = styled.div`
+  position: absolute;
+  bottom: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: ${props => props.value == 0 ? '#757575' : '#2196F3'};
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  user-select: none;
+  height: 30px; width: 30px;
+  transform-origin: bottom;
+  transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1), background 150ms;
+  transform: translateX(-50%) scale(0);
 
-  @bind
-  getStyles() {
-    const {
-      value,
-      max,
-      color,
-      background,
-      focus
-    } = this.props
-
-    const progress = (value / max) * 100
-
-    const styles = {
-      position: 'absolute',
-      left: progress + '%',
-      bottom: 14,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      background: background || '#2196F3',
-      color: color || 'rgba(255, 255, 255, .87)',
-      borderRadius: '48.8%',
-      textTransform: 'uppercase',
-      fontSize: 12,
-      transition: 'transform .3s cubic-bezier(0.4, 0.0, 0.2, 1)',
-      userSelect: 'none',
-      height: 32,
-      width: 32,
-      transformOrigin: 'bottom',
-      transform: `translateX(-50%) ${focus ? 'scale(1, 1)' : 'scale(0, 0)'}`,
-
-      triangle: {
-        position: 'absolute',
-        bottom: -7,
-        width: 0,
-        height: 0,
-        borderLeft: '12px solid transparent',
-        borderRight: '12px solid transparent',
-        borderTop: `12px solid ${background || '#2196F3'}`,
-      }
-    }
-
-    return styles
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -6.2px;
+    width: 0; height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid ${props => props.value == 0 ? '#757575' : '#2196F3'};
   }
+`
 
-  render({ value, max }) {
-    const styles = this.getStyles()
-
-    return(
-      <div style={styles}>
-        <span>{Math.floor((value / max) * 100)}</span>
-        <div style={styles.triangle}></div>
-      </div>
-    )
-  }
-}
+export const Indicator = (props) =>
+  <Discrete value={props.value} style={{left: (props.value / props.max) * 100 + '%'}}>
+    <span>{Math.floor(props.value)}</span>
+  </Discrete>

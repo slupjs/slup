@@ -17,7 +17,9 @@
     "cross-env": "5.0.4",
     "decko": "1.2.0",
     "inferno": "3.7.1",
+    "inferno-compat": "3.8.2",
     "inferno-component": "3.7.1",
+    "styled-components": "2.1.2",
     "webpack": "3.4.1"
   },
   "scripts": {
