@@ -7,7 +7,7 @@ const Discrete = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${props => props.value == 0 ? 'grey' : '#2196F3'};
+  background: ${props => props.value == 0 ? '#757575' : '#2196F3'};
   color: white;
   border-radius: 50%;
   font-size: 12px;
@@ -24,7 +24,7 @@ const Discrete = styled.div`
     width: 0; height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid ${props => props.value == 0 ? 'grey' : '#2196F3'};
+    border-top: 10px solid ${props => props.value == 0 ? '#757575' : '#2196F3'};
   }
 `
 

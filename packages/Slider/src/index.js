@@ -19,7 +19,7 @@ const Container = styled.div`
       box-shadow: ${props => props.discrete ? 'none' : '0 0 0 14px rgba(0, 0, 0, .1)'};
     }
 
-    div:last-child {
+    div:nth-child(4) {
       transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
       transform: ${props => props.discrete ? 'translateX(-50%) scale(1)' : 'translateX(-50%) scale(0)'};
     }
@@ -39,17 +39,22 @@ const Thumb = styled.div`
   width: ${props => props.focus ? '14px' : '10px'};
   height: ${props => props.focus ? '14px' : '10px'};
   border-radius: 50%;
-  background: ${props => props.value == 0 ? '#424242' : '#2196F3'};
-  border: ${props => props.value == 0 ? '2px solid rgba(250, 250, 250, .3)' : 'none'};
+  background: ${props => props.discrete && props.value == 0
+    ? 'white'
+    : props.value == 0 ? '#424242'
+    : '#2196F3'};
+  border: ${props => props.value == 0 && !props.discrete ? '2px solid rgba(250, 250, 250, .3)' : 'none'};
   position: absolute;
   transform: translateX(-50%);
   box-shadow: none;
+  z-index: 2;
 `
 
 const Track = styled.div`
   height: 3px;
   position: absolute;
   background: #2196F3;
+  z-index: 1;
 `
 
 export class Slider extends Component {
@@ -198,6 +203,7 @@ export class Slider extends Component {
         {/* Thumb */}
         <Thumb
           value={props.value}
+          discrete={props.discrete}
           focus={focus}
           style={{left: (props.value / props.max) * 100 + '%'}}
         />
@@ -211,12 +217,7 @@ export class Slider extends Component {
             max={props.max}
             focus={focus || keyFocus}
           />
-          : <Indicator
-            style={{display: 'none'}}
-            value={props.value}
-            max={props.max}
-            focus={focus || keyFocus}
-          />
+          : null
         }
       </Container>
     )
