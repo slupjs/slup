@@ -12,20 +12,21 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   outline: none;
+  pointer-events: ${props => props.disabled ? 'none' : 'auto'};
   &:focus {
     div:nth-child(2) {
       width: ${props => props.discrete ? '0' : '14px'};
       height: ${props => props.discrete ? '0' : '14px'};
-      box-shadow: ${props => props.discrete 
-        ? 'none' 
+      box-shadow: ${props => props.discrete
+        ? 'none'
         : '0 0 0 14px rgba(0, 0, 0, .1)'
       };
     }
 
     div:nth-child(4) {
       transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-      transform: ${props => props.discrete 
-        ? 'translateX(-50%) scale(1)' 
+      transform: ${props => props.discrete
+        ? 'translateX(-50%) scale(1)'
         : 'translateX(-50%) scale(0)'
       };
     }
@@ -38,6 +39,7 @@ const Line = styled.div`
   position: absolute;
   background: white;
   opacity: .3;
+  z-index: 1;
 `
 
 const Thumb = styled.div`
@@ -45,15 +47,19 @@ const Thumb = styled.div`
   width: ${props => props.focus ? '14px' : '10px'};
   height: ${props => props.focus ? '14px' : '10px'};
   border-radius: 50%;
-  background: ${props => props.discrete && props.value == 0
-    ? 'white'
-    : props.value == 0 
-      ? '#424242'
-      : '#2196F3'
+  background: ${props => props.disabled && props.value == 0 ? '#424242'
+    : props.disabled ? '#757575'
+      : props.discrete && props.value == 0
+        ? 'white'
+        : props.value == 0
+          ? '#424242'
+          : '#2196F3'
   };
-  border: ${props => props.value == 0 && !props.discrete 
-    ? '2px solid rgba(250, 250, 250, .3)' 
-    : 'none'
+  border: ${props => props.disabled && props.value == 0 ? '2px solid rgba(250, 250, 250, .3)'
+    : props.disabled ? '2px solid #424242'
+      : props.value == 0 && !props.discrete
+        ? '2px solid rgba(250, 250, 250, .3)'
+        : 'none'
   };
   position: absolute;
   transform: translateX(-50%);
@@ -64,7 +70,7 @@ const Thumb = styled.div`
 const Track = styled.div`
   height: 3px;
   position: absolute;
-  background: #2196F3;
+  background: ${props => props.disabled ? '' : '#2196F3'};
   z-index: 1;
 `
 
@@ -204,21 +210,20 @@ export class Slider extends Component {
         onKeyDown={handleKeyDown}
         onFocus={handleFocus}
         innerRef={e => this.slider = e}
-        tabIndex={0}
+        tabIndex={props.disabled ? -1 : 0}
       >
         {/*Main Line*/}
         <Line />
 
         {/* Thumb */}
         <Thumb
-          value={props.value}
-          discrete={props.discrete}
+          {...props}
           focus={focus}
           style={{left: (props.value / props.max) * 100 + '%'}}
         />
 
         {/* Track */}
-        <Track style={{width: (props.value / props.max) * 100 + '%'}} />
+        <Track disabled={props.disabled} style={{width: (props.value / props.max) * 100 + '%'}} />
 
         {props.discrete
           ? <Indicator
