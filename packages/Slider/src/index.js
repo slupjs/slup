@@ -70,7 +70,7 @@ const Thumb = styled.div`
 const Track = styled.div`
   height: 3px;
   position: absolute;
-  background: ${props => props.disabled ? '' : '#2196F3'};
+  background: ${props => props.disabled ? 'transparent' : '#2196F3'};
   z-index: 1;
 `
 
