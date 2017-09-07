@@ -16,12 +16,18 @@ const Container = styled.div`
     div:nth-child(2) {
       width: ${props => props.discrete ? '0' : '14px'};
       height: ${props => props.discrete ? '0' : '14px'};
-      box-shadow: ${props => props.discrete ? 'none' : '0 0 0 14px rgba(0, 0, 0, .1)'};
+      box-shadow: ${props => props.discrete 
+        ? 'none' 
+        : '0 0 0 14px rgba(0, 0, 0, .1)'
+      };
     }
 
     div:nth-child(4) {
       transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-      transform: ${props => props.discrete ? 'translateX(-50%) scale(1)' : 'translateX(-50%) scale(0)'};
+      transform: ${props => props.discrete 
+        ? 'translateX(-50%) scale(1)' 
+        : 'translateX(-50%) scale(0)'
+      };
     }
   }
 `
@@ -41,9 +47,14 @@ const Thumb = styled.div`
   border-radius: 50%;
   background: ${props => props.discrete && props.value == 0
     ? 'white'
-    : props.value == 0 ? '#424242'
-    : '#2196F3'};
-  border: ${props => props.value == 0 && !props.discrete ? '2px solid rgba(250, 250, 250, .3)' : 'none'};
+    : props.value == 0 
+      ? '#424242'
+      : '#2196F3'
+  };
+  border: ${props => props.value == 0 && !props.discrete 
+    ? '2px solid rgba(250, 250, 250, .3)' 
+    : 'none'
+  };
   position: absolute;
   transform: translateX(-50%);
   box-shadow: none;
@@ -135,9 +146,7 @@ export class Slider extends Component {
 
   @bind
   handleMouseMove(e) {
-    if(!this.state.focus) return
-
-    this.moveSlider(e)
+    if(this.state.focus) this.moveSlider(e)
   }
 
   @bind
