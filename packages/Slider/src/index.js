@@ -4,6 +4,8 @@ import styled    from 'styled-components'
 import { bind }  from 'decko'
 
 import { Indicator } from './indicator'
+import { whiteTheme } from '@slup/theming'
+import { shade } from 'polished'
 
 const Container = styled.div`
   height: 38px;
@@ -37,7 +39,7 @@ const Line = styled.div`
   height: 3px;
   width: 100%;
   position: absolute;
-  background: white;
+  background: ${props => props.theme.text || whiteTheme.text};
   opacity: .3;
   z-index: 1;
 `
@@ -47,19 +49,23 @@ const Thumb = styled.div`
   width: ${props => props.focus ? '14px' : '10px'};
   height: ${props => props.focus ? '14px' : '10px'};
   border-radius: 50%;
-  background: ${props => props.disabled && props.value == 0 ? '#424242'
-    : props.disabled ? '#757575'
-      : props.discrete && props.value == 0
-        ? 'white'
+  background: ${props => props.disabled && props.value == 0 
+    ? shade(.3, props.theme.background || whiteTheme.background)       /* Disabled or = to 0(at the beginning) */
+    : props.disabled 
+      ? shade(.38, props.theme.background || whiteTheme.background)     /* Disabled */
+      : props.discrete && props.value == 0 
+        ? props.theme.text || whiteTheme.text                          /* Not disabled, discreate but still at beginning */
         : props.value == 0
-          ? '#424242'
-          : '#2196F3'
+          ? shade(.38, props.theme.background || whiteTheme.background) /* At the beginning */
+          : props.theme.primary || whiteTheme.primary                  /* Moved */
   };
-  border: ${props => props.disabled && props.value == 0 ? '2px solid rgba(250, 250, 250, .3)'
-    : props.disabled ? '2px solid #424242'
-      : props.value == 0 && !props.discrete
-        ? '2px solid rgba(250, 250, 250, .3)'
-        : 'none'
+  border: ${props => props.disabled && props.value == 0 
+    ? `2px solid ${shade(.25, props.background || whiteTheme.background)}`
+    : props.disabled 
+    ? `2px solid ${shade(.3, props.theme.background || whiteTheme.background)}`
+    : props.value == 0 && !props.discrete
+      ? `2px solid ${shade(.3, props.background || whiteTheme.background)}`
+      : 'none'
   };
   position: absolute;
   transform: translateX(-50%);
@@ -70,7 +76,10 @@ const Thumb = styled.div`
 const Track = styled.div`
   height: 3px;
   position: absolute;
-  background: ${props => props.disabled ? 'transparent' : '#2196F3'};
+  background: ${props => props.disabled 
+    ? 'transparent' 
+    : props.theme.primary || whiteTheme.primary
+  };
   z-index: 1;
 `
 
