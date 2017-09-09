@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { Link } from 'inferno-router'
 import { RaisedButton } from '@slup/buttons'
 import { Logo } from '../components/logo'
+import { Menu, GitHub } from '../components/icons'
 
 const LogoContainer = styled.div`
   display: flex;
@@ -28,7 +29,7 @@ export class Home extends Component {
     return(
       <LogoContainer>
         {Logo}
-        <RaisedButton background='#03A9F4' onClick={this.handleClick}>Get started !</RaisedButton>
+        <RaisedButton onClick={this.handleClick}>Get started !</RaisedButton>
       </LogoContainer>
     )
   }

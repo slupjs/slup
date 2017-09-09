@@ -2,7 +2,8 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from 'styled-components'
 
-import { Ripple } from '@slup/ripple'
+import { Ripple }     from '@slup/ripple'
+import { whiteTheme } from '@slup/theming'
 
 const FlatBase = styled.button`
   position: relative;
@@ -15,7 +16,10 @@ const FlatBase = styled.button`
   margin: 0 8px;
   padding: 0 8px;
   cursor: pointer;
-  color: white;
+  color: ${props => props.primary
+    ? props.theme.primary
+    : props.theme.text
+  };
   transition: background 150ms linear;
   user-select: none;
   background: transparent;

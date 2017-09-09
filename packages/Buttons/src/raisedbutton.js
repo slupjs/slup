@@ -2,10 +2,14 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from 'styled-components'
 
-import { Ripple } from '@slup/ripple'
+import { Ripple }     from '@slup/ripple'
+import { whiteTheme } from '@slup/theming'
 
 const RaisedBase = styled.button`
-  background: ${props =>  props.theme.primary || 'purple'};
+  background: ${props => props.secondary
+    ? props.theme.secondary || whiteTheme.secondary
+    : props.theme.primary   || whiteTheme.primary
+  };
   position: relative;
   border: none; outline: none;
   min-height: 36px;
@@ -16,7 +20,7 @@ const RaisedBase = styled.button`
   margin: 0 8px;
   padding: 0 8px;
   cursor: pointer;
-  color: white;
+  color: ${props => props.theme.background || whiteTheme.background};
   transition: box-shadow 150ms linear;
   user-select: none;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),

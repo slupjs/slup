@@ -2,7 +2,8 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from 'styled-components'
 
-import { Ripple } from '@slup/ripple'
+import { Ripple }     from '@slup/ripple'
+import { whiteTheme } from '@slup/theming'
 
 const Circle = styled.button`
   position: fixed;
@@ -19,6 +20,11 @@ const Circle = styled.button`
 
   width: ${props => props.mini ? '40px' : '56px'};
   height: ${props => props.mini ? '40px' : '56px'};
+  color: ${props => props.theme.background || whiteTheme.background};
+  background: ${props => props.secondary
+    ? props.theme.secondary || whiteTheme.secondary
+    : props.theme.primary   || whiteTheme.primary
+  };
 
   &:active {
     box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
