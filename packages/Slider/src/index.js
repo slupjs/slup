@@ -5,7 +5,7 @@ import { bind }  from 'decko'
 
 import { Indicator } from './indicator'
 import { whiteTheme } from '@slup/theming'
-import { shade } from 'polished'
+import { shade, rgba } from 'polished'
 
 const Container = styled.div`
   height: 38px;
@@ -49,22 +49,22 @@ const Thumb = styled.div`
   width: ${props => props.focus ? '14px' : '10px'};
   height: ${props => props.focus ? '14px' : '10px'};
   border-radius: 50%;
-  background: ${props => props.disabled && props.value == 0 
-    ? shade(.3, props.theme.background || whiteTheme.background)       /* Disabled or = to 0(at the beginning) */
-    : props.disabled 
+  background: ${props => props.disabled && props.value == 0
+    ? props.theme.background || whiteTheme.background       /* Disabled or = to 0(at the beginning) */
+    : props.disabled
       ? shade(.38, props.theme.background || whiteTheme.background)     /* Disabled */
-      : props.discrete && props.value == 0 
-        ? props.theme.text || whiteTheme.text                          /* Not disabled, discreate but still at beginning */
+      : props.discrete && props.value == 0
+        ? props.theme.text || whiteTheme.text                          /* Not disabled, discrete but still at beginning */
         : props.value == 0
-          ? shade(.38, props.theme.background || whiteTheme.background) /* At the beginning */
+          ? props.theme.background || whiteTheme.background            /* At the beginning */
           : props.theme.primary || whiteTheme.primary                  /* Moved */
   };
-  border: ${props => props.disabled && props.value == 0 
-    ? `2px solid ${shade(.25, props.background || whiteTheme.background)}`
-    : props.disabled 
-    ? `2px solid ${shade(.3, props.theme.background || whiteTheme.background)}`
+  border: ${props => props.disabled && props.value == 0
+    ? `2px solid ${rgba(props.theme.text || whiteTheme.text, .3)}`
+    : props.disabled
+    ? `2px solid ${props.theme.background || whiteTheme.background}`
     : props.value == 0 && !props.discrete
-      ? `2px solid ${shade(.3, props.background || whiteTheme.background)}`
+      ? `2px solid ${rgba(props.theme.text || whiteTheme.text, .3)}`
       : 'none'
   };
   position: absolute;
@@ -76,8 +76,8 @@ const Thumb = styled.div`
 const Track = styled.div`
   height: 3px;
   position: absolute;
-  background: ${props => props.disabled 
-    ? 'transparent' 
+  background: ${props => props.disabled
+    ? 'transparent'
     : props.theme.primary || whiteTheme.primary
   };
   z-index: 1;

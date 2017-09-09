@@ -1865,13 +1865,21 @@ inferno-component@3.7.1:
     inferno-shared "3.7.1"
     inferno-vnode-flags "3.7.1"
 
-inferno-component@3.8.2, inferno-component@^3.4.3:
+inferno-component@3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-3.8.2.tgz#707c204afce19e8e88811758fbad019c0490b42c"
   dependencies:
     inferno "3.8.2"
     inferno-shared "3.8.2"
     inferno-vnode-flags "3.8.2"
+
+inferno-component@^3.4.3:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-3.9.0.tgz#26a653bd9f055df49116facf54321ece990798f8"
+  dependencies:
+    inferno "3.9.0"
+    inferno-shared "3.9.0"
+    inferno-vnode-flags "3.9.0"
 
 inferno-create-class@3.7.1:
   version "3.7.1"
@@ -1919,6 +1927,10 @@ inferno-shared@3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-3.8.2.tgz#5668267f98ba2c4236de3db0b4276e40b032cab4"
 
+inferno-shared@3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-3.9.0.tgz#da0ae6223a26a2aa5729284bee3f3ef92d744a46"
+
 inferno-transition-group@2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/inferno-transition-group/-/inferno-transition-group-2.1.1.tgz#067e9f6013354e1a9a18f74ca6092cf0059cf70e"
@@ -1938,6 +1950,10 @@ inferno-vnode-flags@3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.8.2.tgz#ca6cfba996f70ca468bf621f1db4b8a3b4335c38"
 
+inferno-vnode-flags@3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.9.0.tgz#8e358803b8c396788070d54786d86894cecd4a46"
+
 inferno@3.7.1:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/inferno/-/inferno-3.7.1.tgz#11a2d485e53c3ae21b15b06fb2cf4973830946dd"
@@ -1945,12 +1961,19 @@ inferno@3.7.1:
     inferno-shared "3.7.1"
     inferno-vnode-flags "3.7.1"
 
-inferno@3.8.2, inferno@^3.4.3:
+inferno@3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/inferno/-/inferno-3.8.2.tgz#284ef2af52404c0d7aa0d14782464ad11ccc635b"
   dependencies:
     inferno-shared "3.8.2"
     inferno-vnode-flags "3.8.2"
+
+inferno@3.9.0, inferno@^3.4.3:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/inferno/-/inferno-3.9.0.tgz#4e9a312e9929abb741dfe285630841b0d7e95e62"
+  dependencies:
+    inferno-shared "3.9.0"
+    inferno-vnode-flags "3.9.0"
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -2716,8 +2739,8 @@ parse-json@^2.2.0:
     error-ex "^1.2.0"
 
 parseurl@~1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.1.tgz#c8ab8c9223ba34888aa64a297b28853bec18da56"
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.2.tgz#fc289d4ed8993119460c156253262cdc8de65bf3"
 
 path-browserify@0.0.0:
   version "0.0.0"
@@ -2755,15 +2778,19 @@ path-to-regexp-es6@0.0.2:
   dependencies:
     path-to-regexp "*"
 
-path-to-regexp@*, path-to-regexp@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
-  dependencies:
-    isarray "0.0.1"
+path-to-regexp@*:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-2.0.0.tgz#b77a8168c2e78bc31f3d312d71b1ace97df23870"
 
 path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
+
+path-to-regexp@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
+  dependencies:
+    isarray "0.0.1"
 
 path-type@^1.0.0:
   version "1.1.0"
@@ -2816,6 +2843,10 @@ pkg-dir@^2.0.0:
   resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-2.0.0.tgz#f6d5d1109e19d63edf428e0bd57e12777615334b"
   dependencies:
     find-up "^2.1.0"
+
+polished@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-1.7.0.tgz#cfc55113f52e9ecec7c84dbd0c708b9a3235d7c3"
 
 portfinder@^1.0.9:
   version "1.0.13"
