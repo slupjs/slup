@@ -2,7 +2,7 @@ import Inferno   from 'inferno'
 import styled    from 'styled-components'
 
 import { whiteTheme } from '@slup/theming'
-import { shade } from 'polished'
+import { rgba } from 'polished'
 
 const Discrete = styled.div`
   position: absolute;
@@ -10,8 +10,8 @@ const Discrete = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${props => props.value == 0 
-    ? shade(.3, props.theme.background || whiteTheme.background)
+  background: ${props => props.value == 0
+    ? rgba(props.theme.text || whiteTheme.text, .3)
     : props.theme.primary || whiteTheme.primary
   };
   color: white;
@@ -22,16 +22,18 @@ const Discrete = styled.div`
   transform-origin: bottom;
   transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1), background 150ms;
   transform: translateX(-50%) scale(0);
+  z-index: 1;
 
   &::before {
     content: '';
+    z-index: -1;
     position: absolute;
     bottom: -6.2px;
     width: 0; height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid ${props => props.value == 0 
-      ? shade(.3, props.theme.background || whiteTheme.background)
+    border-top: 10px solid ${props => props.value == 0
+      ? rgba(props.theme.text || whiteTheme.text, .3)
       : props.theme.primary || whiteTheme.primary
     };
   }

@@ -5,7 +5,7 @@ import { bind }  from 'decko'
 
 import { Indicator } from './indicator'
 import { whiteTheme } from '@slup/theming'
-import { shade, rgba } from 'polished'
+import { rgba } from 'polished'
 
 const Container = styled.div`
   height: 38px;
@@ -52,7 +52,7 @@ const Thumb = styled.div`
   background: ${props => props.disabled && props.value == 0
     ? props.theme.background || whiteTheme.background       /* Disabled or = to 0(at the beginning) */
     : props.disabled
-      ? shade(.38, props.theme.background || whiteTheme.background)     /* Disabled */
+      ? rgba(props.theme.text || whiteTheme.text, .38)    /* Disabled */
       : props.discrete && props.value == 0
         ? props.theme.text || whiteTheme.text                          /* Not disabled, discrete but still at beginning */
         : props.value == 0

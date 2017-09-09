@@ -9,11 +9,10 @@ export const whiteTheme = {
 
 export const darkTheme = {
   text: white,
-  background: black,
+  background: '#303030',
   primary: blue[500],
   secondary: indigo[500]
 }
 
 export * from './colors'
 export { ThemeProvider } from 'styled-components'
-
