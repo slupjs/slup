@@ -10,7 +10,7 @@ export const Container = styled.section`
   bottom: 0;
   top: 0;
   color: white;
-  background: #424242;
+  background: ${props => props.theme.background};
 `
 
 export const Content = ({ children}) =>

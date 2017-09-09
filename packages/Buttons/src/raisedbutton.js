@@ -5,6 +5,7 @@ import styled    from 'styled-components'
 import { Ripple } from '@slup/ripple'
 
 const RaisedBase = styled.button`
+  background: ${props =>  props.theme.primary || 'purple'};
   position: relative;
   border: none; outline: none;
   min-height: 36px;
