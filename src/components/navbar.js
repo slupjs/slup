@@ -12,7 +12,7 @@ import { Menu, GitHub } from './icons'
 import { generate }     from '../utils/title'
 
 export class NavBar extends Component {
-  state = { 
+  state = {
     opened: false,
     redirect: false,
     lists: { components: false }
@@ -42,13 +42,13 @@ export class NavBar extends Component {
     console.log('Redirecting to:', path)
 
     this.setState({ redirect: path })
-  } 
+  }
 
   render(props) {
-    const { 
+    const {
       opened,
-      lists, 
-      redirect 
+      lists,
+      redirect
     } = this.state
     const { pathname } = this.props.history.location
     const name         = generate(pathname)
@@ -59,23 +59,17 @@ export class NavBar extends Component {
         <Navbar>
           <Grid middle>
             <Col sm={12} offset_lg={320}>
-              <Grid middle space_between>
+              <Grid middle space_between hide-md>
 
                 {/* Main title */}
                 <div style={{ display: 'flex', alignItems: 'center' }}>
 
-                  <Menu
-                    onClick={this.handleOpen} 
-                    style={{
-                      marginRight: 32,
-                      display: document.body.offsetWidth > 960
-                        ? 'none'
-                        : 'block',
-                      cursor: opened || document.body.offsetWidth > 960
-                        ? 'default'
-                        : 'pointer'
-                    }} 
-                  />
+                  <Col hidden_lg>
+                    <Menu
+                      onClick={this.handleOpen}
+                      style={{ marginRight: 32, cursor: 'pointer'}}
+                    />
+                  </Col>
 
                   <h3 style={{ margin: 0, fontWeight: 'normal' }}>{name}</h3>
 
