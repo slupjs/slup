@@ -9,7 +9,7 @@ const dash = keyframes`
 
 const Path = styled.path`
   fill: none;
-  stroke: #03A9F4;
+  stroke: ${props => props.theme.primary};
   stroke-miterlimit: 10;
   stroke-width: 40;
   stroke-dasharray: 10000;
@@ -18,13 +18,6 @@ const Path = styled.path`
 `
 
 const Line = Path.withComponent('line')
-
-const svgStyles = {
-  fill: 'none',
-  stroke: '#03A9F4',
-  strokeMiterlimit: 10,
-  strokeWidth: 40
-}
 
 export const Logo = 
   <svg height="30%" width="50%" viewBox="0 0 1636.71 805.1">

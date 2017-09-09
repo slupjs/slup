@@ -1,5 +1,6 @@
 import Inferno          from 'inferno'
 import Component        from 'inferno-component'
+import { Redirect, Link }     from 'inferno-router'
 import { bind }         from 'decko'
 
 import { Col, Grid }    from '@slup/grid'
@@ -13,6 +14,7 @@ import { generate }     from '../utils/title'
 export class NavBar extends Component {
   state = { 
     opened: false,
+    redirect: false,
     lists: { components: false }
   }
 
@@ -35,14 +37,26 @@ export class NavBar extends Component {
     this.setState({ lists })
   }
 
-  render() {
-    const { opened, lists } = this.state
-    const { pathname }      = this.props.history.location
-    const name              = generate(pathname)
+  @bind
+  redirect(path) {
+    console.log('Redirecting to:', path)
+
+    this.setState({ redirect: path })
+  } 
+
+  render(props) {
+    const { 
+      opened,
+      lists, 
+      redirect 
+    } = this.state
+    const { pathname } = this.props.history.location
+    const name         = generate(pathname)
 
     return(
       <div>
-        <Navbar background='#03A9F4'>
+       {redirect ? <Redirect to={redirect} /> : null}
+        <Navbar>
           <Grid middle>
             <Col sm={12} offset_lg={320}>
               <Grid middle space_between>
@@ -88,15 +102,15 @@ export class NavBar extends Component {
 
               {/* List of components */}
               <List>
-                <ListItem nested>Buttons</ListItem>
-                <ListItem nested>Controls</ListItem>
-                <ListItem nested>Grid</ListItem>
-                <ListItem nested>Icons</ListItem>
-                <ListItem nested>Lists</ListItem>
-                <ListItem nested>NavBar</ListItem>
-                <ListItem nested>Ripple</ListItem>
-                <ListItem nested>SideNav</ListItem>
-                <ListItem nested>Sliders</ListItem>
+                <ListItem nested><Link to='/components/buttons'>Buttons</Link></ListItem>
+                <ListItem onClick={e => this.redirect('/components/controls')} nested>Controls</ListItem>
+                <ListItem onClick={e => this.redirect('/components/grid')} nested>Grid</ListItem>
+                <ListItem onClick={e => this.redirect('/components/icons')} nested>Icons</ListItem>
+                <ListItem onClick={e => this.redirect('/components/lists')} nested>Lists</ListItem>
+                <ListItem onClick={e => this.redirect('/components/navbar')} nested>NavBar</ListItem>
+                <ListItem onClick={e => this.redirect('/components/ripple')} nested>Ripple</ListItem>
+                <ListItem onClick={e => this.redirect('/components/sidenav')} nested>SideNav</ListItem>
+                <ListItem onClick={e => this.redirect('/components/sliders')} nested>Sliders</ListItem>
               </List>
             </ListItem>
           </List>
