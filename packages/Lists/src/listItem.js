@@ -4,7 +4,7 @@ import { bind }  from 'decko'
 import styled    from 'styled-components'
 
 import { Ripple }     from '@slup/ripple'
-import { whiteTheme } from '@slup/theming'
+import { lightTheme } from '@slup/theming'
 
 const Li = styled.li`
   box-sizing: border-box;
@@ -21,7 +21,7 @@ const Li = styled.li`
     : props.threeline ? '88px'
     : '48px'};
 
-  color: ${props => props.theme.text || whiteTheme.text};
+  color: ${props => props.theme.text || lightTheme.text};
   transition: max-height 300ms cubic-bezier(0.4, 0.0, 0.2, 1), background 150ms linear;
   height: auto;
   max-height: ${props => props.visible && props.sublist ? '1248px' : '48px'};

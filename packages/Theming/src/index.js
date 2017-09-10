@@ -1,6 +1,6 @@
 import { white, black, blue, indigo } from './colors'
 
-export const whiteTheme = {
+export const lightTheme = {
   text: black,
   background: '#fafafa',
   primary: blue[500],

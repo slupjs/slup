@@ -3,7 +3,7 @@ import Component from 'inferno-component'
 import styled    from 'styled-components'
 import { bind } from 'decko'
 
-import { whiteTheme } from '@slup/theming'
+import { lightTheme } from '@slup/theming'
 
 const Drawer = styled.div`
   z-index: 1000;
@@ -11,7 +11,7 @@ const Drawer = styled.div`
   height: 100%;
   width: calc(100% - 64px);
   max-width: 320px;
-  background: ${props => props.theme.background || whiteTheme.background};
+  background: ${props => props.theme.background || lightTheme.background};
   box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2),
     0px 16px 24px 2px rgba(0, 0, 0, 0.14),
     0px 6px 30px 5px rgba(0, 0, 0, 0.12);

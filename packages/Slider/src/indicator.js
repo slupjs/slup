@@ -1,7 +1,7 @@
 import Inferno   from 'inferno'
 import styled    from 'styled-components'
 
-import { whiteTheme } from '@slup/theming'
+import { lightTheme } from '@slup/theming'
 
 const Discrete = styled.div`
   position: absolute;
@@ -11,8 +11,8 @@ const Discrete = styled.div`
   align-items: center;
   opacity: ${props => props.value == 0 ? '.3' : '1'};
   background: ${props => props.value == 0
-    ? props.theme.text || whiteTheme.text
-    : props.theme.primary || whiteTheme.primary
+    ? props.theme.text || lightTheme.text
+    : props.theme.primary || lightTheme.primary
   };
   color: white;
   border-radius: 50%;
@@ -32,8 +32,8 @@ const Discrete = styled.div`
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 10px solid ${props => props.value == 0
-      ? props.theme.text || whiteTheme.text
-      : props.theme.primary || whiteTheme.primary
+      ? props.theme.text || lightTheme.text
+      : props.theme.primary || lightTheme.primary
     };
   }
 `

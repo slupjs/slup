@@ -3,7 +3,7 @@ import Component from 'inferno-component'
 import styled    from 'styled-components'
 import { bind }  from 'decko'
 
-import { whiteTheme } from '@slup/theming'
+import { lightTheme } from '@slup/theming'
 import { darken }     from 'polished'
 
 export const Bar = styled.div`
@@ -23,7 +23,7 @@ export const Bar = styled.div`
   color: ${props => props.theme.text};
   background: ${props => props.primary
     ? darken(0.02, props.theme.primary)
-    : darken(0.02, props.theme.background || whiteTheme.background)
+    : darken(0.02, props.theme.background || lightTheme.background)
   };
   position:   ${props => props.fixed || props.reveal
     ? 'fixed'
