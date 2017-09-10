@@ -6,6 +6,7 @@
   "author": "Gejsi",
   "license": "MIT",
   "devDependencies": {
+    "@slup/theming": "0.0.1",
     "babel-core": "6.25.0",
     "babel-loader": "7.1.1",
     "babel-plugin-inferno": "3.2.0",
@@ -19,6 +20,7 @@
     "inferno": "3.7.1",
     "inferno-compat": "3.7.1",
     "inferno-component": "3.7.1",
+    "polished": "1.7.0",
     "styled-components": "2.1.2",
     "webpack": "3.4.1"
   },

@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@slup/theming@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@slup/theming/-/theming-0.0.1.tgz#dbc20647887e29a9a8f75b56b2f7d533d227de81"
+
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
@@ -2311,6 +2315,10 @@ pkg-dir@^2.0.0:
   resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-2.0.0.tgz#f6d5d1109e19d63edf428e0bd57e12777615334b"
   dependencies:
     find-up "^2.1.0"
+
+polished@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-1.7.0.tgz#cfc55113f52e9ecec7c84dbd0c708b9a3235d7c3"
 
 postcss-value-parser@^3.3.0:
   version "3.3.0"

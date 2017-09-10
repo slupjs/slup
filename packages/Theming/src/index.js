@@ -2,7 +2,7 @@ import { white, black, blue, indigo } from './colors'
 
 export const whiteTheme = {
   text: black,
-  background: white,
+  background: '#fafafa',
   primary: blue[500],
   secondary: indigo[500]
 }
