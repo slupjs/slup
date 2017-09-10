@@ -56,7 +56,7 @@ export class NavBar extends Component {
     return(
       <div>
        {redirect ? <Redirect to={redirect} /> : null}
-        <Navbar>
+        <Navbar primary>
           <Grid middle>
             <Col sm={12} offset_lg={320}>
               <Grid middle space_between hide-md>
@@ -88,7 +88,6 @@ export class NavBar extends Component {
           responsive
           opened={opened}
           onClose={this.handleClose}
-          style={{ background: '#424242' }}
         >
           <List>
             <ListItem sublist visible={lists.components}>

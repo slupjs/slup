@@ -20,7 +20,7 @@ const Circle = styled.button`
 
   width: ${props => props.mini ? '40px' : '56px'};
   height: ${props => props.mini ? '40px' : '56px'};
-  color: ${props => props.theme.background || whiteTheme.background};
+  color: ${props => props.theme.text || whiteTheme.text};
   background: ${props => props.secondary
     ? props.theme.secondary || whiteTheme.secondary
     : props.theme.primary   || whiteTheme.primary

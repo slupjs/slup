@@ -20,7 +20,7 @@ const RaisedBase = styled.button`
   margin: 0 8px;
   padding: 0 8px;
   cursor: pointer;
-  color: ${props => props.theme.background || whiteTheme.background};
+  color: ${props => props.theme.text || whiteTheme.text};
   transition: box-shadow 150ms linear;
   user-select: none;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
