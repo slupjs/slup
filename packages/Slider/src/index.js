@@ -14,6 +14,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   outline: none;
+  opacity: ${props => props.disabled ? '.3' : '1'};
   pointer-events: ${props => props.disabled ? 'none' : 'auto'};
   &:focus {
     div:nth-child(2) {
@@ -40,7 +41,7 @@ const Line = styled.div`
   width: 100%;
   position: absolute;
   background: ${props => props.theme.text || whiteTheme.text};
-  opacity: .3;
+  opacity: ${props => props.disabled ? '1' : '.3'};
   z-index: 1;
 `
 
@@ -50,9 +51,9 @@ const Thumb = styled.div`
   height: ${props => props.focus ? '14px' : '10px'};
   border-radius: 50%;
   background: ${props => props.disabled && props.value == 0
-    ? props.theme.background || whiteTheme.background       /* Disabled or = to 0(at the beginning) */
+    ? props.theme.background || whiteTheme.background                  /* Disabled or = to 0(at the beginning) */
     : props.disabled
-      ? rgba(props.theme.text || whiteTheme.text, .38)    /* Disabled */
+      ? props.theme.text || whiteTheme.text                            /* Disabled */
       : props.discrete && props.value == 0
         ? props.theme.text || whiteTheme.text                          /* Not disabled, discrete but still at beginning */
         : props.value == 0
@@ -60,7 +61,7 @@ const Thumb = styled.div`
           : props.theme.primary || whiteTheme.primary                  /* Moved */
   };
   border: ${props => props.disabled && props.value == 0
-    ? `2px solid ${rgba(props.theme.text || whiteTheme.text, .3)}`
+    ? `2px solid ${props.theme.text || whiteTheme.text}`
     : props.disabled
     ? `2px solid ${props.theme.background || whiteTheme.background}`
     : props.value == 0 && !props.discrete
@@ -222,7 +223,7 @@ export class Slider extends Component {
         tabIndex={props.disabled ? -1 : 0}
       >
         {/*Main Line*/}
-        <Line />
+        <Line disabled={props.disabled} />
 
         {/* Thumb */}
         <Thumb
