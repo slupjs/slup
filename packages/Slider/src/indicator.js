@@ -14,7 +14,10 @@ const Discrete = styled.div`
     ? props.theme.text || lightTheme.text
     : props.theme.primary || lightTheme.primary
   };
-  color: white;
+  color: ${props => props.value == 0
+    ? props.theme.background || lightTheme.background
+    : 'white'
+  };
   border-radius: 50%;
   font-size: 12px;
   user-select: none;
