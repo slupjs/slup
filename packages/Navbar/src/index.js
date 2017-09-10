@@ -3,6 +3,9 @@ import Component from 'inferno-component'
 import styled    from 'styled-components'
 import { bind }  from 'decko'
 
+import { lightTheme } from '@slup/theming'
+import { darken }     from 'polished'
+
 export const Bar = styled.div`
   box-shadow:
     0px 2px 4px -1px rgba(0, 0, 0, 0.2),
@@ -17,7 +20,11 @@ export const Bar = styled.div`
   display: flex;
   align-items: center;
   padding: 0 16px;
-  background: ${props => props.background || 'transparent'};
+  color: ${props => props.theme.text};
+  background: ${props => props.primary
+    ? darken(0.02, props.theme.primary)
+    : darken(0.02, props.theme.background || lightTheme.background)
+  };
   position:   ${props => props.fixed || props.reveal
     ? 'fixed'
     : 'absolute'

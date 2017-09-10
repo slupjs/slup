@@ -3,13 +3,15 @@ import Component from 'inferno-component'
 import styled    from 'styled-components'
 import { bind } from 'decko'
 
+import { lightTheme } from '@slup/theming'
+
 const Drawer = styled.div`
   z-index: 1000;
   transition: max-width 150ms linear, transform 320ms cubic-bezier(0.4, 0.0, 0.2, 1);
   height: 100%;
   width: calc(100% - 64px);
   max-width: 320px;
-  background: #fff;
+  background: ${props => props.theme.background || lightTheme.background};
   box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2),
     0px 16px 24px 2px rgba(0, 0, 0, 0.14),
     0px 6px 30px 5px rgba(0, 0, 0, 0.12);
@@ -17,11 +19,11 @@ const Drawer = styled.div`
   top: 0;
   left: ${props => props.right ? 'auto' : '0'};
   right: ${props => props.right ? '0' : 'auto'};
-  transform: ${props => props.responsive || props.permanent 
+  transform: ${props => props.responsive || props.permanent
     ? 'translateX(0)'
-    : props.right && !props.opened 
+    : props.right && !props.opened
       ? 'translateX(105%)'
-      : props.opened 
+      : props.opened
         ? 'translateX(0)'
         : 'translateX(-105%)'
   };
@@ -29,9 +31,9 @@ const Drawer = styled.div`
   @media only screen and (max-width: 960px) {
     width: calc(100% - 56px);
     max-width: 280px;
-    transform: ${props => props.right && !props.opened 
+    transform: ${props => props.right && !props.opened
       ? 'translateX(105%)'
-      : props.opened 
+      : props.opened
         ? 'translateX(0)'
         : 'translateX(-105%)'
     };

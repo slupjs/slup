@@ -2,7 +2,7 @@ import Inferno, { render } from 'inferno'
 import { Router, Route, IndexRoute } from 'inferno-router'
 import createBrowserHistory from 'history/createBrowserHistory'
 
-import { ThemeProvider, whiteTheme } from '@slup/theming'
+import { ThemeProvider, darkTheme } from '@slup/theming'
 import { NavBar } from './components/navbar'
 import { Container, Content } from './components/container'
 
@@ -13,7 +13,7 @@ import { Buttons, Components, ComponentPage } from './pages/buttons'
 const History = createBrowserHistory()
 
 const routes = (
-  <ThemeProvider theme={whiteTheme}>
+  <ThemeProvider theme={darkTheme}>
     <Container>
       <NavBar history={ History } />
       <Content>

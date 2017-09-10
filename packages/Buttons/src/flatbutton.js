@@ -3,7 +3,7 @@ import Component from 'inferno-component'
 import styled    from 'styled-components'
 
 import { Ripple }     from '@slup/ripple'
-import { whiteTheme } from '@slup/theming'
+import { lightTheme } from '@slup/theming'
 
 const FlatBase = styled.button`
   position: relative;

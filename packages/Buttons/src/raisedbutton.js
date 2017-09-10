@@ -3,12 +3,12 @@ import Component from 'inferno-component'
 import styled    from 'styled-components'
 
 import { Ripple }     from '@slup/ripple'
-import { whiteTheme } from '@slup/theming'
+import { lightTheme } from '@slup/theming'
 
 const RaisedBase = styled.button`
   background: ${props => props.secondary
-    ? props.theme.secondary || whiteTheme.secondary
-    : props.theme.primary   || whiteTheme.primary
+    ? props.theme.secondary || lightTheme.secondary
+    : props.theme.primary   || lightTheme.primary
   };
   position: relative;
   border: none; outline: none;
@@ -20,7 +20,7 @@ const RaisedBase = styled.button`
   margin: 0 8px;
   padding: 0 8px;
   cursor: pointer;
-  color: ${props => props.theme.background || whiteTheme.background};
+  color: ${props => props.theme.text || lightTheme.text};
   transition: box-shadow 150ms linear;
   user-select: none;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
