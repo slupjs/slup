@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import { Link } from 'inferno-router'
 import { RaisedButton } from '@slup/buttons'
 import { Logo } from '../components/logo'
-import { Menu, GitHub } from '../components/icons'
 
 const LogoContainer = styled.div`
   display: flex;

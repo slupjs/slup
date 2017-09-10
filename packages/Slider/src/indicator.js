@@ -2,7 +2,6 @@ import Inferno   from 'inferno'
 import styled    from 'styled-components'
 
 import { whiteTheme } from '@slup/theming'
-import { rgba, lighten } from 'polished'
 
 const Discrete = styled.div`
   position: absolute;
