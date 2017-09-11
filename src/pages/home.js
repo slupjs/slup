@@ -16,13 +16,32 @@ const CleanLink = styled(Link)`
 `
 
 export class Home extends Component {
+  tabs = [
+    'item one',
+    'item two',
+    'item three'
+  ]
+
+  state = { selected: 0 }
+
+  handleClick(i) {
+    this.setState({ selected: i })
+  }
+
   render() {
     return(
       <LogoContainer>
         <TabContainer primary center>
-          <Tab>Item one</Tab>
-          <Tab>Item two</Tab>
-          <Tab>Item three</Tab>
+          {this.tabs.map((item, i) => {
+            return(
+              <Tab
+                onClick={() => this.handleClick(i)}
+                selected={this.state.selected == i}
+              >
+                {item}
+              </Tab>
+            )
+          })}
         </TabContainer>
       </LogoContainer>
     )

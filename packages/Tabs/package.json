@@ -21,6 +21,7 @@
     "inferno": "3.7.1",
     "inferno-compat": "3.7.1",
     "inferno-component": "3.7.1",
+    "polished": "1.7.0",
     "styled-components": "2.1.2",
     "webpack": "3.4.1"
   },
