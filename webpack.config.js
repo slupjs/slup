@@ -22,6 +22,7 @@ module.exports = {
       '@slup/sidenav': join(__dirname, 'packages', 'Sidenav', 'src', 'index'),
       '@slup/grid': join(__dirname, 'packages', 'Grid', 'src', 'index'),
       '@slup/theming': join(__dirname, 'packages', 'Theming', 'src', 'index'),
+      '@slup/tabs': join(__dirname, 'packages', 'Tabs', 'src', 'index'),
 
       // Aliases needed for styled-components
       'react': 'inferno-compat',
@@ -53,7 +54,7 @@ module.exports = {
 			}
 		}
   },
-  
+
 	plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.ModuleConcatenationPlugin()

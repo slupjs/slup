@@ -3,16 +3,12 @@ import Component from 'inferno-component'
 import styled from 'styled-components'
 
 import { Link } from 'inferno-router'
-import { RaisedButton } from '@slup/buttons'
+import { TabContainer, Tab } from '@slup/tabs'
 import { Logo } from '../components/logo'
 
 const LogoContainer = styled.div`
-  display: flex;
-  flex: 1;
+  width: 100%;
   height: 100%;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 `
 
 const CleanLink = styled(Link)`
@@ -20,15 +16,14 @@ const CleanLink = styled(Link)`
 `
 
 export class Home extends Component {
-  handleClick() {
-    console.log('a')
-  }
-
   render() {
     return(
       <LogoContainer>
-        {Logo}
-        <RaisedButton onClick={this.handleClick}>Get started !</RaisedButton>
+        <TabContainer primary center>
+          <Tab>Item one</Tab>
+          <Tab>Item two</Tab>
+          <Tab>Item three</Tab>
+        </TabContainer>
       </LogoContainer>
     )
   }

@@ -22,7 +22,7 @@ export const Bar = styled.div`
   padding: 0 16px;
   color: ${props => props.theme.text};
   background: ${props => props.primary
-    ? darken(0.02, props.theme.primary)
+    ? darken(0.02, props.theme.primary || lightTheme.primary)
     : darken(0.02, props.theme.background || lightTheme.background)
   };
   position:   ${props => props.fixed || props.reveal
