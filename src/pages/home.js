@@ -25,7 +25,6 @@ export class Home extends Component {
   state = { selected: 0 }
 
   handleClick(selected) {
-    console.log(selected)
     this.setState({ selected })
   }
 

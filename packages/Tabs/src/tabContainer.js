@@ -51,8 +51,6 @@ export class TabContainer extends Component {
     const Tab = this.container.childNodes[selected]
     const { clientWidth: width, offsetLeft: left } = Tab
 
-    console.log(left, selected)
-
     this.setState({ style: { left, width }})
   }
 
