@@ -39,8 +39,15 @@ export class TabContainer extends Component {
      * As selected may be undefined in the componentDidMount
      * event we prevent errors by taking the value 
      * from the porps as a fallback
+     * 
+     * We check if the number is NOT a number, becuase
+     * 0 is still an acceptable number but returns a falsy
+     * value in an ipothetical if statement
      */
-    const selected = newProps.selected || this.props.selected
+    const selected = isNaN(newProps.selected) 
+      ? this.props.selected
+      : newProps.selected
+    
     const Tab = this.container.childNodes[selected]
     const { clientWidth: width, offsetLeft: left } = Tab
 
