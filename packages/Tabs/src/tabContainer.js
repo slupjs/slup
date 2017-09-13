@@ -40,9 +40,9 @@ export class TabContainer extends Component {
      * event we prevent errors by taking the value 
      * from the porps as a fallback
      * 
-     * We check if the number is NOT a number, becuase
-     * 0 is still an acceptable number but returns a falsy
-     * value in an ipothetical if statement
+     * We check if the value is NOT a number, becuase
+     * 0 is still an acceptable number but would be falsy
+     * in an ipothetical if statement
      */
     const selected = isNaN(newProps.selected) 
       ? this.props.selected
