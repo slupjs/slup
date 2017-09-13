@@ -24,14 +24,18 @@ export class Home extends Component {
 
   state = { selected: 0 }
 
-  handleClick(i) {
-    this.setState({ selected: i })
+  handleClick(selected) {
+    console.log(selected)
+    this.setState({ selected })
   }
 
   render() {
     return(
       <LogoContainer>
-        <TabContainer primary center selected={this.state.selected}>
+        <TabContainer
+          primary
+          center 
+          selected={this.state.selected}>
           {this.tabs.map((item, i) => {
             return(
               <Tab
