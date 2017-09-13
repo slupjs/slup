@@ -56,7 +56,7 @@ export class NavBar extends Component {
     return(
       <div>
        {redirect ? <Redirect to={redirect} /> : null}
-        <Navbar primary>
+        <Navbar primary style={{ boxShadow: 'none' }}>
           <Grid middle>
             <Col sm={12} offset_lg={320}>
               <Grid middle space_between hide-md>

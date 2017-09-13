@@ -23,7 +23,7 @@ const Item = styled.div`
   user-select: none;
   font-weight: bolder;
   position: relative;
-  transition: color 150ms;
+  transition: color 150ms, width 150ms, min-width 150ms;
   color: ${props => props.selected && props.secondary
     ? props.theme.secondary || lightTheme.secondary
     : props.selected
@@ -40,13 +40,13 @@ const Item = styled.div`
     };
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 480px) {
     min-width: 60px;
   }
 `
 
 export const Tab = (props) =>
-  <Item {...props} selected={props.selected}>
+  <Item {...props}>
     {props.children}
     <Ripple />
   </Item>

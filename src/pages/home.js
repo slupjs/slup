@@ -31,7 +31,7 @@ export class Home extends Component {
   render() {
     return(
       <LogoContainer>
-        <TabContainer primary center>
+        <TabContainer primary center selected={this.state.selected}>
           {this.tabs.map((item, i) => {
             return(
               <Tab
