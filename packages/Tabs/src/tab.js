@@ -23,7 +23,7 @@ const Item = styled.div`
   user-select: none;
   font-weight: bolder;
   position: relative;
-  transition: color 150ms, width 150ms, min-width 150ms;
+  transition: color 150ms, width 150ms, min-width 200ms;
   color: ${props => props.selected && props.secondary
     ? props.theme.secondary || lightTheme.secondary
     : props.selected

@@ -33,7 +33,8 @@ export class Home extends Component {
       <LogoContainer>
         <TabContainer
           primary
-          center 
+          center
+          fullWidth
           selected={this.state.selected}>
           {this.tabs.map((item, i) => {
             return(

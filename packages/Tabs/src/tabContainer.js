@@ -15,6 +15,10 @@ const Container = styled.div`
     ? darken(0.02, props.theme.primary || lightTheme.primary)
     : 'inherit'
   };
+
+  div:not(:last-child) {
+    width: ${props => props.fullWidth ? 'calc(100% / ' + props.children.length + ')' : 'auto'};
+  }
 `
 
 const Indicator = styled.div`
@@ -23,6 +27,7 @@ const Indicator = styled.div`
   transition: width 150ms, left 150ms;
   height: 2px;
   background: ${props => props.theme.secondary || lightTheme.secondary};
+  background: red
 `
 
 export class TabContainer extends Component {
