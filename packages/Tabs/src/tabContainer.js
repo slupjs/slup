@@ -20,7 +20,7 @@ const Container = styled.div`
 const Indicator = styled.div`
   position: absolute;
   bottom: 0.5px;
-  transition: width 150ms, left 250ms;
+  transition: width 150ms, left 150ms;
   height: 2px;
   background: ${props => props.theme.secondary || lightTheme.secondary};
 `
@@ -37,31 +37,38 @@ export class TabContainer extends Component {
   componentWillReceiveProps(newProps = {}) {
     /**
      * As selected may be undefined in the componentDidMount
-     * event we prevent errors by taking the value 
-     * from the porps as a fallback
-     * 
+     * event we prevent errors by taking the value
+     * from the props as a fallback
+     *
      * We check if the value is NOT a number, becuase
-     * 0 is still an acceptable number but would be falsy
+     * 0 is still an acceptable number but would be fals
      * in an ipothetical if statement
      */
-    const selected = isNaN(newProps.selected) 
+    const selected = isNaN(newProps.selected)
       ? this.props.selected
       : newProps.selected
-    
+
     const Tab = this.container.childNodes[selected]
     const { clientWidth: width, offsetLeft: left } = Tab
 
     this.setState({ style: { left, width }})
+
+    window.addEventListener('resize', () => {
+      const { clientWidth: width, offsetLeft: left } = Tab
+
+      this.setState({ style: { left, width }})
+    })
   }
 
   render(props) {
-    this.props.children.push(<Indicator style={this.state.style} />)
-
     return(
-      <Container 
-        {...props} 
-        innerRef={e => this.container = e} 
-      />
+      <Container
+        {...props}
+        innerRef={e => this.container = e}
+      >
+        {props.children}
+        <Indicator style={this.state.style} />
+      </Container>
     )
   }
 }
