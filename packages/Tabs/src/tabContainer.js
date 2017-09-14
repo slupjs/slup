@@ -1,7 +1,6 @@
 import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from 'styled-components'
-import { bind }  from 'decko'
 
 import { lightTheme } from '@slup/theming'
 import { darken }     from 'polished'
@@ -10,6 +9,8 @@ const Container = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  width: ${props => props.scrollable && !props.center ? '100vw' : 'auto'};
+  padding-left: ${props => props.scrollable && !props.center ? '80px' : '0'};
   justify-content: ${props => props.center ? 'center' : 'flex-start'};
   background: ${props => props.primary
     ? darken(0.02, props.theme.primary || lightTheme.primary)
@@ -17,7 +18,12 @@ const Container = styled.div`
   };
 
   div:not(:last-child) {
-    width: ${props => props.fullWidth ? 'calc(100% / ' + props.children.length + ')' : 'auto'};
+    width: ${props => props.fullWidth ? 'calc(100% / ' + (props.children.length - 1) + ')' : 'auto'};
+  }
+
+  @media only screen and (max-width: 480px) {
+    overflow-x: auto;
+    padding-left: ${props => props.scrollable && !props.center ? '80px' : '0'};
   }
 `
 
@@ -26,8 +32,10 @@ const Indicator = styled.div`
   bottom: 0.5px;
   transition: width 150ms, left 150ms;
   height: 2px;
-  background: ${props => props.theme.secondary || lightTheme.secondary};
-  background: red
+  background: ${props => props.secondaryIndicator
+    ? props.theme.secondary || lightTheme.secondary
+    : props.theme.text || lightTheme.text
+  };
 `
 
 export class TabContainer extends Component {
@@ -72,7 +80,7 @@ export class TabContainer extends Component {
         innerRef={e => this.container = e}
       >
         {props.children}
-        <Indicator style={this.state.style} />
+        <Indicator style={this.state.style} secondaryIndicator={props.secondaryIndicator} />
       </Container>
     )
   }
