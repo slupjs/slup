@@ -1,6 +1,7 @@
 import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from 'styled-components'
+import { bind }  from 'decko'
 
 import { lightTheme } from '@slup/theming'
 import { darken }     from 'polished'
@@ -41,13 +42,25 @@ const Indicator = styled.div`
 export class TabContainer extends Component {
   state = { style: {} }
 
-  /**
-   * Call the mount event as an update
-   * in fact it's the "initial" update)
-   */
-  componentDidMount = this.componentWillReceiveProps
+  componentDidMount() {
+    /**
+     * Call the mount event as an update
+     * in fact it's the "initial" update)
+     */
+    this.updateIndicator()
 
-  componentWillReceiveProps(newProps = {}) {
+    // Listen for resized
+    window.addEventListener('resize', this.updateIndicator)
+  }
+
+  componentDidUnmount() {
+    window.removeEventListener('resize', this.updateIndicator)
+  }
+
+  componentWillReceiveProps = this.updateIndicator
+
+  @bind
+  updateIndicator(newProps = {}) {
     /**
      * As selected may be undefined in the componentDidMount
      * event we prevent errors by taking the value
@@ -64,24 +77,22 @@ export class TabContainer extends Component {
     const Tab = this.container.childNodes[selected]
     const { clientWidth: width, offsetLeft: left } = Tab
 
-    this.setState({ style: { left, width }})
-
-    window.addEventListener('resize', () => {
-      const { clientWidth: width, offsetLeft: left } = Tab
-
-      this.setState({ style: { left, width }})
-    })
+    this.setState({ style: { left, width } })
   }
 
-  render(props) {
-    return(
+  render({ children, secondaryIndicator, ...props }) {
+    return (
       <Container
         {...props}
         innerRef={e => this.container = e}
-      >
-        {props.children}
-        <Indicator style={this.state.style} secondaryIndicator={props.secondaryIndicator} />
-      </Container>
+        children={[
+          ...children,
+          <Indicator
+            style={this.state.style}
+            secondaryIndicator={secondaryIndicator}
+          />
+        ]}
+      />
     )
   }
 }
