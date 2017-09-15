@@ -20,7 +20,7 @@ export const Bar = styled.div`
   display: flex;
   align-items: center;
   padding: 0 16px;
-  color: ${props => props.theme.text};
+  color: ${props => props.theme.text || lightTheme.text};
   background: ${props => props.primary
     ? darken(0.02, props.theme.primary || lightTheme.primary)
     : darken(0.02, props.theme.background || lightTheme.background)

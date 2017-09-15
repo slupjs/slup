@@ -4,13 +4,27 @@ import styled    from 'styled-components'
 import { bind }  from 'decko'
 
 import { lightTheme } from '@slup/theming'
-import { darken }     from 'polished'
+import { darken, rgba }     from 'polished'
+
+import { RightButton } from './rightButton'
+import { LeftButton }  from './leftButton'
+
+const FixedContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: auto;
+  background: ${props => props.primary
+    ? darken(0.02, props.theme.primary || lightTheme.primary)
+    : 'inherit'
+  };
+`
 
 const Container = styled.div`
-  position: relative;
+  position: absolute;
   z-index: 1;
   display: flex;
   align-items: center;
+  transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
   width: ${props => props.scrollable && !props.center ? '100vw' : 'auto'};
   padding-left: ${props => props.scrollable && !props.center ? '80px' : '0'};
   justify-content: ${props => props.center ? 'center' : 'flex-start'};
@@ -18,6 +32,7 @@ const Container = styled.div`
     ? darken(0.02, props.theme.primary || lightTheme.primary)
     : 'inherit'
   };
+  transform: translateX(${props => props.translate});
 
   div:not(:last-child) {
     width: ${props => props.fullWidth ? 'calc(100% / ' + (props.children.length - 1) + ')' : 'auto'};
@@ -25,7 +40,7 @@ const Container = styled.div`
 
   @media only screen and (max-width: 480px) {
     overflow-x: auto;
-    padding-left: ${props => props.scrollable && !props.center ? '80px' : '0'};
+    padding-left: ${props => props.scrollable && !props.center ? '72px' : '0'};
   }
 `
 
@@ -41,7 +56,10 @@ const Indicator = styled.div`
 `
 
 export class TabContainer extends Component {
-  state = { style: {} }
+  state = {
+    style: {},
+    translate: 0
+  }
 
   componentDidMount() {
     /**
@@ -81,19 +99,34 @@ export class TabContainer extends Component {
     this.setState({ style: { left, width } })
   }
 
+  @bind
+  handleRightClick() {
+    this.setState({ translate: '-10%' })
+  }
+
+  @bind
+  handleLeftClick() {
+    this.setState({ translate: '10%' })
+  }
+
   render({ children, secondaryIndicator, ...props }) {
     return (
-      <Container
-        {...props}
-        innerRef={e => this.container = e}
-        children={[
-          ...children,
-          <Indicator
-            style={this.state.style}
-            secondaryIndicator={secondaryIndicator}
-          />
-        ]}
-      />
+      <FixedContainer primary={props.primary}>
+        <LeftButton onClick={this.handleLeftClick} translate={this.state.translate} />
+        <Container
+          {...props}
+          innerRef={e => this.container = e}
+          translate={this.state.translate}
+          children={[
+            ...children,
+            <Indicator
+              style={this.state.style}
+              secondaryIndicator={secondaryIndicator}
+            />
+          ]}
+        />
+        <RightButton onClick={this.handleRightClick} translate={this.state.translate} />
+      </FixedContainer>
     )
   }
 }

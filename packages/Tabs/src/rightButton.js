@@ -12,25 +12,20 @@ const rightArrow = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M8.5
 
 const RightBase = styled.div`
   width: 56px;
-  height: inherit;
+  min-height: 48px;
   z-index: 2;
+  fill: ${props => props.theme.text || lightTheme.text};
   cursor: pointer;
-  background: inherit;
-  position: relative;
+  background: transparent;
+  position: absolute;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 `
 
-export class RightButton extends Component {
-  render() {
-    return(
-      <div style={{position: 'fixed', right: 0}}>
-        <RightBase>
-          {rightArrow}
-          <Ripple />
-        </RightBase>
-      </div>
-    )
-  }
-}
+export const RightButton = (props) =>
+  <RightBase onClick={props.onClick}>
+    {rightArrow}
+    <Ripple />
+  </RightBase>

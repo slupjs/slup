@@ -13,25 +13,20 @@ const leftArrow = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.4
 
 const LeftBase = styled.div`
   width: 56px;
-  height: inherit;
+  min-height: 48px;
+  fill: ${props => props.theme.text || lightTheme.text};
   z-index: 2;
+  color: inherit;
   cursor: pointer;
-  background: inherit;
+  background: transparent;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 `
 
-export class LeftButton extends Component {
-  render() {
-    return(
-      <div style={{position: 'fixed', left: 0}}>
-        <LeftBase>
-          {leftArrow}
-          <Ripple />
-        </LeftBase>
-      </div>
-    )
-  }
-}
+export const LeftButton = (props) =>
+  <LeftBase onClick={props.onClick}>
+    {leftArrow}
+    <Ripple />
+  </LeftBase>
