@@ -8,6 +8,7 @@ import { darken }     from 'polished'
 
 const Container = styled.div`
   position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   width: ${props => props.scrollable && !props.center ? '100vw' : 'auto'};
