@@ -32,7 +32,7 @@ const Container = styled.div`
     ? darken(0.02, props.theme.primary || lightTheme.primary)
     : 'inherit'
   };
-  transform: translateX(${props => props.translate});
+  transform: translateX(${props => props.translate}%);
 
   div:not(:last-child) {
     width: ${props => props.fullWidth ? 'calc(100% / ' + (props.children.length - 1) + ')' : 'auto'};
@@ -101,12 +101,18 @@ export class TabContainer extends Component {
 
   @bind
   handleRightClick() {
-    this.setState({ translate: '-10%' })
+    const { translate: _translate } = this.state
+    const translate = _translate - 10
+
+    this.setState({ translate })
   }
 
   @bind
   handleLeftClick() {
-    this.setState({ translate: '10%' })
+    const { translate: _translate } = this.state
+    const translate = _translate + 10
+
+    this.setState({ translate })
   }
 
   render({ children, secondaryIndicator, ...props }) {
