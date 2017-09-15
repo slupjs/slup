@@ -12,7 +12,9 @@ import { LeftButton }  from './leftButton'
 const FixedContainer = styled.div`
   display: flex;
   align-items: center;
-  height: auto;
+  width: auto;
+  min-height: 48px;
+  justify-content: ${props => props.center ? 'center' : 'flex-start'};
   background: ${props => props.primary
     ? darken(0.02, props.theme.primary || lightTheme.primary)
     : 'inherit'
@@ -25,9 +27,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-  width: ${props => props.scrollable && !props.center ? '100vw' : 'auto'};
+  width: ${props => props.scrollable && !props.center ? '100%' : 'auto'};
   padding-left: ${props => props.scrollable && !props.center ? '80px' : '0'};
-  justify-content: ${props => props.center ? 'center' : 'flex-start'};
   background: ${props => props.primary
     ? darken(0.02, props.theme.primary || lightTheme.primary)
     : 'inherit'
@@ -70,6 +71,7 @@ export class TabContainer extends Component {
 
     // Listen for resized
     window.addEventListener('resize', this.updateIndicator)
+
   }
 
   componentDidUnmount() {
@@ -105,6 +107,7 @@ export class TabContainer extends Component {
     const translate = _translate - 10
 
     this.setState({ translate })
+    console.log(translate);
   }
 
   @bind
@@ -117,8 +120,13 @@ export class TabContainer extends Component {
 
   render({ children, secondaryIndicator, ...props }) {
     return (
-      <FixedContainer primary={props.primary}>
-        <LeftButton onClick={this.handleLeftClick} translate={this.state.translate} />
+      <FixedContainer primary={props.primary} center={props.center}>
+        <LeftButton
+          onClick={this.handleLeftClick}
+          translate={this.state.translate}
+          scrollable={props.scrollable}
+          {...props}
+        />
         <Container
           {...props}
           innerRef={e => this.container = e}
@@ -131,7 +139,12 @@ export class TabContainer extends Component {
             />
           ]}
         />
-        <RightButton onClick={this.handleRightClick} translate={this.state.translate} />
+        <RightButton
+          onClick={this.handleRightClick}
+          translate={this.state.translate}
+          scrollable={props.scrollable}
+          {...props}
+        />
       </FixedContainer>
     )
   }

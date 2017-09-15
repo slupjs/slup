@@ -19,15 +19,9 @@ export class Home extends Component {
   tabs = [
     'item one',
     'item two',
-    'item three',
     'item one',
     'item two',
-    'item three',
-    'item one',
-    'item two',
-    'item three',
-    'item one',
-    'item two'
+    'item one'
   ]
 
   state = { selected: 0 }
@@ -40,8 +34,6 @@ export class Home extends Component {
     return(
       <LogoContainer>
         <TabContainer
-          primary
-          scrollable
           selected={this.state.selected}>
           {this.tabs.map((item, i) => {
             return(

@@ -8,6 +8,7 @@ import { lightTheme } from '@slup/theming'
 import { rgba }       from 'polished'
 
 const Item = styled.div`
+  -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
   min-height: 48px;
   max-height: 72px;

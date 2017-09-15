@@ -12,21 +12,25 @@ const leftArrow = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.4
 
 
 const LeftBase = styled.div`
+  -webkit-tap-highlight-color: transparent;
   width: 56px;
   min-height: 48px;
-  fill: ${props => props.theme.text || lightTheme.text};
   z-index: 2;
   color: inherit;
   cursor: pointer;
-  background: transparent;
   position: relative;
-  display: flex;
+  display: ${props => props.scrollable ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
+  fill: ${props => props.theme.text || lightTheme.text};
+  background: ${props => props.primary
+    ? darken(0.04, props.theme.primary || lightTheme.primary)
+    : props.theme.background || lightTheme.background
+  };
 `
 
 export const LeftButton = (props) =>
-  <LeftBase onClick={props.onClick}>
+  <LeftBase onClick={props.onClick} {...props}>
     {leftArrow}
     <Ripple />
   </LeftBase>
