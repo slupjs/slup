@@ -5,9 +5,8 @@ import { bind }  from 'decko'
 
 import { lightTheme } from '@slup/theming'
 import { darken, rgba }     from 'polished'
+import { Arrow } from './arrow'
 
-import { RightButton } from './rightButton'
-import { LeftButton }  from './leftButton'
 
 const FixedContainer = styled.div`
   display: flex;
@@ -102,30 +101,26 @@ export class TabContainer extends Component {
   }
 
   @bind
-  handleRightClick() {
+  moveScroll(direction) {
     const { translate: _translate } = this.state
-    const translate = _translate - 10
+    let   translate = null
 
-    this.setState({ translate })
-    console.log(translate);
-  }
-
-  @bind
-  handleLeftClick() {
-    const { translate: _translate } = this.state
-    const translate = _translate + 10
+    if(direction == 'right') {
+      translate = _translate + 10
+    } else {
+      translate = _translate - 10
+    }
 
     this.setState({ translate })
   }
+
 
   render({ children, secondaryIndicator, ...props }) {
     return (
       <FixedContainer primary={props.primary} center={props.center}>
-        <LeftButton
-          onClick={this.handleLeftClick}
-          translate={this.state.translate}
-          scrollable={props.scrollable}
-          {...props}
+        <Arrow 
+          left
+          onClick={() => this.moveScroll('right')}
         />
         <Container
           {...props}
@@ -139,11 +134,9 @@ export class TabContainer extends Component {
             />
           ]}
         />
-        <RightButton
-          onClick={this.handleRightClick}
-          translate={this.state.translate}
-          scrollable={props.scrollable}
-          {...props}
+        <Arrow
+          right
+          onClick={() => this.moveScroll('left')}
         />
       </FixedContainer>
     )

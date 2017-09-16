@@ -34,6 +34,8 @@ export class Home extends Component {
     return(
       <LogoContainer>
         <TabContainer
+          primary
+          scrollable
           selected={this.state.selected}>
           {this.tabs.map((item, i) => {
             return(
