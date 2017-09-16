@@ -1,0 +1,32 @@
+import styled from 'styled-components'
+
+import { lightTheme } from '@slup/theming'
+import { darken }     from 'polished'
+
+export const Scroll = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  transform: translateY(15px);
+  width: ${props => props.scrollable ? '100%' : 'auto'};
+  left: ${props => props.scrollable ? '80px' : 'auto'};
+  right: ${props => props.scrollable ? '80px' : 'auto'};
+  background: ${props => props.primary
+    ? darken(0.02, props.theme.primary || lightTheme.primary)
+    : 'inherit'
+  };
+
+  div:not(:last-child) {
+    width: ${props => props.fullWidth ? 'calc(100% / ' + (props.children.length - 1) + ')' : 'auto'};
+  }
+
+  @media only screen and (max-width: 480px) {
+    overflow-x: auto;
+    left: ${props => props.scrollable ? '72px' : 'auto'};
+    right: ${props => props.scrollable ? '72px' : 'auto'};
+    padding-bottom: 0;
+    transform: translateY(0);
+  }
+`

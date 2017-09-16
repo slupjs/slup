@@ -1,7 +1,8 @@
 import Inferno from 'inferno'
-import styled from 'styled-components'
+import styled  from 'styled-components'
 
-import { Ripple } from '@slup/ripple'
+import { lightTheme } from '@slup/theming'
+import { Ripple }     from '@slup/ripple'
 
 const ArrowSVG = () =>
   <svg width='24' viewBox='0 0 24 24'>
@@ -27,6 +28,10 @@ const Container = styled.div`
   transform: ${props => props.right ? 'rotate(180deg)' : null};
   fill:  ${props => props.theme.text || lightTheme.text};
   right: ${props => props.right ? 0 : null};
+  background: ${props => props.primary
+    ? darken(0.02, props.theme.primary || lightTheme.primary)
+    : 'inherit'
+  };
 `
 
 export const Arrow = (props) => 
