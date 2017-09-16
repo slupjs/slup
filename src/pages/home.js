@@ -19,7 +19,22 @@ export class Home extends Component {
   tabs = [
     'item one',
     'item two',
-    'item one'
+    'item three',
+    'item one',
+    'item two',
+    'item three',
+    'item one',
+    'item two',
+    'item three',
+    'item one',
+    'item two',
+    'item three',
+    'item one',
+    'item two',
+    'item three',
+    'item one',
+    'item two',
+    'item three'
   ]
 
   state = { selected: 0 }

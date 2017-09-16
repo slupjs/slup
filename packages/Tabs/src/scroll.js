@@ -8,6 +8,7 @@ export const Scroll = styled.div`
   display: flex;
   align-items: center;
   overflow-x: auto;
+  overflow-y: hidden;
   padding-bottom: ${props => props.translate ? '15px' : null};
   transform: ${props => props.translate ? 'translateY(15px)' : null};
   width: ${props => props.scrollable ? '100%' : 'auto'};
@@ -19,14 +20,14 @@ export const Scroll = styled.div`
   };
 
   div:not(:last-child) {
-    width: ${props => props.fullWidth ? 'calc(100% / ' + (props.children.length - 1) + ')' : 'auto'};
+    width: ${props => props.fit ? 'calc(100vw / ' + (props.children.length - 1) + ')' : 'auto'};
   }
 
   @media only screen and (max-width: 480px) {
     overflow-x: auto;
-    left: ${props => props.scrollable ? '72px' : 'auto'};
-    right: ${props => props.scrollable ? '72px' : 'auto'};
     padding-bottom: 0;
     transform: translateY(0);
+    left: ${props => props.scrollable ? '72px' : 'auto'};
+    right: ${props => props.scrollable ? '72px' : 'auto'};
   }
 `
