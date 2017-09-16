@@ -28,7 +28,7 @@ const Container = styled.div`
 export class Tabs extends Component {
   id    = null
   count = 0
-  state = { style: {} }
+  state = { style: {}, translate: false }
 
   componentDidMount() {
     /**
@@ -39,6 +39,9 @@ export class Tabs extends Component {
 
     // Listen for resized
     window.addEventListener('resize', this.updateIndicator)
+
+    if (this.isScrollable(this.scroll))
+      this.setState({ translate: true })
 
   }
 
@@ -96,34 +99,42 @@ export class Tabs extends Component {
     }
   }
 
+  // Useful helper function to check if the container is scrollable
+  isScrollable(element) {
+    if (element.scrollLeft === 0) {
+      element.scrollLeft++;
+
+      if (element.scrollLeft === 0) return false;
+
+      element.scrollLeft--;
+    }
+    return true;
+  }
+
   render(props) {
     const { children, secondaryIndicator, scrollable } = props
 
     return (
       <Container {...props}>
-        {scrollable 
-          ? <Arrow
-              left
-              onClick={() => this.moveScroll('left')}
-            />
-          : null  
+        {scrollable
+          ? <Arrow onClick={() => this.moveScroll('left')} />
+          : null
         }
         <Scroll
           {...props}
           innerRef={e => this.scroll = e}
+          translate={this.state.translate}
           children={[
             ...children,
             <Indicator
+              {...props}
+              translate={this.state.translate}
               style={this.state.style}
-              secondaryIndicator={secondaryIndicator}
             />
           ]}
         />
         {scrollable
-          ? <Arrow
-            right
-            onClick={() => this.moveScroll('right')}
-          />
+          ? <Arrow right onClick={() => this.moveScroll('right')} />
           : null
         }
       </Container>

@@ -8,8 +8,8 @@ export const Scroll = styled.div`
   display: flex;
   align-items: center;
   overflow-x: auto;
-  padding-bottom: 15px;
-  transform: translateY(15px);
+  padding-bottom: ${props => props.translate ? '15px' : null};
+  transform: ${props => props.translate ? 'translateY(15px)' : null};
   width: ${props => props.scrollable ? '100%' : 'auto'};
   left: ${props => props.scrollable ? '80px' : 'auto'};
   right: ${props => props.scrollable ? '80px' : 'auto'};

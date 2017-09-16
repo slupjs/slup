@@ -4,8 +4,8 @@ import styled  from 'styled-components'
 import { lightTheme } from '@slup/theming'
 import { Ripple }     from '@slup/ripple'
 
-const ArrowSVG = () =>
-  <svg width='24' viewBox='0 0 24 24'>
+const ArrowSVG = (props) =>
+  <svg width='24' viewBox='0 0 24 24' style={{transform: props.right ? 'rotate(180deg)' : null}}>
     <path d='M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z' />
   </svg>
 
@@ -25,7 +25,6 @@ const Container = styled.div`
   z-index: 2;
 
   /** Reactive values */
-  transform: ${props => props.right ? 'rotate(180deg)' : null};
   fill:  ${props => props.theme.text || lightTheme.text};
   right: ${props => props.right ? 0 : null};
   background: ${props => props.primary
@@ -34,7 +33,7 @@ const Container = styled.div`
   };
 `
 
-export const Arrow = (props) => 
+export const Arrow = (props) =>
   <Container {...props}>
     <ArrowSVG {...props} />
     <Ripple />

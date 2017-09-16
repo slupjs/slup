@@ -4,7 +4,7 @@ import { lightTheme } from '@slup/theming'
 
 export const Indicator = styled.div`
   position: absolute;
-  bottom: 15px;
+  bottom: ${props => props.translate ? '15px' : 0};
   transition: width 150ms, left 150ms;
   height: 2px;
   background: ${props => props.secondaryIndicator
