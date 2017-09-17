@@ -65,7 +65,7 @@ const Item = styled.div`
   }
 `
 
-export const Icon = styled.div`
+export const TabIcon = styled.div`
   margin: 8px 0 6px 0;
   fill: inherit;
   display: flex;

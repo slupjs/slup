@@ -3,7 +3,7 @@ import Component from 'inferno-component'
 import styled from 'styled-components'
 
 import { Link } from 'inferno-router'
-import { Tabs, Tab, Icon } from '@slup/tabs'
+import { Tabs, Tab, TabIcon } from '@slup/tabs'
 import { Logo } from '../components/logo'
 
 const LogoContainer = styled.div`
@@ -51,7 +51,7 @@ export class Home extends Component {
                 onClick={() => this.handleClick(i)}
                 selected={this.state.selected == i}
               >
-                <Icon>{item.icon}</Icon>
+                <TabIcon>{item.icon}</TabIcon>
                 <span>{item.text}</span>
               </Tab>
             )

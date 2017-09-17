@@ -100,41 +100,60 @@ export class Tabs extends Component {
     }
   }
 
-  // Useful helper function to check if the container is scrollable
-  isScrollable(el) {
-    if(el.scrollLeft === 0) {
-      el.scrollLeft++
+  /**
+   * This helper function checks if a given
+   * element has a scrollable content or not.
+   * 
+   * @param {HTMLElement} element
+   */
+  isScrollable(element) {
+    // If the element is already scrolled
+    if (element.scrollLeft !== 0) return true
 
-      if(el.scrollLeft === 0) return false
+    /**
+     * Let's try to increase the scrolling, 
+     * if it doesn't work the element is
+     * not scrollable
+     */
+    element.scrollLeft++
 
-      el.scrollLeft--
+    if (element.scrollLeft === 0) {
+      return false
+    } else {
+      element.scrollLeft--
+      return true
     }
-
-    return true
   }
 
   render(props) {
+    const { translate, style } = this.state
     const { children, secondaryIndicator, scrollable } = props
 
     return (
       <Container {...props}>
+
+        {/* Left scroll arrow */}
         {scrollable
           ? <Arrow onClick={() => this.moveScroll('left')} />
           : null
         }
+
+        {/* Scroll container */}
         <Scroll
           {...props}
           innerRef={e => this.scroll = e}
-          translate={this.state.translate}
+          translate={translate}
           children={[
             ...children,
             <Indicator
               {...props}
-              translate={this.state.translate}
-              style={this.state.style}
+              translate={translate}
+              style={style}
             />
           ]}
         />
+
+        {/* Right scroll arrow */}
         {scrollable
           ? <Arrow right onClick={() => this.moveScroll('right')} />
           : null
