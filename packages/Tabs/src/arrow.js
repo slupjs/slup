@@ -26,6 +26,7 @@ const Container = styled.div`
   /** Sizes */
   width: 56px;
   min-height: 48px;
+  height: inherit;
   z-index: 2;
 
   /** Reactive values */

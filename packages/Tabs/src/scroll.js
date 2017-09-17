@@ -7,10 +7,10 @@ export const Scroll = styled.div`
   position: absolute;
   display: flex;
   align-items: center;
-  overflow-x: auto;
+  overflow-x: ${props => props.center ? 'hidden' : 'auto'};
   overflow-y: hidden;
-  padding-bottom: ${props => props.translate ? '15px' : null};
-  transform: ${props => props.translate ? 'translateY(15px)' : null};
+  padding-bottom: ${props => props.translate && props.scrollable ? '15px' : null};
+  transform: ${props => props.translate && props.scrollable ? 'translateY(15px)' : null};
   width: ${props => props.scrollable ? '100%' : 'auto'};
   left: ${props => props.scrollable ? '80px' : 'auto'};
   right: ${props => props.scrollable ? '80px' : 'auto'};
@@ -26,7 +26,7 @@ export const Scroll = styled.div`
   }
 
   @media only screen and (max-width: 480px) {
-    overflow-x: auto;
+    overflow-x: ${props => props.center ? 'hidden' : 'auto'};
     padding-bottom: 0;
     transform: translateY(0);
     left: ${props => props.scrollable ? '72px' : 'auto'};

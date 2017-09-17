@@ -16,7 +16,6 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 48px;
   justify-content: ${props => props.center ? 'center' : 'flex-start'};
   background: ${props => props.primary
 		? darken(0.02, props.theme.primary || lightTheme.primary)
@@ -68,6 +67,8 @@ export class Tabs extends Component {
 
     const Tab = this.scroll.childNodes[selected]
     const { clientWidth: width, offsetLeft: left } = Tab
+
+    this.scroll.parentElement.style.height = Tab.clientHeight + 'px'
 
     this.setState({ style: { left, width } })
   }
