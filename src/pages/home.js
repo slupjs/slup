@@ -15,7 +15,7 @@ const LogoContainer = styled.div`
   flex-direction: column;
 `
 
-const CleanLink = styled(Link)`
+const CleanLink = styled(Link) `
   text-decoration: none;
 `
 
@@ -25,7 +25,7 @@ export class Home extends Component {
   }
 
   render() {
-    return(
+    return (
       <LogoContainer>
         {Logo}
         <RaisedButton onClick={this.handleClick}>Get started !</RaisedButton>
