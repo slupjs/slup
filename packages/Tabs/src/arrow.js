@@ -5,7 +5,11 @@ import { lightTheme } from '@slup/theming'
 import { Ripple }     from '@slup/ripple'
 
 const ArrowSVG = (props) =>
-  <svg width='24' viewBox='0 0 24 24' style={{transform: props.right ? 'rotate(180deg)' : null}}>
+  <svg
+    width='24'
+    viewBox='0 0 24 24'
+    style={{transform: props.right ? 'rotate(180deg)' : null}}
+  >
     <path d='M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z' />
   </svg>
 
@@ -33,8 +37,8 @@ const Container = styled.div`
   };
 `
 
-export const Arrow = (props) =>
-  <Container {...props}>
-    <ArrowSVG {...props} />
+export const Arrow = ({ right, ...props }) =>
+  <Container right={right} {...props}>
+    <ArrowSVG right={right} />
     <Ripple />
   </Container>

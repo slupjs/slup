@@ -20,7 +20,7 @@ const Container = styled.div`
   justify-content: ${props => props.center ? 'center' : 'flex-start'};
   background: ${props => props.primary
 		? darken(0.02, props.theme.primary || lightTheme.primary)
-		: 'inherit'
+		: props.theme.background || lightTheme.background
   };
 `
 
@@ -100,15 +100,16 @@ export class Tabs extends Component {
   }
 
   // Useful helper function to check if the container is scrollable
-  isScrollable(element) {
-    if (element.scrollLeft === 0) {
-      element.scrollLeft++;
+  isScrollable(el) {
+    if(el.scrollLeft === 0) {
+      el.scrollLeft++
 
-      if (element.scrollLeft === 0) return false;
+      if(el.scrollLeft === 0) return false
 
-      element.scrollLeft--;
+      el.scrollLeft--
     }
-    return true;
+
+    return true
   }
 
   render(props) {

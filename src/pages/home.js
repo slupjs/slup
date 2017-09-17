@@ -3,7 +3,7 @@ import Component from 'inferno-component'
 import styled from 'styled-components'
 
 import { Link } from 'inferno-router'
-import { Tabs, Tab } from '@slup/tabs'
+import { Tabs, Tab, Icon } from '@slup/tabs'
 import { Logo } from '../components/logo'
 
 const LogoContainer = styled.div`
@@ -17,21 +17,6 @@ const CleanLink = styled(Link)`
 
 export class Home extends Component {
   tabs = [
-    'item one',
-    'item two',
-    'item three',
-    'item one',
-    'item two',
-    'item three',
-    'item one',
-    'item two',
-    'item three',
-    'item one',
-    'item two',
-    'item three',
-    'item one',
-    'item two',
-    'item three',
     'item one',
     'item two',
     'item three'
@@ -48,11 +33,12 @@ export class Home extends Component {
       <LogoContainer>
         <Tabs
           scrollable
-          primary
+          secondaryIndicator
           selected={this.state.selected}>
           {this.tabs.map((item, i) => {
             return(
               <Tab
+                secondary
                 onClick={() => this.handleClick(i)}
                 selected={this.state.selected == i}
               >
