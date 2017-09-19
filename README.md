@@ -1,5 +1,5 @@
 <h1 align='center'>
-  <img src='http://svgshare.com/i/343.svg' width='65%' />
+  <img src='http://svgshare.com/i/344.svg' width='65%' />
   
   <h5 align='center'>Sets of material design components built with web technologies</h5>
 </h1>
