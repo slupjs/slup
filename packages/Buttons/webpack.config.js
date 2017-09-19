@@ -18,6 +18,31 @@ let config = {
     }
   },
 
+  externals: {
+    inferno: {
+      commonjs: 'inferno', 
+      amd: 'inferno', 
+      root: 'Inferno' 
+    },
+    'inferno-component': { 
+      commonjs: 'inferno-component', 
+      amd: 'inferno-component', 
+      root: 'Inferno.Component' 
+    },
+    'styled-components': {
+      commonjs: 'styled-components',
+      amd: 'styled-components',
+      root: 'styled'
+    },
+    'polished': {
+      commonjs: 'polished',
+      amd: 'polished',
+      root: 'polished'
+    },
+  },
+
+  plugins: [],
+
   module: {
     loaders: [
       {
@@ -27,10 +52,6 @@ let config = {
       }
     ]
   },
-
-  plugins: [
-    new webpack.optimize.ModuleConcatenationPlugin()
-  ],
 
   devtool: 'source-map',
   target: 'web'
