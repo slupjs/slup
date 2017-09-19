@@ -4,42 +4,34 @@
   <h5 align='center'>Sets of material design components built with web technologies</h5>
 </h1>
 
-## Summary
+**NOTE: The library isn't complete yet**
 
-Slup was created by our desire for a performing UI framework following Material Design Guidelines.
+Slup was created by our desire for a performing UI framework following strictly [Material Design guidelines](https://material.io/guidelines). It packs lightweight components, based on the blazing-fast React-like library [Inferno](https://infernojs.org) and the [Styled Components](https://styled-components.com) UI library to provide easy theamability and fast rendering. This set of libraries makes us able to provide a complete asset of components
+
+
 So we started developing it with three core concepts in mind:
 
 * High Performance
 * Meticulousness
-* Modularity
+* Tinily
 
 ## Getting Started
 
-Slup is divided in **packages**, which are basically Material Design Components: this means that you can rather install the entire framework or just the components that you'd like to use
+Slup is divided in **packages**: each pacakge represents a corresponding [Material Design component](https://material.io/guidelines/components): this means that each package can be found at `@slup/<package>`, and installed separately improving both **size and speed** of your final bundle.
+Here's how:
 
-### Installation
+## Installation
 
-Slup can be installed whit **npm**
+Any slup package can be installed whit [NPM](http://npmjs.com/) as follows:
 ```
-npm install --save @slup
-```
-
-or whit **yarn** ( We highly reccomend using it because it's much faster )
-```
-yarn add --dev @slup
+npm i -s @slup/<package> 
 ```
 
-## Built with
+## License
 
-* [Inferno.js](https://infernojs.org/) - The React-like library used for creating components
-* [Styled Components](https://www.styled-components.com/) - The tool used for styling our components
-* [Lerna.js](https://lernajs.io/) - The tool used for managing our multi-package framework
+This project is licensed under the MIT License
 
 ## Authors
 
 * LucaT
 * Gejsi
-
-## License
-
-This project is licensed under the MIT License
