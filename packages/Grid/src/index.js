@@ -31,6 +31,7 @@ export const Col = styled.div`
   height: inherit;
   transition: margin 150ms linear;
   flex-basis: ${props => 100 / 12 * props.sm || 0}%;
+  order: ${props => props.order || 'unset'};
   margin-left: ${props => sanitize(props.offset || 0)};
   margin-right: ${props => sanitize(props.pull || 0)};
   display: ${props => props.hide_sm && !props.show_sm ? 'none' : 'initial'};
