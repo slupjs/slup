@@ -64,7 +64,7 @@ export class NavBar extends Component {
                 {/* Main title */}
                 <div style={{ display: 'flex', alignItems: 'center' }}>
 
-                  <Col hidden_lg>
+                  <Col hide_lg>
                     <Menu
                       onClick={this.handleOpen}
                       style={{ marginRight: 32, cursor: 'pointer'}}
