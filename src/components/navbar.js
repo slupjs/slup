@@ -59,12 +59,12 @@ export class NavBar extends Component {
         <Navbar primary style={{ boxShadow: 'none' }}>
           <Grid middle>
             <Col sm={12} offset_lg={320}>
-              <Grid middle space_between hide-md>
+              <Grid middle space_between>
 
                 {/* Main title */}
                 <div style={{ display: 'flex', alignItems: 'center' }}>
 
-                  <Col hidden_lg>
+                  <Col hide_lg hide_xl>
                     <Menu
                       onClick={this.handleOpen}
                       style={{ marginRight: 32, cursor: 'pointer'}}
