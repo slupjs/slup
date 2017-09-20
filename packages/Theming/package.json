@@ -1,6 +1,6 @@
 {
   "name": "@slup/theming",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Theming utility for the slup framework",
   "main": "dist.js",
   "author": "LucaT, Gejsi",
