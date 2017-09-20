@@ -27,7 +27,8 @@
   },
   "scripts": {
     "compile:watch": "webpack --watch --progress",
-    "compile:build": "cross-env NODE_ENV=production webpack --progress",
+    "compile:build": "cross-env NODE_ENV=production webpack -p --progress",
+    "test": "webpack -p --progress --json > stats.json",
     "prepublish": "yarn run compile:build"
   }
 }
