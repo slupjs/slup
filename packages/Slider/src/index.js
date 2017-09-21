@@ -20,9 +20,13 @@ const Container = styled.div`
     div:nth-child(2) {
       width: ${props => props.discrete ? '0' : '14px'};
       height: ${props => props.discrete ? '0' : '14px'};
-      box-shadow: ${props => props.discrete
-        ? 'none'
-        : '0 0 0 14px rgba(0, 0, 0, .1)'
+      box-shadow: ${props => props.focus
+      ? 'none' 
+        : props.value == 0 && !props.discrete
+          ? '0 0 0 14px rgba(0, 0, 0, .1)'
+          :props.discrete
+            ? 'none'
+            : `0 0 0 14px ${rgba(props.theme.primary || lightTheme.primary, .1)}`
       };
     }
 
@@ -221,6 +225,7 @@ export class Slider extends Component {
         onFocus={handleFocus}
         innerRef={e => this.slider = e}
         tabIndex={props.disabled ? -1 : 0}
+        focus={focus}
       >
         {/*Main Line*/}
         <Line disabled={props.disabled} />
