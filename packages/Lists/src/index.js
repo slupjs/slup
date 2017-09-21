@@ -4,6 +4,7 @@ import styled from 'styled-components'
 export { List }         from './list'
 export { ListItem }     from './listItem'
 export { Divider }      from './divider'
+export { Subheader }    from './Subheader'
 export { MainContent }  from './mainContent'
 
 export const LeftContent = styled.div`
