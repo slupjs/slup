@@ -1,4 +1,4 @@
-<demogif>
+<demo gif>
 
 <h1 align='center'>Slup - <package></h1>
 
@@ -11,7 +11,7 @@ From Google's [Material Design guidelines](https://material.io/guidelines):
 </blockquote>
 
 ## Installation
-This package can be installed with **npm**
+This package can be installed with [NPM](http://npmjs.com/)
 ```
 npm install --save @slup/<package>
 ```
@@ -19,6 +19,6 @@ npm install --save @slup/<package>
 ## Available properties
 | Props       |    Type       | Documentation             |
 |-------------|:-------------:|------:                    |
-| <prop name> |  boolean      | [Link](#properties-props) |
+| <prop name> |  boolean      | [Link](#property-props) |
 
-### Properties: <props>
+#### Property: <props>
