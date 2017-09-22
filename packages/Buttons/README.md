@@ -25,9 +25,9 @@ npm install --save @slup/buttons
 |-------------|:-------------:|------:                    |
 | disabled    |  boolean      | [Link](#property-disabled)  |
 | ripple      |  boolean      | [Link](#property-ripple)    |
-| secondary   |  boolean      | [Link](#property-secondary) |
-| primary     |  boolean      | [Link](#property-primary)   |
-| mini        |  boolean      | [Link](#property-mini)      |
+| secondary   |  boolean      | [Link](#property-property-secondary-raisedbutton-fab) |
+| primary     |  boolean      | [Link](#property-primary-flatbutton)   |
+| mini        |  boolean      | [Link](#property-mini-fab)  |
 
 #### Property: 'disabled'
 This property will disable the button
@@ -49,7 +49,7 @@ This property if set to false will remove the Ripple effect
 It will set the background to the 'secondary' color of the theme
 ```html
 <RaisedButton secondary>Button</RaisedButton>
-<Fab secondary />
+<Fab secondary><Icon /></Fab>
 ```
 
 #### Property: 'primary' [FlatButton]
@@ -62,5 +62,5 @@ It will set the color to the 'primary' color of the theme
 #### Property: 'mini' [Fab]
 It will reduce its size
 ```html
-<Fab mini />
+<Fab mini><Icon /></Fab>
 ```
