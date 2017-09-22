@@ -50,7 +50,7 @@ This property will disable the button
 ```html
 <RaisedButton disabled>Button</RaisedButton>
 <FlatButton disabled>Button</FlatButton>
-<Fab disabled><Icon /></Fab>
+<Fab disabled>+</Fab>
 ```
 
 #### Property: 'ripple'
@@ -58,14 +58,14 @@ This property if set to false will remove the Ripple effect
 ```html
 <RaisedButton ripple={false}>Button</RaisedButton>
 <FlatButton ripple={false}>Button</FlatButton>
-<Fab ripple={false}><Icon /></Fab>
+<Fab ripple={false}>+</Fab>
 ```
 
 #### Property: 'secondary' [RaisedButton, Fab]
 It will set the background to the 'secondary' color of the theme
 ```html
 <RaisedButton secondary>Button</RaisedButton>
-<Fab secondary><Icon /></Fab>
+<Fab secondary>+</Fab>
 ```
 
 #### Property: 'primary' [FlatButton]
@@ -78,5 +78,5 @@ It will set the color to the 'primary' color of the theme
 #### Property: 'mini' [Fab]
 It will reduce its size
 ```html
-<Fab mini><Icon /></Fab>
+<Fab mini>+</Fab>
 ```

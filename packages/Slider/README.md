@@ -45,6 +45,9 @@ export class Test extends Component {
 ## Available properties
 | Props       |    Type       |    Default       | Documentation          |
 |-------------|:-------------:|:-------------:|------:                    |
+| onChange    |  function     |  none       | [Link](#usage)              |
+| value       |  number       |  0          | [Link](#usage)              |
+| max         |  number       |  0          | [Link](#usage)              |
 | disabled    |  boolean      |  false      | [Link](#property-disabled)  |
 | discrete    |  boolean      |  false      | [Link](#property-discrete)  |
 
