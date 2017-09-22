@@ -21,13 +21,13 @@ npm install --save @slup/buttons
 ```
 
 ## Available properties
-| Props       |    Type       | Documentation             |
-|-------------|:-------------:|------:                    |
-| disabled    |  boolean      | [Link](#property-disabled)  |
-| ripple      |  boolean      | [Link](#property-ripple)    |
-| secondary   |  boolean      | [Link](#property-property-secondary-raisedbutton-fab) |
-| primary     |  boolean      | [Link](#property-primary-flatbutton)   |
-| mini        |  boolean      | [Link](#property-mini-fab)  |
+| Props       |    Type       |    Default       | Documentation          |
+|-------------|:-------------:|:-------------:|------:                    |
+| disabled    |  boolean      |  false      | [Link](#property-disabled)  |
+| ripple      |  boolean      |  true      |[Link](#property-ripple)      |
+| secondary   |  boolean      |  false      |[Link](#property-property-secondary-raisedbutton-fab) |
+| primary     |  boolean      |  false      |[Link](#property-primary-flatbutton)   |
+| mini        |  boolean      |  false      |[Link](#property-mini-fab)  |
 
 #### Property: 'disabled'
 This property will disable the button
