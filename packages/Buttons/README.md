@@ -20,6 +20,20 @@ This package can be installed with [NPM](http://npmjs.com/)
 npm install --save @slup/buttons
 ```
 
+## Usage
+```js
+import {
+  RaisedButton,
+  FlatButton,
+  Fab
+} from '@slup/buttons'
+
+export const Buttons = () =>
+  <RaisedButton>Button</RaisedButton>
+  <FlatButton>Button</FlatButton>
+  <Fab><Icon /></Fab>
+```
+
 ## Available properties
 | Props       |    Type       |    Default       | Documentation          |
 |-------------|:-------------:|:-------------:|------:                    |

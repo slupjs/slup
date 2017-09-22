@@ -16,6 +16,11 @@ This package can be installed with [NPM](http://npmjs.com/)
 npm install --save @slup/<package>
 ```
 
+## Usage
+```
+<code>
+```
+
 ## Available properties
 | Props       |    Type       |    Default | Documentation   |
 |-------------|:-------------:|------:     |
