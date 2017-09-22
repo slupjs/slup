@@ -45,26 +45,21 @@ This property if set to false will remove the Ripple effect
 <Fab ripple={false} />
 ```
 
-#### Property: 'secondary'
-**NOTE: this property CANNOT be applied to the FlatButton**
-
+#### Property: 'secondary' [RaisedButton, Fab]
 It will set the background to the 'secondary' color of the theme
 ```html
 <RaisedButton secondary>Button</RaisedButton>
 <Fab secondary />
 ```
 
-#### Property: 'primary'
-**NOTE: this property can be applied only to the FlatButton**
+#### Property: 'primary' [FlatButton]
 
 It will set the color to the 'primary' color of the theme
 ```html
 <FlatButton primary>Button</FlatButton>
 ```
 
-#### Property: 'mini'
-**NOTE: this property can be applied only to the Fab**
-
+#### Property: 'mini' [Fab]
 It will reduce its size
 ```html
 <Fab mini />
