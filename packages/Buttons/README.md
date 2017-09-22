@@ -34,7 +34,7 @@ This property will disable the button
 ```html
 <RaisedButton disabled>Button</RaisedButton>
 <FlatButton disabled>Button</FlatButton>
-<Fab disabled />
+<Fab disabled><Icon /></Fab>
 ```
 
 #### Property: 'ripple'
@@ -42,7 +42,7 @@ This property if set to false will remove the Ripple effect
 ```html
 <RaisedButton ripple={false}>Button</RaisedButton>
 <FlatButton ripple={false}>Button</FlatButton>
-<Fab ripple={false} />
+<Fab ripple={false}><Icon /></Fab>
 ```
 
 #### Property: 'secondary' [RaisedButton, Fab]
