@@ -29,19 +29,21 @@ import {
 } from '@slup/buttons'
 
 export const Buttons = () =>
-  <RaisedButton>Button</RaisedButton>
-  <FlatButton>Button</FlatButton>
-  <Fab><Icon /></Fab>
+  <div>
+    <RaisedButton>Button</RaisedButton>
+    <FlatButton>Button</FlatButton>
+    <Fab>+</Fab>
+  </div>
 ```
 
 ## Available properties
-| Props       |    Type       |    Default       | Documentation          |
-|-------------|:-------------:|:-------------:|------:                    |
-| disabled    |  boolean      |  false      | [Link](#property-disabled)  |
-| ripple      |  boolean      |  true      |[Link](#property-ripple)      |
-| secondary   |  boolean      |  false      |[Link](#property-property-secondary-raisedbutton-fab) |
-| primary     |  boolean      |  false      |[Link](#property-primary-flatbutton)   |
-| mini        |  boolean      |  false      |[Link](#property-mini-fab)  |
+| Props       | Type          | Default       | Documentation                                        |
+|-------------|:-------------:|:-------------:|------:                                               |
+| disabled    |  boolean      |  false        | [Link](#property-disabled)                           |
+| ripple      |  boolean      |  true         |[Link](#property-ripple)                              |
+| secondary   |  boolean      |  false        |[Link](#property-property-secondary-raisedbutton-fab) |
+| primary     |  boolean      |  false        |[Link](#property-primary-flatbutton)                  |
+| mini        |  boolean      |  false        |[Link](#property-mini-fab)                            |
 
 #### Property: 'disabled'
 This property will disable the button
