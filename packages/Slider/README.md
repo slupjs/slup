@@ -43,14 +43,14 @@ export class Test extends Component {
 ```
 
 ## Available properties
-| Props       |    Type       |    Default | Documentation   |
-|-------------|:-------------:|------:     |
-| disabled    |  boolean      |  false     | [Link](#property-discrete)  |
-| discrete    |  boolean      |  false     | [Link](#property-discrete)  |
+| Props       |    Type       |    Default       | Documentation          |
+|-------------|:-------------:|:-------------:|------:                    |
+| disabled    |  boolean      |  false      | [Link](#property-disabled)  |
+| discrete    |  boolean      |  false      | [Link](#property-discrete)  |
 
 #### Property: 'disabled'
 This property will disable the slider
-```html
+```js
 <Slider
   onChange={this.handleChange.bind(this)}
   value={this.state.value}
@@ -61,7 +61,7 @@ This property will disable the slider
 
 #### Property: 'discrete'
 This property will make a discrete slider which shows the value inside a thumb
-```html
+```js
 <Slider
   onChange={this.handleChange.bind(this)}
   value={this.state.value}
