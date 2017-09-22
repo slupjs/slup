@@ -2,7 +2,7 @@
 
 <h1 align='center'>Slup - Buttons</h1>
 
-This package contains the Buttons Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
+This package contains the Buttons, a Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
 
 ## Description
 From Google's [Material Design guidelines](https://material.io/guidelines):
@@ -46,20 +46,26 @@ This property if set to false will remove the Ripple effect
 ```
 
 #### Property: 'secondary'
-This property **CANNOT** be applied to the FlatButton and it will set the background to the 'secondary' color of the theme
+**NOTE: this property CANNOT be applied to the FlatButton**
+
+It will set the background to the 'secondary' color of the theme
 ```html
 <RaisedButton secondary>Button</RaisedButton>
 <Fab secondary />
 ```
 
 #### Property: 'primary'
-This property can be applied **only** to the FlatButton and it will set the color to the 'primary' color of the theme
+**NOTE: this property can be applied only to the FlatButton**
+
+It will set the color to the 'primary' color of the theme
 ```html
 <FlatButton primary>Button</FlatButton>
 ```
 
 #### Property: 'mini'
-This property can be applied **only** to the Fab and it will reduce its size
+**NOTE: this property can be applied only to the Fab**
+
+It will reduce its size
 ```html
 <Fab mini />
 ```

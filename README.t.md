@@ -2,7 +2,7 @@
 
 <h1 align='center'>Slup - <package></h1>
 
-This package contains the <package> Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
+This package contains the <package>, a Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
 
 ## Description
 From Google's [Material Design guidelines](https://material.io/guidelines):
