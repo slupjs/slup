@@ -33,7 +33,7 @@ const Drawer = styled.div`
     max-width: 280px;
     transform: ${props => props.right && !props.opened
       ? 'translateX(105%)'
-      : props.opened
+      : props.opened || props.permanent
         ? 'translateX(0)'
         : 'translateX(-105%)'
     };
