@@ -51,7 +51,7 @@ export class Test extends Component {
 ## Available properties
 | Props          |    Type       |    Default    | Documentation                |
 |-------------   |:-------------:|:-------------:|------:                       |
-| opened         |  false        |  false        | [Link](#usage)               |
+| opened         |  boolean      |  false        | [Link](#usage)               |
 | onClose        |  function     |  none         | [Link](#usage)               |
 | right          |  boolean      |  false        | [Link](#property-right)      |
 | responsive     |  boolean      |  false        | [Link](#property-responsive) |
