@@ -56,6 +56,7 @@ export class Test extends Component {
 | right          |  boolean      |  false        | [Link](#property-right)      |
 | responsive     |  boolean      |  false        | [Link](#property-responsive) |
 | permanent      |  boolean      |  false        | [Link](#property-permanent)  |
+| overlay        |  boolean      |  true         | [Link](#property-overlay)    |
 
 #### Property: 'right'
 This property will position the Sidenav to the right of the view
@@ -84,5 +85,15 @@ This property will make the Sidenav always visible
   opened={this.state.opened}
   onClose={this.handleClose.bind(this)}
   permanent
+/>
+```
+
+#### Property: 'overlay'
+This property if set to false will remove the overlay
+```js
+<Sidenav
+  opened={this.state.opened}
+  onClose={this.handleClose.bind(this)}
+  overlay={false}
 />
 ```
