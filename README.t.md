@@ -22,8 +22,8 @@ npm install --save @slup/<package>
 ```
 
 ## Available properties
-| Props       |    Type       |    Default | Documentation   |
-|-------------|:-------------:|------:     |
-| <prop-name> |  boolean      |  false     | [Link](#property-<prop-name>)  |
+| Props          |    Type       |    Default    | Documentation                 |
+|-------------   |:-------------:|:-------------:|------:                        |
+| <prop-name>    |  boolean      |  false        | [Link](#property-<prop-name>) |
 
 #### Property: <prop-name>
