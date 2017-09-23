@@ -1,5 +1,12 @@
 {
-  "presets": [ "es2015" ],
+  "presets": [
+    ["env", {
+      "targets": {"browsers": [
+        "last 2 versions",
+        "safari >= 7"
+      ]}
+    }]
+  ],
   "plugins": [
     "inferno",
     "transform-decorators-legacy",

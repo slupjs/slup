@@ -17,11 +17,7 @@
     "babili-webpack-plugin": "0.1.2",
     "cross-env": "5.0.4",
     "decko": "1.2.0",
-    "inferno": "3.7.1",
-    "inferno-compat": "3.8.2",
-    "inferno-component": "3.7.1",
     "polished": "1.7.0",
-    "styled-components": "2.1.2",
     "webpack": "3.4.1"
   },
   "scripts": {
@@ -29,5 +25,11 @@
     "compile:build": "cross-env NODE_ENV=production webpack -p --progress",
     "test": "webpack -p --progress --json > stats.json",
     "prepublish": "yarn run compile:build"
+  },
+  "peerDependencies": {
+    "inferno": "3.9.0",
+    "inferno-compat": "3.9.0",
+    "inferno-component": "3.9.0",
+    "styled-components": "2.1.2"
   }
 }

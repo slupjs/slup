@@ -1,17 +1,19 @@
 const webpack           = require('webpack')
-const { join }          = require('path')
+const { join, resolve } = require('path')
+const BabiliPlugin      = require("babili-webpack-plugin")
 
-module.exports = {
+const config = {
   entry: join(__dirname, 'src', 'index'),
 
   output: {
-    path: '/',
+    path: __dirname,
     filename: 'dist.js',
     publicPath: 'http://localhost:8080/'
   },
 
   resolve: {
     extensions: [ '.js' ],
+
     alias: {
       '@slup/ripple': join(__dirname, 'packages', 'Ripple', 'src', 'index'),
       '@slup/slider': join(__dirname, 'packages', 'Slider', 'src', 'index'),
@@ -27,7 +29,9 @@ module.exports = {
       // Aliases needed for styled-components
       'react': 'inferno-compat',
       'react-dom': 'inferno-compat'
-    }
+    },
+
+    modules: [join(process.cwd(), 'node_modules')]
   },
 
   module: {
@@ -41,7 +45,7 @@ module.exports = {
   },
 
 	devServer: {
-		contentBase: './',
+		contentBase: __dirname,
 		port: 8080,
 		noInfo: false,
 		hot: true,
@@ -55,11 +59,17 @@ module.exports = {
 		}
   },
 
-	plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.ModuleConcatenationPlugin()
-	],
+	plugins: [],
 
   devtool: 'source-map',
   target: 'web'
 }
+
+if(process.env.NODE_ENV === 'production') {
+  config.plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
+  config.plugins.push(new BabiliPlugin())
+} else {
+  config.plugins.push(new webpack.HotModuleReplacementPlugin())
+}
+
+module.exports = config

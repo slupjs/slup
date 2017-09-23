@@ -6,9 +6,9 @@
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@slup/ripple/-/ripple-0.0.2.tgz#30229321086f885020258b64373572d9ffe399fe"
 
-"@slup/theming@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@slup/theming/-/theming-0.0.1.tgz#dbc20647887e29a9a8f75b56b2f7d533d227de81"
+"@slup/theming@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@slup/theming/-/theming-0.0.2.tgz#487c3e106997e6cb5b06dce5cfe20118c017e60e"
 
 abbrev@1:
   version "1.1.0"
@@ -1689,8 +1689,8 @@ https-browserify@0.0.1:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
 iconv-lite@~0.4.13:
-  version "0.4.18"
-  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.18.tgz#23d8656b16aae6742ac29732ea8f0336a4789cf2"
+  version "0.4.19"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.19.tgz#f7468f60135f5e5dad3399c0a81be9a1603a082b"
 
 ieee754@^1.1.4:
   version "1.1.8"
@@ -1700,58 +1700,46 @@ indexof@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
 
-inferno-compat@3.8.2:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/inferno-compat/-/inferno-compat-3.8.2.tgz#c8d3190c0da0689ccf7578c4335441ac0367b80c"
+inferno-compat@3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/inferno-compat/-/inferno-compat-3.9.0.tgz#09bccecbd365090b11347cfe83346890fca50c66"
   dependencies:
-    inferno "3.8.2"
-    inferno-component "3.8.2"
-    inferno-create-class "3.8.2"
-    inferno-create-element "3.8.2"
-    inferno-shared "3.8.2"
+    inferno "3.9.0"
+    inferno-component "3.9.0"
+    inferno-create-class "3.9.0"
+    inferno-create-element "3.9.0"
+    inferno-shared "3.9.0"
     inferno-transition-group "2.1.1"
-    inferno-vnode-flags "3.8.2"
+    inferno-vnode-flags "3.9.0"
     rc-css-transition-group-modern "^2.1.6"
 
-inferno-component@3.7.1:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-3.7.1.tgz#145496541661b7c350fca9a0137f4c7f2f8a4a07"
+inferno-component@3.9.0, inferno-component@^3.4.3:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-3.9.0.tgz#26a653bd9f055df49116facf54321ece990798f8"
   dependencies:
-    inferno "3.7.1"
-    inferno-shared "3.7.1"
-    inferno-vnode-flags "3.7.1"
+    inferno "3.9.0"
+    inferno-shared "3.9.0"
+    inferno-vnode-flags "3.9.0"
 
-inferno-component@3.8.2, inferno-component@^3.4.3:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-3.8.2.tgz#707c204afce19e8e88811758fbad019c0490b42c"
+inferno-create-class@3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/inferno-create-class/-/inferno-create-class-3.9.0.tgz#fc58e3804cd899233ae77ed71d996adc69a526a2"
   dependencies:
-    inferno "3.8.2"
-    inferno-shared "3.8.2"
-    inferno-vnode-flags "3.8.2"
+    inferno-component "3.9.0"
+    inferno-shared "3.9.0"
 
-inferno-create-class@3.8.2:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/inferno-create-class/-/inferno-create-class-3.8.2.tgz#779baa365e0c2e9c57644082f0411aee563bb41f"
+inferno-create-element@3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/inferno-create-element/-/inferno-create-element-3.9.0.tgz#7b7a15a2b3f9ae57e353b29640e01cc6e1abce7d"
   dependencies:
-    inferno-component "3.8.2"
-    inferno-shared "3.8.2"
+    inferno "3.9.0"
+    inferno-component "3.9.0"
+    inferno-shared "3.9.0"
+    inferno-vnode-flags "3.9.0"
 
-inferno-create-element@3.8.2:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/inferno-create-element/-/inferno-create-element-3.8.2.tgz#3ac9475994b3a8ccb29370843196017d2f7e1f30"
-  dependencies:
-    inferno "3.8.2"
-    inferno-component "3.8.2"
-    inferno-shared "3.8.2"
-    inferno-vnode-flags "3.8.2"
-
-inferno-shared@3.7.1:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-3.7.1.tgz#3dc6a8b26ceb91e3baf7eb875809802c65bd7929"
-
-inferno-shared@3.8.2:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-3.8.2.tgz#5668267f98ba2c4236de3db0b4276e40b032cab4"
+inferno-shared@3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-3.9.0.tgz#da0ae6223a26a2aa5729284bee3f3ef92d744a46"
 
 inferno-transition-group@2.1.1:
   version "2.1.1"
@@ -1764,27 +1752,16 @@ inferno-vnode-flags@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.0.0.tgz#f396390f3dafae3b76eea04d04eed6cf2004473b"
 
-inferno-vnode-flags@3.7.1:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.7.1.tgz#75483848c2d3cb16522c35abdc99e79b0967dd03"
+inferno-vnode-flags@3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.9.0.tgz#8e358803b8c396788070d54786d86894cecd4a46"
 
-inferno-vnode-flags@3.8.2:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.8.2.tgz#ca6cfba996f70ca468bf621f1db4b8a3b4335c38"
-
-inferno@3.7.1:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/inferno/-/inferno-3.7.1.tgz#11a2d485e53c3ae21b15b06fb2cf4973830946dd"
+inferno@3.9.0, inferno@^3.4.3:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/inferno/-/inferno-3.9.0.tgz#4e9a312e9929abb741dfe285630841b0d7e95e62"
   dependencies:
-    inferno-shared "3.7.1"
-    inferno-vnode-flags "3.7.1"
-
-inferno@3.8.2, inferno@^3.4.3:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/inferno/-/inferno-3.8.2.tgz#284ef2af52404c0d7aa0d14782464ad11ccc635b"
-  dependencies:
-    inferno-shared "3.8.2"
-    inferno-vnode-flags "3.8.2"
+    inferno-shared "3.9.0"
+    inferno-vnode-flags "3.9.0"
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -2885,8 +2862,8 @@ styled-components@2.1.2:
     supports-color "^3.2.3"
 
 stylis@^3.2.1:
-  version "3.2.16"
-  resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.2.16.tgz#f336893e55f9f13299b39c01af3b10546cd7507a"
+  version "3.2.17"
+  resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.2.17.tgz#54950f8726b0237283e453c031c92f9adb53610b"
 
 supports-color@^2.0.0:
   version "2.0.0"
