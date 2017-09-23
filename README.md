@@ -4,7 +4,7 @@
   <h5 align='center'>Sets of material design components built with web technologies</h5>
 </h1>
 
-**NOTE: The library isn't complete yet**
+> **NOTE: The library isn't complete yet**
 
 Slup was created by our desire for a performing UI framework following strictly [Material Design guidelines](https://material.io/guidelines). It packs lightweight components, based on the blazing-fast React-like library [Inferno](https://infernojs.org) and the [Styled Components](https://styled-components.com) UI library to provide easy theamability and fast rendering. This set of libraries makes us able to provide a complete asset of components
 
