@@ -75,7 +75,6 @@ export class Ripple extends Component {
     const { ripples } = this.state
 
     const handler = () => {
-      console.log('did do done', id, ripples, this)
       ripples[id].isRemovable = true
 
       // Update ripples
