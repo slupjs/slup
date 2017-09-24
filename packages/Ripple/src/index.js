@@ -38,11 +38,11 @@ export class Ripple extends Component {
 
     this.setState({ ripples })
 
-    setTimeout(e => this.onEnded(id), 250)
+    setTimeout(e => this.onFaded(id), 250)
   }
 
   @bind
-  onFaded() {
+  onFaded(id) {
     const { ripples } = this.state
     ripples[id].faded = true
 
@@ -94,8 +94,8 @@ export class Ripple extends Component {
         innerRef={element => this.ripple = element}
         onMouseDown={this.handleMouseDown}
       >
-        {this.state.ripples.map(props => 
-          props.faded 
+        {this.state.ripples.map(props =>
+          props.isRemovable && props.ended && props.faded
             ? null
             : <Wave {...props} />
         )}
