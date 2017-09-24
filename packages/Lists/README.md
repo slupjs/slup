@@ -79,7 +79,7 @@ export class Home extends Component {
 | hoverable      |  boolean      |  true         | [Link](#property-hoverable)  |
 | sublist        |  boolean      |  false        | [Link](#property-sublist)    |
 | nested         |  boolean      |  false        | [Link](#property-nested)     |
-| avatar         |  boolean      |  false        | [Link](#property-avatarleftcontent)     |
+| avatar         |  boolean      |  false        | [Link](#property-avatar-leftcontent)     |
 
 #### Property: 'ripple'
 This property if set to false will remove the ripple effect from the `ListItem`
