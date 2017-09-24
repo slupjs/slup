@@ -48,7 +48,7 @@ export class Test extends Component {
 | hide           |  boolean      |  false        | [Link](#property-hidecol)           |
 | show           |  boolean      |  false        | [Link](#property-showcol)           |
 
-#### Property: 'center'[Grid]
+#### Property: 'center' [Grid]
 This property will horizontally center the columns
 ```js
 <Grid center>
@@ -56,7 +56,7 @@ This property will horizontally center the columns
 </Grid>
 ```
 
-#### Property: 'space_around'[Grid]
+#### Property: 'space_around' [Grid]
 This property will set space before, between, and after the columns
 ```js
 <Grid space_around>
@@ -64,7 +64,7 @@ This property will set space before, between, and after the columns
 </Grid>
 ```
 
-#### Property: 'space_between'[Grid]
+#### Property: 'space_between' [Grid]
 This property will set space between the columns
 ```js
 <Grid space_between>
@@ -72,7 +72,7 @@ This property will set space between the columns
 </Grid>
 ```
 
-#### Property: 'end'[Grid]
+#### Property: 'end' [Grid]
 This property will horizontally set the columns to the end of the container
 ```js
 <Grid end>
@@ -80,7 +80,7 @@ This property will horizontally set the columns to the end of the container
 </Grid>
 ```
 
-#### Property: 'middle'[Grid]
+#### Property: 'middle' [Grid]
 This property will vertically center the columns
 ```js
 <Grid middle>
@@ -88,7 +88,7 @@ This property will vertically center the columns
 </Grid>
 ```
 
-#### Property: 'bottom'[Grid]
+#### Property: 'bottom' [Grid]
 This property will vertically set the columns to the end of the container
 ```js
 <Grid bottom>
@@ -96,12 +96,13 @@ This property will vertically set the columns to the end of the container
 </Grid>
 ```
 
-#### Property: 'sm / md / lg / xl'[Col]
-These properties will set the number of columns the Col should be based on the viewport:
-* sm counts for the small viewport and up
-* md counts for the medium viewport and up
-* lg counts for the large viewport and up
-* xl counts for the extra-large viewport and up
+#### Property: 'sm / md / lg / xl' [Col]
+These properties will set the number of columns the `<Col />` should have, based on the device's viewport:
+
+* `sm`: counts for the **small** viewport and up
+* `md`: counts for the **medium** viewport and up
+* `lg`: counts for the **large** viewport and up
+* `xl`: counts for the **extra-large** viewport and up
 
 ```js
 <Grid>
@@ -109,12 +110,12 @@ These properties will set the number of columns the Col should be based on the v
 </Grid>
 ```
 
-#### Property: 'offset'[Col]
+#### Property: 'offset' [Col]
 This property will offset the columns by using the pixels unit of measure
-* offset counts for the small viewport and up
-* offset_md counts for the small viewport and up
-* offset_lg counts for the large viewport and up
-* offset_xl counts for the extra-large viewport and up
+* offset counts for the **small** viewport and up
+* offset_md counts for the **medium** viewport and up
+* offset_lg counts for the **large** viewport and up
+* offset_xl counts for the **extra-large** viewport and up
 
 ```js
 <Grid>
@@ -122,12 +123,12 @@ This property will offset the columns by using the pixels unit of measure
 </Grid>
 ```
 
-#### Property: 'pull'[Col]
+#### Property: 'pull' [Col]
 This property will pull the columns by using the pixels unit of measure
-* pull counts for the small viewport and up
-* pull_md counts for the small viewport and up
-* pull_lg counts for the large viewport and up
-* pull_xl counts for the extra-large viewport and up
+* pull counts for the **small** viewport and up
+* pull_md counts for the **medium** viewport and up
+* pull_lg counts for the **large** viewport and up
+* pull_xl counts for the **extra-large** viewport and up
 
 ```js
 <Grid>
@@ -135,12 +136,12 @@ This property will pull the columns by using the pixels unit of measure
 </Grid>
 ```
 
-#### Property: 'hide'[Col]
+#### Property: 'hide' [Col]
 This property will hide the columns in various viewports
-* hide_sm counts for the small viewport and up
-* hide_md counts for the small viewport and up
-* hide_lg counts for the large viewport and up
-* hide_xl counts for the extra-large viewport and up
+* hide_sm counts for the **small** viewport and up
+* hide_md counts for the **medium** viewport and up
+* hide_lg counts for the **large** viewport and up
+* hide_xl counts for the **extra-large** viewport and up
 
 ```js
 <Grid>
@@ -151,7 +152,7 @@ This property will hide the columns in various viewports
 </Grid>
 ```
 
-#### Property: 'show'[Col]
+#### Property: 'show' [Col]
 This property will show the columns in various viewports but the difference with the 'hide' is that if this property is set to a certain size it will not count in other ones
 
 ```js
