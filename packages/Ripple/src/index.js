@@ -2,30 +2,17 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import { bind }  from 'decko'
 
-import { Wave }  from './wave'
+import { Wrapper } from './container'
+import { Wave }    from './wave'
 
 export class Ripple extends Component {
-  state = {
-    ripples: [],
-    width: 0,
-    height: 0
-  }
-
-  componentDidMount() {
-    const { width, height } = this.ripple.getBoundingClientRect()
-
-    this.setState({ width, height })
-  }
-
-  @bind
-  getRipples() {
-    return this.state.ripples.filter(Boolean)
-  }
+  state = { ripples: [] }
 
   @bind
   handleMouseDown({ offsetX, offsetY }) {
     const { ripples } = this.state
-    const id = ripples.length
+    const id          = ripples.length
+
 
     ripples.push({
       id: id,
@@ -34,76 +21,86 @@ export class Ripple extends Component {
       y: offsetY
     })
 
+    // Await for the mouseUp event to remove the ripple
     this.addHandler(id)
+
+    // Render the new ripple
+    this.setState({ ripples })
+
+    // Fire off the animation! 🚀
+    this.fire(id)
+  }
+
+  @bind
+  onEnded(id) {
+    const { ripples } = this.state
+    ripples[id].ended = true
+
+    this.setState({ ripples })
+
+    setTimeout(e => this.onEnded(id), 250)
+  }
+
+  @bind
+  onFaded() {
+    const { ripples } = this.state
+    ripples[id].faded = true
 
     this.setState({ ripples })
   }
 
   @bind
+  fire(id) {
+    const { ripples } = this.state
+
+    /**
+     * Calculating the scale of the ripple:
+     * - get width and height of the container
+     * - divide by the starting size of the ripple
+     */
+    const { width, height } = this.ripple.getBoundingClientRect()
+
+    // The heighest value of the two(height, width)
+    const heighest = width > height ? width : height
+
+    ripples[id].scale = heighest / 4.5
+
+    this.setState({ ripples })
+
+    setTimeout(e => this.onEnded(id), 600)
+  }
+
+  @bind
   addHandler(id) {
     const { ripples } = this.state
-    const { ripple }  = this
-    const self        = this
 
-    const handler = function() {
+    const handler = () => {
+      console.log('did do done', id, ripples, this)
       ripples[id].isRemovable = true
 
-      self.setState({ ripples })
-      ripple.removeEventListener('mouseup', handler, { passive: true})
+      // Update ripples
+      this.setState({ ripples })
+
+      // Remove the ended event
+      window.removeEventListener('mouseup', handler, { passive: true })
     }
 
-    ripple.addEventListener('mouseup', handler, { passive: true})
+    // Wait for the event
+    window.addEventListener('mouseup', handler, { passive: true })
   }
 
-  getStyles() {
-    const styles = {
-      position: 'absolute',
-      top: 0, bottom: 0,
-      left: 0, right: 0,
-      overflow: 'hidden',
-      borderRadius: 'inherit'
-    }
-
-    return styles
-  }
-
-  render({
-    startingSize,
-    background,
-    scaleTiming,
-    easing,
-    opacity
-  }) {
-
-    const ripples = this.getRipples()
-    const styles  = this.getStyles()
-    const { width, height } = this.state
-
+  render() {
     return(
-      <div
-        style={styles}
+      <Wrapper 
+        innerRef={element => this.ripple = element}
         onMouseDown={this.handleMouseDown}
-        ref={e => this.ripple = e}
       >
-        {ripples.map(({ isRemovable, x, y, id }) => {
-
-          return <Wave
-            width={width}
-            height={height}
-            x={x}
-            y={y}
-
-            key={id}
-            isRemovable={isRemovable}
-
-            background={background}
-            scaleTiming={scaleTiming}
-            easing={easing}
-            opacity={opacity}
-          />
-
-        })}
-      </div>
+        {this.state.ripples.map(props => 
+          props.faded 
+            ? null
+            : <Wave {...props} />
+        )}
+      </Wrapper>
     )
   }
 }
