@@ -34,19 +34,19 @@ export class Test extends Component {
 ```
 
 ## Available properties
-| Props          |    Type       |    Default    | Documentation                        |
-|-------------   |:-------------:|:-------------:|------:                               |
-| center         |  boolean      |  false        | [Link](#property-center-grid)        |
-| space_around   |  boolean      |  false        | [Link](#property-space-around-grid)  |
-| space_between  |  boolean      |  false        | [Link](#property-space-between-grid) |
-| end            |  boolean      |  false        | [Link](#property-end-grid)           |
-| middle         |  boolean      |  false        | [Link](#property-middle-grid)        |
-| bottom         |  boolean      |  false        | [Link](#property-bottom-grid)        |
-| sm/md/lg/xl    |  number       |  0            | [Link](#property-sm-md-lg-xl-col)    |
-| offset         |  number       |  0            | [Link](#property-offset-col)         |
-| pull           |  number       |  0            | [Link](#property-pull-col)           |
-| hide           |  boolean      |  false        | [Link](#property-hide-col)           |
-| show           |  boolean      |  false        | [Link](#property-show-col)           |
+| Props          |    Type       |    Default    | Documentation                       |
+|-------------   |:-------------:|:-------------:|------:                              |
+| center         |  boolean      |  false        | [Link](#property-centergrid)        |
+| space_around   |  boolean      |  false        | [Link](#property-space_aroundgrid)  |
+| space_between  |  boolean      |  false        | [Link](#property-space_betweengrid) |
+| end            |  boolean      |  false        | [Link](#property-endgrid)           |
+| middle         |  boolean      |  false        | [Link](#property-middlegrid)        |
+| bottom         |  boolean      |  false        | [Link](#property-bottomgrid)        |
+| sm/md/lg/xl    |  number       |  0            | [Link](#property-sm--md--lg--xlcol) |
+| offset         |  number       |  0            | [Link](#property-offsetcol)         |
+| pull           |  number       |  0            | [Link](#property-pullcol)           |
+| hide           |  boolean      |  false        | [Link](#property-hidecol)           |
+| show           |  boolean      |  false        | [Link](#property-showcol)           |
 
 #### Property: 'center'[Grid]
 This property will horizontally center the columns
