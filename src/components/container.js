@@ -13,7 +13,7 @@ export const Container = styled.section`
   background: ${props => props.theme.background};
 `
 
-export const Content = ({ children}) =>
+export const Content = ({ children }) =>
   <Grid style={{ paddingTop: 64 }}>
     <Col sm={12} offset_lg={320}>
       {children}

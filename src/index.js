@@ -12,20 +12,33 @@ import { Buttons, Components, ComponentPage } from './pages/buttons'
 
 const History = createBrowserHistory()
 
+const Test = (props, stats, context) => {
+
+  console.log(arguments)
+
+  return <div />
+}
+
+const App = ({ children }) => 
+  <Container>
+    <NavBar history={History} />
+    <Content>
+      {children}
+    </Content>
+  </Container>
+
 const routes = (
   <ThemeProvider theme={darkTheme}>
-    <Container>
-      <NavBar history={ History } />
-      <Content>
-        <Router history={ History } >
-          <IndexRoute component={ Home } />
-          <Route path="/components" component={ Components } />
-          <Route path="/components/:page" component={ ComponentPage } />
-          <Route path="*" component={ NotFound } />
-        </Router>
-      </Content>
-    </Container>
+    <Router history={History}>
+      <Route component={App}>
+        <IndexRoute component={Home} />
+        <Route path='*' component={NotFound} />
+      </Route>
+    </Router>
   </ThemeProvider>
 )
+console.log(routes)
+
+window.r = routes
 
 render(routes, document.getElementById('root'))

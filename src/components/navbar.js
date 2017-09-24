@@ -54,8 +54,8 @@ export class NavBar extends Component {
     const name         = generate(pathname)
 
     return(
-      <div>
-       {redirect ? <Redirect to={redirect} /> : null}
+      <nav>
+        {redirect ? <Redirect to={redirect} /> : null}
         <Navbar primary style={{ boxShadow: 'none' }}>
           <Grid middle>
             <Col sm={12} offset_lg={320}>
@@ -95,7 +95,7 @@ export class NavBar extends Component {
 
               {/* List of components */}
               <List>
-                <ListItem nested><Link to='/components/buttons'>Buttons</Link></ListItem>
+                <ListItem onClick={e => this.redirect('components/buttons')} nested>Buttons</ListItem>
                 <ListItem onClick={e => this.redirect('/components/controls')} nested>Controls</ListItem>
                 <ListItem onClick={e => this.redirect('/components/grid')} nested>Grid</ListItem>
                 <ListItem onClick={e => this.redirect('/components/icons')} nested>Icons</ListItem>
@@ -108,7 +108,7 @@ export class NavBar extends Component {
             </ListItem>
           </List>
         </Sidenav>
-      </div>
+      </nav>
     )
   }
 }
