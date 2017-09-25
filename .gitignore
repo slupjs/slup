@@ -1,5 +1,10 @@
 node_modules
 dist.js
 dist.js.map
+stats.json
+route.js
+route.js.map
+vendor.js
+vendor.js.map
 yarn-error.log
 .DS_Store

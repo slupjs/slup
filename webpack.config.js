@@ -10,7 +10,9 @@ const config = {
       'inferno-compat', 
       'inferno-router', 
       'styled-components', 
-      'decko'
+      'decko',
+      'polished',
+      'history/createBrowserHistory'
     ],
     route: join(__dirname, 'src', 'index')
   },
