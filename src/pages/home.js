@@ -1,6 +1,7 @@
 import Inferno from 'inferno'
 import Component from 'inferno-component'
 import styled from 'styled-components'
+import { bind, debounce } from 'decko'
 
 import { RaisedButton } from '@slup/buttons'
 import { Logo } from '../components/logo'
@@ -16,8 +17,10 @@ const LogoContainer = styled.div`
 
 
 export class Home extends Component {
+  @bind
+  @debounce(600)
   handleClick() {
-    console.log('a')
+    this.context.router.push('/components/buttons')
   }
 
   render() {
