@@ -37,8 +37,5 @@ const routes = (
     </Router>
   </ThemeProvider>
 )
-console.log(routes)
-
-window.r = routes
 
 render(routes, document.getElementById('root'))

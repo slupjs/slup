@@ -3,11 +3,21 @@ const { join, resolve } = require('path')
 const BabiliPlugin      = require("babili-webpack-plugin")
 
 const config = {
-  entry: join(__dirname, 'src', 'index'),
+  entry: { 
+    vendor: [
+      'inferno', 
+      'inferno-component', 
+      'inferno-compat', 
+      'inferno-router', 
+      'styled-components', 
+      'decko'
+    ],
+    route: join(__dirname, 'src', 'index')
+  },
 
   output: {
     path: __dirname,
-    filename: 'dist.js',
+    filename: '[name].js',
     publicPath: 'http://localhost:8080/'
   },
 
@@ -59,7 +69,11 @@ const config = {
 		}
   },
 
-	plugins: [],
+	plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: [ 'vendor' ]
+    })
+  ],
 
   devtool: 'source-map',
   target: 'web'
