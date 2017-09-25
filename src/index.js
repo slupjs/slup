@@ -6,18 +6,21 @@ import { ThemeProvider, darkTheme } from '@slup/theming'
 import { NavBar } from './components/navbar'
 import { Container, Content } from './components/container'
 
-import { Home } from './pages/home'
-import { NotFound } from './pages/404'
-import { Buttons, Components, ComponentPage } from './pages/buttons'
+import { AsyncHome, AsyncNotFound } from './utils/staticRoutes'
+import { requireComponent } from './utils/componentRoutes'
 
 const History = createBrowserHistory()
 
-const Test = (props, stats, context) => {
-
-  console.log(arguments)
-
-  return <div />
-}
+const pages = [
+  'buttons',
+  'controls',
+  'grid',
+  'lists',
+  'navbar',
+  'ripple',
+  'sidenav',
+  'slider'
+]
 
 const App = ({ children }) => 
   <Container>
@@ -31,8 +34,14 @@ const routes = (
   <ThemeProvider theme={darkTheme}>
     <Router history={History}>
       <Route component={App}>
-        <IndexRoute component={Home} />
-        <Route path='*' component={NotFound} />
+        <IndexRoute getComponent={AsyncHome} />
+        ${pages.map(name => {
+          <Route
+            path={`/components/${name}`}
+            getComponent={(n, cb) => requireComponent(name, cb)}
+          />
+        })}
+        <Route path='*' getComponent={AsyncNotFound} />
       </Route>
     </Router>
   </ThemeProvider>

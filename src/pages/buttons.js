@@ -1,8 +1,15 @@
 import Inferno from 'inferno'
 import Component from 'inferno-component'
 
-export class Buttons extends Component {
+import { RaisedButton } from '@slup/buttons'
+
+export default class Buttons extends Component {
   render() {
-    return <a>BUTTONSS</a>
+    return(
+      <div>
+        <RaisedButton secondary>Test</RaisedButton> 
+        <a>BUTTONSS</a>
+      </div>
+    )
   }
 }
