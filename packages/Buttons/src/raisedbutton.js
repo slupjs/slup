@@ -9,6 +9,7 @@ import { rgba }       from 'polished'
 const RaisedBase = styled.button`
   /* Not changing values */
   position: relative;
+  font-weight: bold;
   border: none; outline: none;
   min-height: 36px;
   min-width: 88px;
@@ -17,11 +18,11 @@ const RaisedBase = styled.button`
   font-size: 14px;
   margin: 0 8px;
   padding: 0 8px;
-  cursor: pointer;
   transition: box-shadow 150ms linear;
   user-select: none;
 
   /* Changing values */
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   color: ${props => props.disabled ? rgba(props.theme.text || lightTheme.text, .26) : props.theme.text || lightTheme.text};
   background: ${props => props.disabled
     ? rgba(props.theme.text || lightTheme.text, .12)
