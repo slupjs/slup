@@ -9,7 +9,8 @@ import { rgba }       from 'polished'
 const FlatBase = styled.button`
   /* Not changing values */
   position: relative;
-  font-weight: bold;
+  font-family: inherit;
+  font-weight: 500;
   border: none; outline: none;
   min-height: 36px;
   min-width: 88px;
