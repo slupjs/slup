@@ -35,12 +35,12 @@ const routes = (
     <Router history={History}>
       <Route component={App}>
         <IndexRoute getComponent={AsyncHome} />
-        ${pages.map(name => {
-          return <Route
+        ${pages.map(name => 
+          <Route
             path={`/components/${name}`}
             getComponent={(n, cb) => requireComponent(name, cb)}
           />
-        })}
+        )}
         <Route path='*' getComponent={AsyncNotFound} />
       </Route>
     </Router>
