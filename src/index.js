@@ -36,7 +36,7 @@ const routes = (
       <Route component={App}>
         <IndexRoute getComponent={AsyncHome} />
         ${pages.map(name => {
-          <Route
+          return <Route
             path={`/components/${name}`}
             getComponent={(n, cb) => requireComponent(name, cb)}
           />
