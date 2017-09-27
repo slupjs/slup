@@ -13,7 +13,7 @@ So we started developing it with three core concepts in mind:
 
 * High Performance
 * Meticulousness
-* Tinily
+* Small size and small footprint
 
 ## Getting Started
 
