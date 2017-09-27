@@ -153,7 +153,7 @@ This property will hide the columns in various viewports
 ```
 
 #### Property: 'show' [Col]
-This property will show the columns in various viewports but the difference with the 'hide' is that if this property is set to a certain size it will not count in other ones
+This property will show the columns in various viewports, the difference with the 'hide' is that if this property is set for a certain viewport it will not count in the other ones
 
 ```js
 <Grid>
