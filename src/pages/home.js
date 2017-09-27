@@ -15,10 +15,9 @@ const LogoContainer = styled.div`
   flex-direction: column;
 `
 
-
 export class Home extends Component {
   @bind
-  @debounce(600)
+  @debounce(300)
   handleClick() {
     this.context.router.push('/components/buttons')
   }
