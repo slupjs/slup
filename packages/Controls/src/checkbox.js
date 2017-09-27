@@ -3,17 +3,24 @@ import Component from 'inferno-component'
 import styled    from 'styled-components'
 import { bind }  from 'decko'
 
+import { lightTheme } from '@slup/theming'
+import { rgba }       from 'polished'
+
 const Box = styled.div`
   width: ${props => props.size || 18}px;
   height: ${props => props.size || 18}px;
   border-radius: 2px;
   box-sizing: border-box;
-  border: 2px solid ${props => props.disabled ? '#9e9e9e'
-    : props.checked ? 'teal'
-    : '#616161'};
-  background-color: ${props => props.disabled && props.checked ? '#9e9e9e'
-    : props.checked ? 'teal'
-    : 'transparent'};
+  border: 2px solid ${props => props.disabled
+    ? rgba(props.theme.text || lightTheme.text, .3)
+    : props.checked
+      ? props.theme.secondary || lightTheme.secondary
+      : rgba(props.theme.text || lightTheme.text, .7)};
+  background: ${props => props.disabled
+    ? 'transparent'
+    : props.checked
+      ? props.theme.secondary || lightTheme.secondary
+      : 'transparent'};
   transition: background-color 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
     border-color 200ms linear;
   outline: none;
@@ -30,7 +37,7 @@ const Box = styled.div`
   &::before,
   &::after {
     content: '';
-    background: #fff;
+    background: ${props => props.theme.background || lightTheme.background};
     height: ${props => props.size || 18}px;
     width: ${props => props.size || 18}px;
     position: absolute;
@@ -73,7 +80,7 @@ const Wave = styled.div`
   background-color: ${props => props.disabled
     ? 'grey'
     : props.checked
-      ? 'teal'
+      ? props.theme.secondary || lightTheme.secondary
       : 'grey'};
 `
 
@@ -109,7 +116,7 @@ export class Checkbox extends Component {
 
   render(props) {
     return (
-      <Box 
+      <Box
         {...props}
         onClick={props.onChange}
         tabIndex={0}
