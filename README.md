@@ -27,6 +27,33 @@ Any slup package can be installed whit [NPM](http://npmjs.com/) as follows:
 npm i -s @slup/<package>
 ```
 
+## Running the demo
+
+- To kick things off, clone the demo and enter that directory:
+```
+git clone https://github.com/Gejsi/Material && cd Material
+```
+
+- Install dependencies and run the demo:
+```
+npm install && npm start
+```
+
+## Development setup
+> NOTE: This process requires you to have installed [lerna](https://lernajs.io/) globally.
+
+- To kick things off, clone the demo and enter that directory:
+```
+git clone https://github.com/Gejsi/Material && cd Material
+```
+
+- Install dependencies:
+```
+npm install && lerna bootstrap
+```
+
+Now feel free to make your changes and create new [PRs](https://github.com/Gejsi/Material/pulls)
+
 ## License
 
 This project is licensed under the MIT License
