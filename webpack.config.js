@@ -72,9 +72,7 @@ const config = {
   },
 
 	plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: [ 'vendor' ]
-    })
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' })
   ],
 
   devtool: 'source-map',
