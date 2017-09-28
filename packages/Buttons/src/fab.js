@@ -6,7 +6,6 @@ import { Ripple }     from '@slup/ripple'
 import { lightTheme } from '@slup/theming'
 
 const Circle = styled.button`
-  position: fixed;
   font-size: 24px;
   border: none; outline: none;
   border-radius: 50%;
