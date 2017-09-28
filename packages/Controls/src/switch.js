@@ -4,18 +4,18 @@ import styled    from 'styled-components'
 import { bind }  from 'decko'
 
 import { lightTheme } from '@slup/theming'
-import { rgba } from 'polished'
+import { rgba, lighten } from 'polished'
 
 const Bar = styled.div`
   width: 36px;
   height: 14px;
   border-radius: 8px;
   outline: none;
-  background: ${props => props.disabled 
+  background: ${props => props.disabled
     ? rgba(props.theme.text || lightTheme.text, .12)
-    : props.checked 
+    : props.checked
       ? rgba(props.theme.secondary || lightTheme.secondary, .7)
-      : rgba(props.theme.text || lightTheme.text, .38)
+      : rgba(props.theme.text || lightTheme.text, .3)
   };
   position: relative;
   transition: background 250ms linear;
@@ -33,23 +33,24 @@ const Thumb = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  opacity: ${props => props.disabled ? '.38' : '1'};
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   transition: transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1), background 200ms linear;
-  background: ${props => props.disabled 
-    ? props.theme.text || lightTheme.text
-      : props.theme.dark
-      /** Dark */
-      ? props.checked
-        ? props.theme.secondary || lightTheme.secondary
-        : props.theme.text
-      
-      /** Light */
-      : props.checked
-        ? props.theme.secondary || lightTheme.secondary
-        : props.theme.background || lightTheme.background
+  background: ${props => props.theme.dark && props.disabled
+    ? lighten(.05, props.theme.background || lightTheme.background)
+    : props.disabled
+      ? lighten(.7, props.theme.text || lightTheme.text)
+        : props.theme.dark
+        /** Dark */
+        ? props.checked
+          ? props.theme.secondary || lightTheme.secondary
+          : props.theme.text
+
+        /** Light */
+        : props.checked
+          ? props.theme.secondary || lightTheme.secondary
+          : props.theme.background || lightTheme.background
   };
   position: absolute;
   top: -3px; left: -2px;
@@ -69,7 +70,7 @@ const Wave = styled.div`
   transform: ${props => props.transform};
   background: ${props => props.checked && !props.disabled
     ? rgba(props.theme.secondary || lightTheme.secondary, .4)
-    : rgba('grey' ,.4)
+    : rgba(props.theme.text || lightTheme.text ,.4)
   };
 `
 
@@ -106,7 +107,7 @@ export class Switch extends Component {
 
   render(props) {
     return(
-      <Bar 
+      <Bar
         {...props}
         onClick={props.onChange}
         tabIndex={0}
