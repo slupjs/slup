@@ -22,6 +22,14 @@ const RaisedBase = styled.button`
   transition: box-shadow 150ms linear;
   user-select: none;
 
+  /** 
+   * Disables blue background on tap in mobile devices.
+   * See: 
+   * - https://stackoverflow.com/a/29961714
+   * - #32
+   */
+  -webkit-tap-highlight-color: transparent;
+
   /* Changing values */
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   color: ${props => props.disabled ? rgba(props.theme.text || lightTheme.text, .26) : props.theme.text || lightTheme.text};

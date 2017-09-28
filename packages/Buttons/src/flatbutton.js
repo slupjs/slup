@@ -23,6 +23,14 @@ const FlatBase = styled.button`
   user-select: none;
   background: transparent;
 
+  /** 
+   * Disables blue background on tap in mobile devices.
+   * See: 
+   * - https://stackoverflow.com/a/29961714
+   * - #32
+   */
+  -webkit-tap-highlight-color: transparent;
+
   /* Changing values */
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   color: ${props => props.disabled

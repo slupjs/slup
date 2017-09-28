@@ -19,6 +19,14 @@ const Circle = styled.button`
     0px 2px 2px 0px rgba(0, 0, 0, 0.14),
     0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 
+  /** 
+   * Disables blue background on tap in mobile devices.
+   * See: 
+   * - https://stackoverflow.com/a/29961714
+   * - #32
+   */
+  -webkit-tap-highlight-color: transparent;
+
   width: ${props => props.mini ? '40px' : '56px'};
   height: ${props => props.mini ? '40px' : '56px'};
   color: ${props => props.theme.text || lightTheme.text};
