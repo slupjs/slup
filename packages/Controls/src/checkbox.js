@@ -5,6 +5,7 @@ import { bind }  from 'decko'
 
 import { lightTheme } from '@slup/theming'
 import { rgba }       from 'polished'
+import { Container }  from './container'
 
 const Box = styled.div`
   border-radius: 2px;
@@ -119,24 +120,31 @@ export class Checkbox extends Component {
 
   render(props) {
     return (
-      <Box
-        {...props}
-        onClick={props.onChange}
-        tabIndex={0}
-        onKeyDown={this.handleKeyDown}
-        onMouseDown={this.createWave}
-        onMouseUp={this.destroyWave}
-        onFocus={this.createWave}
-        onBlur={this.destroyWave}
+      <Container
+        onChange={props.onChange}
+        leftLabel={props.leftLabel}
+        rightLabel={props.rightLabel}
+        disabled={props.disabled}
       >
-        <Wave
-          checked={props.checked}
-          disabled={props.disabled}
-          size={props.size}
-          transform={this.state.transform}
-          opacity={this.state.opacity}
-        />
-      </Box>
+        <Box
+          {...props}
+          onClick={props.onChange}
+          tabIndex={0}
+          onKeyDown={this.handleKeyDown}
+          onMouseDown={this.createWave}
+          onMouseUp={this.destroyWave}
+          onFocus={this.createWave}
+          onBlur={this.destroyWave}
+        >
+          <Wave
+            checked={props.checked}
+            disabled={props.disabled}
+            size={props.size}
+            transform={this.state.transform}
+            opacity={this.state.opacity}
+          />
+        </Box>
+      </Container>
     )
   }
 }
