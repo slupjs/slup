@@ -2,9 +2,9 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from 'styled-components'
 import { bind }  from 'decko'
+import { rgba }       from 'polished'
 
 import { lightTheme } from '@slup/theming'
-import { rgba }       from 'polished'
 import { Container }  from './container'
 
 const Border = styled.div`
@@ -106,12 +106,7 @@ export class Radio extends Component {
 
   render(props) {
     return (
-      <Container
-        onChange={props.onChange}
-        leftLabel={props.leftLabel}
-        rightLabel={props.rightLabel}
-        disabled={props.disabled}
-      >
+      <Container {...props}>
         <Border
           {...props}
           tabIndex={0}
@@ -122,16 +117,10 @@ export class Radio extends Component {
           onBlur={this.destroyWave}
         >
 
-          <Circle
-            checked={props.checked}
-            disabled={props.disabled}
-            size={props.size}
-          />
+          <Circle {...props} />
 
           <Wave
-            checked={props.checked}
-            disabled={props.disabled}
-            size={props.size}
+            {...props}
             transform={this.state.transform}
             opacity={this.state.opacity}
           />

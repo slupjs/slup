@@ -2,9 +2,9 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from 'styled-components'
 import { bind }  from 'decko'
+import { rgba, lighten } from 'polished'
 
 import { lightTheme }    from '@slup/theming'
-import { rgba, lighten } from 'polished'
 import { Container }     from './container'
 
 const Bar = styled.div`

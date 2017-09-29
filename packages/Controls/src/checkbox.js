@@ -2,9 +2,9 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from 'styled-components'
 import { bind }  from 'decko'
+import { rgba }       from 'polished'
 
 import { lightTheme } from '@slup/theming'
-import { rgba }       from 'polished'
 import { Container }  from './container'
 
 const Box = styled.div`
@@ -14,7 +14,7 @@ const Box = styled.div`
     border-color 200ms linear;
   outline: none;
   position: relative;
-  opacity: ${props => props.disabled ? '.3' : '1'};
+  opacity: ${props => props.disabled ? .3 : 1};
   width: ${props => props.size || 18}px;
   height: ${props => props.size || 18}px;
   border: 2px solid ${props => props.disabled
@@ -49,7 +49,7 @@ const Box = styled.div`
     background: ${props => props.theme.background || lightTheme.background};
     height: ${props => props.size || 18}px;
     width: ${props => props.size || 18}px;
-    opacity: ${props => props.checked ? '1' : '0'};
+    opacity: ${props => props.checked ? 1 : 0};
   }
 
   &::after {
@@ -120,12 +120,7 @@ export class Checkbox extends Component {
 
   render(props) {
     return (
-      <Container
-        onChange={props.onChange}
-        leftLabel={props.leftLabel}
-        rightLabel={props.rightLabel}
-        disabled={props.disabled}
-      >
+      <Container {...props}>
         <Box
           {...props}
           onClick={props.onChange}
@@ -137,9 +132,7 @@ export class Checkbox extends Component {
           onBlur={this.destroyWave}
         >
           <Wave
-            checked={props.checked}
-            disabled={props.disabled}
-            size={props.size}
+            {...props}
             transform={this.state.transform}
             opacity={this.state.opacity}
           />

@@ -15,8 +15,8 @@ const Base = styled.div`
 const Label = styled.label`
   user-select: none;
   color: ${props => props.theme.text || lightTheme.text};
-  margin-right: ${props => props.right ? '0' : '16px'};
-  margin-left: ${props => props.right ? '16px' : '0'};
+  margin-right: ${props => props.right ? 0 : 16}px;
+  margin-left: ${props => props.right ? 16 : 0}px;
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
 `
 
@@ -27,8 +27,8 @@ export class Container extends Component {
         <Base>
           {props.leftLabel
             ? <Label {...props} onClick={props.disabled ? null : props.onChange}>
-                {props.leftLabel}
-              </Label>
+              {props.leftLabel}
+            </Label>
 
             : null
           }
@@ -37,8 +37,8 @@ export class Container extends Component {
 
           {props.rightLabel
             ? <Label {...props} right onClick={props.disabled ? null : props.onChange}>
-                {props.rightLabel}
-              </Label>
+              {props.rightLabel}
+            </Label>
 
             : null
           }

@@ -17,6 +17,7 @@
     "babili-webpack-plugin": "0.1.2",
     "cross-env": "5.0.4",
     "decko": "1.2.0",
+    "polished": "1.7.0",
     "styled-components": "2.2.0",
     "webpack": "3.4.1"
   },

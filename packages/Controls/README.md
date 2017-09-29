@@ -90,13 +90,13 @@ export class Test extends Component {
 
 
 ## Available properties
-| Props                       |    Type       |    Default    | Documentation                          |
-|-----------------------------|:-------------:|:-------------:|------:                                 |
-| onChange                    |  function     |  none         | [Link](#usage)                         |
-| checked                     |  boolean      |  false        | [Link](#usage)                         |
-| disabled                    |  boolean      |  false        | [Link](#property-disabled)             |
-| size                        |  number       |  16           | [Link](#property-size-checkbox-radio)  |
-| leftLabel / rightLabel      |  string       |  undefined    | [Link](#property-leftlabel-rightlabel) |  
+| Props                       |    Type       |    Default    | Documentation                           |
+|-----------------------------|:-------------:|:-------------:|---------------------------------------: |
+| onChange                    |  function     |  none         | [Link](#usage)                          |
+| checked                     |  boolean      |  false        | [Link](#usage)                          |
+| disabled                    |  boolean      |  false        | [Link](#property-disabled)              |
+| size                        |  number       |  16           | [Link](#property-size-checkbox-radio)   |
+| leftLabel / rightLabel      |  string       |  undefined    | [Link](#property-leftlabel--rightlabel) |  
 
 #### Property: 'disabled'
 This property will disabled the controls
@@ -114,11 +114,8 @@ With this property you can change the size of these two controls
 ```
 
 #### Property: 'leftLabel / rightLabel'
-These properties will create a label which can contain a string.
-<br />
-If you want some text on the left use `leftLabel`.
-<br />
-If you want text on the right use `rightLabel`
+These properties will provide a left/right-sided `<Label />`  that can display a given string.
+Use `leftLabel` for a left-handed label, `rightLabel` for the same result on the right. Or you can just use them both
 
 ```js
 <Checkbox leftLabel='Text' rightLabel='Text' />
