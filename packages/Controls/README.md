@@ -25,7 +25,7 @@ export class Test extends Component {
   state = {
     checked: false
   }
-  
+
   handleChange() {
     this.setState({ checked: !this.state.checked })
   }
@@ -47,7 +47,7 @@ export class Test extends Component {
   state = {
     checked: false
   }
-  
+
   handleChange() {
     this.setState({ checked: !this.state.checked })
   }
@@ -68,7 +68,7 @@ export class Test extends Component {
   state = {
     checked: 0
   }
-  
+
   handleChange(i) {
     this.setState({ checked: i })
   }
@@ -76,7 +76,7 @@ export class Test extends Component {
   render() {
     return(
       <div>
-        {[0, 1, 2].map(i => 
+        {[0, 1, 2].map(i =>
           <Radio
             onChange={e => this.handleChange.call(this, i)}
             checked={this.state.checked === i}
@@ -90,12 +90,13 @@ export class Test extends Component {
 
 
 ## Available properties
-| Props       |    Type       |    Default    | Documentation                         |
-|-------------|:-------------:|:-------------:|------:                                |
-| onChange    |  function     |  none         | [Link](#usage)                        |
-| checked     |  boolean      |  false        | [Link](#usage)                        |
-| disabled    |  boolean      |  false        | [Link](#property-disabled)            |
-| size        |  number       |  16           | [Link](#property-size-checkbox-radio) | 
+| Props                       |    Type       |    Default    | Documentation                          |
+|-----------------------------|:-------------:|:-------------:|------:                                 |
+| onChange                    |  function     |  none         | [Link](#usage)                         |
+| checked                     |  boolean      |  false        | [Link](#usage)                         |
+| disabled                    |  boolean      |  false        | [Link](#property-disabled)             |
+| size                        |  number       |  16           | [Link](#property-size-checkbox-radio)  |
+| leftLabel / rightLabel      |  string       |  undefined    | [Link](#property-leftlabel-rightlabel) |  
 
 #### Property: 'disabled'
 This property will disabled the controls
@@ -110,4 +111,17 @@ With this property you can change the size of these two controls
 ```js
 <Checkbox size={56} />
 <Radio size={32} />
+```
+
+#### Property: 'leftLabel / rightLabel'
+These properties will create a label which can contain a string.
+<br />
+If you want some text on the left use `leftLabel`.
+<br />
+If you want text on the right use `rightLabel`
+
+```js
+<Checkbox leftLabel='Text' rightLabel='Text' />
+<Switch leftLabel='Text' rightLabel='Text' />
+<Radio leftLabel='Text' rightLabel='Text' />
 ```
