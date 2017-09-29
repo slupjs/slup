@@ -4,6 +4,10 @@ import styled from 'styled-components'
 
 import { lightTheme } from '@slup/theming'
 
+const Direction = styled.div`
+  display: block;
+`
+
 const Base = styled.div`
   display: inline-flex;
 `
@@ -19,25 +23,27 @@ const Label = styled.label`
 export class Container extends Component {
   render(props) {
     return(
-      <Base>
-        {props.leftLabel
-          ? <Label {...props} onClick={props.disabled ? null : props.onChange}>
-              {props.leftLabel}
-            </Label>
+      <Direction>
+        <Base>
+          {props.leftLabel
+            ? <Label {...props} onClick={props.disabled ? null : props.onChange}>
+                {props.leftLabel}
+              </Label>
 
-          : null
-        }
+            : null
+          }
 
-        {props.children}
+          {props.children}
 
-        {props.rightLabel
-          ? <Label {...props} right onClick={props.disabled ? null : props.onChange}>
-              {props.rightLabel}
-            </Label>
+          {props.rightLabel
+            ? <Label {...props} right onClick={props.disabled ? null : props.onChange}>
+                {props.rightLabel}
+              </Label>
 
-          : null
-        }
-      </Base>
+            : null
+          }
+        </Base>
+      </Direction>
     )
   }
 }

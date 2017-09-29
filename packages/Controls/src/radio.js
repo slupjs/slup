@@ -5,6 +5,7 @@ import { bind }  from 'decko'
 
 import { lightTheme } from '@slup/theming'
 import { rgba }       from 'polished'
+import { Container }  from './container'
 
 const Border = styled.div`
   /* Geometry */
@@ -105,30 +106,37 @@ export class Radio extends Component {
 
   render(props) {
     return (
-      <Border
-        {...props}
-        tabIndex={0}
-        onClick={props.onChange}
-        onMouseDown={this.createWave}
-        onMouseUp={this.destroyWave}
-        onFocus={this.createWave}
-        onBlur={this.destroyWave}
+      <Container
+        onChange={props.onChange}
+        leftLabel={props.leftLabel}
+        rightLabel={props.rightLabel}
+        disabled={props.disabled}
       >
+        <Border
+          {...props}
+          tabIndex={0}
+          onClick={props.onChange}
+          onMouseDown={this.createWave}
+          onMouseUp={this.destroyWave}
+          onFocus={this.createWave}
+          onBlur={this.destroyWave}
+        >
 
-        <Circle
-          checked={props.checked}
-          disabled={props.disabled}
-          size={props.size}
-        />
+          <Circle
+            checked={props.checked}
+            disabled={props.disabled}
+            size={props.size}
+          />
 
-        <Wave
-          checked={props.checked}
-          disabled={props.disabled}
-          size={props.size}
-          transform={this.state.transform}
-          opacity={this.state.opacity}
-        />
-      </Border>
+          <Wave
+            checked={props.checked}
+            disabled={props.disabled}
+            size={props.size}
+            transform={this.state.transform}
+            opacity={this.state.opacity}
+          />
+        </Border>
+      </Container>
     )
   }
 }
