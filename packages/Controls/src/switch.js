@@ -3,8 +3,9 @@ import Component from 'inferno-component'
 import styled    from 'styled-components'
 import { bind }  from 'decko'
 
-import { lightTheme } from '@slup/theming'
+import { lightTheme }    from '@slup/theming'
 import { rgba, lighten } from 'polished'
+import { Container }     from './container'
 
 const Bar = styled.div`
   width: 36px;
@@ -107,28 +108,35 @@ export class Switch extends Component {
 
   render(props) {
     return(
-      <Bar
-        {...props}
-        onClick={props.onChange}
-        tabIndex={0}
-        onKeyDown={this.handleKeyDown}
-        onMouseDown={this.createWave}
-        onMouseUp={this.destroyWave}
-        onFocus={this.createWave}
-        onBlur={this.destroyWave}
+      <Container
+        onChange={props.onChange}
+        leftLabel={props.leftLabel}
+        rightLabel={props.rightLabel}
+        disabled={props.disabled}
       >
-        <Thumb
+        <Bar
+          {...props}
           onClick={props.onChange}
-          checked={props.checked}
-          disabled={props.disabled}>
-            <Wave
-              checked={props.checked}
-              disabled={props.disabled}
-              transform={this.state.transform}
-              opacity={this.state.opacity}
-            />
-          </Thumb>
-      </Bar>
+          tabIndex={0}
+          onKeyDown={this.handleKeyDown}
+          onMouseDown={this.createWave}
+          onMouseUp={this.destroyWave}
+          onFocus={this.createWave}
+          onBlur={this.destroyWave}
+        >
+          <Thumb
+            onClick={props.onChange}
+            checked={props.checked}
+            disabled={props.disabled}>
+              <Wave
+                checked={props.checked}
+                disabled={props.disabled}
+                transform={this.state.transform}
+                opacity={this.state.opacity}
+              />
+            </Thumb>
+        </Bar>
+      </Container>
     )
   }
 }

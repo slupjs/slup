@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { lightTheme } from '@slup/theming'
 
 const Base = styled.div`
-  display: flex;
+  display: inline-flex;
 `
 
 const Label = styled.label`
