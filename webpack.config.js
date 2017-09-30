@@ -1,9 +1,10 @@
 const webpack           = require('webpack')
 const { join, resolve } = require('path')
-const BabiliPlugin      = require("babili-webpack-plugin")
+const BabiliPlugin      = require('babili-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const config = {
-  entry: { 
+  entry: {
     vendor: [
       'inferno', 
       'inferno-component', 
@@ -18,7 +19,7 @@ const config = {
   },
 
   output: {
-    path: __dirname,
+    path: join(__dirname, 'dist'),
     filename: '[name].js',
     publicPath: 'http://localhost:8080/'
   },
@@ -37,7 +38,6 @@ const config = {
       '@slup/grid': join(__dirname, 'packages', 'Grid', 'src', 'index'),
       '@slup/theming': join(__dirname, 'packages', 'Theming', 'src', 'index'),
       '@slup/tabs': join(__dirname, 'packages', 'Tabs', 'src', 'index'),
-      '@slup/typography': join(__dirname, 'packages', 'Typography', 'src', 'index'),
 
       // Aliases needed for styled-components
       'react': 'inferno-compat',
@@ -73,7 +73,8 @@ const config = {
   },
 
 	plugins: [
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' })
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
+    new CopyWebpackPlugin([{ from: join(__dirname, 'src', 'index.html'), to: join(__dirname, 'dist', 'index.html')  } ])
   ],
 
   devtool: 'source-map',
