@@ -4,12 +4,6 @@
 
 This package contains the Typography, a Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
 
-## Description
-From Google's [Material Design guidelines](https://material.io/guidelines):
-<blockquote>
-  <description>
-</blockquote>
-
 ## Installation
 This package can be installed with [NPM](http://npmjs.com/)
 ```
