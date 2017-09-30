@@ -1,0 +1,16 @@
+{
+  "name": "@slup/icons",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "rimraf icons && git clone https://github.com/google/material-design-icons icons && node install"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-plugin-inferno": "3.2.0",
+    "babel-plugin-transform-es2015-arrow-functions": "6.22.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.26.0",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-preset-minify": "0.2.0",
+    "rimraf": "2.6.2"
+  }
+}
