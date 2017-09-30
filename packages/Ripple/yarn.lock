@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@slup/theming@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@slup/theming/-/theming-0.0.2.tgz#487c3e106997e6cb5b06dce5cfe20118c017e60e"
+
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"

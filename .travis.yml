@@ -1,6 +1,10 @@
 language: node_js
 node_js: "7"
-script: yarn test
+sudo: required
+script: 
+  - yarn global add lerna
+  - lerna bootstrap
+  - yarn test
 deploy:
   provider: pages
   local_dir: dist
