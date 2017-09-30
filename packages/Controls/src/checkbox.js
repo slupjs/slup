@@ -2,22 +2,33 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from 'styled-components'
 import { bind }  from 'decko'
+import { rgba }       from 'polished'
+
+import { lightTheme } from '@slup/theming'
+import { Container }  from './container'
 
 const Box = styled.div`
-  width: ${props => props.size || 18}px;
-  height: ${props => props.size || 18}px;
   border-radius: 2px;
   box-sizing: border-box;
-  border: 2px solid ${props => props.disabled ? '#9e9e9e'
-    : props.checked ? 'teal'
-    : '#616161'};
-  background-color: ${props => props.disabled && props.checked ? '#9e9e9e'
-    : props.checked ? 'teal'
-    : 'transparent'};
-  transition: background-color 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+  transition: background 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
     border-color 200ms linear;
   outline: none;
   position: relative;
+  opacity: ${props => props.disabled ? .3 : 1};
+  width: ${props => props.size || 18}px;
+  height: ${props => props.size || 18}px;
+  border: 2px solid ${props => props.disabled
+    ? props.theme.text || lightTheme.text
+    : props.checked
+      ? props.theme.secondary || lightTheme.secondary
+      : rgba(props.theme.text || lightTheme.text, .7)
+  };
+  background: ${props => props.disabled && props.checked
+    ? props.theme.text || lightTheme.text
+    : props.checked
+      ? props.theme.secondary || lightTheme.secondary
+      : 'transparent'
+  };
   cursor: ${props => props.disabled
     ? 'not-allowed'
     : 'pointer'
@@ -30,26 +41,26 @@ const Box = styled.div`
   &::before,
   &::after {
     content: '';
-    background: #fff;
-    height: ${props => props.size || 18}px;
-    width: ${props => props.size || 18}px;
     position: absolute;
     top: -2px;
     left: -2px;
-    opacity: ${props => props.checked ? '1' : '0'};
     transform-origin: 0 0;
-    transition: opacity 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: opacity 200ms linear;
+    background: ${props => props.theme.background || lightTheme.background};
+    height: ${props => props.size || 18}px;
+    width: ${props => props.size || 18}px;
+    opacity: ${props => props.checked ? 1 : 0};
   }
 
   &::after {
-    transition: transform 50ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: transform 50ms linear;
     transform: translate(${props => props.size / 5.3 || 3.5}px, ${props => props.size / 2.6 || 7.2}px)
       rotate(44.91deg)
       ${props => props.checked ? 'scale(.4,.1)' : 'scale(.1, .1)'}
   }
 
   &::before {
-    transition: transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: transform 200ms linear;
     transform: translate(${props => props.size / 2.55 || 7.1}px, ${props => props.size / 1.65 || 11.2}px)
       rotate(-45deg)
       ${props => props.checked ? 'scale(.6,.1)' : 'scale(.1, .1)'}
@@ -57,8 +68,6 @@ const Box = styled.div`
 `
 
 const Wave = styled.div`
-  width: ${props => (props.size || 18) - 2}px;
-  height: ${props => (props.size || 18) - 2}px;
   background: red;
   position: absolute;
   left: -1.5px; top: -1.5px;
@@ -68,12 +77,14 @@ const Wave = styled.div`
   transition: background 150ms linear,
     opacity 150ms linear,
     transform 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  width: ${props => (props.size || 18) - 2}px;
+  height: ${props => (props.size || 18) - 2}px;
   opacity: ${props => props.opacity};
   transform: ${props => props.transform};
   background-color: ${props => props.disabled
     ? 'grey'
     : props.checked
-      ? 'teal'
+      ? props.theme.secondary || lightTheme.secondary
       : 'grey'};
 `
 
@@ -109,24 +120,24 @@ export class Checkbox extends Component {
 
   render(props) {
     return (
-      <Box 
-        {...props}
-        onClick={props.onChange}
-        tabIndex={0}
-        onKeyDown={this.handleKeyDown}
-        onMouseDown={this.createWave}
-        onMouseUp={this.destroyWave}
-        onFocus={this.createWave}
-        onBlur={this.destroyWave}
-      >
-        <Wave
-          checked={props.checked}
-          disabled={props.disabled}
-          size={props.size}
-          transform={this.state.transform}
-          opacity={this.state.opacity}
-        />
-      </Box>
+      <Container {...props}>
+        <Box
+          {...props}
+          onClick={props.onChange}
+          tabIndex={0}
+          onKeyDown={this.handleKeyDown}
+          onMouseDown={this.createWave}
+          onMouseUp={this.destroyWave}
+          onFocus={this.createWave}
+          onBlur={this.destroyWave}
+        >
+          <Wave
+            {...props}
+            transform={this.state.transform}
+            opacity={this.state.opacity}
+          />
+        </Box>
+      </Container>
     )
   }
 }

@@ -2,7 +2,10 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from 'styled-components'
 import { bind }  from 'decko'
+import { rgba }       from 'polished'
 
+import { lightTheme } from '@slup/theming'
+import { Container }  from './container'
 
 const Border = styled.div`
   /* Geometry */
@@ -13,10 +16,10 @@ const Border = styled.div`
    /* Border colors and transition */
   transition: border 150ms linear;
   border: 2px solid ${props => props.disabled
-    ? '#9e9e9e'
+    ? rgba(props.theme.text || lightTheme.text, .3)
     : props.checked
-      ? 'teal'
-      : '#616161'
+      ? props.theme.secondary || lightTheme.secondary
+      : rgba(props.theme.text || lightTheme.text, .7)
   };
   position: relative;
   /* Children alignment */
@@ -43,16 +46,16 @@ const Circle = styled.div`
   /* Positioning and styling */
   width: ${props =>  (props.size || 16) - 6}px;
   height: ${props => (props.size || 16) - 6}px;
-  background-color: ${props => props.disabled
-    ? '#9e9e9e'
+  background: ${props => props.disabled
+    ? rgba(props.theme.text || lightTheme.text, .3)
     : props.checked
-      ? 'teal'
-      : '#9e9e9e'
+      ? props.theme.secondary || lightTheme.secondary
+      : 'transparent'
   };
   border-radius: 50%;
 
   /* Transitions and animations */
-  transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1), background 150ms linear;
   transform: ${props => props.checked
     ? 'scale(1)'
     : 'scale(0)'
@@ -74,7 +77,7 @@ const Wave = styled.div`
   background-color: ${props => props.disabled
     ? 'grey'
     : props.checked
-      ? 'teal'
+      ? props.theme.secondary || lightTheme.secondary
       : 'grey'};
 `
 
@@ -103,30 +106,26 @@ export class Radio extends Component {
 
   render(props) {
     return (
-      <Border
-        {...props}
-        tabIndex={0}
-        onClick={props.onChange}
-        onMouseDown={this.createWave}
-        onMouseUp={this.destroyWave}
-        onFocus={this.createWave}
-        onBlur={this.destroyWave}
-      >
+      <Container {...props}>
+        <Border
+          {...props}
+          tabIndex={0}
+          onClick={props.onChange}
+          onMouseDown={this.createWave}
+          onMouseUp={this.destroyWave}
+          onFocus={this.createWave}
+          onBlur={this.destroyWave}
+        >
 
-        <Circle
-          checked={props.checked}
-          disabled={props.disabled}
-          size={props.size}
-        />
+          <Circle {...props} />
 
-        <Wave
-          checked={props.checked}
-          disabled={props.disabled}
-          size={props.size}
-          transform={this.state.transform}
-          opacity={this.state.opacity}
-        />
-      </Border>
+          <Wave
+            {...props}
+            transform={this.state.transform}
+            opacity={this.state.opacity}
+          />
+        </Border>
+      </Container>
     )
   }
 }

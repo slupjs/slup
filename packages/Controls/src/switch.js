@@ -2,17 +2,24 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from 'styled-components'
 import { bind }  from 'decko'
+import { rgba, lighten } from 'polished'
+
+import { lightTheme }    from '@slup/theming'
+import { Container }     from './container'
 
 const Bar = styled.div`
   width: 36px;
   height: 14px;
   border-radius: 8px;
   outline: none;
-  background: ${props => props.disabled ? 'rgba(0, 0, 0, .12)'
-    : props.checked ? 'rgba(0, 150, 136, .7)'
-    : 'rgba(0, 0, 0, .38)'};
+  background: ${props => props.disabled
+    ? rgba(props.theme.text || lightTheme.text, .12)
+    : props.checked
+      ? rgba(props.theme.secondary || lightTheme.secondary, .7)
+      : rgba(props.theme.text || lightTheme.text, .3)
+  };
   position: relative;
-  transition: background 200ms linear;
+  transition: background 250ms linear;
   cursor: ${props => props.disabled
     ? 'not-allowed'
     : 'pointer'
@@ -27,14 +34,25 @@ const Thumb = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  z-index: 1;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   transition: transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1), background 200ms linear;
-  background: ${props => props.disabled ? '#BDBDBD'
-    : props.checked ? 'rgb(0, 150, 136)'
-    : '#FAFAFA'};
+  background: ${props => props.theme.dark && props.disabled
+    ? lighten(.05, props.theme.background || lightTheme.background)
+    : props.disabled
+      ? lighten(.7, props.theme.text || lightTheme.text)
+        : props.theme.dark
+        /** Dark */
+        ? props.checked
+          ? props.theme.secondary || lightTheme.secondary
+          : props.theme.text
+
+        /** Light */
+        : props.checked
+          ? props.theme.secondary || lightTheme.secondary
+          : props.theme.background || lightTheme.background
+  };
   position: absolute;
   top: -3px; left: -2px;
   transform: ${props => props.checked ? 'translateX(100%)' : 'translateX(0)'};
@@ -46,17 +64,15 @@ const Wave = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  z-index: -1;
   pointer-events: none;transition: background 150ms linear,
     opacity 150ms linear,
     transform 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
   opacity: ${props => props.opacity};
   transform: ${props => props.transform};
-  background-color: ${props => props.disabled
-    ? 'grey'
-    : props.checked
-      ? 'teal'
-      : 'grey'};
+  background: ${props => props.checked && !props.disabled
+    ? rgba(props.theme.secondary || lightTheme.secondary, .4)
+    : rgba(props.theme.text || lightTheme.text ,.4)
+  };
 `
 
 
@@ -92,28 +108,35 @@ export class Switch extends Component {
 
   render(props) {
     return(
-      <Bar 
-        {...props}
-        onClick={props.onChange}
-        tabIndex={0}
-        onKeyDown={this.handleKeyDown}
-        onMouseDown={this.createWave}
-        onMouseUp={this.destroyWave}
-        onFocus={this.createWave}
-        onBlur={this.destroyWave}
+      <Container
+        onChange={props.onChange}
+        leftLabel={props.leftLabel}
+        rightLabel={props.rightLabel}
+        disabled={props.disabled}
       >
-        <Thumb
+        <Bar
+          {...props}
           onClick={props.onChange}
-          checked={props.checked}
-          disabled={props.disabled}>
-            <Wave
-              checked={props.checked}
-              disabled={props.disabled}
-              transform={this.state.transform}
-              opacity={this.state.opacity}
-            />
-          </Thumb>
-      </Bar>
+          tabIndex={0}
+          onKeyDown={this.handleKeyDown}
+          onMouseDown={this.createWave}
+          onMouseUp={this.destroyWave}
+          onFocus={this.createWave}
+          onBlur={this.destroyWave}
+        >
+          <Thumb
+            onClick={props.onChange}
+            checked={props.checked}
+            disabled={props.disabled}>
+              <Wave
+                checked={props.checked}
+                disabled={props.disabled}
+                transform={this.state.transform}
+                opacity={this.state.opacity}
+              />
+            </Thumb>
+        </Bar>
+      </Container>
     )
   }
 }
