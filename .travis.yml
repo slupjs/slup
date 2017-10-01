@@ -12,6 +12,7 @@ deploy:
   target_branch: master
   project_name: slup
   skip_cleanup: true
+  name: SlupJS demo bot
   github_token: $GITHUB_TOKEN
   on:
     branch: master

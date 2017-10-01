@@ -74,7 +74,16 @@ const config = {
 
 	plugins: [
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
-    new CopyWebpackPlugin([{ from: join(__dirname, 'src', 'index.html'), to: join(__dirname, 'dist', 'index.html')  } ])
+    new CopyWebpackPlugin([
+      { 
+        from: join(__dirname, 'src', 'index.html'), 
+        to: join(__dirname, 'dist', 'index.html')  
+      } 
+      { 
+        from: join(__dirname, 'src', '404.html'),
+        to: join(__dirname, 'dist', '404.html')
+      } 
+    ])
   ],
 
   devtool: 'source-map',
