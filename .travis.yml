@@ -1,7 +1,9 @@
 language: node_js
 node_js: "7"
 sudo: required
+cache: yarn
 script: 
+  - yarn --production=false
   - yarn global add lerna
   - lerna exec --concurrency 1 -- yarn --production=false
   - yarn build
