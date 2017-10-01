@@ -8,7 +8,7 @@ script:
 deploy:
   provider: pages
   local_dir: dist
-  repo: https://github.com/slupjs/slupjs.github.io
+  repo: slupjs/slupjs.github.io
   target_branch: master
   project_name: slup
   skip_cleanup: true
