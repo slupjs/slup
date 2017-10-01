@@ -78,7 +78,7 @@ const config = {
       { 
         from: join(__dirname, 'src', 'index.html'), 
         to: join(__dirname, 'dist', 'index.html')  
-      } 
+      },
       { 
         from: join(__dirname, 'src', '404.html'),
         to: join(__dirname, 'dist', '404.html')
