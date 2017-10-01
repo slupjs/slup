@@ -3,7 +3,7 @@ node_js: "7"
 sudo: required
 script: 
   - yarn global add lerna
-  - lerna bootstrap
+  - lerna exec yarn
   - yarn build
 deploy:
   provider: pages
