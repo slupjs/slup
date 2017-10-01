@@ -23,6 +23,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --progress --hot",
+    "build": "webpack -p --progress",
     "test": "webpack --progress -p --json > stats.json"
   }
 }

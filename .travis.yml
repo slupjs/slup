@@ -4,7 +4,7 @@ sudo: required
 script: 
   - yarn global add lerna
   - lerna bootstrap
-  - yarn test
+  - yarn build
 deploy:
   provider: pages
   local_dir: dist
