@@ -3,13 +3,13 @@ const { join, resolve } = require('path')
 const BabiliPlugin      = require("babili-webpack-plugin")
 
 const config = {
-  entry: { 
+  entry: {
     vendor: [
-      'inferno', 
-      'inferno-component', 
-      'inferno-compat', 
-      'inferno-router', 
-      'styled-components', 
+      'inferno',
+      'inferno-component',
+      'inferno-compat',
+      'inferno-router',
+      'styled-components',
       'decko',
       'polished',
       'history/createBrowserHistory'
@@ -37,6 +37,7 @@ const config = {
       '@slup/grid': join(__dirname, 'packages', 'Grid', 'src', 'index'),
       '@slup/theming': join(__dirname, 'packages', 'Theming', 'src', 'index'),
       '@slup/tabs': join(__dirname, 'packages', 'Tabs', 'src', 'index'),
+      '@slup/icons': join(__dirname, 'packages', 'Icons', '_icons'),
 
       // Aliases needed for styled-components
       'react': 'inferno-compat',

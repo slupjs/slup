@@ -1,6 +1,7 @@
 {
   "name": "@slup/icons",
   "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
     "build": "rimraf icons && git clone https://github.com/google/material-design-icons icons && node install"
   },
