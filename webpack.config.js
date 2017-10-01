@@ -12,6 +12,8 @@ const config = {
       'inferno-router', 
       'styled-components', 
       'decko',
+      'prismjs/prism',
+      'prismjs/components/prism-jsx',
       'polished',
       'history/createBrowserHistory'
     ],
@@ -38,6 +40,7 @@ const config = {
       '@slup/grid': join(__dirname, 'packages', 'Grid', 'src', 'index'),
       '@slup/theming': join(__dirname, 'packages', 'Theming', 'src', 'index'),
       '@slup/tabs': join(__dirname, 'packages', 'Tabs', 'src', 'index'),
+      '@slup/typography': join(__dirname, 'packages', 'Typography', 'src', 'index'),
 
       // Aliases needed for styled-components
       'react': 'inferno-compat',

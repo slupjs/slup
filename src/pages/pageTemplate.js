@@ -7,7 +7,11 @@ export default class DemoPage extends Component {
   render() {
     return (
       <Container>
+        "name"
 
+        "description"
+
+        "demos"
       </Container>
     )
   }

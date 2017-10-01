@@ -11,6 +11,7 @@ export const Container = styled.section`
   top: 0;
   color: white;
   background: ${props => props.theme.background};
+  overflow: auto;
 `
 
 export const Content = ({ children }) =>
