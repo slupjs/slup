@@ -1,9 +1,9 @@
 {
-  "name": "@slup/controls",
+  "name": "@slup/buttons",
   "version": "0.0.1",
-  "description": "Material design controls which include radio button, checkbox and switch",
+  "description": "Material design typography utility for the Slup framework",
   "main": "dist.js",
-  "author": "LucaT",
+  "author": "LucaT, Gejsi",
   "license": "MIT",
   "devDependencies": {
     "@slup/theming": "0.0.2",
@@ -17,7 +17,6 @@
     "babili-webpack-plugin": "0.1.2",
     "decko": "1.2.0",
     "polished": "1.7.0",
-    "styled-components": "2.2.0",
     "webpack": "3.4.1"
   },
   "scripts": {

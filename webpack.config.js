@@ -1,6 +1,7 @@
 const webpack           = require('webpack')
 const { join, resolve } = require('path')
-const BabiliPlugin      = require("babili-webpack-plugin")
+const BabiliPlugin      = require('babili-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const config = {
   entry: {
@@ -11,6 +12,8 @@ const config = {
       'inferno-router',
       'styled-components',
       'decko',
+      'prismjs/prism',
+      'prismjs/components/prism-jsx',
       'polished',
       'history/createBrowserHistory'
     ],
@@ -18,9 +21,9 @@ const config = {
   },
 
   output: {
-    path: __dirname,
+    path: join(__dirname, 'dist'),
     filename: '[name].js',
-    publicPath: 'http://localhost:8080/'
+    publicPath: '/',
   },
 
   resolve: {
@@ -38,7 +41,8 @@ const config = {
       '@slup/theming': join(__dirname, 'packages', 'Theming', 'src', 'index'),
       '@slup/tabs': join(__dirname, 'packages', 'Tabs', 'src', 'index'),
       '@slup/icons': join(__dirname, 'packages', 'Icons', '_icons'),
-
+      '@slup/typography': join(__dirname, 'packages', 'Typography', 'src', 'index'),
+      
       // Aliases needed for styled-components
       'react': 'inferno-compat',
       'react-dom': 'inferno-compat'
@@ -73,7 +77,17 @@ const config = {
   },
 
 	plugins: [
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' })
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
+    new CopyWebpackPlugin([
+      { 
+        from: join(__dirname, 'src', 'index.html'), 
+        to: join(__dirname, 'dist', 'index.html')  
+      },
+      { 
+        from: join(__dirname, 'src', '404.html'),
+        to: join(__dirname, 'dist', '404.html')
+      } 
+    ])
   ],
 
   devtool: 'source-map',
@@ -84,6 +98,7 @@ if(process.env.NODE_ENV === 'production') {
   config.plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
   config.plugins.push(new BabiliPlugin())
 } else {
+  config.output.publicPath = 'http://localhost:8080/'
   config.plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 

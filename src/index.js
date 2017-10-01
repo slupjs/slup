@@ -25,15 +25,14 @@ const pages = [
 const App = ({ children }) => 
   <Container>
     <NavBar history={History} />
-    <Content>
-      {children}
-    </Content>
+    <Content>{children}</Content>
   </Container>
 
 const routes = (
   <ThemeProvider theme={darkTheme}>
     <Router history={History}>
       <Route component={App}>
+
         <IndexRoute getComponent={AsyncHome} />
         ${pages.map(name => 
           <Route

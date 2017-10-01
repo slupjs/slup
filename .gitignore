@@ -8,3 +8,4 @@ vendor.js
 vendor.js.map
 yarn-error.log
 .DS_Store
+dist

@@ -1,0 +1,20 @@
+language: node_js
+node_js: "7"
+sudo: required
+cache: yarn
+script: 
+  - yarn --production=false
+  - yarn global add lerna
+  - lerna exec --concurrency 1 -- yarn --production=false
+  - yarn build
+deploy:
+  provider: pages
+  local_dir: dist
+  repo: slupjs/slupjs.github.io
+  target_branch: master
+  project_name: slup
+  skip_cleanup: true
+  name: SlupJS demo bot
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master

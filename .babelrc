@@ -1,4 +1,7 @@
 {
+  "only": [
+    "."
+  ],
   "presets": [
     ["env", {
       "targets": {"browsers": [

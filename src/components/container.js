@@ -11,11 +11,12 @@ export const Container = styled.section`
   top: 0;
   color: white;
   background: ${props => props.theme.background};
+  overflow: auto;
 `
 
 export const Content = ({ children }) =>
   <Grid style={{ paddingTop: 64 }}>
-    <Col sm={12} offset_lg={320}>
+    <Col sm={12}>
       {children}
     </Col>
   </Grid>

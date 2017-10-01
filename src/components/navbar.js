@@ -35,19 +35,17 @@ export class NavBar extends Component {
     return(
       <nav>
         <Navbar primary>
-          <Grid middle>
-            <Col sm={12} offset_lg={320}>
-              <Grid middle space_between>
+          <Grid middle style={{overflow: 'hidden'}}>
+            <Col sm={12}>
+              <Grid middle space_between style={{overflow: 'hidden'}}>
 
                 {/* Main title */}
                 <div style={{ display: 'flex', alignItems: 'center' }}>
 
-                  <Col hide_lg hide_xl>
-                    <Menu
-                      onClick={this.handleOpen}
-                      style={{ marginRight: 32, cursor: 'pointer'}}
-                    />
-                  </Col>
+                  <Menu
+                    onClick={this.handleOpen}
+                    style={{ marginRight: 32, cursor: 'pointer'}}
+                  />
 
                   <h3 style={{ margin: 0, fontWeight: 'normal' }}>{name}</h3>
 
@@ -63,7 +61,6 @@ export class NavBar extends Component {
         </Navbar>
 
         <SideNav
-          responsive
           opened={opened}
           onClose={this.handleClose}
         />
