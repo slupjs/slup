@@ -12,9 +12,7 @@ export default class Buttons extends Component {
   render() {
     return(
       <Container>
-        <div style='padding: 32px 0'>
-          <Typography display3>Buttons</Typography>
-        </div>
+        <Typography display3 style='padding: 32px 0'>Buttons</Typography>
 
         <BlockQuote>
           Material buttons trigger an ink reaction on press. They may display text, imagery, or both. <br />
@@ -22,7 +20,7 @@ export default class Buttons extends Component {
           A floating action button is used for a promoted action. <br />
         </BlockQuote>
 
-        <CodeDisplay 
+        <CodeDisplay
           name='All buttons'
           code={`
 import {
@@ -37,8 +35,8 @@ export const Buttons = () =>
     <FlatButton>Button</FlatButton>
     <Fab>+</Fab>
   </div>
-          `} 
-          demo={[<RaisedButton>Button</RaisedButton>, <FlatButton>Button</FlatButton>, <Fab>+</Fab>]} 
+          `}
+          demo={[<RaisedButton>Button</RaisedButton>, <FlatButton>Button</FlatButton>, <Fab>+</Fab>]}
         />
         <CodeDisplay
           name='Color properties'

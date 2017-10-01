@@ -16,7 +16,7 @@ export const Container = styled.section`
 
 export const Content = ({ children }) =>
   <Grid style={{ paddingTop: 64 }}>
-    <Col sm={12} offset_lg={320}>
+    <Col sm={12}>
       {children}
     </Col>
   </Grid>

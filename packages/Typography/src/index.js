@@ -5,7 +5,7 @@ import { rgba }  from 'polished'
 
 import { lightTheme } from '@slup/theming'
 
-export const Typography = styled.span`
+export const Typography = styled.p`
   margin: 0;
   line-height: 1;
   text-transform: ${props => props.button ? 'uppercase' : 'initial'};

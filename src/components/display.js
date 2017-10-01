@@ -14,9 +14,9 @@ import jsx from 'prismjs/components/prism-jsx'
 import styles  from '../hlTheme'
 
 export const Card = styled.section`
-  box-shadow: 
-    0 3px 6px rgba(0,0,0,0.16), 
-    0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   border-radius: 2px;
   margin: 32px 0;
 `
@@ -44,6 +44,7 @@ export const Demo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   padding: 16px;
 `
 
@@ -51,8 +52,8 @@ export class CodeDisplay extends Component {
   state = { open: false }
 
   componentDidMount() {
-    this.setState({ 
-      parsed: highlight(this.props.code, languages.jsx, 'jsx') 
+    this.setState({
+      parsed: highlight(this.props.code, languages.jsx, 'jsx')
     })
   }
 
