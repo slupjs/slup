@@ -20,8 +20,8 @@ const config = {
 
   output: {
     path: join(__dirname, 'dist'),
-    filename: '[name].js',
-    publicPath: 'http://localhost:8080/'
+    filename: '[name].js'
+    
   },
 
   resolve: {
@@ -85,6 +85,7 @@ if(process.env.NODE_ENV === 'production') {
   config.plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
   config.plugins.push(new BabiliPlugin())
 } else {
+  config.output.publicPath = 'http://localhost:8080/'
   config.plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 
