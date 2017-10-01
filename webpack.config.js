@@ -84,6 +84,7 @@ const config = {
 if(process.env.NODE_ENV === 'production') {
   config.plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
   config.plugins.push(new BabiliPlugin())
+  config.output.publicPath = 'https://slupjs.github.io/'
 } else {
   config.output.publicPath = 'http://localhost:8080/'
   config.plugins.push(new webpack.HotModuleReplacementPlugin())
