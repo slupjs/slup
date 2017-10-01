@@ -6,11 +6,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const config = {
   entry: {
     vendor: [
-      'inferno', 
-      'inferno-component', 
-      'inferno-compat', 
-      'inferno-router', 
-      'styled-components', 
+      'inferno',
+      'inferno-component',
+      'inferno-compat',
+      'inferno-router',
+      'styled-components',
       'decko',
       'prismjs/prism',
       'prismjs/components/prism-jsx',
@@ -40,8 +40,9 @@ const config = {
       '@slup/grid': join(__dirname, 'packages', 'Grid', 'src', 'index'),
       '@slup/theming': join(__dirname, 'packages', 'Theming', 'src', 'index'),
       '@slup/tabs': join(__dirname, 'packages', 'Tabs', 'src', 'index'),
+      '@slup/icons': join(__dirname, 'packages', 'Icons', '_icons'),
       '@slup/typography': join(__dirname, 'packages', 'Typography', 'src', 'index'),
-
+      
       // Aliases needed for styled-components
       'react': 'inferno-compat',
       'react-dom': 'inferno-compat'
