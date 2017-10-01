@@ -18,6 +18,8 @@ The icons are stored in a tree representing the [Google's Material Design Icons]
 - Find the icon you are interested in
 
 - Resolve the name, composed by the `cateogry` and the `name` as follows:
+
+
 ![Resolve example](https://i.imgur.com/5A2KFB7.png)
 
 - Import it as follows: 
