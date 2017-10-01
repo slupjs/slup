@@ -3,7 +3,7 @@ node_js: "7"
 sudo: required
 script: 
   - yarn global add lerna
-  - lerna exec --concurrency 1 -- yarn
+  - lerna exec --concurrency 1 -- yarn --production=false
   - yarn build
 deploy:
   provider: pages
