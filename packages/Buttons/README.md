@@ -39,14 +39,14 @@ export const Buttons = () =>
 ```
 
 ## Available properties
-| Props               | Type          | Default       | Documentation                                                    |
-|---------------------|:-------------:|:-------------:|-----------------------------------------------------------------:|
-| disabled            |  boolean      |  false        | [Link](#property-disabled)                                       |
-| ripple              |  boolean      |  true         | [Link](#property-ripple-raisedbutton-flatbutton-fab)             |
-| secondary           |  boolean      |  false        | [Link](#property-property-secondary-raisedbutton-fab-iconbutton) |
-| primary             |  boolean      |  false        | [Link](#property-primary-flatbutton-iconbutton)                  |
-| mini                |  boolean      |  false        | [Link](#property-mini-fab)                                       |
-| centerRipple        |  boolean      |  true         | [Link](#property-centerripple-iconbutton)                        |
+| Props               | Type          | Default       | Documentation                                           |
+|---------------------|:-------------:|:-------------:|--------------------------------------------------------:|
+| disabled            |  boolean      |  false        | [Link](#property-disabled)                              |
+| ripple              |  boolean      |  true         | [Link](#property-ripple-raisedbutton-flatbutton-fab)    |
+| secondary           |  boolean      |  false        | [Link](#property-secondary-raisedbutton-fab-iconbutton) |
+| primary             |  boolean      |  false        | [Link](#property-primary-flatbutton-iconbutton)         |
+| mini                |  boolean      |  false        | [Link](#property-mini-fab)                              |
+| centerRipple        |  boolean      |  true         | [Link](#property-centerripple-iconbutton)               |
 
 #### Property: 'disabled'
 This property will disable the button
