@@ -25,7 +25,8 @@ npm install --save @slup/buttons
 import {
   RaisedButton,
   FlatButton,
-  Fab
+  Fab,
+  IconButton
 } from '@slup/buttons'
 
 export const Buttons = () =>
@@ -33,17 +34,19 @@ export const Buttons = () =>
     <RaisedButton>Button</RaisedButton>
     <FlatButton>Button</FlatButton>
     <Fab>+</Fab>
+    <IconButton>+</IconButton>
   </div>
 ```
 
 ## Available properties
-| Props       | Type          | Default       | Documentation                                        |
-|-------------|:-------------:|:-------------:|------:                                               |
-| disabled    |  boolean      |  false        | [Link](#property-disabled)                           |
-| ripple      |  boolean      |  true         |[Link](#property-ripple)                              |
-| secondary   |  boolean      |  false        |[Link](#property-property-secondary-raisedbutton-fab) |
-| primary     |  boolean      |  false        |[Link](#property-primary-flatbutton)                  |
-| mini        |  boolean      |  false        |[Link](#property-mini-fab)                            |
+| Props               | Type          | Default       | Documentation                                                    |
+|---------------------|:-------------:|:-------------:|-----------------------------------------------------------------:|
+| disabled            |  boolean      |  false        | [Link](#property-disabled)                                       |
+| ripple              |  boolean      |  true         | [Link](#property-ripple-raisedbutton-flatbutton-fab)             |
+| secondary           |  boolean      |  false        | [Link](#property-property-secondary-raisedbutton-fab-iconbutton) |
+| primary             |  boolean      |  false        | [Link](#property-primary-flatbutton-iconbutton)                  |
+| mini                |  boolean      |  false        | [Link](#property-mini-fab)                                       |
+| centerRipple        |  boolean      |  true         | [Link](#property-centerripple-iconbutton)                        |
 
 #### Property: 'disabled'
 This property will disable the button
@@ -51,9 +54,10 @@ This property will disable the button
 <RaisedButton disabled>Button</RaisedButton>
 <FlatButton disabled>Button</FlatButton>
 <Fab disabled>+</Fab>
+<IconButton disabled>+</IconButton>
 ```
 
-#### Property: 'ripple'
+#### Property: 'ripple' [RaisedButton, FlatButton, Fab]
 This property if set to false will remove the Ripple effect
 ```html
 <RaisedButton ripple={false}>Button</RaisedButton>
@@ -61,22 +65,31 @@ This property if set to false will remove the Ripple effect
 <Fab ripple={false}>+</Fab>
 ```
 
-#### Property: 'secondary' [RaisedButton, Fab]
-It will set the background to the 'secondary' color of the theme
+#### Property: 'secondary' [RaisedButton, Fab, IconButton]
+It will set the background to the 'secondary' color of the theme for the `RaisedButton` and the `Fab`.
+<br />
+It will only change the color for the `IconButton`
 ```html
 <RaisedButton secondary>Button</RaisedButton>
 <Fab secondary>+</Fab>
+<IconButton secondary>+</IconButton>
 ```
 
-#### Property: 'primary' [FlatButton]
-
-It will set the color to the 'primary' color of the theme
+#### Property: 'primary' [FlatButton, IconButton]
+It will set the color to the 'primary' primary color of the theme
 ```html
 <FlatButton primary>Button</FlatButton>
+<IconButton primary>+</IconButton>
 ```
 
 #### Property: 'mini' [Fab]
 It will reduce its size
 ```html
 <Fab mini>+</Fab>
+```
+
+#### Property: 'centerRipple' [IconButton]
+This property if set to false will make the ripple appear on the clicked position instead of starting from the center
+```html
+<IconButton centerRipple={false}>+</IconButton>
 ```
