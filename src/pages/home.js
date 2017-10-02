@@ -3,7 +3,7 @@ import Component from 'inferno-component'
 import styled from 'styled-components'
 import { bind, debounce } from 'decko'
 
-import { RaisedButton } from '@slup/buttons'
+import { FlatButton } from '@slup/buttons'
 import { Logo } from '../components/logo'
 
 const LogoContainer = styled.div`
@@ -26,7 +26,7 @@ export class Home extends Component {
     return (
       <LogoContainer>
         {Logo}
-        <RaisedButton onClick={this.handleClick}>Get started</RaisedButton>
+        <FlatButton onClick={this.handleClick}>Get started</FlatButton>
       </LogoContainer>
     )
   }
