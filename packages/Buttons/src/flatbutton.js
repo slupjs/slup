@@ -52,7 +52,11 @@ export class FlatButton extends Component {
         {props.children}
         {props.ripple == false || props.disabled
           ? null
-          : <Ripple {...props.rippleOptions} />
+          : <Ripple 
+              primary={props.primary} 
+              secondary={props.secondary} 
+              {...props.rippleOptions} 
+            />
         }
       </FlatBase>
     )

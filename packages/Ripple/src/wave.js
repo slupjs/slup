@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled   from 'styled-components'
+import { rgba } from 'polished'
 import { lightTheme } from '@slup/theming'
 
 export const Wave = styled.div`
@@ -14,7 +15,12 @@ export const Wave = styled.div`
   pointer-events: none;
   height: 10px;
   width: 10px;
-  background: rgba(255, 255, 255, .45);
+  background: ${props => props.primary
+    ? rgba(props.theme.primary || lightTheme.primary, .35)
+    : props.secondary 
+      ? rgba(props.theme.secondary || lightTheme.secondary, .35)
+      : 'rgba(255, 255, 255, .45)'
+  };
   opacity: ${props => props.ended && props.isRemovable
     ? 0 /** If the item should be removed, do a gradual fading */
     : 1 /** Otherwise show it */
