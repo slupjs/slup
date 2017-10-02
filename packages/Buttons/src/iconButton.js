@@ -27,22 +27,47 @@ const IconBase = styled.button`
   width: 48px;
   height: 48px;
   background: none;
-  fill: ${props => props.secondary
+  fill: ${props => props.secondary && !props.disabled
     ? props.theme.secondary || lightTheme.secondary
-    : props.primary
+    : props.primary && !props.disabled
       ? props.theme.primary || lightTheme.primary
       : rgba(props.theme.text || lightTheme.text, .87)
   };
+  color: ${props => props.secondary && !props.disabled
+    ? props.theme.secondary || lightTheme.secondary
+    : props.primary && !props.disabled
+      ? props.theme.primary || lightTheme.primary
+      : rgba(props.theme.text || lightTheme.text, .87)
+  };
+
+  &:disabled {
+    cursor: not-allowed;
+    fill: ${props => props.secondary && !props.disabled
+      ? props.theme.secondary || lightTheme.secondary
+      : props.primary && !props.disabled
+        ? props.theme.primary || lightTheme.primary
+        : rgba(props.theme.text || lightTheme.text, .38)
+    };
+    color: ${props => props.secondary && !props.disabled
+      ? props.theme.secondary || lightTheme.secondary
+      : props.primary && !props.disabled
+        ? props.theme.primary || lightTheme.primary
+        : rgba(props.theme.text || lightTheme.text, .38)
+    };
+  }
 `
 
 export const IconButton = (props) =>
   <IconBase {...props}>
     {props.children}
-    <Ripple
-      startX={'50%'}
-      startY={'50%'}
-      primary={props.primary}
-      secondary={props.secondary}
-      {...props.rippleOptions}
-    />
+    {props.disabled
+      ? null
+      : <Ripple
+          startX={'50%'}
+          startY={'50%'}
+          primary={props.primary}
+          secondary={props.secondary}
+          {...props.rippleOptions}
+        />
+    }
   </IconBase>
