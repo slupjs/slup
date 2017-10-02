@@ -63,8 +63,8 @@ export const IconButton = (props) =>
     {props.disabled
       ? null
       : <Ripple
-          startX={'50%'}
-          startY={'50%'}
+          startX={props.centerRipple == false ? null : '50%'}
+          startY={props.centerRipple == false ? null : '50%'}
           primary={props.primary}
           secondary={props.secondary}
           {...props.rippleOptions}
