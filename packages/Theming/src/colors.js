@@ -134,7 +134,7 @@ export const cyan = {
   'A700': '#00B8D4'
 }
 
-export const team = {
+export const teal = {
   50:     '#E0F2F1',
   100:    '#B2DFDB',
   200:    '#80CBC4',
