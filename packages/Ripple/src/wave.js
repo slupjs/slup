@@ -4,7 +4,7 @@ import { lightTheme } from '@slup/theming'
 
 export const Wave = styled.div`
   position: absolute;
-  top: ${props => window.isNaN(props.y) 
+  top: ${props => window.isNaN(props.y)
     ? `calc(${props.y} - 5px)` /** String(ex. 50%) */
     : props.y - 5 + 'px'       /** Number(ex. 122 => 122px) */
   };
@@ -16,16 +16,16 @@ export const Wave = styled.div`
   height: 10px;
   width: 10px;
   background: ${props => props.primary
-    ? rgba(props.theme.primary || lightTheme.primary, .35)
-    : props.secondary 
-      ? rgba(props.theme.secondary || lightTheme.secondary, .35)
-      : 'rgba(255, 255, 255, .45)'
+    ? rgba(props.theme.primary || lightTheme.primary, .3)
+    : props.secondary
+      ? rgba(props.theme.secondary || lightTheme.secondary, .3)
+      : rgba(props.theme.text || lightTheme.text, .15)
   };
   opacity: ${props => props.ended && props.isRemovable
     ? 0 /** If the item should be removed, do a gradual fading */
     : 1 /** Otherwise show it */
   };
-  transition: 
+  transition:
     transform 900ms cubic-bezier(0.4, 0.0, 0.2, 1),
     opacity   250ms cubic-bezier(0.4, 0.0, 0.2, 1);
   transform: scale(${props => props.scale});
