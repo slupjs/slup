@@ -88,7 +88,7 @@ export class Ripple extends Component {
     window.addEventListener('mouseup', handler, { passive: true })
   }
 
-  render() {
+  render({ startX, startY, ..._props}) {
     return(
       <Wrapper 
         innerRef={element => this.ripple = element}
@@ -97,7 +97,13 @@ export class Ripple extends Component {
         {this.state.ripples.map(props =>
           props.isRemovable && props.ended && props.faded
             ? null
-            : <Wave {...props} />
+            : <Wave 
+              {..._props}
+              {...props}
+
+              x={startX || props.x}
+              y={startY || props.y}
+            />
         )}
       </Wrapper>
     )

@@ -3,8 +3,14 @@ import { lightTheme } from '@slup/theming'
 
 export const Wave = styled.div`
   position: absolute;
-  top: ${props => props.y - 5}px;
-  left: ${props => props.x - 5}px;
+  top: ${props => window.isNaN(props.y) 
+    ? `calc(${props.y} - 5px)` /** String(ex. 50%) */
+    : props.y - 5 + 'px'       /** Number(ex. 122 => 122px) */
+  };
+  left: ${props => window.isNaN(props.x)
+    ? `calc(${props.x} - 5px)` /** String(ex. 50%) */
+    : props.x - 5 + 'px'       /** Number(ex. 122 => 122px) */
+  };
   pointer-events: none;
   height: 10px;
   width: 10px;
