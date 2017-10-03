@@ -51,11 +51,11 @@ class App extends Component {
 
   render({ children }) {
     return( 
-    <Container>
-      <ProgressBar {...this.state} />
-      <NavBar history={History} />
-      <Content>{children}</Content>
-    </Container>
+      <Container>
+        <ProgressBar {...this.state} />
+        <NavBar history={History} />
+        <Content>{children}</Content>
+      </Container>
     )
   }
 }
