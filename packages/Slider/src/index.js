@@ -17,20 +17,20 @@ const Container = styled.div`
   opacity: ${props => props.disabled ? '.3' : '1'};
   pointer-events: ${props => props.disabled ? 'none' : 'auto'};
   &:focus {
-    div:nth-child(2) {
+    div:nth-child(3) {
       width: ${props => props.discrete ? '0' : '14px'};
       height: ${props => props.discrete ? '0' : '14px'};
       box-shadow: ${props => props.focus
-      ? 'none' 
+      ? 'none'
         : props.value == 0 && !props.discrete
           ? '0 0 0 14px rgba(0, 0, 0, .1)'
           :props.discrete
             ? 'none'
-            : `0 0 0 14px ${rgba(props.theme.primary || lightTheme.primary, .1)}`
+            : `0 0 0 14px ${rgba(props.theme.secondary || lightTheme.secondary, .1)}`
       };
     }
 
-    div:nth-child(4) {
+    div:nth-child(5) {
       transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
       transform: ${props => props.discrete
         ? 'translateX(-50%) scale(1)'
@@ -62,7 +62,7 @@ const Thumb = styled.div`
         ? props.theme.text || lightTheme.text                          /* Not disabled, discrete but still at beginning */
         : props.value == 0
           ? props.theme.background || lightTheme.background            /* At the beginning */
-          : props.theme.primary || lightTheme.primary                  /* Moved */
+          : props.theme.secondary || lightTheme.secondary              /* Moved */
   };
   border: ${props => props.disabled && props.value == 0
     ? `2px solid ${props.theme.text || lightTheme.text}`
@@ -83,9 +83,24 @@ const Track = styled.div`
   position: absolute;
   background: ${props => props.disabled
     ? 'transparent'
-    : props.theme.primary || lightTheme.primary
+    : props.theme.secondary || lightTheme.secondary
   };
   z-index: 1;
+`
+
+const Dots = styled.div`
+  display: ${props => props.discrete ? 'initial' : 'none'};
+  height: 3px;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+`
+
+const Dot = styled.div`
+  height: 3px;
+  width: 3px;
+  position: absolute;
+  background: ${props => props.theme.text || lightTheme.text};
 `
 
 export class Slider extends Component {
@@ -101,7 +116,7 @@ export class Slider extends Component {
   capitalize = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1)
 
-  getPercentage = (max) => max / 100
+  getPercentage = (max) => max / (this.props.step || this.props.max)
 
   componentWillMount() {
     document.body.addEventListener(
@@ -227,6 +242,11 @@ export class Slider extends Component {
         tabIndex={props.disabled ? -1 : 0}
         focus={focus}
       >
+
+        <Dots {...props}>
+          <Dot style='left: 50%' />
+        </Dots>
+
         {/*Main Line*/}
         <Line disabled={props.disabled} />
 

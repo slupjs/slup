@@ -12,7 +12,7 @@ const Discrete = styled.div`
   opacity: ${props => props.value == 0 ? '.3' : '1'};
   background: ${props => props.value == 0
     ? props.theme.text || lightTheme.text
-    : props.theme.primary || lightTheme.primary
+    : props.theme.secondary || lightTheme.secondary
   };
   color: ${props => props.value == 0
     ? props.theme.background || lightTheme.background
@@ -36,7 +36,7 @@ const Discrete = styled.div`
     border-right: 10px solid transparent;
     border-top: 10px solid ${props => props.value == 0
       ? props.theme.text || lightTheme.text
-      : props.theme.primary || lightTheme.primary
+      : props.theme.secondary || lightTheme.secondary
     };
   }
 `
