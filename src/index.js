@@ -1,15 +1,17 @@
 import Inferno, { render } from 'inferno'
-import { Router, Route, IndexRoute } from 'inferno-router'
+import Component from 'inferno-component'
+import { Router, Route, IndexRoute, match, doAllAsyncBefore } from 'inferno-router'
 import createBrowserHistory from 'history/createBrowserHistory'
 
-import { ThemeProvider, darkTheme } from '@slup/theming'
+import { ThemeProvider, white, black, teal } from '@slup/theming'
 import { NavBar } from './components/navbar'
 import { Container, Content } from './components/container'
+import { ProgressBar } from './components/progress'
 
-import { AsyncHome, AsyncNotFound } from './utils/staticRoutes'
 import { requireComponent } from './utils/componentRoutes'
 
-const History = createBrowserHistory()
+const History     = createBrowserHistory()
+let  asyncBefore = url => doAllAsyncBefore(match(routes, url))
 
 const pages = [
   'buttons',
@@ -22,28 +24,61 @@ const pages = [
   'slider'
 ]
 
-const App = ({ children }) => 
-  <Container>
-    <NavBar history={History} />
-    <Content>{children}</Content>
-  </Container>
+const Theme = {
+  background: teal[500],
+  text: white,
+  primary: teal[500],
+  secondary: teal[300]
+}
+
+class App extends Component {
+  state = { progress: 0 }
+
+  componentDidMount() {
+    asyncBefore = url => {
+      this.setState({ progress: 30 })
+
+      console.log('started loading')
+
+      return doAllAsyncBefore(match(routes, url))
+    }
+
+    window.endReq = () => {
+      console.log('loaded')
+
+      this.setState({ progress: 100 })
+    }
+  }
+
+  render({ children }) {
+    return( 
+    <Container>
+      <ProgressBar progress={this.state.progress} />
+      <NavBar history={History} />
+      <Content>{children}</Content>
+    </Container>
+    )
+  }
+}
 
 const routes = (
-  <ThemeProvider theme={darkTheme}>
-    <Router history={History}>
+  <ThemeProvider theme={Theme}>
+    <Router history={History} asyncBefore={url => asyncBefore(url)}>
       <Route component={App}>
+        <IndexRoute getComponent={(n, cb) => requireComponent('home', cb)} />
 
-        <IndexRoute getComponent={AsyncHome} />
         ${pages.map(name => 
           <Route
             path={`/components/${name}`}
             getComponent={(n, cb) => requireComponent(name, cb)}
           />
         )}
-        <Route path='*' getComponent={AsyncNotFound} />
+
+        <Route path='*' getComponent={(n, cb) => requireComponent('404', cb)} />
       </Route>
     </Router>
   </ThemeProvider>
 )
 
 render(routes, document.getElementById('root'))
+

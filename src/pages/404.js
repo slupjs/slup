@@ -1,7 +1,7 @@
 import Inferno from 'inferno'
 import Component from 'inferno-component'
 
-export class NotFound extends Component {
+export default class NotFound extends Component {
   render() {
     return(
       <div>

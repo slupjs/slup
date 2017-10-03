@@ -34,7 +34,7 @@ export class NavBar extends Component {
 
     return(
       <nav>
-        <Navbar primary>
+        <Navbar style='box-shadow: none'>
           <Grid middle style={{overflow: 'hidden'}}>
             <Col sm={12}>
               <Grid middle space_between style={{overflow: 'hidden'}}>

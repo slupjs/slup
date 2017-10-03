@@ -1,3 +1,7 @@
 export const requireComponent = (name, callback) => 
   import(`../pages/${name}`)
-    .then((mod) => callback(null, mod.default))
+    .then((mod) => {
+      window.endReq()
+
+      callback(null, mod.default)
+    })
