@@ -15,7 +15,7 @@ const LogoContainer = styled.div`
   flex-direction: column;
 `
 
-export class Home extends Component {
+export default class Home extends Component {
   @bind
   @debounce(300)
   handleClick() {

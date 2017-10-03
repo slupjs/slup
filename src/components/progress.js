@@ -11,5 +11,5 @@ export const ProgressBar = styled.div`
   width: ${props => props.progress}%;
   background: ${props => props.theme.text || lightTheme.text};
   opacity: ${props => props.progress !== 100 ? 1 : 0};
-  transition: opacity, width 300ms linear, width 350ms linear
+  transition: opacity, width 70ms linear, width 350ms linear
 `

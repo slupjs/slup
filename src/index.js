@@ -8,10 +8,10 @@ import { NavBar } from './components/navbar'
 import { Container, Content } from './components/container'
 import { ProgressBar } from './components/progress'
 
-import { AsyncHome, AsyncNotFound } from './utils/staticRoutes'
 import { requireComponent } from './utils/componentRoutes'
 
-const History = createBrowserHistory()
+const History     = createBrowserHistory()
+let  asyncBefore = url => doAllAsyncBefore(match(routes, url))
 
 const pages = [
   'buttons',
@@ -31,49 +31,54 @@ const Theme = {
   secondary: teal[300]
 }
 
-const App = ({ children, progress }) => {
-  console.log(progress)
-  return( 
-  <Container>
-    <ProgressBar progress={progress} />
-    <NavBar history={History} />
-    <Content>{children}</Content>
-  </Container>
-  )
-}
+class App extends Component {
+  state = { progress: 0 }
 
-class Routes extends Component {
-  state = { progrss: 10 }
+  componentDidMount() {
+    asyncBefore = url => {
+      this.setState({ progress: 30 })
 
-  render() {
-    const self = this
+      console.log('started loading')
 
-    return(
-      <ThemeProvider theme={Theme}>
-        <Router history={History} asyncBefore={url => {
-          //self.setState({ pecentage: 90 })
+      return doAllAsyncBefore(match(routes, url))
+    }
 
-          //console.log(<Routes />, typeof url)
+    window.endReq = () => {
+      console.log('loaded')
 
-          return doAllAsyncBefore(match(new Routes().render(), url))
-          }}>
-          <Route component={() => <App progress={this.state.progrss} />}>
-            <IndexRoute getComponent={AsyncHome} />
+      this.setState({ progress: 100 })
+    }
+  }
 
-            ${pages.map(name => 
-              <Route
-                path={`/components/${name}`}
-                getComponent={(n, cb) => requireComponent(name, cb)}
-              />
-            )}
-
-            <Route path='*' getComponent={AsyncNotFound} />
-          </Route>
-        </Router>
-      </ThemeProvider>
+  render({ children }) {
+    return( 
+    <Container>
+      <ProgressBar progress={this.state.progress} />
+      <NavBar history={History} />
+      <Content>{children}</Content>
+    </Container>
     )
   }
 }
 
-render(<Routes />, document.getElementById('root'))
+const routes = (
+  <ThemeProvider theme={Theme}>
+    <Router history={History} asyncBefore={url => asyncBefore(url)}>
+      <Route component={App}>
+        <IndexRoute getComponent={(n, cb) => requireComponent('home', cb)} />
+
+        ${pages.map(name => 
+          <Route
+            path={`/components/${name}`}
+            getComponent={(n, cb) => requireComponent(name, cb)}
+          />
+        )}
+
+        <Route path='*' getComponent={(n, cb) => requireComponent('404', cb)} />
+      </Route>
+    </Router>
+  </ThemeProvider>
+)
+
+render(routes, document.getElementById('root'))
 
