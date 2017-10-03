@@ -38,16 +38,10 @@ class App extends Component {
     asyncBefore = url => {
       this.setState({ progress: 30 })
 
-      console.log('started loading')
-
       return doAllAsyncBefore(match(routes, url))
     }
 
-    window.endReq = () => {
-      console.log('loaded')
-
-      this.setState({ progress: 100 })
-    }
+    window.endReq = () => this.setState({ progress: 100 })
   }
 
   render({ children }) {
