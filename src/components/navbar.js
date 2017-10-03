@@ -5,6 +5,7 @@ import { bind }         from 'decko'
 
 import { Col, Grid }    from '@slup/grid'
 import { Navbar }       from '@slup/navbar'
+import { IconButton }   from '@slup/buttons'
 import { SideNav }      from './sidenav'
 import { Menu, GitHub } from './icons'
 
@@ -52,9 +53,9 @@ export class NavBar extends Component {
                 </div>
 
                 {/* Optional icons */}
-                <div>
+                <IconButton>
                   <GitHub />
-                </div>
+                </IconButton>
               </Grid>
             </Col>
           </Grid>

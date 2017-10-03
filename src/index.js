@@ -32,22 +32,27 @@ const Theme = {
 }
 
 class App extends Component {
-  state = { progress: 0 }
+  state = { progress: 0, display: false }
 
   componentDidMount() {
     asyncBefore = url => {
-      this.setState({ progress: 30 })
+      this.setState({ progress: 30, display: true })
 
       return doAllAsyncBefore(match(routes, url))
     }
 
-    window.endReq = () => this.setState({ progress: 100 })
+    window.endReq = () => {
+      this.setState({ progress: 100 })
+
+      setTimeout(() => this.setState({ display: false }), 400)
+    }
+
   }
 
   render({ children }) {
     return( 
     <Container>
-      <ProgressBar progress={this.state.progress} />
+      <ProgressBar {...this.state} />
       <NavBar history={History} />
       <Content>{children}</Content>
     </Container>
