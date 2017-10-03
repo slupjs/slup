@@ -4,7 +4,7 @@ import styled    from 'styled-components'
 
 import { Ripple }     from '@slup/ripple'
 import { lightTheme } from '@slup/theming'
-import { rgba }       from 'polished'
+import { rgba, darken, lighten }       from 'polished'
 
 const RaisedBase = styled.button`
   /* Not changing values */
@@ -22,9 +22,9 @@ const RaisedBase = styled.button`
   transition: box-shadow 150ms linear;
   user-select: none;
 
-  /** 
+  /**
    * Disables blue background on tap in mobile devices.
-   * See: 
+   * See:
    * - https://stackoverflow.com/a/29961714
    * - #32
    */
@@ -32,12 +32,20 @@ const RaisedBase = styled.button`
 
   /* Changing values */
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
-  color: ${props => props.disabled ? rgba(props.theme.text || lightTheme.text, .26) : props.theme.text || lightTheme.text};
-  background: ${props => props.disabled
+  color: ${props => props.disabled
+    ? rgba(props.theme.text || lightTheme.text, .26)
+    : props.theme.text || lightTheme.text
+  };
+
+  background: ${props => props.theme.dark &&!props.primary && !props.secondary
+    ? lighten(.1, props.theme.background || lightTheme.background)
+    : props.disabled
     ? rgba(props.theme.text || lightTheme.text, .12)
-    : props.secondary
-      ? props.theme.secondary || lightTheme.secondary
-      : props.theme.primary   || lightTheme.primary
+      : props.primary
+      ? props.theme.primary || lightTheme.primary
+        : props.secondary
+          ? props.theme.secondary || lightTheme.secondary
+          : darken(.1, props.theme.background || lightTheme.background)
   };
   box-shadow: ${props => props.disabled
     ? 'initial'

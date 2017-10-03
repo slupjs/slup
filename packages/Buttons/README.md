@@ -39,14 +39,14 @@ export const Buttons = () =>
 ```
 
 ## Available properties
-| Props               | Type          | Default       | Documentation                                           |
-|---------------------|:-------------:|:-------------:|--------------------------------------------------------:|
-| disabled            |  boolean      |  false        | [Link](#property-disabled)                              |
-| ripple              |  boolean      |  true         | [Link](#property-ripple-raisedbutton-flatbutton-fab)    |
-| secondary           |  boolean      |  false        | [Link](#property-secondary-raisedbutton-fab-iconbutton) |
-| primary             |  boolean      |  false        | [Link](#property-primary-flatbutton-iconbutton)         |
-| mini                |  boolean      |  false        | [Link](#property-mini-fab)                              |
-| centerRipple        |  boolean      |  true         | [Link](#property-centerripple-iconbutton)               |
+| Props               | Type          | Default       | Documentation                                                        |
+|---------------------|:-------------:|:-------------:|---------------------------------------------------------------------:|
+| disabled            |  boolean      |  false        | [Link](#property-disabled)                                           |
+| ripple              |  boolean      |  true         | [Link](#property-ripple-raisedbutton-flatbutton-fab)                 |
+| secondary           |  boolean      |  false        | [Link](#property-secondary-raisedbutton-fab-iconbutton)              |
+| primary             |  boolean      |  false        | [Link](#property-primary-raisedbutton-flatbutton-iconbutton)         |
+| mini                |  boolean      |  false        | [Link](#property-mini-fab)                                           |
+| centerRipple        |  boolean      |  true         | [Link](#property-centerripple-iconbutton)                            |
 
 #### Property: 'disabled'
 This property will disable the button
@@ -75,9 +75,12 @@ It will only change the color for the `IconButton`
 <IconButton secondary>+</IconButton>
 ```
 
-#### Property: 'primary' [FlatButton, IconButton]
-It will set the color to the 'primary' primary color of the theme
+#### Property: 'primary' [RaisedButton, FlatButton, IconButton]
+It will set the background to the 'primary' color of the theme for the `RaisedButton`.
+<br />
+It will set the color to the 'primary' primary color of the theme for the `FlatButton` and `IconButton`
 ```html
+<RaisedButton primary>Button</RaisedButton>
 <FlatButton primary>Button</FlatButton>
 <IconButton primary>+</IconButton>
 ```

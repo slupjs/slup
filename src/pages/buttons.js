@@ -52,17 +52,14 @@ export const Buttons = () =>
     <RaisedButton primary>Button</RaisedButton>
     <RaisedButton secondary>Button</RaisedButton>
     <FlatButton primary>Button</FlatButton>
-    <FlatButton secondary>Button</FlatButton>
     <Fab secondary>+</Fab>
-    <Fab primary>+</Fab>
   </div>
           `}
           demo={[
             <RaisedButton primary>Button</RaisedButton>,
             <RaisedButton secondary>Button</RaisedButton>,
             <FlatButton primary>Button</FlatButton>,
-            <Fab secondary>+</Fab>,
-            <Fab primary>+</Fab>
+            <Fab secondary>+</Fab>
           ]}
         />
       </Container>

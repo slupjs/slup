@@ -26,7 +26,7 @@ export class Home extends Component {
     return (
       <LogoContainer>
         {Logo}
-        <RaisedButton onClick={this.handleClick}>Get started</RaisedButton>
+        <RaisedButton onClick={this.handleClick} primary>Get started</RaisedButton>
       </LogoContainer>
     )
   }

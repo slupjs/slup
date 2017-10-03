@@ -23,9 +23,9 @@ const FlatBase = styled.button`
   user-select: none;
   background: transparent;
 
-  /** 
+  /**
    * Disables blue background on tap in mobile devices.
-   * See: 
+   * See:
    * - https://stackoverflow.com/a/29961714
    * - #32
    */
@@ -52,10 +52,9 @@ export class FlatButton extends Component {
         {props.children}
         {props.ripple == false || props.disabled
           ? null
-          : <Ripple 
-              primary={props.primary} 
-              secondary={props.secondary} 
-              {...props.rippleOptions} 
+          : <Ripple
+              primary={props.primary}
+              {...props.rippleOptions}
             />
         }
       </FlatBase>
