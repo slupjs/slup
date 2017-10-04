@@ -52,6 +52,7 @@ export const Thumb = styled.div`
   width: ${props => props.focus ? '14px' : '10px'};
   height: ${props => props.focus ? '14px' : '10px'};
   border-radius: 50%;
+
   background: ${props => props.disabled && props.value == 0
     ? props.theme.background || lightTheme.background                  /* Disabled or = to 0(at the beginning) */
     : props.disabled
@@ -62,6 +63,7 @@ export const Thumb = styled.div`
           ? props.theme.background || lightTheme.background            /* At the beginning */
           : props.theme.secondary || lightTheme.secondary              /* Moved */
   };
+  
   border: ${props => props.disabled && props.value == 0
     ? `2px solid ${props.theme.text || lightTheme.text}`
     : props.disabled

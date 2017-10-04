@@ -27,6 +27,8 @@ export class Slider extends Component {
 
   getPercentage = (max) => max / (this.props.step || this.props.max)
 
+  split = (max, parts) => max / parts
+
   componentWillMount() {
     document.body.addEventListener(
       'mousemove',
@@ -52,7 +54,6 @@ export class Slider extends Component {
       { passive: true }
     )
   }
-
 
   @bind
   moveSlider({ clientX }) {
@@ -138,8 +139,16 @@ export class Slider extends Component {
       handleKeyDown,
       handleFocus
     } = this
-
     const { focus, keyFocus } = this.state
+    const dots = []
+
+    if(steps) {
+      const stepValue = this.split(props.max, steps)
+
+      for (let i = 0; i < steps; i++) {
+        dots.push(<Dot style={{ left: stepValue * i + '%'  }} id={i} />)
+      }
+    }
 
     return(
       <Container
@@ -152,11 +161,12 @@ export class Slider extends Component {
         focus={focus}
       >
 
-        <Dots {...props}>
-          {[0, 1, 2].map(() => {
-            return <Dot />
-          })}
-        </Dots>
+        {/** Dots for stepped slider */}
+        {steps && props.discrete &&
+          <Dots {...props}>
+            {dots}
+          </Dots>
+        }
 
         {/*Main Line*/}
         <Line disabled={props.disabled} />
