@@ -1,7 +1,7 @@
-import Inferno          from 'inferno'
-import Component        from 'inferno-component'
-import { Redirect, Link }     from 'inferno-router'
-import { bind }         from 'decko'
+import Inferno            from 'inferno'
+import Component          from 'inferno-component'
+import { Redirect, Link } from 'inferno-router'
+import { bind, debounce } from 'decko'
 
 import { Col, Grid }  from '@slup/grid'
 import { Navbar }     from '@slup/navbar'
@@ -18,6 +18,11 @@ export class NavBar extends Component {
     opened: false,
     redirect: false,
     lists: { components: false }
+  }
+
+  @debounce(300)
+  handleLink() {
+    window.open('//github.com/slupjs/slup', '_blank')
   }
 
   @bind
@@ -54,7 +59,7 @@ export class NavBar extends Component {
                 </div>
 
                 {/* Optional icons */}
-                <IconButton>
+                <IconButton onClick={this.handleLink}>
                   <GitHub />
                 </IconButton>
               </Grid>
