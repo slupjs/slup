@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
+    "postinstall": "npm run build",
     "build": "rimraf icons && git clone https://github.com/google/material-design-icons icons && node install"
   },
   "devDependencies": {
