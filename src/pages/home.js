@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { bind, debounce } from 'decko'
 
 import { RaisedButton } from '@slup/buttons'
+import { Slider } from '@slup/slider'
 import { Logo } from '../components/logo'
 
 const LogoContainer = styled.div`
@@ -27,6 +28,7 @@ export class Home extends Component {
       <LogoContainer>
         {Logo}
         <RaisedButton onClick={this.handleClick} primary>Get started</RaisedButton>
+        <Slider steps={4} />
       </LogoContainer>
     )
   }
