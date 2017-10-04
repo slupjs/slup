@@ -244,7 +244,9 @@ export class Slider extends Component {
       >
 
         <Dots {...props}>
-          <Dot style='left: 50%' />
+          {[0, 1, 2].map(() => {
+            return <Dot />
+          })}
         </Dots>
 
         {/*Main Line*/}
