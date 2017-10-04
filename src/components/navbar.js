@@ -16,24 +16,37 @@ import { generate }     from '../utils/title'
 
 export class NavBar extends Component {
   state = { opened: false }
-  title = generate(window.location)
 
-  /** Handle component updates. Refresh the page's title */
-  componentWillUpdate() {
+  componentWillMount  = this.updateTitle
+  componentWillUpdate = this.updateTitle
+
+  /** 
+   * Handle component updates. Refresh the page's title 
+   */
+  updateTitle() {
     document.title = generate(window.location)
     this.title     = generate(window.location)
   }
 
+  /**
+   * Redirects to the github page
+   */
   @debounce(300)
   handleLink() {
     window.open('//github.com/slupjs/slup', '_blank')
   }
 
+  /** 
+   * Opens the sidenav 
+   */
   @bind
   handleOpen() {
     this.setState({ opened: true })
   }
 
+  /** 
+   * Closes the sidenav 
+   */
   @bind
   handleClose() {
     this.setState({ opened: false })
