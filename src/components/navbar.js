@@ -3,11 +3,13 @@ import Component        from 'inferno-component'
 import { Redirect, Link }     from 'inferno-router'
 import { bind }         from 'decko'
 
-import { Col, Grid }    from '@slup/grid'
-import { Navbar }       from '@slup/navbar'
-import { IconButton }   from '@slup/buttons'
-import { SideNav }      from './sidenav'
-import { Menu, GitHub } from './icons'
+import { Col, Grid }  from '@slup/grid'
+import { Navbar }     from '@slup/navbar'
+import { IconButton } from '@slup/buttons'
+import Menu           from '@slup/icons/navigation/menu'
+
+import { SideNav }    from './sidenav'
+import { GitHub }     from './icons'
 
 import { generate }     from '../utils/title'
 
@@ -43,10 +45,9 @@ export class NavBar extends Component {
                 {/* Main title */}
                 <div style={{ display: 'flex', alignItems: 'center' }}>
 
-                  <Menu
-                    onClick={this.handleOpen}
-                    style={{ marginRight: 32, cursor: 'pointer'}}
-                  />
+                  <IconButton onClick={this.handleOpen} style='margin-right: 16px'>
+                    <Menu />
+                  </IconButton>
 
                   <h3 style={{ margin: 0, fontWeight: 'normal' }}>{name}</h3>
 
