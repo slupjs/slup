@@ -3,32 +3,22 @@ import Component from 'inferno-component'
 import { Router, Route, IndexRoute, match, doAllAsyncBefore } from 'inferno-router'
 import createBrowserHistory from 'history/createBrowserHistory'
 
-import { ThemeProvider, white, black, teal } from '@slup/theming'
+import { ThemeProvider, white, black, teal, purple } from '@slup/theming'
 import { NavBar } from './components/navbar'
 import { Container, Content } from './components/container'
 import { ProgressBar } from './components/progress'
 
-import { requireComponent } from './utils/componentRoutes'
+import { resolve } from './utils/routes'
+import { pages } from './_pages'
 
-const History     = createBrowserHistory()
-let  asyncBefore = url => doAllAsyncBefore(match(routes, url))
-
-const pages = [
-  'buttons',
-  'controls',
-  'grid',
-  'lists',
-  'navbar',
-  'ripple',
-  'sidenav',
-  'slider'
-]
+const History   = createBrowserHistory()
+let asyncBefore = url => doAllAsyncBefore(match(routes, url))
 
 const Theme = {
   background: teal[500],
   text: white,
-  primary: teal[500],
-  secondary: teal[300]
+  primary: purple[500],
+  secondary: purple[300]
 }
 
 class App extends Component {
@@ -60,20 +50,20 @@ class App extends Component {
   }
 }
 
-const routes = (
+export const routes = (
   <ThemeProvider theme={Theme}>
     <Router history={History} asyncBefore={url => asyncBefore(url)}>
       <Route component={App}>
-        <IndexRoute getComponent={(n, cb) => requireComponent('home', cb)} />
+        <IndexRoute getComponent={resolve} />
 
-        ${pages.map(name => 
+        ${pages.map(name =>
           <Route
             path={`/components/${name}`}
-            getComponent={(n, cb) => requireComponent(name, cb)}
+            getComponent={resolve}
           />
         )}
 
-        <Route path='*' getComponent={(n, cb) => requireComponent('404', cb)} />
+        <Route path='*' getComponent={resolve} />
       </Route>
     </Router>
   </ThemeProvider>
