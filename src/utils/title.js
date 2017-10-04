@@ -1,22 +1,19 @@
-import Inferno from 'inferno'
+import { components } from '../_pages'
 
-export const generate = (pathname) => {
+export const generate = ({ pathname }) => {
   switch(true) {
     case pathname == '/':
       return 'Home'
     break
 
-    case pathname.indexOf('components') !== -1:
+    case 
+    pathname.indexOf('components') !== -1 && /** The URL contains /\component/\ */
+    components.indexOf(pathname.replace('/components/', '')) !== -1: /** The component exists */
+
       const name = pathname.replace('/components/', '')
       const Name = name.charAt(0).toUpperCase() + name.slice(1)
 
-      return pathname.length > 12
-        ? [
-          <a>Components</a>, // Links to the components list
-          ' - ',             // Separator
-          <a>{Name}</a>      // Links to this specific component
-        ]
-        : 'Components'
+      return `Components - ${Name}`
       
     break
 

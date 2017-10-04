@@ -1,10 +1,11 @@
 import Inferno            from 'inferno'
 import Component          from 'inferno-component'
-import { Redirect, Link } from 'inferno-router'
+import { Link }           from 'inferno-router'
 import { bind, debounce } from 'decko'
 
 import { Col, Grid }  from '@slup/grid'
 import { Navbar }     from '@slup/navbar'
+import { Typography } from '@slup/typography'
 import { IconButton } from '@slup/buttons'
 import Menu           from '@slup/icons/navigation/menu'
 
@@ -14,10 +15,13 @@ import { GitHub }     from './icons'
 import { generate }     from '../utils/title'
 
 export class NavBar extends Component {
-  state = {
-    opened: false,
-    redirect: false,
-    lists: { components: false }
+  state = { opened: false }
+  title = generate(window.location)
+
+  /** Handle component updates. Refresh the page's title */
+  componentWillUpdate() {
+    document.title = generate(window.location)
+    this.title     = generate(window.location)
   }
 
   @debounce(300)
@@ -35,43 +39,39 @@ export class NavBar extends Component {
     this.setState({ opened: false })
   }
 
-  render(props) {
-    const { opened } = this.state
-    const { pathname } = this.props.history.location
-    const name         = generate(pathname)
+  render = () =>
+    <nav>
+      <Navbar style='box-shadow: none'>
 
-    return(
-      <nav>
-        <Navbar style='box-shadow: none'>
-          <Grid middle style={{overflow: 'hidden'}}>
-            <Col sm={12}>
-              <Grid middle space_between style={{overflow: 'hidden'}}>
+        {/** Grid for positioning */}
+        <Grid middle style={{ overflow: 'hidden' }}>
+          <Col sm={12}>
+            <Grid middle space_between style={{ overflow: 'hidden' }}>
 
-                {/* Main title */}
-                <div style={{ display: 'flex', alignItems: 'center' }}>
+              {/* Main title and menu button */}
+              <div style={{ display: 'flex', alignItems: 'center' }}>
 
-                  <IconButton onClick={this.handleOpen} style='margin-right: 16px'>
-                    <Menu />
-                  </IconButton>
-
-                  <h3 style={{ margin: 0, fontWeight: 'normal' }}>{name}</h3>
-
-                </div>
-
-                {/* Optional icons */}
-                <IconButton onClick={this.handleLink}>
-                  <GitHub />
+                <IconButton onClick={this.handleOpen} style='margin-right: 16px'>
+                  <Menu />
                 </IconButton>
-              </Grid>
-            </Col>
-          </Grid>
-        </Navbar>
 
-        <SideNav
-          opened={opened}
-          onClose={this.handleClose}
-        />
-      </nav>
-    )
-  }
+                <Typography title>{this.title}</Typography>
+
+              </div>
+
+              {/* Optional icons */}
+              <IconButton onClick={this.handleLink}>
+                <GitHub />
+              </IconButton>
+
+            </Grid>
+          </Col>
+        </Grid>
+
+      </Navbar>
+
+      {/** Sidenav external component */}
+      <SideNav {...this.state} onClose={this.handleClose} />
+    </nav>
+
 }
