@@ -31,7 +31,7 @@ npm i -s @slup/<package>
 
 - To kick things off, clone the demo and enter that directory:
 ```
-git clone https://github.com/Gejsi/Material && cd Material
+git clone https://github.com/slupjs/slup && cd slup
 ```
 
 - Install dependencies and run the demo:
@@ -44,12 +44,12 @@ npm install && npm start
 
 - To kick things off, clone the demo and enter that directory:
 ```
-git clone https://github.com/Gejsi/Material && cd Material
+git clone https://github.com/slupjs/slup && cd slup
 ```
 
 - Install dependencies:
 ```
-npm install && lerna bootstrap
+npm install && lerna exec yarn
 ```
 
 Now feel free to make your changes and create new [PRs](https://github.com/Gejsi/Material/pulls)
