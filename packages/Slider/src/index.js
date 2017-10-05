@@ -25,7 +25,7 @@ export class Slider extends Component {
   capitalize = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1)
 
-  getPercentage = (max) => max / (this.props.step || this.props.max)
+  getPercentage = (max) => max / (this.props.steps || this.props.max)
 
   split = (max, parts) => max / parts
 
