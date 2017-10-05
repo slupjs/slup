@@ -49,7 +49,8 @@ git clone https://github.com/slupjs/slup && cd slup
 
 - Install dependencies:
 ```
-npm install && lerna exec yarn
+npm install && 
+lerna exec --concurrency 1 -- npm install
 ```
 
 Now feel free to make your changes and create new [PRs](https://github.com/Gejsi/Material/pulls)
