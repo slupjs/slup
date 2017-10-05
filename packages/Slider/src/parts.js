@@ -15,25 +15,25 @@ export const Container = styled.div`
   pointer-events: ${props => props.disabled ? 'none' : 'auto'};
 
   &:focus {
-    div:nth-child(3) {
+    div:first-child {
       width: ${props => props.discrete ? '0' : '14px'};
       height: ${props => props.discrete ? '0' : '14px'};
       box-shadow: ${props => props.focus
-    ? 'none'
-    : props.value == 0 && !props.discrete
-      ? '0 0 0 14px rgba(0, 0, 0, .1)'
-      : props.discrete
         ? 'none'
-        : `0 0 0 14px ${rgba(props.theme.secondary || lightTheme.secondary, .1)}`
-  };
+        : props.value == 0 && !props.discrete
+          ? '0 0 0 14px rgba(0, 0, 0, .1)'
+          : props.discrete
+            ? 'none'
+            : `0 0 0 14px ${rgba(props.theme.secondary || lightTheme.secondary, .1)}`
+      };
     }
 
-    div:nth-child(5) {
+    div:last-child {
       transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
       transform: ${props => props.discrete
-    ? 'translateX(-50%) scale(1)'
-    : 'translateX(-50%) scale(0)'
-  };
+        ? 'translateX(-50%) scale(1)'
+        : 'translateX(-50%) scale(0)'
+      };
     }
   }
 `
@@ -63,7 +63,7 @@ export const Thumb = styled.div`
           ? props.theme.background || lightTheme.background            /* At the beginning */
           : props.theme.secondary || lightTheme.secondary              /* Moved */
   };
-  
+
   border: ${props => props.disabled && props.value == 0
     ? `2px solid ${props.theme.text || lightTheme.text}`
     : props.disabled

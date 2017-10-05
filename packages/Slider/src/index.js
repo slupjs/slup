@@ -5,11 +5,11 @@ import { bind }  from 'decko'
 
 import { Indicator } from './indicator'
 import { Dots, Dot } from './steps'
-import { 
-  Container, 
-  Line, 
-  Thumb, 
-  Track 
+import {
+  Container,
+  Line,
+  Thumb,
+  Track
 } from './parts'
 
 export class Slider extends Component {
@@ -161,16 +161,6 @@ export class Slider extends Component {
         focus={focus}
       >
 
-        {/** Dots for stepped slider */}
-        {steps && props.discrete &&
-          <Dots {...props}>
-            {dots}
-          </Dots>
-        }
-
-        {/*Main Line*/}
-        <Line disabled={props.disabled} />
-
         {/* Thumb */}
         <Thumb
           {...props}
@@ -178,17 +168,25 @@ export class Slider extends Component {
           style={{left: (props.value / props.max) * 100 + '%'}}
         />
 
-        {/* Track */}
-        <Track disabled={props.disabled} style={{width: (props.value / props.max) * 100 + '%'}} />
-
-        {props.discrete
-          ? <Indicator
-            value={props.value}
-            max={props.max}
-            focus={focus || keyFocus}
-          />
-          : null
+        {/** Dots for stepped slider */}
+        {steps && props.discrete &&
+          <Dots {...props}>
+            {dots}
+            <Dot style='left: 100%' />
+          </Dots>
         }
+
+        {/*Main Line*/}
+        <Line disabled={props.disabled} />
+
+        {/* Track */}
+        <Track
+          disabled={props.disabled}
+          style={{width: (props.value / props.max) * 100 + '%'}}
+        />
+
+
+        <Indicator {...props} focus={focus || keyFocus} />
       </Container>
     )
   }
