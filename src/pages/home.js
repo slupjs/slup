@@ -17,6 +17,24 @@ const LogoContainer = styled.div`
 `
 
 export class Home extends Component {
+  state = { value: 0, focus: false }
+
+  @bind
+  onChange(value) {
+    this.setState({ value })
+  }
+
+  @bind
+  onFocus() {
+    this.setState({ focus: true })
+  }
+
+  @bind
+  onBlur() {
+    console.log('called')
+    this.setState({ focus: false })
+  }
+
   @bind
   @debounce(300)
   handleClick() {
@@ -28,7 +46,16 @@ export class Home extends Component {
       <LogoContainer>
         {Logo}
         <RaisedButton onClick={this.handleClick} primary>Get started</RaisedButton>
-        <Slider steps={4} />
+        <Slider
+          value={this.state.value} 
+          focus={this.state.focus}
+          keyFocus={this.state.focus}
+          max={100}
+          onChange={this.onChange} 
+          onFocus={this.onFocus} 
+          onBlur={this.onBlur}
+          discrete 
+          steps={10} />
       </LogoContainer>
     )
   }
