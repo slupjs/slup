@@ -2,6 +2,9 @@ language: node_js
 node_js: "7"
 sudo: required
 cache: yarn
+branches:
+  only:
+    - master
 script: 
   - yarn --production=false
   - yarn global add lerna
