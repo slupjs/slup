@@ -56,14 +56,13 @@ export class Slider extends Component {
   }
 
   @bind
-  moveSlider({ clientX }) {
+  progressFromEvent({ clientX }) {
     const { offsetLeft, clientWidth } = this.slider
     const { max } = this.props
     const percentage = (clientX - offsetLeft) / clientWidth
 
-    const progress = this.vise(0, percentage, 1) * max
+    return this.vise(0, percentage, 1) * max
 
-    this.emit('change', progress)
   }
 
   emit(type, value) {
@@ -79,7 +78,7 @@ export class Slider extends Component {
     this.setState({ focus: true })
     this.emit('focus')
 
-    this.moveSlider(e)
+    this.handleMouseMove(e)
   }
 
   @bind
@@ -91,7 +90,19 @@ export class Slider extends Component {
 
   @bind
   handleMouseMove(e) {
-    if(this.state.focus) this.moveSlider(e)
+    /** Ignore moves when unfocused */
+    if (!this.state.focus) return
+
+    if (this.props.steps && this.props.discrete) {
+      const perc = this.progressFromEvent(e)
+      const spl  = this.split(this.props.max, this.props.steps)
+      const index = Math.round(perc / spl)
+
+
+      this.emit('change', index * spl)
+    }
+
+    else this.emit('change', this.progressFromEvent(e))
   }
 
   @bind
