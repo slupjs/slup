@@ -6,4 +6,4 @@ script:
   - yarn --production=false
   - yarn global add lerna
   - lerna exec --concurrency 1 -- yarn --production=false
-  - lerna publish --skip-git --npm-tag=next
+  - lerna publish --skip-git --yes --cd-version=prepatch --preid=next --npm-tag=next
