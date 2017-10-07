@@ -10,6 +10,3 @@ script:
 - yarn global add lerna
 - lerna exec --concurrency 1 -- yarn --production=false
 - lerna publish --skip-git --yes --cd-version=prepatch --preid=next --npm-tag=next
-env:
-  NPM_KEY:
-    secure: NdsLPIEPA8pZ7PEHmSgRpKEwoEVoGEnhxMQ8HEtm4mI3o4rMVsScCgs06jJV5fD+uu1P+u7CjspcLtpl5gFuKMpo6syR/G7vaQgrg0mXFMr0Gavabb5CjHFWO+iyBVPeduxANfMNkvsg8wB6cQKZgF+4Y1ieNxigcDbjX6wwNgRUvM37jB5R5rn45Pr64Y8nAlVtaMvVkb+XLUozQoOgzHTfRgOsEjpxqr5vQcPxe5UNyN4EOiP26AlTt3y5wArQGDkVIfH7e7yAzhanl22n4zsqs66om0/+a0hfret6yhfebmpxGMh/SDkc92ZDSzoPZ4A1gHqoWdF77KVycf7lrm72bKgphhPykGu/EF260x9TSDM8i9t0CEGflIw9cXBpkCVOHr4ksAZ1f0th+MT1kZDO/tnz2mA1qiDiZMeRCIw6VGi251SVWDrhvNjl2Hba2GYEGQ4/JOwWOprqsjBDJlNNhgbe8VGG/Tc6TwE+ApuBm/hUH8/liqQlkrN2rIaqTJzFHBdeULleMDRZekNTzQLDpywSJC4cuD3Q80qnasmvYqtbvrY9RA4bcTI3JEngKPsTazMpW9dzaZbVemi5un+zR1j3U5RaJEc/NliPodHaZ9Sj4ncsdwMeQ54xS3WBM7arISk0Kgnq55qjY2WjwS2M/T6sC3utWlraGwGSWO0=
