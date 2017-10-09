@@ -4,89 +4,13 @@ import styled    from 'styled-components'
 import { bind }  from 'decko'
 
 import { Indicator } from './indicator'
-import { lightTheme } from '@slup/theming'
-import { rgba } from 'polished'
-
-const Container = styled.div`
-  height: 38px;
-  width: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  outline: none;
-  opacity: ${props => props.disabled ? '.3' : '1'};
-  pointer-events: ${props => props.disabled ? 'none' : 'auto'};
-  &:focus {
-    div:nth-child(2) {
-      width: ${props => props.discrete ? '0' : '14px'};
-      height: ${props => props.discrete ? '0' : '14px'};
-      box-shadow: ${props => props.focus
-      ? 'none' 
-        : props.value == 0 && !props.discrete
-          ? '0 0 0 14px rgba(0, 0, 0, .1)'
-          :props.discrete
-            ? 'none'
-            : `0 0 0 14px ${rgba(props.theme.primary || lightTheme.primary, .1)}`
-      };
-    }
-
-    div:nth-child(4) {
-      transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-      transform: ${props => props.discrete
-        ? 'translateX(-50%) scale(1)'
-        : 'translateX(-50%) scale(0)'
-      };
-    }
-  }
-`
-
-const Line = styled.div`
-  height: 3px;
-  width: 100%;
-  position: absolute;
-  background: ${props => props.theme.text || lightTheme.text};
-  opacity: ${props => props.disabled ? '1' : '.3'};
-  z-index: 1;
-`
-
-const Thumb = styled.div`
-  transition: height 300ms, width 300ms, box-shadow 300ms, background 150ms;
-  width: ${props => props.focus ? '14px' : '10px'};
-  height: ${props => props.focus ? '14px' : '10px'};
-  border-radius: 50%;
-  background: ${props => props.disabled && props.value == 0
-    ? props.theme.background || lightTheme.background                  /* Disabled or = to 0(at the beginning) */
-    : props.disabled
-      ? props.theme.text || lightTheme.text                            /* Disabled */
-      : props.discrete && props.value == 0
-        ? props.theme.text || lightTheme.text                          /* Not disabled, discrete but still at beginning */
-        : props.value == 0
-          ? props.theme.background || lightTheme.background            /* At the beginning */
-          : props.theme.primary || lightTheme.primary                  /* Moved */
-  };
-  border: ${props => props.disabled && props.value == 0
-    ? `2px solid ${props.theme.text || lightTheme.text}`
-    : props.disabled
-    ? `2px solid ${props.theme.background || lightTheme.background}`
-    : props.value == 0 && !props.discrete
-      ? `2px solid ${rgba(props.theme.text || lightTheme.text, .3)}`
-      : 'none'
-  };
-  position: absolute;
-  transform: translateX(-50%);
-  box-shadow: none;
-  z-index: 2;
-`
-
-const Track = styled.div`
-  height: 3px;
-  position: absolute;
-  background: ${props => props.disabled
-    ? 'transparent'
-    : props.theme.primary || lightTheme.primary
-  };
-  z-index: 1;
-`
+import { Dots, Dot } from './steps'
+import {
+  Container,
+  Line,
+  Thumb,
+  Track
+} from './parts'
 
 export class Slider extends Component {
   state = {
@@ -101,7 +25,9 @@ export class Slider extends Component {
   capitalize = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1)
 
-  getPercentage = (max) => max / 100
+  getPercentage = (max) => max / (this.props.steps || this.props.max)
+
+  split = (max, parts) => max / parts
 
   componentWillMount() {
     document.body.addEventListener(
@@ -129,16 +55,14 @@ export class Slider extends Component {
     )
   }
 
-
   @bind
-  moveSlider({ clientX }) {
+  progressFromEvent({ clientX }) {
     const { offsetLeft, clientWidth } = this.slider
     const { max } = this.props
     const percentage = (clientX - offsetLeft) / clientWidth
 
-    const progress = this.vise(0, percentage, 1) * max
+    return this.vise(0, percentage, 1) * max
 
-    this.emit('change', progress)
   }
 
   emit(type, value) {
@@ -154,7 +78,7 @@ export class Slider extends Component {
     this.setState({ focus: true })
     this.emit('focus')
 
-    this.moveSlider(e)
+    this.handleMouseMove(e)
   }
 
   @bind
@@ -166,7 +90,19 @@ export class Slider extends Component {
 
   @bind
   handleMouseMove(e) {
-    if(this.state.focus) this.moveSlider(e)
+    /** Ignore moves when unfocused */
+    if (!this.state.focus) return
+
+    if (this.props.steps && this.props.discrete) {
+      const perc = this.progressFromEvent(e)
+      const spl  = this.split(this.props.max, this.props.steps)
+      const index = Math.round(perc / spl)
+
+
+      this.emit('change', index * spl)
+    }
+
+    else this.emit('change', this.progressFromEvent(e))
   }
 
   @bind
@@ -206,7 +142,7 @@ export class Slider extends Component {
     }
   }
 
-  render(props) {
+  render({ steps, ...props}) {
     const {
       handleMouseDown,
       handleMouseUp,
@@ -214,8 +150,16 @@ export class Slider extends Component {
       handleKeyDown,
       handleFocus
     } = this
-
     const { focus, keyFocus } = this.state
+    const dots = []
+
+    if(steps) {
+      const stepValue = this.split(props.max, steps)
+
+      for (let i = 0; i < steps; i++) {
+        dots.push(<Dot style={{ left: stepValue * i + '%'  }} id={i} />)
+      }
+    }
 
     return(
       <Container
@@ -227,8 +171,6 @@ export class Slider extends Component {
         tabIndex={props.disabled ? -1 : 0}
         focus={focus}
       >
-        {/*Main Line*/}
-        <Line disabled={props.disabled} />
 
         {/* Thumb */}
         <Thumb
@@ -237,17 +179,25 @@ export class Slider extends Component {
           style={{left: (props.value / props.max) * 100 + '%'}}
         />
 
-        {/* Track */}
-        <Track disabled={props.disabled} style={{width: (props.value / props.max) * 100 + '%'}} />
-
-        {props.discrete
-          ? <Indicator
-            value={props.value}
-            max={props.max}
-            focus={focus || keyFocus}
-          />
-          : null
+        {/** Dots for stepped slider */}
+        {steps && props.discrete &&
+          <Dots {...props}>
+            {dots}
+            <Dot style='left: 100%' />
+          </Dots>
         }
+
+        {/*Main Line*/}
+        <Line disabled={props.disabled} />
+
+        {/* Track */}
+        <Track
+          disabled={props.disabled}
+          style={{width: (props.value / props.max) * 100 + '%'}}
+        />
+
+
+        <Indicator {...props} focus={focus || keyFocus} />
       </Container>
     )
   }
