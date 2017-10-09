@@ -1,6 +1,6 @@
 {
   "name": "@slup/tabs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Material design tabs, one of the most useful components",
   "main": "dist.js",
   "author": "LucaT, Gejsi",

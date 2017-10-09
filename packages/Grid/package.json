@@ -1,6 +1,6 @@
 {
   "name": "@slup/grid",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Material design grid system built with flexbox",
   "main": "dist.js",
   "author": "Gejsi",

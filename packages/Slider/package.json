@@ -1,6 +1,6 @@
 {
   "name": "@slup/slider",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Material design slider",
   "main": "dist.js",
   "author": "LucaT",
