@@ -6,9 +6,7 @@
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
-    "@slup/common": "0.0.1",
     "@types/node": "8.0.34",
-    "inferno-create-element": "3.9.0",
     "rollup": "0.50.0",
     "rollup-plugin-babel-minify": "3.1.2",
     "rollup-plugin-commonjs": "8.2.1",
