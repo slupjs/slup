@@ -6,10 +6,97 @@ import Stylis from 'stylis'
 export const sheet = new Sheet()
 
 sheet.inject()
+
+const externalStylisPlugins = []
+
+let queue = []
+let parentQueue = []
+
+const Plugin =  insertRule =>
+  function insertionPlugin(
+    context,
+    content,
+    selectors,
+    parents,
+    line,
+    column,
+    length,
+    id
+  ) {
+    console.log('called', arguments, selectors)
+
+    switch (context) {
+      case -2: {
+        queue.forEach(insertRule)
+        queue = []
+        parentQueue = []
+        break
+      }
+
+      case 2: {
+        if (id === 0) {
+          const selector = selectors.join(',')
+          let parent = parents.join(',')
+          const rule = `${selector}{${content}}`
+          let index = parentQueue.indexOf(selector)
+          if (index === -1) {
+            index = parentQueue.length
+          } else {
+            let length = queue.length
+            while (length--) {
+              if (parentQueue[length] === selector) {
+                parentQueue[length] = undefined
+              }
+            }
+          }
+          queue.splice(index, 0, rule)
+          parentQueue.splice(index, 0, parent)
+        }
+        break
+      }
+      // after an at rule block
+      case 3: {
+        let parent = parents.join(',')
+        parentQueue.push(parent)
+        let chars = selectors.join('')
+        const second = chars.charCodeAt(1)
+        let child = content
+        switch (second) {
+          // s upports
+          case 115:
+          // d ocument
+          // eslint-disable-next-line no-fallthrough
+          case 100:
+          // m edia
+          // eslint-disable-next-line no-fallthrough
+          case 109: {
+            queue.push(chars + '{' + child + '}')
+            break
+          }
+          // k eyframes
+          case 107: {
+            chars = chars.substring(1)
+            child = chars + '{' + child + '}'
+            queue.push('@-webkit-' + child)
+            queue.push('@' + child)
+            parentQueue.push(parent)
+            break
+          }
+          default: {
+            queue.push(chars + child)
+            break
+          }
+        }
+      }
+    }
+  }
+
 const stylisOptions = {
   keyframe: false,
   compress: false
 }
+
+const insertionPlugin = Plugin(_insertRule)
 
 if (process.env.NODE_ENV !== 'production') {
   stylisOptions.compress = false
@@ -17,11 +104,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 let stylis: any = new Stylis(stylisOptions)
 
-const externalStylisPlugins = []
-
 const use = stylis.use
 
-function insertRule(rule) {
+stylis.use(insertionPlugin)
+
+function _insertRule(rule) {
   sheet.insert(rule, currentSourceMap)
 }
 
@@ -70,7 +157,7 @@ const processStyleValue = (key, value) => {
   if (value === undefined || value === null || typeof value === 'boolean')
     return ''
 
-  if (UNITLESS[key] !== 1 && !isNaN(value) && value !== 0) {
+  if (UNITLESS[key] !== true && !isNaN(value) && value !== 0) {
     return value + 'px'
   }
   return value
@@ -137,19 +224,9 @@ function createStyles(strings?, ...interpolations) {
   return styles
 }
 
-if (process.env.NODE_ENV !== 'production') {
-  const sourceMapRegEx = /\/\*#\ssourceMappingURL=data:application\/json;\S+\s+\*\/\s+\/\*@\ssourceURL=\S+\s+\*\//
-  const oldStylis = stylis
-  stylis = (selector, styles) => {
-    const result = sourceMapRegEx.exec(styles)
-    currentSourceMap = result ? result[0] : ''
-    oldStylis(selector, styles)
-    currentSourceMap = ''
-  }
-}
-
 export function css(...args) {
   const styles = createStyles.apply(this, args)
+
   const _hash = hash(styles)
   const cls = `css-${_hash}`
 
