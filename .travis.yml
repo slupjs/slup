@@ -9,7 +9,6 @@ branches:
 before_install:
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 script:
-- yarn --production=false
 - yarn global add lerna bundlesize
 - lerna bootstrap
 - lerna exec --concurrency 1 -- bundlesize
