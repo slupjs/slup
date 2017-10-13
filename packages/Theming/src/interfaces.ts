@@ -34,7 +34,7 @@ export type ColorSet = {
 /**
  * Theme interface for the general structure
  */
-export interface _ITheme {
+export interface IITheme {
   /**
    * Color for the text strings on your page
    */
@@ -58,7 +58,7 @@ export interface _ITheme {
   secondary: string | ColorShade<string>
 }
 
-export type ITheme = ((newTheme: _ITheme) => _ITheme) | _ITheme
+export type ITheme = ((newTheme: IITheme) => IITheme) | IITheme
 
 /** 
  * Inferfaces that described the Provider's props 
@@ -68,9 +68,20 @@ export interface IProps {
   children: any[]
 }
 
+export interface IEmitter {
+  publish: (newState: any) => void
+  subscribe: (fn: IListener) => number
+  unsubscribe: (id: number) => void
+}
+
+/**
+ * Listener for the emitter class
+ */
+export type IListener = (state: any) => any
+
 /**
  * Shett class helper to create css styleshetts
  */
 export interface ISheet {
-  
+
 }

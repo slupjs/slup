@@ -1,8 +1,8 @@
-export type Listener = (state: any) => any
+import { IEmitter, IListener } from './interfaces'
 
-export class Emitter {
+export class Emitter implements IEmitter {
   private state: any = null
-  private listeners: Listener[] = []
+  private listeners: IListener[] = []
 
   constructor(state) {
     this.state = state
@@ -31,7 +31,7 @@ export class Emitter {
    * @param fn Function to be called on updates
    * @returns id The id of the new listener
    */
-  public subscribe(fn: Listener): number {
+  public subscribe(fn: IListener): number {
     return this.listeners.push(fn) - 1
   }
 
