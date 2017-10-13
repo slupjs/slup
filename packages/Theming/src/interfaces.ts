@@ -68,6 +68,23 @@ export interface IProps {
   children: any[]
 }
 
+
+/**
+ * State for the template component(Styled)
+ */
+export interface IStyledState {
+  theme?: ITheme
+}
+
+/**
+ * Props for the template component(Styled)
+ */
+export interface IStyledProps {
+  theme?: IITheme
+  children?: any
+  /** TODO */
+}
+
 export interface IEmitter {
   publish: (newState: any) => void
   subscribe: (fn: IListener) => number

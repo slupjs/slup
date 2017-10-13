@@ -1,6 +1,4 @@
 export * from './provider'
 export * from './colors'
-export * from './emitter'
-export * from './sheet'
 export * from './styled'
 export * from './styles'

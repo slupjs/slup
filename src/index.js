@@ -1,9 +1,11 @@
 import Inferno, { render } from 'inferno'
 
-import { styled, ThemeProvider, injectGlobal, css, darkTheme } from '@slup/theming'
+import T, { ThemeProvider, styled, css, injectGlobal } from '@slup/theming'
+
+console.log(T)
 
 let B = styled('div')`
-  transition: displat 1s linear;
+  color: ${props => props.theme.test};
 `
 
 let A = styled('div')`
@@ -13,15 +15,17 @@ let A = styled('div')`
 A = A.withComponent('span')
 
 const Test = () =>
-  <div>
-    <A>test</A>
-    <B>
-      <div>
-        bau 
-        <test />
-      </div>
-    </B>
-  </div>
+  <ThemeProvider theme={{ test: 'red' }}>
+    <div>
+      <A>test</A>
+      <B>
+        <div>
+          bau 
+          <test />
+        </div>
+      </B>
+    </div>
+  </ThemeProvider>
 
 injectGlobal`
   body { background: red }

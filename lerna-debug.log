@@ -1,0 +1,300 @@
+0 silly input []
+1 silly flags { _: [ 'bootstrap' ], args: [] }
+2 verbose rootPath /Users/luca/projects/Material
+3 info version 2.0.0
+4 silly existsSync /Users/luca/projects/Material/VERSION
+5 silly initialize attempt
+6 silly initialize success
+7 silly execute attempt
+8 info Bootstrapping 2 packages
+9 info lifecycle preinstall
+10 silly runScript preinstall @slup/theming
+11 silly @slup/theming
+12 silly runScript preinstall @slup/common
+13 silly @slup/common
+14 silly hasDependencyInstalled @slup/theming rollup
+15 silly dependencyIsSatisfied [ 'rollup',
+15 silly dependencyIsSatisfied   '0.50.0',
+15 silly dependencyIsSatisfied   '/Users/luca/projects/Material/packages/theming/node_modules' ]
+16 verbose dependencyIsSatisfied rollup true
+17 silly hasDependencyInstalled @slup/common rollup
+18 silly dependencyIsSatisfied [ 'rollup',
+18 silly dependencyIsSatisfied   '0.50.0',
+18 silly dependencyIsSatisfied   '/Users/luca/projects/Material/packages/common/node_modules' ]
+19 verbose dependencyIsSatisfied rollup true
+20 silly hasDependencyInstalled @slup/theming rollup-plugin-babel-minify
+21 silly dependencyIsSatisfied [ 'rollup-plugin-babel-minify',
+21 silly dependencyIsSatisfied   '3.1.2',
+21 silly dependencyIsSatisfied   '/Users/luca/projects/Material/packages/theming/node_modules' ]
+22 verbose dependencyIsSatisfied rollup-plugin-babel-minify true
+23 silly hasDependencyInstalled @slup/common rollup-plugin-babel-minify
+24 silly dependencyIsSatisfied [ 'rollup-plugin-babel-minify',
+24 silly dependencyIsSatisfied   '3.1.2',
+24 silly dependencyIsSatisfied   '/Users/luca/projects/Material/packages/common/node_modules' ]
+25 verbose dependencyIsSatisfied rollup-plugin-babel-minify true
+26 silly hasDependencyInstalled @slup/theming rollup-plugin-commonjs
+27 silly dependencyIsSatisfied [ 'rollup-plugin-commonjs',
+27 silly dependencyIsSatisfied   '8.2.1',
+27 silly dependencyIsSatisfied   '/Users/luca/projects/Material/packages/theming/node_modules' ]
+28 verbose dependencyIsSatisfied rollup-plugin-commonjs true
+29 silly hasDependencyInstalled @slup/theming rollup-plugin-node-resolve
+30 silly dependencyIsSatisfied [ 'rollup-plugin-node-resolve',
+30 silly dependencyIsSatisfied   '3.0.0',
+30 silly dependencyIsSatisfied   '/Users/luca/projects/Material/packages/theming/node_modules' ]
+31 verbose dependencyIsSatisfied rollup-plugin-node-resolve true
+32 silly hasDependencyInstalled @slup/theming rollup-plugin-typescript2
+33 silly dependencyIsSatisfied [ 'rollup-plugin-typescript2',
+33 silly dependencyIsSatisfied   '0.7.0',
+33 silly dependencyIsSatisfied   '/Users/luca/projects/Material/packages/theming/node_modules' ]
+34 verbose dependencyIsSatisfied rollup-plugin-typescript2 true
+35 silly hasDependencyInstalled @slup/common rollup-plugin-typescript2
+36 silly dependencyIsSatisfied [ 'rollup-plugin-typescript2',
+36 silly dependencyIsSatisfied   '0.7.0',
+36 silly dependencyIsSatisfied   '/Users/luca/projects/Material/packages/common/node_modules' ]
+37 verbose dependencyIsSatisfied rollup-plugin-typescript2 true
+38 silly hasDependencyInstalled @slup/theming typescript
+39 silly dependencyIsSatisfied [ 'typescript',
+39 silly dependencyIsSatisfied   '2.5.3',
+39 silly dependencyIsSatisfied   '/Users/luca/projects/Material/packages/theming/node_modules' ]
+40 verbose dependencyIsSatisfied typescript true
+41 silly hasDependencyInstalled @slup/common typescript
+42 silly dependencyIsSatisfied [ 'typescript',
+42 silly dependencyIsSatisfied   '2.5.3',
+42 silly dependencyIsSatisfied   '/Users/luca/projects/Material/packages/common/node_modules' ]
+43 verbose dependencyIsSatisfied typescript true
+44 silly hasDependencyInstalled @slup/theming @types/node
+45 silly dependencyIsSatisfied [ '@types/node',
+45 silly dependencyIsSatisfied   '8.0.34',
+45 silly dependencyIsSatisfied   '/Users/luca/projects/Material/packages/theming/node_modules' ]
+46 verbose dependencyIsSatisfied @types/node true
+47 silly hasDependencyInstalled @slup/common @types/node
+48 silly dependencyIsSatisfied [ '@types/node',
+48 silly dependencyIsSatisfied   '8.0.34',
+48 silly dependencyIsSatisfied   '/Users/luca/projects/Material/packages/common/node_modules' ]
+49 verbose dependencyIsSatisfied @types/node true
+50 silly hasDependencyInstalled @slup/theming stylis
+51 silly dependencyIsSatisfied [ 'stylis',
+51 silly dependencyIsSatisfied   '3.3.1',
+51 silly dependencyIsSatisfied   '/Users/luca/projects/Material/packages/theming/node_modules' ]
+52 verbose dependencyIsSatisfied stylis true
+53 silly root dependencies []
+54 silly leaf dependencies {
+54 silly leaf dependencies   "@slup/theming": [
+54 silly leaf dependencies     {
+54 silly leaf dependencies       "dependency": "rollup@0.50.0",
+54 silly leaf dependencies       "isSatisfied": true
+54 silly leaf dependencies     },
+54 silly leaf dependencies     {
+54 silly leaf dependencies       "dependency": "rollup-plugin-babel-minify@3.1.2",
+54 silly leaf dependencies       "isSatisfied": true
+54 silly leaf dependencies     },
+54 silly leaf dependencies     {
+54 silly leaf dependencies       "dependency": "rollup-plugin-commonjs@8.2.1",
+54 silly leaf dependencies       "isSatisfied": true
+54 silly leaf dependencies     },
+54 silly leaf dependencies     {
+54 silly leaf dependencies       "dependency": "rollup-plugin-node-resolve@3.0.0",
+54 silly leaf dependencies       "isSatisfied": true
+54 silly leaf dependencies     },
+54 silly leaf dependencies     {
+54 silly leaf dependencies       "dependency": "rollup-plugin-typescript2@0.7.0",
+54 silly leaf dependencies       "isSatisfied": true
+54 silly leaf dependencies     },
+54 silly leaf dependencies     {
+54 silly leaf dependencies       "dependency": "typescript@2.5.3",
+54 silly leaf dependencies       "isSatisfied": true
+54 silly leaf dependencies     },
+54 silly leaf dependencies     {
+54 silly leaf dependencies       "dependency": "@types/node@8.0.34",
+54 silly leaf dependencies       "isSatisfied": true
+54 silly leaf dependencies     },
+54 silly leaf dependencies     {
+54 silly leaf dependencies       "dependency": "stylis@3.3.1",
+54 silly leaf dependencies       "isSatisfied": true
+54 silly leaf dependencies     }
+54 silly leaf dependencies   ],
+54 silly leaf dependencies   "@slup/common": [
+54 silly leaf dependencies     {
+54 silly leaf dependencies       "dependency": "rollup@0.50.0",
+54 silly leaf dependencies       "isSatisfied": true
+54 silly leaf dependencies     },
+54 silly leaf dependencies     {
+54 silly leaf dependencies       "dependency": "rollup-plugin-babel-minify@3.1.2",
+54 silly leaf dependencies       "isSatisfied": true
+54 silly leaf dependencies     },
+54 silly leaf dependencies     {
+54 silly leaf dependencies       "dependency": "rollup-plugin-typescript2@0.7.0",
+54 silly leaf dependencies       "isSatisfied": true
+54 silly leaf dependencies     },
+54 silly leaf dependencies     {
+54 silly leaf dependencies       "dependency": "typescript@2.5.3",
+54 silly leaf dependencies       "isSatisfied": true
+54 silly leaf dependencies     },
+54 silly leaf dependencies     {
+54 silly leaf dependencies       "dependency": "@types/node@8.0.34",
+54 silly leaf dependencies       "isSatisfied": true
+54 silly leaf dependencies     }
+54 silly leaf dependencies   ]
+54 silly leaf dependencies }
+55 info Symlinking packages and binaries
+56 silly packageActions finished @slup/theming
+57 silly packageActions finished @slup/common
+58 info lifecycle postinstall
+59 silly runScript postinstall @slup/theming
+60 silly @slup/theming
+61 silly runScript postinstall @slup/common
+62 silly @slup/common
+63 info lifecycle prepublish
+64 silly runScript prepublish @slup/theming
+65 silly runScriptInDir prepublish [] theming
+66 silly getExecOpts { cwd: '/Users/luca/projects/Material/packages/theming' }
+67 silly runScript prepublish @slup/common
+68 silly runScriptInDir prepublish [] common
+69 silly getExecOpts { cwd: '/Users/luca/projects/Material/packages/common' }
+70 silly @slup/theming
+71 error execute Error: Command failed: npm run prepublish
+71 error execute
+71 error execute /Users/luca/projects/Material/packages/Theming/src/index.ts → dist.js...
+71 error execute [!] Error: rpt2: /Users/luca/projects/Material/packages/Theming/src/provider.tsx (4,25): semantic error TS2307 Cannot find module '@slup/common'.
+71 error execute src/provider.tsx
+71 error execute Error: rpt2: /Users/luca/projects/Material/packages/Theming/src/provider.tsx (4,25): semantic error TS2307 Cannot find module '@slup/common'.
+71 error execute     at error (/Users/luca/projects/Material/packages/Theming/node_modules/rollup/dist/rollup.js:185:14)
+71 error execute     at promise.then.previous (/Users/luca/projects/Material/packages/Theming/node_modules/rollup/dist/rollup.js:9417:5)
+71 error execute
+71 error execute
+71 error execute npm ERR! Darwin 16.7.0
+71 error execute npm ERR! argv "/Users/luca/.nvm/versions/node/v7.10.0/bin/node" "/Users/luca/.nvm/versions/node/v7.10.0/bin/npm" "run" "build"
+71 error execute npm ERR! node v7.10.0
+71 error execute npm ERR! npm  v4.2.0
+71 error execute npm ERR! code ELIFECYCLE
+71 error execute npm ERR! errno 1
+71 error execute npm ERR! @slup/theming@0.0.1 build: `rollup -c`
+71 error execute npm ERR! Exit status 1
+71 error execute npm ERR!
+71 error execute npm ERR! Failed at the @slup/theming@0.0.1 build script 'rollup -c'.
+71 error execute npm ERR! Make sure you have the latest version of node.js and npm installed.
+71 error execute npm ERR! If you do, this is most likely a problem with the @slup/theming package,
+71 error execute npm ERR! not with npm itself.
+71 error execute npm ERR! Tell the author that this fails on your system:
+71 error execute npm ERR!     rollup -c
+71 error execute npm ERR! You can get information on how to open an issue for this project with:
+71 error execute npm ERR!     npm bugs @slup/theming
+71 error execute npm ERR! Or if that isn't available, you can get their info via:
+71 error execute npm ERR!     npm owner ls @slup/theming
+71 error execute npm ERR! There is likely additional logging output above.
+71 error execute
+71 error execute npm ERR! Please include the following file with any support request:
+71 error execute npm ERR!     /Users/luca/.npm/_logs/2017-10-13T16_20_18_723Z-debug.log
+71 error execute
+71 error execute npm ERR! Darwin 16.7.0
+71 error execute npm ERR! argv "/Users/luca/.nvm/versions/node/v7.10.0/bin/node" "/Users/luca/.nvm/versions/node/v7.10.0/bin/npm" "run" "prepublish"
+71 error execute npm ERR! node v7.10.0
+71 error execute npm ERR! npm  v4.2.0
+71 error execute npm ERR! code ELIFECYCLE
+71 error execute npm ERR! errno 1
+71 error execute npm ERR! @slup/theming@0.0.1 prepublish: `npm run build`
+71 error execute npm ERR! Exit status 1
+71 error execute npm ERR!
+71 error execute npm ERR! Failed at the @slup/theming@0.0.1 prepublish script 'npm run build'.
+71 error execute npm ERR! Make sure you have the latest version of node.js and npm installed.
+71 error execute npm ERR! If you do, this is most likely a problem with the @slup/theming package,
+71 error execute npm ERR! not with npm itself.
+71 error execute npm ERR! Tell the author that this fails on your system:
+71 error execute npm ERR!     npm run build
+71 error execute npm ERR! You can get information on how to open an issue for this project with:
+71 error execute npm ERR!     npm bugs @slup/theming
+71 error execute npm ERR! Or if that isn't available, you can get their info via:
+71 error execute npm ERR!     npm owner ls @slup/theming
+71 error execute npm ERR! There is likely additional logging output above.
+71 error execute
+71 error execute npm ERR! Please include the following file with any support request:
+71 error execute npm ERR!     /Users/luca/.npm/_logs/2017-10-13T16_20_18_750Z-debug.log
+71 error execute
+71 error execute > @slup/theming@0.0.1 prepublish /Users/luca/projects/Material/packages/Theming
+71 error execute > npm run build
+71 error execute
+71 error execute
+71 error execute > @slup/theming@0.0.1 build /Users/luca/projects/Material/packages/Theming
+71 error execute > rollup -c
+71 error execute
+71 error execute
+71 error execute     at Promise.all.then.arr (/Users/luca/.config/yarn/global/node_modules/lerna/node_modules/execa/index.js:210:11)
+71 error execute     at process._tickCallback (internal/process/next_tick.js:109:7)
+71 error execute  callback with error
+71 error execute  { Error: Command failed: npm run prepublish
+71 error execute
+71 error execute /Users/luca/projects/Material/packages/Theming/src/index.ts → dist.js...
+71 error execute [!] Error: rpt2: /Users/luca/projects/Material/packages/Theming/src/provider.tsx (4,25): semantic error TS2307 Cannot find module '@slup/common'.
+71 error execute src/provider.tsx
+71 error execute Error: rpt2: /Users/luca/projects/Material/packages/Theming/src/provider.tsx (4,25): semantic error TS2307 Cannot find module '@slup/common'.
+71 error execute     at error (/Users/luca/projects/Material/packages/Theming/node_modules/rollup/dist/rollup.js:185:14)
+71 error execute     at promise.then.previous (/Users/luca/projects/Material/packages/Theming/node_modules/rollup/dist/rollup.js:9417:5)
+71 error execute
+71 error execute
+71 error execute npm ERR! Darwin 16.7.0
+71 error execute npm ERR! argv "/Users/luca/.nvm/versions/node/v7.10.0/bin/node" "/Users/luca/.nvm/versions/node/v7.10.0/bin/npm" "run" "build"
+71 error execute npm ERR! node v7.10.0
+71 error execute npm ERR! npm  v4.2.0
+71 error execute npm ERR! code ELIFECYCLE
+71 error execute npm ERR! errno 1
+71 error execute npm ERR! @slup/theming@0.0.1 build: `rollup -c`
+71 error execute npm ERR! Exit status 1
+71 error execute npm ERR!
+71 error execute npm ERR! Failed at the @slup/theming@0.0.1 build script 'rollup -c'.
+71 error execute npm ERR! Make sure you have the latest version of node.js and npm installed.
+71 error execute npm ERR! If you do, this is most likely a problem with the @slup/theming package,
+71 error execute npm ERR! not with npm itself.
+71 error execute npm ERR! Tell the author that this fails on your system:
+71 error execute npm ERR!     rollup -c
+71 error execute npm ERR! You can get information on how to open an issue for this project with:
+71 error execute npm ERR!     npm bugs @slup/theming
+71 error execute npm ERR! Or if that isn't available, you can get their info via:
+71 error execute npm ERR!     npm owner ls @slup/theming
+71 error execute npm ERR! There is likely additional logging output above.
+71 error execute
+71 error execute npm ERR! Please include the following file with any support request:
+71 error execute npm ERR!     /Users/luca/.npm/_logs/2017-10-13T16_20_18_723Z-debug.log
+71 error execute
+71 error execute npm ERR! Darwin 16.7.0
+71 error execute npm ERR! argv "/Users/luca/.nvm/versions/node/v7.10.0/bin/node" "/Users/luca/.nvm/versions/node/v7.10.0/bin/npm" "run" "prepublish"
+71 error execute npm ERR! node v7.10.0
+71 error execute npm ERR! npm  v4.2.0
+71 error execute npm ERR! code ELIFECYCLE
+71 error execute npm ERR! errno 1
+71 error execute npm ERR! @slup/theming@0.0.1 prepublish: `npm run build`
+71 error execute npm ERR! Exit status 1
+71 error execute npm ERR!
+71 error execute npm ERR! Failed at the @slup/theming@0.0.1 prepublish script 'npm run build'.
+71 error execute npm ERR! Make sure you have the latest version of node.js and npm installed.
+71 error execute npm ERR! If you do, this is most likely a problem with the @slup/theming package,
+71 error execute npm ERR! not with npm itself.
+71 error execute npm ERR! Tell the author that this fails on your system:
+71 error execute npm ERR!     npm run build
+71 error execute npm ERR! You can get information on how to open an issue for this project with:
+71 error execute npm ERR!     npm bugs @slup/theming
+71 error execute npm ERR! Or if that isn't available, you can get their info via:
+71 error execute npm ERR!     npm owner ls @slup/theming
+71 error execute npm ERR! There is likely additional logging output above.
+71 error execute
+71 error execute npm ERR! Please include the following file with any support request:
+71 error execute npm ERR!     /Users/luca/.npm/_logs/2017-10-13T16_20_18_750Z-debug.log
+71 error execute
+71 error execute > @slup/theming@0.0.1 prepublish /Users/luca/projects/Material/packages/Theming
+71 error execute > npm run build
+71 error execute
+71 error execute
+71 error execute > @slup/theming@0.0.1 build /Users/luca/projects/Material/packages/Theming
+71 error execute > rollup -c
+71 error execute
+71 error execute
+71 error execute     at Promise.all.then.arr (/Users/luca/.config/yarn/global/node_modules/lerna/node_modules/execa/index.js:210:11)
+71 error execute     at process._tickCallback (internal/process/next_tick.js:109:7)
+71 error execute   stack: 'Error: Command failed: npm run prepublish\n\n/Users/luca/projects/Material/packages/Theming/src/index.ts → dist.js...\n[!] Error: rpt2: /Users/luca/projects/Material/packages/Theming/src/provider.tsx (4,25): semantic error TS2307 Cannot find module \'@slup/common\'.\nsrc/provider.tsx\nError: rpt2: /Users/luca/projects/Material/packages/Theming/src/provider.tsx (4,25): semantic error TS2307 Cannot find module \'@slup/common\'.\n    at error (/Users/luca/projects/Material/packages/Theming/node_modules/rollup/dist/rollup.js:185:14)\n    at promise.then.previous (/Users/luca/projects/Material/packages/Theming/node_modules/rollup/dist/rollup.js:9417:5)\n\n\nnpm ERR! Darwin 16.7.0\nnpm ERR! argv "/Users/luca/.nvm/versions/node/v7.10.0/bin/node" "/Users/luca/.nvm/versions/node/v7.10.0/bin/npm" "run" "build"\nnpm ERR! node v7.10.0\nnpm ERR! npm  v4.2.0\nnpm ERR! code ELIFECYCLE\nnpm ERR! errno 1\nnpm ERR! @slup/theming@0.0.1 build: `rollup -c`\nnpm ERR! Exit status 1\nnpm ERR! \nnpm ERR! Failed at the @slup/theming@0.0.1 build script \'rollup -c\'.\nnpm ERR! Make sure you have the latest version of node.js and npm installed.\nnpm ERR! If you do, this is most likely a problem with the @slup/theming package,\nnpm ERR! not with npm itself.\nnpm ERR! Tell the author that this fails on your system:\nnpm ERR!     rollup -c\nnpm ERR! You can get information on how to open an issue for this project with:\nnpm ERR!     npm bugs @slup/theming\nnpm ERR! Or if that isn\'t available, you can get their info via:\nnpm ERR!     npm owner ls @slup/theming\nnpm ERR! There is likely additional logging output above.\n\nnpm ERR! Please include the following file with any support request:\nnpm ERR!     /Users/luca/.npm/_logs/2017-10-13T16_20_18_723Z-debug.log\n\nnpm ERR! Darwin 16.7.0\nnpm ERR! argv "/Users/luca/.nvm/versions/node/v7.10.0/bin/node" "/Users/luca/.nvm/versions/node/v7.10.0/bin/npm" "run" "prepublish"\nnpm ERR! node v7.10.0\nnpm ERR! npm  v4.2.0\nnpm ERR! code ELIFECYCLE\nnpm ERR! errno 1\nnpm ERR! @slup/theming@0.0.1 prepublish: `npm run build`\nnpm ERR! Exit status 1\nnpm ERR! \nnpm ERR! Failed at the @slup/theming@0.0.1 prepublish script \'npm run build\'.\nnpm ERR! Make sure you have the latest version of node.js and npm installed.\nnpm ERR! If you do, this is most likely a problem with the @slup/theming package,\nnpm ERR! not with npm itself.\nnpm ERR! Tell the author that this fails on your system:\nnpm ERR!     npm run build\nnpm ERR! You can get information on how to open an issue for this project with:\nnpm ERR!     npm bugs @slup/theming\nnpm ERR! Or if that isn\'t available, you can get their info via:\nnpm ERR!     npm owner ls @slup/theming\nnpm ERR! There is likely additional logging output above.\n\nnpm ERR! Please include the following file with any support request:\nnpm ERR!     /Users/luca/.npm/_logs/2017-10-13T16_20_18_750Z-debug.log\n\n> @slup/theming@0.0.1 prepublish /Users/luca/projects/Material/packages/Theming\n> npm run build\n\n\n> @slup/theming@0.0.1 build /Users/luca/projects/Material/packages/Theming\n> rollup -c\n\n\n    at Promise.all.then.arr (/Users/luca/.config/yarn/global/node_modules/lerna/node_modules/execa/index.js:210:11)\n    at process._tickCallback (internal/process/next_tick.js:109:7)',
+71 error execute   code: 1,
+71 error execute   killed: false,
+71 error execute   stdout: '\n> @slup/theming@0.0.1 prepublish /Users/luca/projects/Material/packages/Theming\n> npm run build\n\n\n> @slup/theming@0.0.1 build /Users/luca/projects/Material/packages/Theming\n> rollup -c\n\n',
+71 error execute   stderr: '\n/Users/luca/projects/Material/packages/Theming/src/index.ts → dist.js...\n[!] Error: rpt2: /Users/luca/projects/Material/packages/Theming/src/provider.tsx (4,25): semantic error TS2307 Cannot find module \'@slup/common\'.\nsrc/provider.tsx\nError: rpt2: /Users/luca/projects/Material/packages/Theming/src/provider.tsx (4,25): semantic error TS2307 Cannot find module \'@slup/common\'.\n    at error (/Users/luca/projects/Material/packages/Theming/node_modules/rollup/dist/rollup.js:185:14)\n    at promise.then.previous (/Users/luca/projects/Material/packages/Theming/node_modules/rollup/dist/rollup.js:9417:5)\n\n\nnpm ERR! Darwin 16.7.0\nnpm ERR! argv "/Users/luca/.nvm/versions/node/v7.10.0/bin/node" "/Users/luca/.nvm/versions/node/v7.10.0/bin/npm" "run" "build"\nnpm ERR! node v7.10.0\nnpm ERR! npm  v4.2.0\nnpm ERR! code ELIFECYCLE\nnpm ERR! errno 1\nnpm ERR! @slup/theming@0.0.1 build: `rollup -c`\nnpm ERR! Exit status 1\nnpm ERR! \nnpm ERR! Failed at the @slup/theming@0.0.1 build script \'rollup -c\'.\nnpm ERR! Make sure you have the latest version of node.js and npm installed.\nnpm ERR! If you do, this is most likely a problem with the @slup/theming package,\nnpm ERR! not with npm itself.\nnpm ERR! Tell the author that this fails on your system:\nnpm ERR!     rollup -c\nnpm ERR! You can get information on how to open an issue for this project with:\nnpm ERR!     npm bugs @slup/theming\nnpm ERR! Or if that isn\'t available, you can get their info via:\nnpm ERR!     npm owner ls @slup/theming\nnpm ERR! There is likely additional logging output above.\n\nnpm ERR! Please include the following file with any support request:\nnpm ERR!     /Users/luca/.npm/_logs/2017-10-13T16_20_18_723Z-debug.log\n\nnpm ERR! Darwin 16.7.0\nnpm ERR! argv "/Users/luca/.nvm/versions/node/v7.10.0/bin/node" "/Users/luca/.nvm/versions/node/v7.10.0/bin/npm" "run" "prepublish"\nnpm ERR! node v7.10.0\nnpm ERR! npm  v4.2.0\nnpm ERR! code ELIFECYCLE\nnpm ERR! errno 1\nnpm ERR! @slup/theming@0.0.1 prepublish: `npm run build`\nnpm ERR! Exit status 1\nnpm ERR! \nnpm ERR! Failed at the @slup/theming@0.0.1 prepublish script \'npm run build\'.\nnpm ERR! Make sure you have the latest version of node.js and npm installed.\nnpm ERR! If you do, this is most likely a problem with the @slup/theming package,\nnpm ERR! not with npm itself.\nnpm ERR! Tell the author that this fails on your system:\nnpm ERR!     npm run build\nnpm ERR! You can get information on how to open an issue for this project with:\nnpm ERR!     npm bugs @slup/theming\nnpm ERR! Or if that isn\'t available, you can get their info via:\nnpm ERR!     npm owner ls @slup/theming\nnpm ERR! There is likely additional logging output above.\n\nnpm ERR! Please include the following file with any support request:\nnpm ERR!     /Users/luca/.npm/_logs/2017-10-13T16_20_18_750Z-debug.log\n',
+71 error execute   failed: true,
+71 error execute   signal: null,
+71 error execute   cmd: 'npm run prepublish',
+71 error execute   timedOut: false }

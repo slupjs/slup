@@ -1,114 +1,159 @@
-import { getRegisteredStyles, css } from './styles'
-import Component from 'inferno-component'
 import { createVNode } from 'inferno'
-import { CHANNEL } from '@slup/common'
+import Component       from 'inferno-component'
+import { CHANNEL }     from '@slup/common'
 
-function setTheme(theme) {
-  this.setState({ theme })
-}
+/** Styling utils */
+import { getRegisteredStyles, css } from './styles'
 
-function componentWillMount() {
-  if (this.context[CHANNEL] !== undefined) {
-    this.unsubscribe = this.context[CHANNEL].subscribe(setTheme.bind(this))
-  }
-}
-function componentWillUnmount() {
-  if (this.unsubscribe !== undefined) {
-    this.context[CHANNEL].unsubscribe(this.unsubscribe)
-  }
-}
+/** Typings */
+import { IStyledState, IStyledProps, ITheme, IEmitter } from './interfaces'
 
-const testOmitPropsOnComponent = key => key !== 'theme' && key !== 'innerRef'
-const testAlwaysTrue = () => true
+export const styled = (_tag: any) => 
 
-export const styled = (tag, options: { e: string }) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (tag === undefined) {
-      throw new Error(
-        'You are trying to create a styled element with an undefined component.\nYou may have forgotten to import it.'
+  (strings: TemplateStringsArray, ...interpolations: string[]) => {
+
+    /** Is the component yet another styled component? */
+    const isStyled = _tag.__slup__tag == _tag
+
+    /** 
+     * Generate the real tag, since we're going
+     * to use the parent's tag if it was a styled
+     */
+    const tag = isStyled
+      ? _tag.__slup__base
+      : _tag
+
+    /** Styles from the previous component(tag) */
+    let styles = isStyled ? _tag.__slup__styles : []
+
+    
+    if (strings == null || strings.raw === undefined) {
+      /** The wrapper didn't have any styles */
+      styles = styles.concat(strings, interpolations)
+    
+    } else {
+
+      /** Merge the two stylings together */
+      styles = interpolations.reduce(
+        (array, interp, i) => array.concat(interp, strings[i + 1]),
+        styles.concat(strings[0])
       )
     }
-  }
-  let staticClassName: any = false
-  if (options !== undefined && options.e !== undefined) {
-    staticClassName = options.e
-  }
-  const isReal = tag.__emotion_real === tag
-  const baseTag =
-    staticClassName === false ? (isReal && tag.__emotion_base) || tag : tag
 
-  return (strings, ...interpolations) => {
-    let styles = (isReal && tag.__emotion_styles) || []
-    if (staticClassName === false) {
-      if (strings == null || strings.raw === undefined) {
-        styles = styles.concat(strings, interpolations)
-      } else {
-        styles = interpolations.reduce(
-          (array, interp, i) => array.concat(interp, strings[i + 1]),
-          styles.concat(strings[0])
-        )
-      }
-    }
+    /** 
+     * The styled pseudo-component
+     * 
+     * @see Styled.render
+     */
+    class Styled extends Component<IStyledProps, IStyledState> {
+      /** Preload the state with an empty object */
+      public state: IStyledState = {}
 
-    class Styled extends Component<any, any> {
-      private mergedProps: any = null
+      /**
+       * Reference for itself to check if the actual
+       * component we're going to style is yet another
+       * styled-component, and so merge both styles
+       */
+      public static __slup__tag:  any = null
 
+      /** Base tag, for the same purpuse as before */
+      public static __slup__base: any = null
+
+      /** Styles applied, for the same purpuse as before */
+      public static __slup__styles: TemplateStringsArray = null
+
+      /** Renders the component with a different baseTag */
       public static withComponent = nextTag =>
-        styled(nextTag, options)(styles)
+        styled(nextTag)(styles)
 
-      public static displayName: string = null
-      public static __emotion_styles: any
-      public static __emotion_base: any
-      public static __emotion_real: any
+      private mergedProps: IStyledProps = null
+      private unsubscribe: number = null
 
-      render({ children, innerRef, key, ...props }) {
-        const { state } = this
-        this.mergedProps = Object.assign(testAlwaysTrue, {}, props, {
-          theme: (state !== null && state.theme) || props.theme || {}
-        })
+      /**
+       * Updates the component's current theme
+       * 
+       * @param theme Object epresenting the new theme from the Provider
+       */
+      private setTheme(theme: ITheme) {
+        this.setState({ theme })
+      }
+
+      /**
+       * When the component will mount we start to listen
+       * for theme changes in the context
+       */
+      public componentWillMount() {
+        const channel: IEmitter = this.context[CHANNEL]
+
+        console.log(channel)
+
+        /** If the context channel exists */
+        if(channel !== undefined) {
+
+          /**
+           * We save the unsubscribe function returned by the subscribing 
+           * in the local class for the unmounting event later on
+           * 
+           * @see componentWillUnmount
+           */
+          this.unsubscribe = this.context[CHANNEL].subscribe(this.setTheme)
+        }
+      }
+
+      public componentWillUnmount() {
+        const channel: IEmitter = this.context[CHANNEL]
+
+        /** If we're subscribed to any context this will be avaible */
+        if(typeof this.unsubscribe == 'function') {
+          channel.unsubscribe(this.unsubscribe)
+        }
+      }
+
+      /**
+       * Renders the component template for the styled function
+       * 
+       * @param {props} Props for the component template
+       */
+      public render({ children, innerRef, key, theme, ...props }): any {
+        this.mergedProps = {
+          ...props,
+          theme: this.state.theme || theme || {}
+        }
 
         let className = ''
         let classInterpolations = []
 
-        if (props.className) {
-          if (staticClassName === false) {
-            className += getRegisteredStyles(
-              classInterpolations,
-              props.className
-            )
-          } else {
-            className += `${props.className} `
-          }
+        /** 
+         * If we already have a classname, find out
+         * wich hash did the other element have
+         */
+        if(props.className) {
+          className += getRegisteredStyles(
+            classInterpolations,
+            props.className
+          )
         }
 
-        if (staticClassName === false) {
-          className += css.apply(this, styles.concat(classInterpolations))
-        } else {
-          className += staticClassName
-        }
+        /** Stack up our new styles */
+        className += css.call(this, styles.concat(classInterpolations))
 
         return createVNode(
-          2, 
-          'div',
+          2,
+          tag,
           className,
           children,
-          props,
+          this.mergedProps,
           key,
           innerRef
         )
       }
+
     }
 
-    Styled.prototype.componentWillMount = componentWillMount
-    Styled.prototype.componentWillUnmount = componentWillUnmount
-    Styled.__emotion_styles = styles
-    Styled.__emotion_base = baseTag
-    Styled.__emotion_real = Styled
-
-    Styled.displayName = `Styled(${typeof baseTag === 'string'
-      ? baseTag
-      : baseTag.displayName || baseTag.name || 'Component'})`
+    Styled.__slup__styles = styles
+    Styled.__slup__base   = tag
+    Styled.__slup__tag    = Styled
 
     return Styled
+
   }
-}
