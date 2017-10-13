@@ -12,10 +12,10 @@
     }
   ],
   "dependencies": {
+    "@slup/common": "0.0.1",
     "stylis": "3.3.1"
   },
   "peerDependencies": {
-    "@slup/common": "0.0.1",
     "inferno": "3.9.0",
     "inferno-component": "3.9.0"
   },

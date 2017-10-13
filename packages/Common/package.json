@@ -5,6 +5,12 @@
   "main": "dist.js",
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
+  "bundlesize": [
+    {
+      "path": "./dist.js",
+      "maxSize": "1 kB"
+    }
+  ],
   "devDependencies": {
     "@types/node": "8.0.34",
     "rollup": "0.50.0",
