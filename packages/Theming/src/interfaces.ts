@@ -8,6 +8,12 @@ export interface ColorShade<Color> {
   2: Color
 }
 
+/**
+ * Set of colors representing a Material Design
+ * color palette for a given shade
+ * 
+ * @see https://material.io/guidelines/style/color.html
+ */
 export type ColorSet = {
   50: string
   100: string
