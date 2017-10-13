@@ -62,14 +62,11 @@ export class ThemeProvider extends Component<IProps, null> {
      * Executes the theme if it's a function 
      * otherwhise just returns the two merges themes
      */
-    if(typeof theme == 'function')
-
+    if(typeof theme == 'function') {
       return theme(this.outerTheme)
-
-    else
-
+    } else {
       return { ...this.outerTheme, ...theme }
-    
+    }
   }
 
   /**
