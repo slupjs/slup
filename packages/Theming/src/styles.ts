@@ -23,7 +23,6 @@ const Plugin =  insertRule =>
     length,
     id
   ) {
-    console.log('called', arguments, selectors)
 
     switch (context) {
       case -2: {

@@ -75,7 +75,6 @@ export const styled = (_tag: any) =>
        * @param theme Object epresenting the new theme from the Provider
        */
       private setTheme({ theme }) {
-        console.log(arguments)
         this.setState({ theme })
       }
 
@@ -114,8 +113,6 @@ export const styled = (_tag: any) =>
        * @param props Props for the component template
        */
       public render({ children, innerRef, key, theme, ...props }, state): any {
-        console.log(theme, arguments)
-
         this.mergedProps = {
           ...props,
           theme: state.theme || theme || {}
