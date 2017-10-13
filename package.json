@@ -1,5 +1,5 @@
 {
-  "name": "slup-demo",
+  "name": "@slup/demo",
   "devDependencies": {
     "babel-core": "6.25.0",
     "babel-loader": "7.1.1",
@@ -29,5 +29,8 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "repository": "https://github.com/slupjs/slup",
+  "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
+  "license": "MIT"
 }

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es3",
+    "moduleResolution": "node",
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    
+    "jsxFactory": "Inferno.createElement",
+    "jsx": "react",
+
+    "types": [
+      "inferno",
+      "node"
+    ],
+    "lib": [
+      "es6",
+      "es7",
+      "dom"
+    ]
+  }
+}

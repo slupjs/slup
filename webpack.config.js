@@ -38,10 +38,11 @@ const config = {
       '@slup/controls': join(__dirname, 'packages', 'Controls', 'src', 'index'),
       '@slup/sidenav': join(__dirname, 'packages', 'Sidenav', 'src', 'index'),
       '@slup/grid': join(__dirname, 'packages', 'Grid', 'src', 'index'),
-      '@slup/theming': join(__dirname, 'packages', 'Theming', 'src', 'index'),
+      '@slup/theming': join(__dirname, 'packages', 'Theming', 'dist'),
       '@slup/tabs': join(__dirname, 'packages', 'Tabs', 'src', 'index'),
       '@slup/icons': join(__dirname, 'packages', 'Icons', '_icons'),
       '@slup/typography': join(__dirname, 'packages', 'Typography', 'src', 'index'),
+      '@slup/common': join(__dirname, 'packages', 'common', 'dist'),
       
       // Aliases needed for styled-components
       'react': 'inferno-compat',
