@@ -97,7 +97,7 @@ export interface IEmitter {
 export type IListener = (state: any) => any
 
 /**
- * Shett class helper to create css styleshetts
+ * Sheet class helper to create css styleshetts
  */
 export interface ISheet {
   sheet: string[]
@@ -106,3 +106,4 @@ export interface ISheet {
   speedy: (bool: boolean) => void
   insert: (rule: string, map: string) => void
 }
+
