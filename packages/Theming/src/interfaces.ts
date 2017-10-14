@@ -97,8 +97,39 @@ export interface IEmitter {
 export type IListener = (state: any) => any
 
 /**
- * Shett class helper to create css styleshetts
+ * Sheet class helper to create css styleshetts
  */
 export interface ISheet {
+  sheet: string[]
+  inject: () => void
+  eject: () => void
+  speedy: (bool: boolean) => void
+  insert: (rule: string, map: string) => void
+}
 
+/**
+ * Private data from the parsed css sequences on SSR
+ */
+export interface IPrivateData {
+  html: string
+  css: ''
+  ids: boolean[]
+  rules: string[]
+}
+
+/**
+ * Data object to be returned at the end of SSR processing
+ */
+export interface IData {
+  html: string
+  css: string
+  ids: boolean[]
+}
+
+/**
+ * Server Side Rendering utility for theming
+ */
+export interface ISSR {
+  data: IData
+  extract: (html: string) => IData
 }

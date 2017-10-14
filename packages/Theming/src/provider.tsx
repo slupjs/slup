@@ -7,7 +7,7 @@ import { bind }  from 'decko'
 import { Emitter } from './emitter'
 import { ITheme, IITheme, IProps, IListener, IEmitter } from './interfaces'
 
-export const toArray = items =>
+const toArray = items =>
   items instanceof Array ? items : [items]
 
 export class ThemeProvider extends Component<IProps, null> {
@@ -16,13 +16,14 @@ export class ThemeProvider extends Component<IProps, null> {
   private emitter: Emitter = null
 
   /**
-   * Lifecycle: checks for a previous context
-   * and ditches it in favor of a brand new one.
-   * 
-   * Then creates a new emitter
+   * Fix for SSR since lifecycles events are called later
+   * on and the children need the context
    */
-  public componentWillMount() {
-    this.emitter = new Emitter(this.props.theme)
+  constructor(props, state) {
+    super(props, state)
+
+    /** We're on a SSR situation */
+    this.emitter = new Emitter(this.getTheme(this.props.theme))
   }
 
   /**

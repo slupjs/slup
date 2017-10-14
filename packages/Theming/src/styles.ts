@@ -1,95 +1,12 @@
 import { memoize, hash, CHANNEL } from '@slup/common'
 import { Sheet } from './sheet'
+import Plugin from './plugin'
 import { internal_isUnitlessNumber as UNITLESS } from 'inferno'
 import Stylis from 'stylis'
 
 export const sheet = new Sheet()
 
 sheet.inject()
-
-const externalStylisPlugins = []
-
-let queue = []
-let parentQueue = []
-
-const Plugin =  insertRule =>
-  function insertionPlugin(
-    context,
-    content,
-    selectors,
-    parents,
-    line,
-    column,
-    length,
-    id
-  ) {
-
-    switch (context) {
-      case -2: {
-        queue.forEach(insertRule)
-        queue = []
-        parentQueue = []
-        break
-      }
-
-      case 2: {
-        if (id === 0) {
-          const selector = selectors.join(',')
-          let parent = parents.join(',')
-          const rule = `${selector}{${content}}`
-          let index = parentQueue.indexOf(selector)
-          if (index === -1) {
-            index = parentQueue.length
-          } else {
-            let length = queue.length
-            while (length--) {
-              if (parentQueue[length] === selector) {
-                parentQueue[length] = undefined
-              }
-            }
-          }
-          queue.splice(index, 0, rule)
-          parentQueue.splice(index, 0, parent)
-        }
-        break
-      }
-      // after an at rule block
-      case 3: {
-        let parent = parents.join(',')
-        parentQueue.push(parent)
-        let chars = selectors.join('')
-        const second = chars.charCodeAt(1)
-        let child = content
-        switch (second) {
-          // s upports
-          case 115:
-          // d ocument
-          // eslint-disable-next-line no-fallthrough
-          case 100:
-          // m edia
-          // eslint-disable-next-line no-fallthrough
-          case 109: {
-            queue.push(chars + '{' + child + '}')
-            break
-          }
-          // k eyframes
-          case 107: {
-            chars = chars.substring(1)
-            child = chars + '{' + child + '}'
-            queue.push('@-webkit-' + child)
-            queue.push('@' + child)
-            parentQueue.push(parent)
-            break
-          }
-          default: {
-            queue.push(chars + child)
-            break
-          }
-        }
-      }
-    }
-  }
-
 const stylisOptions = {
   keyframe: false,
   compress: false
@@ -111,9 +28,9 @@ function _insertRule(rule) {
   sheet.insert(rule, currentSourceMap)
 }
 
-export let registered = {}
+export let REGISTERED = {}
 
-export let inserted = {}
+export let INSERTED = {}
 
 let currentSourceMap = ''
 
@@ -139,7 +56,7 @@ function handleInterpolation(
     case 'object':
       return createStringFromObject.call(this, interpolation)
     default:
-      const cached = registered[interpolation]
+      const cached = REGISTERED[interpolation]
       return couldBeSelectorInterpolation === false && cached !== undefined
         ? cached
         : interpolation
@@ -177,8 +94,8 @@ function createStringFromObject(obj) {
   } else {
     Object.keys(obj).forEach(function (key) {
       if (typeof obj[key] !== 'object') {
-        if (registered[obj[key]] !== undefined) {
-          string += `${key}{${registered[obj[key]]}}`
+        if (REGISTERED[obj[key]] !== undefined) {
+          string += `${key}{${REGISTERED[obj[key]]}}`
         } else {
           string += `${processStyleName(key)}:${processStyleValue(
             key,
@@ -229,12 +146,12 @@ export function css(...args) {
   const _hash = hash(styles)
   const cls = `css-${_hash}`
 
-  if (registered[cls] === undefined) {
-    registered[cls] = styles
+  if (REGISTERED[cls] === undefined) {
+    REGISTERED[cls] = styles
   }
-  if (inserted[_hash] === undefined) {
+  if (INSERTED[_hash] === undefined) {
     stylis(`.${cls}`, styles)
-    inserted[_hash] = true
+    INSERTED[_hash] = true
   }
   return cls
 }
@@ -242,9 +159,9 @@ export function css(...args) {
 export function injectGlobal(...args) {
   const styles = createStyles(...args)
   const _hash = hash(styles)
-  if (inserted[_hash] === undefined) {
+  if (INSERTED[_hash] === undefined) {
     stylis('', styles)
-    inserted[_hash] = true
+    INSERTED[_hash] = true
   }
 }
 
@@ -252,9 +169,9 @@ export function keyframes(...args) {
   const styles = createStyles(...args)
   const _hash = hash(styles)
   const name = `animation-${_hash}`
-  if (inserted[_hash] === undefined) {
+  if (INSERTED[_hash] === undefined) {
     stylis('', `@keyframes ${name}{${styles}}`)
-    inserted[_hash] = true
+    INSERTED[_hash] = true
   }
   return name
 }
@@ -262,9 +179,9 @@ export function keyframes(...args) {
 export function fontFace(...args) {
   const styles = createStyles(...args)
   const _hash = hash(styles)
-  if (inserted[_hash] === undefined) {
+  if (INSERTED[_hash] === undefined) {
     stylis('', `@font-face{${styles}}`)
-    inserted[_hash] = true
+    INSERTED[_hash] = true
   }
 }
 
@@ -272,7 +189,7 @@ export function getRegisteredStyles(registeredStyles, classNames) {
   let rawClassName = ''
 
   classNames.split(' ').forEach(className => {
-    if (registered[className] !== undefined) {
+    if (REGISTERED[className] !== undefined) {
       registeredStyles.push(className)
     } else {
       rawClassName += `${className} `
@@ -294,13 +211,13 @@ export function merge(className, sourceMap) {
 
 export function hydrate(ids) {
   ids.forEach(id => {
-    inserted[id] = true
+    INSERTED[id] = true
   })
 }
 
 export function flush() {
   sheet.eject()
-  inserted = {}
-  registered = {}
+  INSERTED = {}
+  REGISTERED = {}
   sheet.inject()
 }

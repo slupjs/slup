@@ -1,0 +1,27 @@
+{
+  "ignore": [
+    "node_modules"
+  ],
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": [
+          "last 2 versions",
+          "safari >= 7"
+        ],
+        "node": "4"
+      }
+    }]    
+  ],
+  "plugins": [
+    "syntax-dynamic-import",
+    ["inferno", {"imports": true}]
+  ],
+  "env": {
+    "production": {
+      "presets": [
+        "minify"
+      ]
+    }
+  }
+}

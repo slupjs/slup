@@ -2,15 +2,10 @@
   "name": "@slup/theming",
   "version": "0.0.1",
   "description": "Theming utility for the slup framework",
+  "repository": "https://github.com/slupjs/slup/tree/master/packages/Theming",
   "main": "dist.js",
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
-  "bundlesize": [
-    {
-      "path": "./dist.js",
-      "maxSize": "9 kB"
-    }
-  ],
   "dependencies": {
     "@slup/common": "0.0.1",
     "stylis": "3.3.1"
