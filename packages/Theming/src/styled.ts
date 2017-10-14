@@ -94,7 +94,7 @@ export const styled = (_tag: any) =>
            * 
            * @see componentWillUnmount
            */
-          this.unsubscribe = this.context[CHANNEL].subscribe(this.setTheme)
+          this.unsubscribe = channel.subscribe(this.setTheme)
         }
       }
 
@@ -102,7 +102,7 @@ export const styled = (_tag: any) =>
         const channel: IEmitter = this.context[CHANNEL]
 
         /** If we're subscribed to any context this will be avaible */
-        if(typeof this.unsubscribe == 'function') {
+        if(typeof this.unsubscribe == 'number') {
           channel.unsubscribe(this.unsubscribe)
         }
       }
