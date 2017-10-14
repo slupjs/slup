@@ -1,7 +1,7 @@
 import { INSERTED, REGISTERED, sheet } from './styles'
 import { ISSR, IPrivateData, IData } from './interfaces'
 
-export default new class SSR implements ISSR {
+export const SSR = new class SSR implements ISSR {
   /**
    * Private data for processing on extraction time
    */
@@ -58,6 +58,9 @@ export default new class SSR implements ISSR {
     this.data.ids = Object.keys(INSERTED) /** Clone the INSERTED Object */
       .filter(id => !!this.local.ids[id] || !REGISTERED[`css-${id}`])
   
+    this.data.css  = this.local.rules.join('')
+    this.data.html = html
+
     const copy = this.data
 
     /** Reset the datas */
