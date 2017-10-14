@@ -8,11 +8,7 @@ export const Container = styled('section')`
   bottom: 0;
   top: 0;
   color: white;
-  background: ${props => {
-    console.log(props.theme)
-
-    return props.theme.background
-  }};
+  background: ${props => props.theme.background};
   overflow: auto;
 `
 

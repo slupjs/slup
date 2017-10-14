@@ -24,6 +24,8 @@ export default `
     <script>
       window.__ids = {{IDS}}
     </script>
+    <script src='static/vendor.js'></script>
+    <script src='static/routes.js'></script>
   </body>
 </html>
 `
