@@ -1,8 +1,6 @@
 import Inferno   from 'inferno'
 import Component from 'inferno-component'
-import { Children } from 'inferno-compat'
 import { CHANNEL } from '@slup/common'
-import { bind }  from 'decko'
 
 import { Emitter } from './emitter'
 import { ITheme, IITheme, IProps, IListener, IEmitter } from './interfaces'
