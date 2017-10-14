@@ -1,0 +1,30 @@
+{
+  "ignore": [
+    "node_modules"
+  ],
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": [
+          "last 2 versions",
+          "safari >= 7"
+        ],
+        "node": "4"
+      }
+    }]    
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    "syntax-dynamic-import",
+    ["inferno", {"imports": true}]
+  ],
+  "env": {
+    "production": {
+      "presets": [
+        "minify"
+      ]
+    }
+  }
+}
