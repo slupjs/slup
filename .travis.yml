@@ -2,7 +2,6 @@ language: node_js
 node_js: '7'
 sudo: required
 script:
-- cat lerna.json
 - yarn global add lerna bundlesize
-- lerna bootstrap
+- lerna bootstrap --loglevel=verbose
 - lerna exec --concurrency 1 -- bundlesize
