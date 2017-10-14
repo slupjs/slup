@@ -100,5 +100,9 @@ export type IListener = (state: any) => any
  * Shett class helper to create css styleshetts
  */
 export interface ISheet {
-
+  sheet: string[]
+  inject: () => void
+  eject: () => void
+  speedy: (bool: boolean) => void
+  insert: (rule: string, map: string) => void
 }

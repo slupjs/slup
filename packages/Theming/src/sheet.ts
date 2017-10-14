@@ -9,12 +9,16 @@ export class Sheet implements ISheet {
    * List of style tags
    */
   private tags: HTMLStyleElement[] = []
-  private sheet: string[] = []
 
   /**
    * Count of inserted rules
    */
   private ctr: number = 0
+
+  /**
+   * SSR style sheets
+   */
+  public sheet: string[] = []
 
   private createTag(): HTMLStyleElement {
     const tag = document.createElement('style')
@@ -84,7 +88,7 @@ export class Sheet implements ISheet {
     }
   }
 
-  public insert(rule: string, map: string) {
+  public insert(rule: string, map: string): void {
     if(this.isBrowser) {
       if(this.speedy) {
         /** Latest style tag */
