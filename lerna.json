@@ -2,8 +2,20 @@
   "lerna": "2.4.0",
   "npmClient": "yarn",
   "packages": [
-    "packages/theming",
-    "packages/common"
+    "packages/*"
+  ],
+  "ignore": [
+    "@slup/buttons",
+    "@slup/controls",
+    "@slup/grid",
+    "@slup/icons",
+    "@slup/lists",
+    "@slup/navbar",
+    "@slup/ripple",
+    "@slup/sidenav",
+    "@slup/slider",
+    "@slup/tabs",
+    "@slup/typography"
   ],
   "version": "0.1.0"
 }
