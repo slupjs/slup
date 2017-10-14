@@ -32,6 +32,10 @@ export class Emitter implements IEmitter {
    * @returns id The id of the new listener
    */
   public subscribe(fn: IListener): number {
+    /** Executed the listener so it gets the inital state */
+    fn(this.state)
+
+    /** Returns the id used to unsubscribe the listener */
     return this.listeners.push(fn) - 1
   }
 

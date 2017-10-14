@@ -70,11 +70,20 @@ export const styled = (_tag: any) =>
       private unsubscribe: number = null
 
       /**
+       * Binds the setTheme method to itself
+       */
+      constructor() {
+        super()
+
+        this.setTheme = this.setTheme.bind(this)
+      }
+
+      /**
        * Updates the component's current theme
        * 
        * @param theme Object epresenting the new theme from the Provider
        */
-      private setTheme({ theme }) {
+      private setTheme(theme) {
         this.setState({ theme })
       }
 
