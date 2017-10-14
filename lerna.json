@@ -17,5 +17,10 @@
     "@slup/tabs",
     "@slup/typography"
   ],
+  "commands": {
+    "publish": {
+      "ignore": [ "@slup/site" ]
+    }
+  },
   "version": "0.1.0"
 }

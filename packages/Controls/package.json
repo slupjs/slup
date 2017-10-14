@@ -1,6 +1,7 @@
 {
   "name": "@slup/controls",
   "version": "0.1.0",
+  "repository": "https://github.com/slupjs/slup/tree/master/packages/Controls",
   "description": "Material design controls which include radio button, checkbox and switch",
   "main": "dist.js",
   "author": "LucaT",
