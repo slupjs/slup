@@ -25,10 +25,16 @@ export default new class SSR implements ISSR {
     ids: []
   }
 
+  /**
+   * Parses the html code and returns a list of precompiled
+   * css and ids to be used with SSR in Inferno
+   * 
+   * @param html Html from renderToString
+   */
   public extract(html: string): IData {
     let match: any = null  
 
-    /** While we still got some css to be recived */
+    /** Loop for all CSS classes */
     while((match = this.RGX.exec(html))) {
       /** 
        * Note that this particular match(rule) has been parsed 
