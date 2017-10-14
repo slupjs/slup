@@ -8,7 +8,8 @@
   "scripts": {
     "compile:watch": "webpack --watch --progress",
     "compile:build": "webpack -p --progress",
-    "start": "nodemon dist/server.js"
+    "start": "nodemon dist/server.js",
+    "prepublish": "npm run compile:build"
   },
   "devDependencies": {
     "@types/node": "8.0.34",
