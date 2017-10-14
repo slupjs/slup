@@ -42,7 +42,7 @@ const config = {
       '@slup/tabs': join(__dirname, 'packages', 'Tabs', 'src', 'index'),
       '@slup/icons': join(__dirname, 'packages', 'Icons', '_icons'),
       '@slup/typography': join(__dirname, 'packages', 'Typography', 'src', 'index'),
-      '@slup/common': join(__dirname, 'packages', 'common', 'dist'),
+      '@slup/common': join(__dirname, 'packages', 'Common', 'dist'),
       
       // Aliases needed for styled-components
       'react': 'inferno-compat',
