@@ -8,7 +8,7 @@
   "bundlesize": [
     {
       "path": "./packages/Theming/dist.js",
-      "maxSize": "10 kB"
+      "maxSize": "10.5 kB"
     },
     {
       "path": "./packages/Common/dist.js",
