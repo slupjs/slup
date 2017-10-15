@@ -15,6 +15,10 @@
       "maxSize": "1 kB"
     },
     {
+      "path": "./packages/Grid/dist.js",
+      "maxSize": "1 kB"
+    },
+    {
       "path": "./packages/Site/dist/vendor.js",
       "maxSize": "35 kB"
     }
