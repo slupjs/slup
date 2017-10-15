@@ -15,7 +15,7 @@ const Base = {
       '@slup/navbar': join(Package, 'Navbar', 'src', 'index'),
       '@slup/controls': join(Package, 'Controls', 'src', 'index'),
       '@slup/sidenav': join(Package, 'Sidenav', 'src', 'index'),
-      '@slup/grid': join(Package, 'Grid', 'src', 'index'),
+      '@slup/grid': join(Package, 'Grid', 'dist'),
       '@slup/theming': join(Package, 'Theming', 'dist'),
       '@slup/common': join(Package, 'Common', 'dist'),
       '@slup/common': join(Package, 'Common', 'src', 'index'),

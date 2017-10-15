@@ -1,13 +1,13 @@
 import Inferno from 'inferno'
 import { Route, IndexRoute } from 'inferno-router'
 
+import { ThemeProvider, darkTheme } from '@slup/theming'
+
 import Home from './pages/home'
 import { Container, Content } from './components/container'
 
-import { ThemeProvider } from '@slup/theming'
-
 const App = ({ children }) => 
-  <ThemeProvider theme={{ background: 'red' }}>
+  <ThemeProvider theme={darkTheme}>
     <Container>
       <div>nav</div>
       <Content>

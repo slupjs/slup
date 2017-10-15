@@ -1,7 +1,9 @@
 import Inferno from 'inferno'
-import { styled } from '@slup/theming'
+import styled from '@slup/theming'
 
-export const Container = styled('section')`
+import { Col, Grid } from '@slup/grid'
+
+export const Container = styled.section`
   position: fixed;
   left: 0;
   right: 0;
@@ -12,4 +14,9 @@ export const Container = styled('section')`
   overflow: auto;
 `
 
-export const Content = ({ children }) => <div>{children}</div>
+export const Content = ({ children }) =>
+  <Grid style={{ paddingTop: 64 }}>
+    <Col sm={12}>
+      {children}
+    </Col>
+  </Grid>
