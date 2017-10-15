@@ -16,7 +16,7 @@
     },
     {
       "path": "./packages/Site/dist/vendor.js",
-      "maxSize": "45 kB"
+      "maxSize": "35 kB"
     }
   ],
   "devDependencies": {
