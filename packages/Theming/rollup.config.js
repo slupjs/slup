@@ -16,6 +16,8 @@ export default extend({
     format: 'umd',
 
     /** Name for the umd export */
-    name: 'Slup.Theming'
+    name: 'Slup.Theming',
+
+    exports: 'named'
   }
 })
