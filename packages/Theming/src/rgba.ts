@@ -32,11 +32,11 @@ type HEXorR = number | string
  * - 3 arguments(R, G, B) plus the alpa value
  * - 1 argument(HEX string) and the alpha value
  *
- * @param   {number | string} r The red value or an HEX color string
- * @param   {number}          g The green value
- * @param   {number}          b The blue value
- * @param   {number}          a The alpha value
- * @returns {string}           The rgba color string
+ * @param   r    The red value or an HEX color string
+ * @param   g    The green value
+ * @param   b    The blue value
+ * @param   a    The alpha value
+ * @returns rgba The rgba color string
  */
 export const rgba = (R: HEXorR, G: number, B?: number, A?: number ): string => {
 	const isHex = typeof R === 'string' && R.indexOf('#') == 0
@@ -51,10 +51,9 @@ export const rgba = (R: HEXorR, G: number, B?: number, A?: number ): string => {
   
   /** 
    * We take the opacity as the second argument
-   * as the frist one is the HEX string
+   * as the frist one is the HEX string, 
+   * the others are undefined
    */
-  const a = G
-  
-  return `rgba(${r}, ${g}, ${b}, ${a})`
+  return `rgba(${r}, ${g}, ${b}, ${G})`
 
 }
