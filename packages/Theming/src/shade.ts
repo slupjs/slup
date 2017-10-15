@@ -9,24 +9,18 @@ import { hexToRgba } from './rgba'
  * @returns hex  The result of the change
  */
 export const shade = (lum: number = 0, color: string): string => {
-  let r = 0
-  let g = 0
-  let b = 0
+  /** Assuming the color is an rgb */
+  let [r, g, b] = color
+    .replace(/[^\d,]/g, '') /** Removes the letters */
+    .split(',') /** Splits the digits by each ',' */
+    .map(x => Number(x)) /** Transforms strings into numbers */
 
-  /** If we redive an HEX color, we transform it to rgb */
+  /** Otherwise if we redive an HEX color, we transform it to rgb */
   if (color[0] == '#') {
-
     const { r: R, g: G, b: B } = hexToRgba(color)
     r = R, g = G, b = B
-  } else {
-
-    /** If we've just got a normal rgb string */
-    [r, g, b] = color
-      .replace(/[^\d,]/g, '') /** Removes the letters */
-      .split(',') /** Splits the digits by each ',' */
-      .map(x => Number(x)) /** Transforms strings into numbers */
   }
-
+  
   /** Loops for all color numbers, and shades them accordingly */
   return '#' + [r, g, b].map((_color: any) => {
     /** Helper function to keep the number between 0 and 255(color limits) */
