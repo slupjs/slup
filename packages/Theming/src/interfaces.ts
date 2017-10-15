@@ -133,3 +133,13 @@ export interface ISSR {
   data: IData
   extract: (html: string) => IData
 }
+
+/**
+ * Interface to describe a common RGBA color palette
+ */
+export interface RGBAColor {
+  r: number
+  g: number
+  b: number
+  a: number
+}
