@@ -1,4 +1,3 @@
-
 let queue = []
 let parentQueue = []
 

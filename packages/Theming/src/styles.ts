@@ -14,7 +14,12 @@ const stylisOptions = {
   compress: true
 }
 
-const insertionPlugin = Plugin(sheet.insert)
+const insertionPlugin = Plugin(_insertRule)
+
+function _insertRule(rule) {
+  sheet.insert(rule)
+}
+
 let stylis: any = new Stylis(stylisOptions)
 stylis.use(insertionPlugin)
 
