@@ -7,7 +7,8 @@
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
-    "@slup/theming": "0.0.1"
+    "@slup/theming": "0.0.1",
+    "@slup/common": "0.0.1"
   },
   "devDependencies": {
     "@types/node": "8.0.34",
