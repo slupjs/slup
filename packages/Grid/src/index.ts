@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@slup/theming'
 
 const sanitize = (value) => typeof value == 'number' ? value + 'px' : value
 

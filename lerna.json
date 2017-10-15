@@ -7,7 +7,6 @@
   "ignore": [
     "@slup/buttons",
     "@slup/controls",
-    "@slup/grid",
     "@slup/icons",
     "@slup/lists",
     "@slup/navbar",
