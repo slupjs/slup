@@ -10,7 +10,7 @@ import { RGBAColor } from './interfaces'
  * @returns {RGBColor} RGB The object representing the color
  */
 export const hexToRgb = (_hex: string): RGBAColor => {
-  let hex: string = hex.length < 6
+  let hex: string = _hex.length < 6
     /** Classic 6-digit HEX color */
     ? _hex.replace('#', '')
 
