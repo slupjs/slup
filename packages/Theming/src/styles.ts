@@ -5,34 +5,18 @@ import { internal_isUnitlessNumber as UNITLESS } from 'inferno'
 import Stylis from 'stylis'
 
 export const sheet = new Sheet()
+export let REGISTERED = {}
+export let INSERTED = {}
 
 sheet.inject()
 const stylisOptions = {
   keyframe: false,
-  compress: false
+  compress: true
 }
 
-const insertionPlugin = Plugin(_insertRule)
-
-if (process.env.NODE_ENV !== 'production') {
-  stylisOptions.compress = false
-}
-
+const insertionPlugin = Plugin(sheet.insert)
 let stylis: any = new Stylis(stylisOptions)
-
-const use = stylis.use
-
 stylis.use(insertionPlugin)
-
-function _insertRule(rule) {
-  sheet.insert(rule, currentSourceMap)
-}
-
-export let REGISTERED = {}
-
-export let INSERTED = {}
-
-let currentSourceMap = ''
 
 function handleInterpolation(
   interpolation: any,

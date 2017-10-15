@@ -88,7 +88,7 @@ export class Sheet implements ISheet {
     }
   }
 
-  public insert(rule: string, map: string): void {
+  public insert(rule: string): void {
     if(this.isBrowser) {
       if(this.speedy) {
         /** Latest style tag */
@@ -106,7 +106,7 @@ export class Sheet implements ISheet {
 
       } else {
         const tag  = this.createTag()
-        const text = document.createTextNode(rule + (map || ''))
+        const text = document.createTextNode(rule)
 
         this.tags.push(tag)
         tag.appendChild(text)
