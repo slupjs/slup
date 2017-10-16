@@ -2,7 +2,9 @@ import { hexToRgba } from './rgba'
 
 export const lighten = (lum: number, color: string) => {
   /** Take the lightness of the hsl color */
-  let hsl: any = color
+  let hsl: string[] | string | number = color
+
+  /** Split the string `hsl(a, b, c)` into [a, b, c] */
   hsl = hsl.replace(/[^\d,]/g, '').split(',')
 
   /** Put the lightness as a value */
