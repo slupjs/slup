@@ -1,4 +1,4 @@
-import { rgbToHsl } from './hex'
+import { rgbToHsl } from './hsl'
 
 export const lighten = (lum: number, color: string) => {
   /** The value of the param */
@@ -29,5 +29,3 @@ export const lighten = (lum: number, color: string) => {
     return `hsl(${rgb.h}, ${rgb.s}%, ${_hsl}%)`
   }
 }
-
-console.log(lighten(0.3, 'rgb(66, 134, 244)'))
