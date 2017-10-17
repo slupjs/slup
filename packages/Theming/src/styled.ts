@@ -10,7 +10,7 @@ import { IStyledState, IStyledProps, ITheme, IEmitter } from './interfaces'
 
 export const styled = (_tag: any) => 
 
-  (strings: TemplateStringsArray, ...interpolations: string[]) => {
+  (strings: TemplateStringsArray, ...interpolations: (string | Function)[]) => {
 
     /** Is the component yet another styled component? */
     const isStyled = _tag.__slup__tag == _tag
