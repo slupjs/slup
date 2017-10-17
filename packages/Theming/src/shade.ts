@@ -1,18 +1,33 @@
-import { hexToRgba } from './rgba'
+import { rgbToHsl } from './hex'
 
 export const lighten = (lum: number, color: string) => {
-  /** Take the lightness of the hsl color */
-  let hsl: string[] | string | number = color
+  /** The value of the param */
+  let col: string[] | string | number = color
 
-  /** Split the string `hsl(a, b, c)` into [a, b, c] */
-  hsl = hsl.replace(/[^\d,]/g, '').split(',')
+  /** Split the string `rgb(a, b, c)` into [a, b, c] */
+  col = col.replace(/[^\d,]/g, '').split(',')
 
-  /** Put the lightness as a value */
+  /** Round the lightness */
   let _lum: number = lum * 100
-  let _hsl: number = Number(hsl[2]) + _lum
 
-  /** Round the lightness if it passes 100 */
-  if (_hsl > 100) _hsl = 100
+  /** Check if the color is a rgb color */
+  const isRgb: boolean = color[0] == 'r' && color[1] == 'g' && color[2] == 'b'
 
-  return `hsl(${hsl[0]}, ${hsl[1]}%, ${_hsl}%)`
+  if (isRgb) {
+    /** Convert from rgb to hsl */
+    const r: number = Number(col[0])
+    const g: number = Number(col[1])
+    const b: number = Number(col[2])
+    const rgb = rgbToHsl(r, g, b)
+
+    /** Set the given lightness */
+    let _hsl: number = rgb.l + _lum
+
+    /** Round the lightness if it passes 100 */
+    if (_hsl > 100) _hsl = 100
+
+    return `hsl(${rgb.h}, ${rgb.s}%, ${_hsl}%)`
+  }
 }
+
+console.log(lighten(0.3, 'rgb(66, 134, 244)'))
