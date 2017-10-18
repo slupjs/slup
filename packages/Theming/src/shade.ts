@@ -11,7 +11,9 @@ export const lighten = (lum: number, color: string) => {
   let _lum: number = lum * 100
 
   /** Check if the color is a rgb color */
-  const isRgb: boolean = color[0] == 'r' && color[1] == 'g' && color[2] == 'b'
+  const isRgb: boolean = color[0] == 'r'
+    && color[1] == 'g'
+    && color[2] == 'b'
 
   if (isRgb) {
     /** Convert from rgb to hsl */
