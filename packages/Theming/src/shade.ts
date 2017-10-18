@@ -16,6 +16,7 @@ export const lighten = (lum: number, color: string) => {
     && color[2] == 'b'
 
   if (isRgb) {
+
     /** Convert from rgb to hsl */
     const r: number = Number(col[0])
     const g: number = Number(col[1])
