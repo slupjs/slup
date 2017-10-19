@@ -6,9 +6,8 @@
 
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    
-    "jsxFactory": "Inferno.createElement",
-    "jsx": "react",
+
+    "jsx": "preserve",
 
     "types": [
       "inferno",

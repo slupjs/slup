@@ -1,5 +1,6 @@
 const webpack = require('webpack')
-const { join, resolve } = require('path')
+const { join } = require('path')
+const { tmpdir } = require('os')
 
 const Package = join(__dirname, '..')
 
@@ -15,18 +16,10 @@ const Base = {
       '@slup/navbar': join(Package, 'Navbar', 'src', 'index'),
       '@slup/controls': join(Package, 'Controls', 'src', 'index'),
       '@slup/sidenav': join(Package, 'Sidenav', 'src', 'index'),
-      '@slup/grid': join(Package, 'Grid', 'dist'),
-      '@slup/theming': join(Package, 'Theming', 'dist'),
-      '@slup/common': join(Package, 'Common', 'dist'),
-      '@slup/common': join(Package, 'Common', 'src', 'index'),
       '@slup/tabs': join(Package, 'Tabs', 'src', 'index'),
       '@slup/icons': join(Package, 'Icons', '_icons'),
       '@slup/typography': join(Package, 'Typography', 'src', 'index')
-    },
-
-    modules: [
-      join(__dirname, 'node_modules')
-    ]
+    }
   },
 
   module: {
@@ -34,7 +27,10 @@ const Base = {
       {
         test: /\.(ts|tsx)?$/,
         exclude: /node_modules/,
-        loaders: ['babel-loader', 'ts-loader']
+        loader: 'awesome-typescript-loader',
+        options: {
+          useBabel: true
+        }
       },
       {
         test: /\.js?$/,

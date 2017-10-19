@@ -6,7 +6,7 @@
 
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    
+
     "jsx": "preserve",
 
     "types": [
@@ -19,8 +19,5 @@
       "es7",
       "dom"
     ]
-  },
-  "exclude": [
-    "node_modules/mime-db"
-  ]
+  }
 }
