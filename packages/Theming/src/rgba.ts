@@ -1,28 +1,4 @@
-import { expandHex } from './hex'
-import { RGBAColor } from './interfaces'
-
-/**
- * Converts an hex color to an rgb one
- * and returns an object containing values:
- * `r`, `g` and `b`
- *
- * @param   {string}   hex An hex color string
- * @returns {RGBColor} RGB The object representing the color
- */
-export const hexToRgba = (_hex: string): RGBAColor => {
-  let hex: string = _hex.length === 6
-    /** Classic 6-digit HEX color */
-    ? _hex.replace('#', '')
-
-    /** 3-digit HEX code */
-    : expandHex(_hex.replace('#', '')) 
-
-  let r: number = parseInt(hex.slice(0, 2), 16)
-  let g: number = parseInt(hex.slice(2, 4), 16)
-  let b: number = parseInt(hex.slice(4, 6), 16)
-	
-  return { r, g, b, a: 1 }
-}
+import { expandHex, hexToRgb } from './hex'
 
 type HEXorR = number | string
 
@@ -46,11 +22,11 @@ export const rgba = (R: HEXorR, G: number, B?: number, A?: number ): string => {
   }
 
   /** Otherwise if we're facing an hex color string  */
-  const { r, g, b } = hexToRgba(<string>R)
-  
-  /** 
+  const { r, g, b } = hexToRgb(<string>R)
+
+  /**
    * We take the opacity as the second argument
-   * as the frist one is the HEX string, 
+   * as the frist one is the HEX string,
    * the others are undefined
    */
   return `rgba(${r}, ${g}, ${b}, ${G})`

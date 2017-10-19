@@ -7,6 +7,29 @@ export const expandHex = (hex: string): string =>
   hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2]
 
 /**
+ * Converts an hex color to an rgb one
+ * and returns an object containing values:
+ * `r`, `g` and `b`
+ *
+ * @param   {string}   hex An hex color string
+ * @returns {RGBColor} RGB The object representing the color
+ */
+export const hexToRgb = (_hex: string) => {
+  let hex: string = _hex.length === 4
+  /** 3-digit HEX code */
+  ? expandHex(_hex.replace('#', ''))
+
+  /** Classic 6-digit HEX color */
+  : _hex.replace('#', '')
+
+  let r: number = parseInt(hex.slice(0, 2), 16)
+  let g: number = parseInt(hex.slice(2, 4), 16)
+  let b: number = parseInt(hex.slice(4, 6), 16)
+
+  return { r, g, b }
+}
+
+/**
  * Converts a rgb color into an HEX string
  *
  * @param r The red value
