@@ -1,6 +1,6 @@
-import { rgbToHsl } from './hsl'
+import { rgbToHsl, hslToRgb } from './hsl'
 
-export const lighten = (lum: number, color: string) => {
+export const shade = (lum: number, color: string) => {
   /** The value of the param */
   let col: string[] | string | number = color
 
@@ -26,9 +26,13 @@ export const lighten = (lum: number, color: string) => {
     /** Set the given lightness */
     let _hsl: number = rgb.l + _lum
 
-    /** Round the lightness if it passes 100 */
+    /** Round the lightness if it is bigger than 100 or lower than 0 */
     if (_hsl > 100) _hsl = 100
+    else if (_hsl < 0) _hsl = 0
 
-    return `hsl(${rgb.h}, ${rgb.s}%, ${_hsl}%)`
+    /** Convert the transformed hsl to a rgb */
+    const hsl = hslToRgb(rgb.h, rgb.s / 100, _hsl / 100)
+
+    return `rgb(${hsl.r}, ${hsl.g}, ${hsl.b})`
   }
 }
