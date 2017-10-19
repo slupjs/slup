@@ -2,6 +2,15 @@
   <img src='http://svgshare.com/i/344.svg' width='65%' />
 
   <h5 align='center'>Sets of material design components built with web technologies</h5>
+
+  <h5 align='center'>
+    <a href="https://lernajs.io/">
+      <img alt="Lerna" src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg">
+    </a>
+    <a href="https://travis-ci.org/slupjs/slup">
+      <img alt="Build Status" src="https://travis-ci.org/slupjs/slup.svg?branch=master">
+    </a>
+  </h5>
 </h1>
 
 > **NOTE: The library isn't complete yet**
