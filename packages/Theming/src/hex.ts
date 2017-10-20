@@ -1,3 +1,5 @@
+import { RGBAColor } from './interfaces'
+
 /**
  * Dubles the HEX string passed, from 3 to 6 digits
  *
@@ -14,7 +16,7 @@ export const expandHex = (hex: string): string =>
  * @param   {string}   hex An hex color string
  * @returns {RGBColor} RGB The object representing the color
  */
-export const hexToRgb = (_hex: string) => {
+export const hexToRgb = (_hex: string): RGBAColor => {
   let hex: string = _hex.length === 4
   /** 3-digit HEX code */
   ? expandHex(_hex.replace('#', ''))
@@ -26,7 +28,7 @@ export const hexToRgb = (_hex: string) => {
   let g: number = parseInt(hex.slice(2, 4), 16)
   let b: number = parseInt(hex.slice(4, 6), 16)
 
-  return { r, g, b }
+  return { r, g, b, a: 1 }
 }
 
 /**

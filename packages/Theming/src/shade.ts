@@ -1,4 +1,5 @@
 import { rgbToHsl, hslToRgb } from './hsl'
+import { hexToRgb, rgbToHex } from './hex'
 
 export const shade = (lum: number, color: string) => {
   /** The value of the param */
@@ -15,24 +16,38 @@ export const shade = (lum: number, color: string) => {
     && color[1] == 'g'
     && color[2] == 'b'
 
-  if (isRgb) {
+  /** Check if the color is an hex color */
+  const isHex = typeof color === 'string' && color.indexOf('#') == 0
 
-    /** Convert from rgb to hsl */
-    const r: number = Number(col[0])
-    const g: number = Number(col[1])
-    const b: number = Number(col[2])
-    const rgb = rgbToHsl(r, g, b)
+  /** Get the rgb values */
+  const r: number = Number(col[0])
+  const g: number = Number(col[1])
+  const b: number = Number(col[2])
+  /** Convert the rgb to a hex color */
+  const hex = hexToRgb(color)
 
-    /** Set the given lightness */
-    let _hsl: number = rgb.l + _lum
+  /** Convert to hsl the needed values */
+  const convertedRed = isRgb ? r : hex.r
+  const convertedGreen = isRgb ? g : hex.g
+  const convertedBlue = isRgb ? b : hex.b
 
-    /** Round the lightness if it is bigger than 100 or lower than 0 */
-    if (_hsl > 100) _hsl = 100
-    else if (_hsl < 0) _hsl = 0
+  /** Convert the rgb or the hex to a hsl color */
+  const rgb = rgbToHsl(convertedRed, convertedGreen, convertedBlue)
 
-    /** Convert the transformed hsl to a rgb */
-    const hsl = hslToRgb(rgb.h, rgb.s / 100, _hsl / 100)
+  /** Set the given lightness */
+  let _hsl: number = rgb.l + _lum
 
-    return `rgb(${hsl.r}, ${hsl.g}, ${hsl.b})`
-  }
+  /** Round the lightness if it is bigger than 100 or lower than 0 */
+  if (_hsl > 100) _hsl = 100
+  else if (_hsl < 0) _hsl = 0
+
+  /** Convert the transformed hsl to a rgb or to a hex */
+  const hsl = hslToRgb(rgb.h, rgb.s / 100, _hsl / 100)
+  const rgb_to_hex = rgbToHex(hsl.r, hsl.g, hsl.b)
+
+  return(
+    isHex
+    ? rgb_to_hex
+    : `rgb(${hsl.r}, ${hsl.g}, ${hsl.b})`
+  )
 }
