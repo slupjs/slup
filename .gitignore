@@ -9,3 +9,4 @@ vendor.js.map
 yarn-error.log
 .DS_Store
 dist
+lerna-debug.log
