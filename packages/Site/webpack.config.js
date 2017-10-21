@@ -19,7 +19,8 @@ const Base = {
       '@slup/tabs': join(Package, 'Tabs', 'src', 'index'),
       '@slup/icons': join(Package, 'Icons', '_icons'),
       '@slup/typography': join(Package, 'Typography', 'src', 'index')
-    }
+    },
+    modules: [ join(__dirname, 'node_modules') ]
   },
 
   module: {
