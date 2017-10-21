@@ -15,9 +15,5 @@
   "scripts": {
     "build": "rollup -c",
     "prepublish": "npm run build"
-  },
-  "peerDependencies": {
-    "inferno": "3.9.0",
-    "inferno-component": "3.9.0"
   }
 }

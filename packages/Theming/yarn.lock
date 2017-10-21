@@ -482,29 +482,6 @@ home-or-tmp@^2.0.0:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.1"
 
-inferno-component@3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-3.9.0.tgz#26a653bd9f055df49116facf54321ece990798f8"
-  dependencies:
-    inferno "3.9.0"
-    inferno-shared "3.9.0"
-    inferno-vnode-flags "3.9.0"
-
-inferno-shared@3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-3.9.0.tgz#da0ae6223a26a2aa5729284bee3f3ef92d744a46"
-
-inferno-vnode-flags@3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.9.0.tgz#8e358803b8c396788070d54786d86894cecd4a46"
-
-inferno@3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/inferno/-/inferno-3.9.0.tgz#4e9a312e9929abb741dfe285630841b0d7e95e62"
-  dependencies:
-    inferno-shared "3.9.0"
-    inferno-vnode-flags "3.9.0"
-
 invariant@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"

@@ -41,7 +41,10 @@ const base = {
   plugins: [
     CJS(),
     RS(),
-    TS({ cacheRoot: join(tmpdir(), '.rpt2_cache') }),
+    TS({ 
+      cacheRoot: join(tmpdir(), '.rpt2_cache'),
+      check: false
+    }),
     Min({ comments: false })
   ]
 }

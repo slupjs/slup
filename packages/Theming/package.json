@@ -19,6 +19,10 @@
     "rollup-plugin-typescript2": "0.7.0",
     "typescript": "2.5.3"
   },
+  "peerDependencies": {
+    "inferno": "3.9.0",
+    "inferno-component": "3.9.0"
+  },
   "scripts": {
     "build": "rollup -c",
     "prepublish": "npm run build"
