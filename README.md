@@ -26,7 +26,7 @@ Plus we've also got an amazing support provided by [Typescript](https://www.type
 
 * High Performance
 * Meticulousness
-* Beautiful code
+* Beautiful and well commented(understandable) code
 * Be as indipendent from other libraries as possible
 * Enhance compatibility with other frameworks like (p)react [NOT YET]
 * Small size and small footprint
