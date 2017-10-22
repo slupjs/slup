@@ -2,7 +2,7 @@ import { memoize, hash, CHANNEL } from '@slup/common'
 import { Sheet } from './sheet'
 import Plugin from './plugin'
 import { internal_isUnitlessNumber as UNITLESS } from 'inferno'
-import Stylis from 'stylis'
+import * as Stylis from 'stylis'
 
 export const sheet = new Sheet()
 export let REGISTERED = {}
