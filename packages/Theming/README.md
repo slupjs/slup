@@ -1,6 +1,6 @@
 <h1 align='center'>Slup - Theming</h1>
 
-This package contains the Theming, a Utility Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material) and also contains many useful functions used in it, such as a reproduction of the [styled-components](https://www.styled-components.com/) library and some handy ones to correct colors.
+This package contains the Theming, a Utility Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material) and also contains many useful features such as a reproduction of the [styled-components](https://www.styled-components.com/) library and some handy functions to modify colors.
 
 ## Description
 From Google's [Material Design guidelines](https://material.io/guidelines):
@@ -37,12 +37,12 @@ import { ThemeProvider, lightTheme } from '@slup/theming'
 With this property you can set a custom theme or you can import our preset themes: `lightTheme` or `darkTheme`. The default theme can be seen on the component demons of our other packages.
 
 ```js
-import { 
+import {
   ThemeProvider,
-  black, 
+  black,
   white,
-  cyan, 
-  pink 
+  cyan,
+  pink
 } from '@slup/theming'
 
 const customTheme = {
@@ -59,20 +59,20 @@ const App = () =>
 ```
 
 ## Styling
-We made a reproduction of the styled-components library since we had some problems with compatibility but we also wanted a faster and lighter way of styling our components.
-The syntax is almost equal to [styled-components](https://www.styled-components.com/) so if you want to see all the features that we offer you can take a look at their site.
+We've made a reproduction of the styled-components library since we had some problems with compatibility but we also wanted a faster and lighter way of styling our components.
+The syntax is almost identical to [styled-components](https://www.styled-components.com/) so if you want to see all the features that we offer you can take a look at their site.
 
-```jsx
+```js
 import Inferno from 'inferno'
 import styled, { keyframes } from '@slup/theming'
 
 const Rotate = keyframes`
-  0%, 
-  100% { 
+  0%,
+  100% {
     transform: scale(0)
-  } 
-  
-  50% { 
+  }
+
+  50% {
     transform: scale(1)
   }
 `
@@ -87,7 +87,7 @@ const Bubble = styled.div`
   animation-delay: ${props => props.second
     ? -1
     : 0
-  }s; 
+  }s;
 `
 
 const Container = styled.section`
@@ -106,8 +106,42 @@ render(
   <Container>
     <Bubble />
     <Bubble second />
-  </Container>, 
+  </Container>,
   document.body.firstChild
 )
 
+```
+
+## Modifying colors
+We have created some useful functions that help us doing modifying colors:
+* `rgba()`
+* `shade()`
+
+#### Rgba
+`rgba()` makes an rgba color by taking normal rgb values or an hex color: <br />
+The first parameter is the hex or the rgb color, the second one is the alpha value.
+
+```js
+import styled, { rgba } from '@slup/theming'
+
+const Title = styled.h1`
+  color: ${rgba('#fff', 0.87)};
+  background: ${rgba(52, 37, 137, 0.3)};
+`
+```
+
+#### Shade
+`shade()` is a function that combines two other functions called `lighten()` and `darken()` in Sass.
+
+So `shade()` lightens the color if the first parameter is positive and it darkens it if it is negative: <br />
+The first parameter is the amount of lightness/darkness you want to add,
+the second one is a string representing the hex or the rgb color.
+
+```js
+import styled, { shade } from '@slup/theming'
+
+const Box = styled.div`
+  background: ${shade(-1, '#fff')};          // Returns pure black
+  color: ${shade(0.3, 'rgb(66, 134, 244)')}; // Returns rgb(212,227,252)
+`
 ```
