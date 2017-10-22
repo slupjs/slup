@@ -2,14 +2,14 @@ const webpack = require('webpack')
 const { join } = require('path')
 const { tmpdir } = require('os')
 
+const tranformInferno = require('ts-transform-inferno').default
 const Package = join(__dirname, '..')
 
 const Base = {
   resolve: {
-    extensions: [ '.ts', '.tsx', '.js' ],
+    extensions: [ '.ts', '.tsx', '.js', '.jsx' ],
 
     alias: {
-      '@slup/ripple': join(Package, 'Ripple', 'src', 'index'),
       '@slup/slider': join(Package, 'Slider', 'src', 'index'),
       '@slup/buttons': join(Package, 'Buttons', 'src', 'index'),
       '@slup/lists': join(Package, 'Lists', 'src', 'index'),
@@ -30,11 +30,14 @@ const Base = {
         exclude: /node_modules/,
         loader: 'awesome-typescript-loader',
         options: {
-          useBabel: true
+          useBabel: true,
+          getCustomTransformers: () => ({
+            before: [tranformInferno()]
+          })
         }
       },
       {
-        test: /\.js?$/,
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       }

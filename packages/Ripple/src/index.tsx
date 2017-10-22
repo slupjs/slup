@@ -1,18 +1,26 @@
-import Inferno   from 'inferno'
-import Component from 'inferno-component'
-import { bind }  from 'decko'
+import Inferno, { linkEvent } from 'inferno'
+import Component              from 'inferno-component'
 
 import { Wrapper } from './container'
 import { Wave }    from './wave'
 
-export class Ripple extends Component {
+export class Ripple extends Component<any, any> {
+  ripple: any
   state = { ripples: [] }
 
-  @bind
-  handleMouseDown({ offsetX, offsetY }) {
-    const { ripples } = this.state
-    const id          = ripples.length
+  constructor() {
+    super()
 
+    this.addHandler = this.addHandler.bind(this)
+    this.handleMouseDown = this.handleMouseDown.bind(this)
+    this.onEnded = this.onEnded.bind(this)
+    this.onFaded = this.onFaded.bind(this)
+    this.fire = this.fire.bind(this)
+  }
+
+  handleMouseDown(self, { offsetX, offsetY }) {
+    const { ripples } = self.state
+    const id          = ripples.length
 
     ripples.push({
       id: id,
@@ -22,16 +30,15 @@ export class Ripple extends Component {
     })
 
     // Await for the mouseUp event to remove the ripple
-    this.addHandler(id)
+    self.addHandler(id)
 
     // Render the new ripple
-    this.setState({ ripples })
+    self.setState({ ripples })
 
     // Fire off the animation! 🚀
-    this.fire(id)
+    self.fire(id)
   }
 
-  @bind
   onEnded(id) {
     const { ripples } = this.state
     ripples[id].ended = true
@@ -41,7 +48,6 @@ export class Ripple extends Component {
     setTimeout(e => this.onFaded(id), 250)
   }
 
-  @bind
   onFaded(id) {
     const { ripples } = this.state
     ripples[id].faded = true
@@ -49,7 +55,6 @@ export class Ripple extends Component {
     this.setState({ ripples })
   }
 
-  @bind
   fire(id) {
     const { ripples } = this.state
 
@@ -70,7 +75,6 @@ export class Ripple extends Component {
     setTimeout(e => this.onEnded(id), 600)
   }
 
-  @bind
   addHandler(id) {
     const { ripples } = this.state
 
@@ -81,18 +85,18 @@ export class Ripple extends Component {
       this.setState({ ripples })
 
       // Remove the ended event
-      window.removeEventListener('mouseup', handler, { passive: true })
+      window.removeEventListener('mouseup', handler)
     }
 
     // Wait for the event
-    window.addEventListener('mouseup', handler, { passive: true })
+    window.addEventListener('mouseup', handler)
   }
 
   render({ startX, startY, ..._props}) {
     return(
       <Wrapper 
         innerRef={element => this.ripple = element}
-        onMouseDown={this.handleMouseDown}
+        onMouseDown={linkEvent(this, this.handleMouseDown)}
       >
         {this.state.ripples.map(props =>
           props.isRemovable && props.ended && props.faded

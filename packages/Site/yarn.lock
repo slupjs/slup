@@ -1995,6 +1995,10 @@ inferno-vnode-flags@3.9.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.9.0.tgz#8e358803b8c396788070d54786d86894cecd4a46"
 
+inferno-vnode-flags@^3.9.0:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.10.1.tgz#88a4528a3b4df0f33a3ace68dc45f05b651c0e41"
+
 inferno@3.9.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/inferno/-/inferno-3.9.0.tgz#4e9a312e9929abb741dfe285630841b0d7e95e62"
@@ -3633,6 +3637,13 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
+ts-transform-inferno@0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/ts-transform-inferno/-/ts-transform-inferno-0.6.0.tgz#1256095986530092386d94064cfdbba137fa64d4"
+  dependencies:
+    inferno-vnode-flags "^3.9.0"
+    typescript "^2.5.3"
+
 tty-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
@@ -3654,7 +3665,7 @@ type-is@~1.6.15:
     media-typer "0.3.0"
     mime-types "~2.1.15"
 
-typescript@2.5.3:
+typescript@2.5.3, typescript@^2.5.3:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.5.3.tgz#df3dcdc38f3beb800d4bc322646b04a3f6ca7f0d"
 

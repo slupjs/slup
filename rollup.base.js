@@ -8,12 +8,11 @@ import RS from 'rollup-plugin-node-resolve'
 import { join } from 'path'
 import { tmpdir } from 'os'
 
-const base = {
+export const base = {
   /** External dependecies, resolved via commonjs or AMD */
   external: [
     'inferno-component',
     'inferno',
-    'inferno-create-element',
     '@slup/common',
     '@slup/theming'
   ],

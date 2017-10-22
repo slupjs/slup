@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@slup/theming'
 
 export const Wrapper = styled.div`
   position: absolute;

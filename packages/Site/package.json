@@ -20,12 +20,14 @@
     "babel-plugin-syntax-dynamic-import": "6.18.0",
     "babel-preset-env": "1.6.0",
     "nodemon": "1.12.1",
+    "ts-transform-inferno": "0.6.0",
     "typescript": "2.5.3",
     "webpack": "3.6.0"
   },
   "dependencies": {
     "@slup/common": "0.0.1",
     "@slup/grid": "0.0.1",
+    "@slup/ripple": "0.0.1",
     "@slup/theming": "0.0.1",
     "compression": "1.7.1",
     "decko": "1.2.0",

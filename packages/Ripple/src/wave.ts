@@ -1,14 +1,12 @@
-import styled   from 'styled-components'
-import { rgba } from 'polished'
-import { lightTheme } from '@slup/theming'
+import styled, { rgba, lightTheme } from '@slup/theming'
 
 export const Wave = styled.div`
   position: absolute;
-  top: ${props => window.isNaN(props.y)
+  top: ${props => isNaN(props.y)
     ? `calc(${props.y} - 5px)` /** String(ex. 50%) */
     : props.y - 5 + 'px'       /** Number(ex. 122 => 122px) */
   };
-  left: ${props => window.isNaN(props.x)
+  left: ${props => isNaN(props.x)
     ? `calc(${props.x} - 5px)` /** String(ex. 50%) */
     : props.x - 5 + 'px'       /** Number(ex. 122 => 122px) */
   };
