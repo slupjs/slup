@@ -35,6 +35,7 @@
     "inferno-component": "3.9.0",
     "inferno-router": "3.9.0",
     "inferno-server": "3.9.0",
-    "prismjs": "1.8.1"
+    "prismjs": "1.8.1",
+    "stylis": "3.3.1"
   }
 }

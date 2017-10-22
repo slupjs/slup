@@ -4,6 +4,7 @@
   "description": "Grid system built upon Inferno for the Slup framework",
   "repository": "https://github.com/slupjs/slup/tree/master/packages/Grid",
   "main": "dist.js",
+  "module": "src/index.ts",
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
