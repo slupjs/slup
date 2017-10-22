@@ -1,4 +1,4 @@
-import { INSERTED, REGISTERED, sheet } from './styles'
+import { INSERTED, REGISTERED, SHEET } from './styles'
 import { ISSR, IPrivateData, IData } from '../interfaces'
 
 export const SSR = new class SSR implements ISSR {
@@ -44,7 +44,7 @@ export const SSR = new class SSR implements ISSR {
       }
     }
 
-    this.local.rules = sheet.sheet.slice().filter(rule => {
+    this.local.rules = SHEET.sheet.slice().filter(rule => {
       this.RGX.lastIndex = 0  
       
       /** Double check if this sheet is a valid css */

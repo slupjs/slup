@@ -29,6 +29,7 @@ export class Sheet implements ISheet {
     return tag
   }
 
+  /** Firefox polyfill for document.styleSheets */
   private getSheet(style: HTMLStyleElement): StyleSheet {
     if(style.sheet) {
       return style.sheet

@@ -1,212 +1,286 @@
-import { memoize, hash, CHANNEL } from '@slup/common'
+/** Utils */
+import { memorize, hash, CHANNEL } from '@slup/common'
+
+/** Local helpers */
 import { Sheet } from './sheet'
 import Plugin from './plugin'
-import { internal_isUnitlessNumber as UNITLESS } from 'inferno'
+import { 
+  sanitizeName, 
+  sanitizeStyle, 
+  sanitizeObject, 
+  isLastCharDot 
+} from './helpers'
+
+/** Styles processor */
 import * as Stylis from 'stylis'
 
-export const sheet = new Sheet()
+import { Interpolation } from '../interfaces'
+
+/** Declare constats used by other modules */
+export const SHEET = new Sheet()
 export let REGISTERED = {}
 export let INSERTED = {}
 
-sheet.inject()
-const stylisOptions = {
-  keyframe: false,
-  compress: true
-}
+/** Insert the stylesheet into the document */
+SHEET.inject()
 
-const insertionPlugin = Plugin(_insertRule)
+/** Plugin for stylis that add -webkit and -moz prefixes */
+const PLUGIN = Plugin(rule => SHEET.insert(rule))
 
-function _insertRule(rule) {
-  sheet.insert(rule)
-}
+/** Stylis compiler */
+const stylis = new Stylis({ keyframe: false, compress: true })
 
-let stylis: any = new Stylis(stylisOptions)
-stylis.use(insertionPlugin)
+/** Enable the plugin for stylis */
+stylis.use(<any>PLUGIN)
 
-function handleInterpolation(
-  interpolation: any,
-  couldBeSelectorInterpolation: boolean
-) {
-  if (interpolation == null) {
-    return ''
-  }
 
-  switch (typeof interpolation) {
+/**
+ * Handles each TemplateLitteral interpolation and resolves complex
+ * cases like objects, functions(for themes or computed values) and returns
+ * a string readable from the stylis SCSS compiler
+ * 
+ * @param interp Interpolation. Can be a string, an object or a function
+ * @param selector Defines if the interpolation is a valid hashed selector 
+ */
+export function handleInterpolation(interp: Interpolation, selector: boolean): string {
+  /** Ignore nulls */
+  if(interp == null) return ''
+
+  switch(typeof interp) {
+    /** Ignore booleans */
     case 'boolean':
       return ''
+
+    /** 
+     * If we recive a function we call it to get
+     * the value. That's often used for calculations
+     * of with a ThemeProvider
+     */
     case 'function':
       return handleInterpolation.call(
-        this,
-        this === undefined
-          ? interpolation()
-          : interpolation(this.mergedProps, this.context),
-        couldBeSelectorInterpolation
+        this, /** Pass the scope(necessary for themeProviders) */
+
+        /** Calls the interpolation with the props and the context */
+        interp(this.mergedProps, this.context)
       )
-    case 'object':
-      return createStringFromObject.call(this, interpolation)
+  
+    case 'object': 
+      return sanitizeObject.call(this, interp)
+
     default:
-      const cached = REGISTERED[interpolation]
-      return couldBeSelectorInterpolation === false && cached !== undefined
+      /** Check if it's cached */
+      const cached = REGISTERED[<any>interp]
+
+      /** 
+       * If the interpolation is not a selector(ex. keyframe hash)
+       * and it's cached, return it instead of computating it again.
+       * 
+       * Otherwhise we assue it's a simple string and we just return it
+       */
+      return selector === false && cached !== undefined 
         ? cached
-        : interpolation
+        : interp
   }
 }
 
-const hyphenateRegex = /[A-Z]|^ms/g
+/**
+ * Create styles based upon string interpolations
+ * 
+ * @param strings Array of strings
+ * @param interps Array of interpolations
+ */
+export function createStyles(strings?: TemplateStringsArray, ...interps: Interpolation[]) {
+  let stringNode = true
+  let styles: string[] = []
 
-const processStyleName = memoize(styleName =>
-  styleName.replace(hyphenateRegex, '-$&').toLowerCase()
-)
-
-const processStyleValue = (key, value) => {
-  if (value === undefined || value === null || typeof value === 'boolean')
-    return ''
-
-  if (UNITLESS[key] !== true && !isNaN(value) && value !== 0) {
-    return value + 'px'
-  }
-  return value
-}
-
-const objectToStringCache = new WeakMap()
-
-function createStringFromObject(obj) {
-  if (objectToStringCache.has(obj)) {
-    return objectToStringCache.get(obj)
-  }
-  let string = ''
-
-  if (Array.isArray(obj)) {
-    obj.forEach(function (interpolation) {
-      string += handleInterpolation.call(this, interpolation, false)
-    }, this)
+  /** If the strings aren't defined */
+  if(strings == null || strings.raw === undefined) {
+    stringNode = false
+    styles.push(handleInterpolation.call(this, strings, null))
   } else {
-    Object.keys(obj).forEach(function (key) {
-      if (typeof obj[key] !== 'object') {
-        if (REGISTERED[obj[key]] !== undefined) {
-          string += `${key}{${REGISTERED[obj[key]]}}`
-        } else {
-          string += `${processStyleName(key)}:${processStyleValue(
-            key,
-            obj[key]
-          )};`
-        }
-      } else {
-        string += `${key}{${handleInterpolation.call(this, obj[key], false)}}`
-      }
-    }, this)
-  }
-  objectToStringCache.set(obj, string)
-
-  return string
-}
-
-function isLastCharDot(string) {
-  return string.charCodeAt(string.length - 1) === 46 // .
-}
-
-function createStyles(strings?, ...interpolations) {
-  let stringMode = true
-  let styles = ''
-  if (strings == null || strings.raw === undefined) {
-    stringMode = false
-    styles = handleInterpolation.call(this, strings, false)
-  } else {
-    styles = strings[0]
+    styles.push(strings[0])
   }
 
-  interpolations.forEach(function (interpolation, i) {
-    styles += handleInterpolation.call(
+  interps.forEach(function(interp, i) {
+    styles.push(handleInterpolation.call(
       this,
-      interpolation,
-      isLastCharDot(styles)
-    )
-    if (stringMode === true && strings[i + 1] !== undefined) {
-      styles += strings[i + 1]
+      interp,
+      isLastCharDot(styles.join(''))
+    ))
+
+    /** If the strings argument contained some interpolation itself */
+    if(stringNode && strings[i + 1] !== undefined) {
+      styles.push(strings[i + 1])
     }
   }, this)
 
-  return styles
+
+  return styles.join('')
 }
 
-export function css(...args) {
+/**
+ * Generates a className for the given css and returns it.
+ * The css gets appied to the page if it hasn't already
+ * 
+ * @param args List of css(es) to be applied to this tag
+ */
+export function css(...args: string[]): string {
+  /** Convert styles into a readable string */
   const styles = createStyles.apply(this, args)
 
-  const _hash = hash(styles)
-  const cls = `css-${_hash}`
+  /** Generate the hash for the style */
+  const HASH = hash(styles)
 
-  if (REGISTERED[cls] === undefined) {
-    REGISTERED[cls] = styles
+  /** Puts the prefix to the className */
+  const CLASS = `css-${HASH}`
+
+  /** If the css already exists */
+  if(REGISTERED[CLASS] === undefined) {
+    /** Save the styles for future duplicate usage */
+    REGISTERED[CLASS] = styles
+  } 
+
+  /** If it hasn't ever been inserted, apply it to the StyleSheet */
+  if(INSERTED[HASH] === undefined) {
+    stylis(`.${CLASS}`, styles)
+
+    /** Remind that the style has already been applied */
+    INSERTED[HASH] = true
   }
-  if (INSERTED[_hash] === undefined) {
-    stylis(`.${cls}`, styles)
-    INSERTED[_hash] = true
-  }
-  return cls
+
+  return CLASS
 }
 
+/**
+ * Injects styles into the global stylesheet, 
+ * without a selector. Useful for body or global styles
+ * 
+ * @param args Interpolations of styles
+ */
 export function injectGlobal(...args) {
-  const styles = createStyles(...args)
-  const _hash = hash(styles)
-  if (INSERTED[_hash] === undefined) {
+  /** Convert styles into a readable string */
+  const styles = createStyles.apply(this, args)
+
+  /** Generate the hash for the style */
+  const HASH = hash(styles)
+
+  /** If it hasn't ever been inserted, apply it to the StyleSheet */
+  if (INSERTED[HASH] === undefined) {
     stylis('', styles)
-    INSERTED[_hash] = true
+
+    /** Remind that the style has already been applied */
+    INSERTED[HASH] = true
   }
 }
 
-export function keyframes(...args) {
-  const styles = createStyles(...args)
-  const _hash = hash(styles)
-  const name = `animation-${_hash}`
-  if (INSERTED[_hash] === undefined) {
-    stylis('', `@keyframes ${name}{${styles}}`)
-    INSERTED[_hash] = true
+/**
+ * Applies a keyframe and returns the animation's hash
+ * 
+ * Usage: 
+ * 
+ * const animation = keyframe`from {} to {}`
+ * const element = styled.div`
+ *   animation: ${animation} 1s linear;
+ * `
+ * 
+ * @param args Interpolations for the keyframe
+ */
+export function keyframes(...args): string {
+  /** Convert styles into a readable string */
+  const styles = createStyles.apply(this, args)
+
+  /** Generate the hash for the animation */
+  const HASH = hash(styles)
+
+  /** Puts the prefix to the animationName */
+  const NAME = `animation-${HASH}`
+
+  /** If it hasn't ever been inserted, apply it to the StyleSheet */
+  if (INSERTED[HASH] === undefined) {
+    stylis('', `@keyframes ${NAME}{${styles}}`)
+
+    /** Remind that the style has already been applied */
+    INSERTED[HASH] = true
   }
-  return name
+
+  return NAME
 }
 
+/**
+ * Applies a fontFace css selector to the global styleSheet
+ * 
+ * @param args Interpolations of fontFamilies
+ */
 export function fontFace(...args) {
-  const styles = createStyles(...args)
-  const _hash = hash(styles)
-  if (INSERTED[_hash] === undefined) {
+  /** Convert styles into a readable string */
+  const styles = createStyles.apply(this, args)
+
+  /** Generate the hash for the font */
+  const HASH = hash(styles)
+
+  /** If it hasn't ever been inserted, apply it to the StyleSheet */
+  if (INSERTED[HASH] === undefined) {
     stylis('', `@font-face{${styles}}`)
-    INSERTED[_hash] = true
+
+    /** Remind that the style has already been applied */
+    INSERTED[HASH] = true
   }
 }
 
-export function getRegisteredStyles(registeredStyles, classNames) {
-  let rawClassName = ''
+/**
+ * Pushes names of all the registered classes to the first argument
+ * Returns unregistered names as a string
+ * 
+ * @param registered Array where items should be pushed
+ * @param names Class of a selector  to be checked
+ */
+export const getRegisteredStyles = (registered: string[], names: string): string => {
+  const rawName: string[] = []
 
-  classNames.split(' ').forEach(className => {
-    if (REGISTERED[className] !== undefined) {
-      registeredStyles.push(className)
+  names.split(' ').forEach(name => {
+    /** If the className has already been registered */
+    if(REGISTERED[name]) {
+      registered.push(name)
     } else {
-      rawClassName += `${className} `
+      rawName.push(name)
     }
   })
-  return rawClassName
+
+  return rawName.join(' ')
 }
 
-export function merge(className, sourceMap) {
-  const registeredStyles = []
+/**
+ * Merges multiple styled together
+ * 
+ * @param name className for the previous style
+ */
+export const merge = (name: string) => {
+  const registered: string[] = []
+  const rawName = getRegisteredStyles(registered, name)
 
-  const rawClassName = getRegisteredStyles(registeredStyles, className)
-
-  if (registeredStyles.length < 2) {
-    return className
+  /** If we don't have any style to merge */
+  if (registered.length < 2) {
+    return name
   }
-  return rawClassName + css(registeredStyles, sourceMap)
+
+  return rawName + css(...registered)
 }
 
-export function hydrate(ids) {
-  ids.forEach(id => {
-    INSERTED[id] = true
-  })
+/** 
+ * Hydratates ids of styled already
+ * applied in Server Side Rendering!
+ * ⚡️⚡️⚡️
+ * 
+ * @param ids Array of strings(ids)
+ */
+export function hydrate(ids: string[]) {
+  ids.forEach(id => INSERTED[id] = true )
 }
 
-export function flush() {
-  sheet.eject()
+/** Resets the styles */
+export const flush = () => {
+  SHEET.eject()
   INSERTED = {}
   REGISTERED = {}
-  sheet.inject()
+  SHEET.inject()
 }

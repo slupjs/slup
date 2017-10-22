@@ -143,3 +143,9 @@ export interface RGBAColor {
   b: number
   a: number
 }
+
+/** Interpolation type for templateLitterals on theming */
+export type Interpolation = 
+  (props?, context?) => any |
+  string | 
+  object
