@@ -43,6 +43,10 @@ const base = {
     RS(),
     TS({ 
       cacheRoot: join(tmpdir(), '.rpt2_cache'),
+      /**
+       * Needed to avoid errors with TS and missing types,
+       * or missing modules(for peerDependencies)
+       */
       check: false
     }),
     Min({ comments: false })
