@@ -1,5 +1,5 @@
 import { INSERTED, REGISTERED, sheet } from './styles'
-import { ISSR, IPrivateData, IData } from './interfaces'
+import { ISSR, IPrivateData, IData } from '../interfaces'
 
 export const SSR = new class SSR implements ISSR {
   /**

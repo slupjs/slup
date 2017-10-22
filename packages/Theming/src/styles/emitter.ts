@@ -1,4 +1,4 @@
-import { IEmitter, IListener } from './interfaces'
+import { IEmitter, IListener } from '../interfaces'
 
 export class Emitter implements IEmitter {
   private state: any = null

@@ -3,7 +3,7 @@ import Component from 'inferno-component'
 import { CHANNEL } from '@slup/common'
 
 import { Emitter } from './emitter'
-import { ITheme, IITheme, IProps, IListener, IEmitter } from './interfaces'
+import { ITheme, IITheme, IProps, IListener, IEmitter } from '../interfaces'
 
 const toArray = items =>
   items instanceof Array ? items : [items]

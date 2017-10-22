@@ -1,4 +1,4 @@
-import { ISheet } from './interfaces'
+import { ISheet } from '../interfaces'
 
 export class Sheet implements ISheet {
   private isBrowser: boolean = typeof window !== 'undefined'

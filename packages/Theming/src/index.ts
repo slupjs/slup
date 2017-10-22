@@ -1,18 +1,20 @@
-import { styled } from './styled'
+import { styled } from './styles/styled'
 import { WHITE, BLACK, BLUE, INDIGO } from './colors'
 
 /** Style helpers */
-export * from './provider'
-export * from './colors'
-export * from './styled'
-export * from './styles'
-export * from './server'
+export * from './styles/provider'
+export * from './styles/styled'
+export * from './styles/styles'
+export * from './styles/server'
 
 /** Color manipulation */
-export * from './rgba'
-export * from './shade'
-export * from './hsl'
-export * from './hex'
+export * from './manipulation/rgba'
+export * from './manipulation/shade'
+export * from './manipulation/hsl'
+export * from './manipulation/hex'
+
+/** Colors set */
+export * from './colors'
 
 export const lightTheme = {
   text: BLACK,

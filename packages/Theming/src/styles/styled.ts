@@ -6,7 +6,7 @@ import { CHANNEL }     from '@slup/common'
 import { getRegisteredStyles, css } from './styles'
 
 /** Typings */
-import { IStyledState, IStyledProps, ITheme, IEmitter } from './interfaces'
+import { IStyledState, IStyledProps, ITheme, IEmitter } from '../interfaces'
 
 export const styled = (_tag: any) => 
 

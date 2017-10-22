@@ -121,10 +121,9 @@ export const hslToRgb = (h: number, s: number, l: number) => {
     break
   }
 
-  /** Round the values */
-  const _r = Math.round((red + lightnessAdjustment) * 255)
-  const _g = Math.round((green + lightnessAdjustment) * 255)
-  const _b = Math.round((blue + lightnessAdjustment) * 255)
-
-  return { r: _r, g: _g, b: _b }
+  return { 
+    r: Math.round((red + lightnessAdjustment) * 255), 
+    g: Math.round((green + lightnessAdjustment) * 255),
+    b: Math.round((blue + lightnessAdjustment) * 255)
+  }
 }

@@ -1,4 +1,4 @@
-import { RGBAColor } from './interfaces'
+import { RGBAColor } from '../interfaces'
 
 /**
  * Dubles the HEX string passed, from 3 to 6 digits
