@@ -33,7 +33,8 @@ const Base = {
           useBabel: true,
           getCustomTransformers: () => ({
             before: [tranformInferno()]
-          })
+          }),
+          silent: process.argv.indexOf("--json") !== -1
         }
       },
       {
@@ -95,7 +96,12 @@ const Client = {
 
 }
 
-module.exports = [
-  Object.assign({}, Base, Client),
-  Object.assign({}, Base, Server)
-]
+/** In case we're taking stats we only care about the client */
+if(process.argv.indexOf("--json") !== -1) {
+  module.exports = Object.assign({}, Base, Client)
+} else {
+  module.exports = [
+    Object.assign({}, Base, Client),
+    Object.assign({}, Base, Server)
+  ]
+}
