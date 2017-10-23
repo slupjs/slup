@@ -11,8 +11,13 @@ import {
   isLastCharDot 
 } from './helpers'
 
-/** Styles processor */
-import * as Stylis from 'stylis'
+/** 
+ * Styles processor
+ * 
+ * I was sadly forces to do this because of the differences 
+ * between webpack module resolution and rollup's 
+ */
+const Stylis = require('stylis')
 
 import { Interpolation } from '../interfaces'
 
