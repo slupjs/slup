@@ -32,11 +32,11 @@ app.get('*', (req, res) => {
 
   const App = createElement(RouterContext, props)
   
-  /** Extract classed HTML and CSS */
   const JSX = renderToStaticMarkup(App)
   const { css, html, ids } = SSR.extract(JSX)
   const IDs = JSON.stringify(ids)
 
+  
   res.send(
     TEMPLATE
       .replace(/\r?\n|\r/g, '')
