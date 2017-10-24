@@ -1,5 +1,6 @@
 /** Express modules */
 import * as express from 'express'
+import * as morgan from 'morgan'
 import * as compress from 'compression'
 
 /** Utilities */
@@ -36,6 +37,8 @@ const redirector = (req, res) => {
 }
 const app = express()
 
+/** Middlewares: logger, gzipper, static server */
+app.use(morgan(message))
 app.use(compress())
 app.use('/static', express.static(join(process.cwd(), 'dist')))
 

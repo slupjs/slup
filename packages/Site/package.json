@@ -32,6 +32,7 @@
     "compression": "1.7.1",
     "decko": "1.2.0",
     "express": "4.16.1",
+    "morgan": "1.9.0",
     "history": "4.7.2",
     "inferno": "3.9.0",
     "inferno-component": "3.9.0",
