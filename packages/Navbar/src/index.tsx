@@ -1,10 +1,7 @@
 import Inferno   from 'inferno'
 import Component from 'inferno-component'
-import styled    from 'styled-components'
-import { bind }  from 'decko'
 
-import { lightTheme } from '@slup/theming'
-import { darken }     from 'polished'
+import styled, { lightTheme, darken } from '@slup/theming'
 
 export const Bar = styled.div`
   box-shadow:
@@ -38,7 +35,7 @@ export const Bar = styled.div`
   }
 `
 
-export class Navbar extends Component {
+export class Navbar extends Component<any, any> {
   previousY = 0
   previousX = 0
   state = { maxHeight: 64 }
@@ -53,7 +50,6 @@ export class Navbar extends Component {
       window.removeEventListener('scroll', this.handleScroll)
   }
 
-  @bind
   handleScroll() {
     const currentX = window.scrollX
     const currentY = window.scrollY

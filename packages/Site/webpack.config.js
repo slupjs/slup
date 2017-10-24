@@ -13,7 +13,6 @@ const Base = {
       '@slup/slider': join(Package, 'Slider', 'src', 'index'),
       '@slup/buttons': join(Package, 'Buttons', 'src', 'index'),
       '@slup/lists': join(Package, 'Lists', 'src', 'index'),
-      '@slup/navbar': join(Package, 'Navbar', 'src', 'index'),
       '@slup/controls': join(Package, 'Controls', 'src', 'index'),
       '@slup/sidenav': join(Package, 'Sidenav', 'src', 'index'),
       '@slup/tabs': join(Package, 'Tabs', 'src', 'index'),

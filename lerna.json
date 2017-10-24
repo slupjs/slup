@@ -9,7 +9,6 @@
     "@slup/controls",
     "@slup/icons",
     "@slup/lists",
-    "@slup/navbar",
     "@slup/sidenav",
     "@slup/slider",
     "@slup/tabs",
@@ -20,5 +19,5 @@
       "ignore": [ "@slup/site" ]
     }
   },
-  "version": "0.1.0"
+  "version": "0.0.1"
 }
