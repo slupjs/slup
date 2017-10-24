@@ -65,7 +65,10 @@ app.get('*', (req, res) => {
   )
 })
 
-/** Listen on HTTPS just on the production phase */
+/** Listen for HTTP requests */
+createHTTP(redirector).listen(80, () => console.log(`🌏 ⚡️ HTTP server listening!`))
+
+/** Listen on HTTPS just for the production phase */
 if(process.env.NODE_ENV == 'production') {
   /** Certificates for SSL encryption(HTTPS) */
   const options = {
@@ -73,8 +76,5 @@ if(process.env.NODE_ENV == 'production') {
     cert: readFileSync(join(process.cwd(), 'cert.pem'))
   }
 
-  createHTTP(redirector).listen(80, () => console.log(`🌏 ⚡️ HTTPS server listening`))
-  createHTTPS(options, app).listen(443, () => console.log(`🌏 ⚡️ HTTPS server listening`))
-} else {
-  createHTTP(redirector).listen(80, () => console.log(`🌏 ⚡️ HTTPS server listening`))
+  createHTTPS(options, app).listen(443, () => console.log(`🌏 ⚡️ HTTPS server listening!`))
 }
