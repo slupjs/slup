@@ -51,3 +51,6 @@ export const shade = (lum: number, color: string) => {
     : `rgb(${hsl.r}, ${hsl.g}, ${hsl.b})`
   )
 }
+
+export const darken = (lum, color) => shade(-lum, color)
+export const lighten = (lum, color) => shade(+lum, color)
