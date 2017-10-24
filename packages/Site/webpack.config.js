@@ -75,8 +75,7 @@ const Client = {
       'inferno-router',
       'prismjs/prism',
       'prismjs/components/prism-jsx',
-      'history/createBrowserHistory',
-      '@slup/theming'
+      'history/createBrowserHistory'
     ],
     routes: join(__dirname, 'src', 'client')
   },
