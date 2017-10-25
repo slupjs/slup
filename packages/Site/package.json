@@ -25,9 +25,8 @@
     "webpack": "3.6.0"
   },
   "dependencies": {
-    "@slup/common": "0.0.1",
+    "@slup/buttons": "0.0.1",
     "@slup/grid": "0.0.1",
-    "@slup/ripple": "0.0.1",
     "@slup/theming": "0.0.1",
     "@slup/navbar": "0.0.1",
     "compression": "1.7.1",

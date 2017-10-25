@@ -1,9 +1,8 @@
 import Inferno   from 'inferno'
 import Component from 'inferno-component'
-import styled    from 'styled-components'
 
-import { Ripple }     from '@slup/ripple'
-import { lightTheme } from '@slup/theming'
+import { Ripple } from '@slup/ripple'
+import styled, { lightTheme } from '@slup/theming'
 
 const Circle = styled.button`
   position: relative;

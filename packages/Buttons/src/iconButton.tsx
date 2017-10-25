@@ -1,9 +1,8 @@
 import Inferno   from 'inferno'
 import styled    from 'styled-components'
-import { rgba }  from 'polished'
 
-import { lightTheme } from '@slup/theming'
-import { Ripple }     from '@slup/ripple'
+import { lightTheme, rgba } from '@slup/theming'
+import { Ripple } from '@slup/ripple'
 
 const IconBase = styled.button`
   /**

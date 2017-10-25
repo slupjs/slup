@@ -1,35 +1,34 @@
 {
   "name": "@slup/buttons",
-  "version": "0.1.0",
-  "description": "Material design buttons",
+  "version": "0.0.1",
+  "description": "Button elements built upon Inferno with the Slup framework",
+  "repository": "https://github.com/slupjs/slup/tree/master/packages/Buttons",
   "main": "dist.js",
-  "author": "Gejsi",
+  "module": "src/index.ts",
+  "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
-  "devDependencies": {
-    "@slup/ripple": "0.0.2",
-    "@slup/theming": "0.0.2",
-    "babel-core": "6.25.0",
-    "babel-loader": "7.1.1",
-    "babel-plugin-inferno": "3.2.0",
-    "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-plugin-transform-decorators-legacy": "1.3.4",
-    "babel-plugin-transform-object-rest-spread": "6.23.0",
-    "babel-preset-es2015": "6.24.1",
-    "babili-webpack-plugin": "0.1.2",
-    "decko": "1.2.0",
-    "polished": "1.7.0",
-    "webpack": "3.4.1"
+  "dependencies": {
+    "@slup/theming": "0.0.1",
+    "@slup/ripple": "0.0.1"
   },
-  "scripts": {
-    "compile:watch": "webpack --watch --progress",
-    "compile:build": "webpack -p --progress",
-    "test": "webpack -p --progress --json > stats.json",
-    "prepublish": "yarn run compile:build"
+  "devDependencies": {
+    "@types/node": "8.0.34",
+    "babel-plugin-inferno": "3.2.0",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "rollup": "0.50.0",
+    "rollup-plugin-babel": "3.0.2",
+    "rollup-plugin-babel-minify": "3.1.2",
+    "rollup-plugin-commonjs": "8.2.1",
+    "rollup-plugin-node-resolve": "3.0.0",
+    "rollup-plugin-typescript2": "0.7.0",
+    "typescript": "2.5.3"
   },
   "peerDependencies": {
     "inferno": "3.9.0",
-    "inferno-compat": "3.9.0",
-    "inferno-component": "3.9.0",
-    "styled-components": "2.1.2"
+    "inferno-component": "3.9.0"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "prepublish": "npm run build"
   }
 }

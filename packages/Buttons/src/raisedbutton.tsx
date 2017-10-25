@@ -1,10 +1,13 @@
 import Inferno   from 'inferno'
 import Component from 'inferno-component'
-import styled    from 'styled-components'
 
 import { Ripple }     from '@slup/ripple'
-import { lightTheme } from '@slup/theming'
-import { rgba, darken, lighten }       from 'polished'
+import styled, { 
+  lightTheme, 
+  rgba, 
+  darken, 
+  lighten 
+} from '@slup/theming'
 
 const RaisedBase = styled.button`
   /* Not changing values */

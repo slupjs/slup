@@ -1,10 +1,8 @@
 import Inferno   from 'inferno'
 import Component from 'inferno-component'
-import styled    from 'styled-components'
 
-import { Ripple }     from '@slup/ripple'
-import { lightTheme } from '@slup/theming'
-import { rgba }       from 'polished'
+import { Ripple } from '@slup/ripple'
+import styled, { lightTheme, rgba } from '@slup/theming'
 
 const FlatBase = styled.button`
   /* Not changing values */

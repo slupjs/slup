@@ -14,7 +14,8 @@ export const base = {
     'inferno-component',
     'inferno',
     '@slup/common',
-    '@slup/theming'
+    '@slup/theming',
+    '@slup/ripple'
   ],
 
   /** External dependecies, resolved via commonjs or AMD */
@@ -22,6 +23,7 @@ export const base = {
     /** Slup modules */
     '@slup/common': 'Slup.Common',
     '@slup/theming': 'Slup.Theming',
+    '@slup/ripple': 'Slup.Ripple',
     '@slup/buttons': 'Slup.Buttons',
     '@slup/controls': 'Slup.Controls',
     '@slup/grid': 'Slup.Grid',
