@@ -16,7 +16,7 @@
     },
     {
       "path": "./packages/Controls/dist.js",
-      "maxSize": "2 kB"
+      "maxSize": "2.25 kB"
     },
     {
       "path": "./packages/Grid/dist.js",
