@@ -58,8 +58,7 @@ const Server = {
   },
 
   externals: {
-    express: 'commonjs express',
-    inferno: 'commonjs inferno'
+    express: 'commonjs express'
   },
   
   target: 'node'
@@ -89,8 +88,7 @@ const Client = {
   ],
 
   devtool: 'source-map',
-  target: 'web',
-
+  target: 'web'
 }
 
 /** In case we're taking stats we only care about the client */

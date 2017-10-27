@@ -1,10 +1,7 @@
-import Inferno   from 'inferno'
+import Inferno, { linkEvent } from 'inferno'
 import Component from 'inferno-component'
-import styled    from 'styled-components'
-import { bind }  from 'decko'
-import { rgba }       from 'polished'
 
-import { lightTheme } from '@slup/theming'
+import styled, { lightTheme, rgba } from '@slup/theming'
 import { Container }  from './container'
 
 const Border = styled.div`
@@ -81,22 +78,20 @@ const Wave = styled.div`
       : 'grey'};
 `
 
-export class Radio extends Component {
+export class Radio extends Component<any, any> {
   state = {
     transform: 'scale(0)',
     opacity: '0.2'
   }
 
-  @bind
-  createWave() {
+  createWave(this) {
     this.setState({
       transform: 'scale(3)',
       opacity: '0.2'
     })
   }
 
-  @bind
-  destroyWave() {
+  destroyWave(this) {
     this.setState({ opacity: '0.05' })
 
     setTimeout(() => {
@@ -111,10 +106,10 @@ export class Radio extends Component {
           {...props}
           tabIndex={0}
           onClick={props.onChange}
-          onMouseDown={this.createWave}
-          onMouseUp={this.destroyWave}
-          onFocus={this.createWave}
-          onBlur={this.destroyWave}
+          onMouseDown={linkEvent(this, this.createWave)}
+          onMouseUp={linkEvent(this, this.destroyWave)}
+          onFocus={linkEvent(this, this.createWave)}
+          onBlur={linkEvent(this, this.destroyWave)}
         >
 
           <Circle {...props} />

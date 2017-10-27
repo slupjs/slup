@@ -1,11 +1,8 @@
-import Inferno   from 'inferno'
+import Inferno, { linkEvent } from 'inferno'
 import Component from 'inferno-component'
-import styled    from 'styled-components'
-import { bind }  from 'decko'
-import { rgba, lighten } from 'polished'
 
-import { lightTheme }    from '@slup/theming'
-import { Container }     from './container'
+import styled, { lightTheme, rgba, lighten } from '@slup/theming'
+import { Container } from './container'
 
 const Bar = styled.div`
   width: 36px;
@@ -76,22 +73,20 @@ const Wave = styled.div`
 `
 
 
-export class Switch extends Component {
+export class Switch extends Component<any, any> {
   state = {
     transform: 'scale(0)',
     opacity: '0.2'
   }
 
-  @bind
-  createWave() {
+  createWave(this) {
     this.setState({
       transform: 'scale(2.5)',
       opacity: '0.2'
     })
   }
 
-  @bind
-  destroyWave() {
+  destroyWave(this) {
     this.setState({ opacity: '0.05' })
 
     setTimeout(() => {
@@ -99,8 +94,7 @@ export class Switch extends Component {
     }, 150)
   }
 
-  @bind
-  handleKeyDown({ keyCode }) {
+  handleKeyDown(this, { keyCode }) {
     if(keyCode == 32 && this.props.onChange && !this.props.disabled) {
       this.props.onChange()
     }
@@ -118,19 +112,17 @@ export class Switch extends Component {
           {...props}
           onClick={props.onChange}
           tabIndex={0}
-          onKeyDown={this.handleKeyDown}
-          onMouseDown={this.createWave}
-          onMouseUp={this.destroyWave}
-          onFocus={this.createWave}
-          onBlur={this.destroyWave}
+          onKeyDown={linkEvent(this, this.handleKeyDown)}
+          onMouseDown={linkEvent(this, this.createWave)}
+          onMouseUp={linkEvent(this, this.destroyWave)}
+          onFocus={linkEvent(this, this.createWave)}
+          onBlur={linkEvent(this, this.destroyWave)}
         >
           <Thumb
             onClick={props.onChange}
-            checked={props.checked}
-            disabled={props.disabled}>
+            {...props}>
               <Wave
-                checked={props.checked}
-                disabled={props.disabled}
+                {...props}
                 transform={this.state.transform}
                 opacity={this.state.opacity}
               />

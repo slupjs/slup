@@ -6,7 +6,6 @@
   ],
   "ignore": [
     "@slup/buttons",
-    "@slup/controls",
     "@slup/icons",
     "@slup/lists",
     "@slup/sidenav",

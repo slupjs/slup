@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@slup/common": "0.0.1",
+    "@slup/controls": "0.0.1",
     "@slup/grid": "0.0.1",
     "@slup/theming": "0.0.1",
     "@slup/navbar": "0.0.1",
