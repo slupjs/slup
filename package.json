@@ -15,8 +15,20 @@
       "maxSize": "1 kB"
     },
     {
+      "path": "./packages/Controls/dist.js",
+      "maxSize": "2 kB"
+    },
+    {
       "path": "./packages/Grid/dist.js",
       "maxSize": "1 kB"
+    },
+    {
+      "path": "./packages/Navbar/dist.js",
+      "maxSize": "1.5 kB"
+    },
+    {
+      "path": "./packages/Ripple/dist.js",
+      "maxSize": "1.5 kB"
     },
     {
       "path": "./packages/Site/dist/vendor.js",
