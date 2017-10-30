@@ -1,9 +1,5 @@
-import Inferno   from 'inferno'
-import Component from 'inferno-component'
-import styled    from 'styled-components'
-import { rgba }  from 'polished'
-
-import { lightTheme } from '@slup/theming'
+import Inferno from 'inferno'
+import styled, { rgba, lightTheme } from '@slup/theming'
 
 export const Typography = styled.p`
   margin: 0;

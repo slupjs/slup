@@ -43,7 +43,7 @@ const FlatBase = styled.button`
   }
 `
 
-export class FlatButton extends Component {
+export class FlatButton extends Component<any, any> {
   render(props) {
     return(
       <FlatBase {...props}>

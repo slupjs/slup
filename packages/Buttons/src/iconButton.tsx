@@ -1,7 +1,6 @@
 import Inferno   from 'inferno'
-import styled    from 'styled-components'
 
-import { lightTheme, rgba } from '@slup/theming'
+import styled, { lightTheme, rgba } from '@slup/theming'
 import { Ripple } from '@slup/ripple'
 
 const IconBase = styled.button`

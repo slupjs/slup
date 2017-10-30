@@ -22,4 +22,6 @@ render(
   document.querySelector('.app')
 )
 
-window.t = T
+window.t = <Router history={History}>
+  {routes}
+</Router>

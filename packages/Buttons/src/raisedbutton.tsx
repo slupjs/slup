@@ -1,7 +1,6 @@
 import Inferno   from 'inferno'
-import Component from 'inferno-component'
 
-import { Ripple }     from '@slup/ripple'
+import { Ripple } from '@slup/ripple'
 import styled, { 
   lightTheme, 
   rgba, 
@@ -65,16 +64,11 @@ const RaisedBase = styled.button`
   }
 `
 
-export class RaisedButton extends Component {
-  render(props) {
-    return(
-      <RaisedBase {...props}>
-        {props.children}
-        {props.ripple == false || props.disabled
-          ? null
-          : <Ripple {...props.rippleOptions} />
-        }
-      </RaisedBase>
-    )
-  }
-}
+export const RaisedButton = (props) =>
+  <RaisedBase {...props}>
+    {props.children}
+    {props.ripple == false || props.disabled
+      ? null
+      : <Ripple {...props.rippleOptions} />
+    }
+  </RaisedBase>

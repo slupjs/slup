@@ -41,7 +41,7 @@ const Circle = styled.button`
   }
 `
 
-export class Fab extends Component {
+export class Fab extends Component<any, any> {
   render(props) {
     return(
       <Circle {...props}>

@@ -1,13 +1,12 @@
 /** Impprt the base configuration */
-import extend, { base } from '../../rollup.base'
-import Babel from 'rollup-plugin-babel'
+import extend from '../../rollup.base'
 
 /** Utils */
 import { join } from 'path'
 
 export default extend({
   /** Import path */
-  input: join(__dirname, 'src', 'index.tsx'),
+  input: join(__dirname, 'src', 'index.ts'),
 
   output: {
     /** Export path */
@@ -17,11 +16,6 @@ export default extend({
     format: 'umd',
 
     /** Name for the umd export */
-    name: 'Slup.Navbar'
-  },
-
-  plugins: [
-    ...base.plugins,
-    Babel()
-  ]
+    name: 'Slup.Theming'
+  }
 })

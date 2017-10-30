@@ -9,10 +9,11 @@ import { Container, Content } from './components/container'
 /** Load fronts and global styles */
 import './globals'
 
+console.log(Navbar)
+
 const App = ({ children }) => 
   <ThemeProvider theme={darkTheme}>
     <Container>
-      <Navbar>nav</Navbar>
       <Content>
         test spaced string
         {children}

@@ -22,8 +22,6 @@ export default extend({
 
   plugins: [
     ...base.plugins,
-    Babel({ 
-      plugins: ['inferno', 'transform-object-rest-spread' ]
-    })
+    Babel()
   ]
 })

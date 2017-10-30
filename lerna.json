@@ -5,12 +5,10 @@
     "packages/*"
   ],
   "ignore": [
-    "@slup/buttons",
     "@slup/lists",
     "@slup/sidenav",
     "@slup/slider",
-    "@slup/tabs",
-    "@slup/typography"
+    "@slup/tabs"
   ],
   "commands": {
     "publish": {

@@ -1,8 +1,6 @@
 const webpack = require('webpack')
 const { join } = require('path')
 const { tmpdir } = require('os')
-
-const tranformInferno = require('ts-transform-inferno').default
 const Package = join(__dirname, '..')
 
 const Base = {
@@ -12,11 +10,8 @@ const Base = {
     alias: {
       '@slup/slider': join(Package, 'Slider', 'src', 'index'),
       '@slup/lists': join(Package, 'Lists', 'src', 'index'),
-      '@slup/controls': join(Package, 'Controls', 'src', 'index'),
       '@slup/sidenav': join(Package, 'Sidenav', 'src', 'index'),
-      '@slup/tabs': join(Package, 'Tabs', 'src', 'index'),
-      '@slup/icons': join(Package, 'Icons', '_icons'),
-      '@slup/typography': join(Package, 'Typography', 'src', 'index')
+      '@slup/tabs': join(Package, 'Tabs', 'src', 'index')
     },
     modules: [ join(__dirname, 'node_modules') ]
   },
@@ -29,9 +24,6 @@ const Base = {
         loader: 'awesome-typescript-loader',
         options: {
           useBabel: true,
-          getCustomTransformers: () => ({
-            before: [tranformInferno()]
-          }),
           silent: process.argv.indexOf("--json") !== -1
         }
       },
@@ -47,7 +39,6 @@ const Base = {
     new webpack.optimize.ModuleConcatenationPlugin()
   ]
 }
-
 
 const Server = {
   entry: join(__dirname, 'src', 'server'),
