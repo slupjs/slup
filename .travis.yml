@@ -1,15 +1,10 @@
 language: node_js
-node_js: '7'
+node_js: 
+  - '6'
+  - '7'
+  - '8'
 sudo: required
-cache: yarn
-branches:
-  only:
-  - master
-
-before_install:
-  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 script:
-- yarn --production=false
 - yarn global add lerna
-- lerna exec --concurrency 1 -- yarn --production=false
-- lerna publish --canary --yes --cd-version=prepatch --preid=next --npm-tag=next
+- lerna bootstrap --loglevel=verbose
+- yarn test

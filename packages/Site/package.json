@@ -1,0 +1,48 @@
+{
+  "name": "@slup/site",
+  "version": "0.0.1",
+  "repository": "https://github.com/slupjs/slup/tree/master/packages/Site",
+  "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "compile:watch": "webpack --watch --progress",
+    "compile:build": "webpack -p --progress",
+    "compile:stats": "webpack -p --json > stats.json",
+    "start": "nodemon dist/server.js",
+    "prepublish": "npm run compile:build"
+  },
+  "devDependencies": {
+    "@types/node": "8.0.34",
+    "awesome-typescript-loader": "3.2.3",
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.2",
+    "babel-plugin-inferno": "3.2.0",
+    "babel-plugin-syntax-dynamic-import": "6.18.0",
+    "babel-preset-env": "1.6.0",
+    "nodemon": "1.12.1",
+    "ts-loader": "3.1.1",
+    "typescript": "2.5.3",
+    "webpack": "3.6.0"
+  },
+  "dependencies": {
+    "@slup/buttons": "0.0.1",
+    "@slup/typography": "0.0.1",
+    "@slup/common": "0.0.1",
+    "@slup/controls": "0.0.1",
+    "@slup/grid": "0.0.1",
+    "@slup/theming": "0.0.1",
+    "@slup/navbar": "0.0.1",
+    "@slup/ripple": "0.0.1",
+    "compression": "1.7.1",
+    "decko": "1.2.0",
+    "express": "4.16.1",
+    "history": "4.7.2",
+    "inferno": "3.9.0",
+    "inferno-component": "3.9.0",
+    "inferno-router": "3.9.0",
+    "inferno-server": "3.9.0",
+    "morgan": "1.9.0",
+    "prismjs": "1.8.1",
+    "stylis": "3.3.1"
+  }
+}

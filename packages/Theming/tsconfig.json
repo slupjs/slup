@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es3",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    
+    "jsx": "preserve",
+
+    "types": [
+      "node"
+    ],
+    
+    "lib": [
+      "es6",
+      "es7",
+      "dom"
+    ]
+  }
+}

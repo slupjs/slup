@@ -1,8 +1,13 @@
 {
-  "lerna": "2.0.0",
+  "lerna": "2.4.0",
   "npmClient": "yarn",
   "packages": [
     "packages/*"
   ],
-	"version": "0.0.1"
+  "commands": {
+    "publish": {
+      "ignore": [ "@slup/site" ]
+    }
+  },
+  "version": "0.0.1"
 }

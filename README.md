@@ -2,17 +2,33 @@
   <img src='http://svgshare.com/i/344.svg' width='65%' />
 
   <h5 align='center'>Sets of material design components built with web technologies</h5>
+
+  <h5 align='center'>
+    <a href="https://lernajs.io/">
+      <img alt="Lerna" src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg">
+    </a>
+    <a href="https://travis-ci.org/slupjs/slup">
+      <img alt="Build Status" src="https://travis-ci.org/slupjs/slup.svg?branch=master">
+    </a>
+    <a>
+      <img alt="License" src="https://img.shields.io/github/license/slupjs/slup.svg">
+    </a>
+  </h5>
 </h1>
 
 > **NOTE: The library isn't complete yet**
 
-Slup was created by our desire for a performing UI framework following strictly [Material Design guidelines](https://material.io/guidelines). It packs lightweight components, based on the blazing-fast React-like library [Inferno](https://infernojs.org) and the [Styled Components](https://styled-components.com) UI library to provide easy theamability and fast rendering. This set of libraries makes us able to provide a complete asset of components
+Slup was created by our desire for a performing UI framework following strictly [Material Design guidelines](https://material.io/guidelines). It packs lightweight components, based on the blazing-fast React-like library [Inferno](https://infernojs.org) and our own styling method inspired by the well known styled-component, but rewritten in a smaller and lightweight fashion. The speed and small size of our libraries provides some of the most goreous components in the design history with a lightweight and performant approach, perfect for your next PWA or web application. 
 
+Plus we've also got an amazing support provided by [Typescript](https://www.typescriptlang.org/)(the most loved `compile-to-javascript` language from the comminty)!
 
-So we started developing it with three core concepts in mind:
+## Philosophy
 
 * High Performance
 * Meticulousness
+* Beautiful and well commented(understandable) code
+* Be as indipendent from other libraries as possible
+* Enhance compatibility with other frameworks like (p)react [NOT YET]
 * Small size and small footprint
 
 ## Getting Started
