@@ -1,7 +1,4 @@
-import styled from 'styled-components'
-
-import { lightTheme } from '@slup/theming'
-import { darken }     from 'polished'
+import styled, { lightTheme, darken } from '@slup/theming'
 
 export const Scroll = styled.div`
   position: absolute;

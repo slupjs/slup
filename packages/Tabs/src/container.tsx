@@ -1,10 +1,7 @@
-import Inferno   from 'inferno'
+import Inferno, { linkEvent } from 'inferno'
 import Component from 'inferno-component'
-import styled    from 'styled-components'
-import { bind, debounce }  from 'decko'
 
-import { lightTheme } from '@slup/theming'
-import { darken }			from 'polished'
+import styled, { lightTheme, darken } from '@slup/theming'
 
 import { Scroll }      from './scroll'
 import { Indicator }   from './indicator'
@@ -23,11 +20,21 @@ const Container = styled.div`
   };
 `
 
+interface IProps {
+  selected: number
+}
 
-export class Tabs extends Component {
-  id    = null
-  count = 0
-  state = { style: {}, translate: false }
+interface IState { 
+  style: Object, 
+  translate: boolean 
+}
+
+export class Tabs extends Component<IProps, IState> {
+  private id    = null
+  private count = 0
+  private scroll = null
+
+  public state = { style: {}, translate: false }
 
   componentDidMount() {
     /**
@@ -37,7 +44,7 @@ export class Tabs extends Component {
     this.updateIndicator()
 
     // Listen for resized
-    window.addEventListener('resize', this.updateIndicator)
+    window.addEventListener('resize', this.updateIndicator.bind(this))
 
     if (this.isScrollable(this.scroll))
       this.setState({ translate: true })
@@ -45,13 +52,12 @@ export class Tabs extends Component {
   }
 
   componentDidUnmount() {
-    window.removeEventListener('resize', this.updateIndicator)
+    window.removeEventListener('resize', this.updateIndicator.bind(this))
   }
 
-  componentWillReceiveProps = this.updateIndicator
-
-  @bind
-  updateIndicator(newProps = {}) {
+  componentWillReceiveProps = this.updateIndicator.bind(this)
+  
+  updateIndicator(newProps?: IProps) {
     /**
      * As selected may be undefined in the componentDidMount
      * event we prevent errors by taking the value
@@ -73,9 +79,7 @@ export class Tabs extends Component {
     this.setState({ style: { left, width } })
   }
 
-
-  @bind
-  moveScroll(direction) {
+  moveScroll(this, direction) {
     let id    = 0
     let count = 0
 
@@ -134,7 +138,7 @@ export class Tabs extends Component {
 
         {/* Left scroll arrow */}
         {scrollable
-          ? <Arrow onClick={() => this.moveScroll('left')} />
+          ? <Arrow onClick={linkEvent(this, 'left',this.moveScroll)} />
           : null
         }
 
@@ -155,7 +159,7 @@ export class Tabs extends Component {
 
         {/* Right scroll arrow */}
         {scrollable
-          ? <Arrow right onClick={() => this.moveScroll('right')} />
+          ? <Arrow right onClick={linkEvent(this, 'right', this.moveScroll)} />
           : null
         }
       </Container>
