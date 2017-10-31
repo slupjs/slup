@@ -44,7 +44,7 @@
     },
     {
       "path": "./packages/Slider/dist.js",
-      "maxSize": "1.25 kB"
+      "maxSize": "2.5 kB"
     },
     {
       "path": "./packages/Site/dist/vendor.js",
