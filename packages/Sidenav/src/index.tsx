@@ -1,9 +1,6 @@
 import Inferno   from 'inferno'
 import Component from 'inferno-component'
-import styled    from 'styled-components'
-import { bind } from 'decko'
-
-import { lightTheme } from '@slup/theming'
+import styled, { lightTheme } from '@slup/theming'
 
 const Drawer = styled.div`
   z-index: 1000;
@@ -58,24 +55,22 @@ const Overlay = styled.div`
   }
 `
 
-export class Sidenav extends Component {
+export class Sidenav extends Component<any, any> {
 
   componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyDown)
+    document.addEventListener('keydown', this.handleKeyDown.bind(this))
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyDown)
+    document.removeEventListener('keydown', this.handleKeyDown.bind(this))
   }
 
-  @bind
   handleKeyDown({ keyCode }) {
     if (this.props.opened && keyCode == 27) {
       this.props.onClose()
     }
   }
 
-  @bind
   handleClick(e) {
     if(this.props.onClose) {
       this.props.onClose(e)
