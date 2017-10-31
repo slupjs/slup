@@ -35,6 +35,14 @@
       "maxSize": "2.5 kB"
     },
     {
+      "path": "./packages/Sidenav/dist.js",
+      "maxSize": "1.5 kB"
+    },
+    {
+      "path": "./packages/Slider/dist.js",
+      "maxSize": "2.5 kB"
+    },
+    {
       "path": "./packages/Site/dist/vendor.js",
       "maxSize": "35 kB"
     }
