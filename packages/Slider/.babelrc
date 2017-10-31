@@ -1,9 +1,6 @@
 {
-  "presets": [ "es2015" ],
   "plugins": [
-    "inferno",
-    "transform-decorators-legacy",
-    "transform-class-properties",
+    ["inferno", {"imports": true}],
     "transform-object-rest-spread"
   ]
 }

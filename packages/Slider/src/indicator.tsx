@@ -1,7 +1,5 @@
 import Inferno   from 'inferno'
-import styled    from 'styled-components'
-
-import { lightTheme } from '@slup/theming'
+import styled, { lightTheme } from '@slup/theming'
 
 const Discrete = styled.div`
   position: absolute;

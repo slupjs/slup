@@ -6,7 +6,6 @@
   ],
   "ignore": [
     "@slup/lists",
-    "@slup/slider",
   ],
   "commands": {
     "publish": {

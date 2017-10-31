@@ -1,6 +1,4 @@
-import styled         from 'styled-components'
-
-import { lightTheme } from '@slup/theming'
+import styled, { lightTheme } from '@slup/theming'
 
 import { Container } from './parts'
 

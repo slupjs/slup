@@ -1,7 +1,4 @@
-import styled         from 'styled-components'
-import { rgba }       from 'polished'
-
-import { lightTheme } from '@slup/theming'
+import styled, { lightTheme, rgba } from '@slup/theming'
 
 
 export const Container = styled.div`

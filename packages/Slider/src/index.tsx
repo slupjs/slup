@@ -1,7 +1,6 @@
 import Inferno   from 'inferno'
 import Component from 'inferno-component'
-import styled    from 'styled-components'
-import { bind }  from 'decko'
+import styled from '@slup/theming'
 
 import { Indicator } from './indicator'
 import { Dots, Dot } from './steps'
@@ -12,8 +11,9 @@ import {
   Track
 } from './parts'
 
-export class Slider extends Component {
-  state = {
+export class Slider extends Component<any, any> {
+  private slider = null
+  public state = {
     focus: false,
     keyFocus: false,
   }
@@ -30,32 +30,15 @@ export class Slider extends Component {
   split = (max, parts) => max / parts
 
   componentWillMount() {
-    document.body.addEventListener(
-      'mousemove',
-      this.handleMouseMove,
-      { passive: true }
-    )
-    document.body.addEventListener(
-      'mouseup',
-      this.handleMouseUp,
-      { passive: true }
-    )
+    document.body.addEventListener('mousemove', this.handleMouseMove.bind(this))
+    document.body.addEventListener('mouseup', this.handleMouseUp.bind(this))
   }
 
   componentWillUnmount() {
-    document.body.removeEventListener(
-      'mousemove',
-      this.handleMouseMove,
-      { passive: true }
-    )
-    document.body.removeEventListener(
-      'mouseup',
-      this.handleMouseUp,
-      { passive: true }
-    )
+    document.body.removeEventListener('mousemove', this.handleMouseMove.bind(this))
+    document.body.removeEventListener('mouseup', this.handleMouseUp.bind(this))
   }
 
-  @bind
   progressFromEvent({ clientX }) {
     const { offsetLeft, clientWidth } = this.slider
     const { max } = this.props
@@ -65,14 +48,13 @@ export class Slider extends Component {
 
   }
 
-  emit(type, value) {
+  emit(type: string, value?: any) {
     const eventName = 'on' + this.capitalize(type)
     if(typeof this.props[eventName] == 'function') {
       this.props[eventName](value)
     }
   }
 
-  @bind
   handleMouseDown(e) {
     // Set the state and emit the focus event
     this.setState({ focus: true })
@@ -81,20 +63,18 @@ export class Slider extends Component {
     this.handleMouseMove(e)
   }
 
-  @bind
   handleMouseUp(e) {
     // Set the state and emit the blur event
     this.setState({ focus: false })
     this.emit('blur')
   }
 
-  @bind
   handleMouseMove(e) {
     /** Ignore moves when unfocused */
     if (!this.state.focus) return
 
     if (this.props.steps && this.props.discrete) {
-      const perc = this.progressFromEvent(e)
+      const perc = this.progressFromEvent.bind(this)(e)
       const spl  = this.split(this.props.max, this.props.steps)
       const index = Math.round(perc / spl)
 
@@ -102,15 +82,13 @@ export class Slider extends Component {
       this.emit('change', index * spl)
     }
 
-    else this.emit('change', this.progressFromEvent(e))
+    else this.emit('change', this.progressFromEvent.bind(this)(e))
   }
 
-  @bind
   handleFocus() {
     this.setState({ keyFocus: true })
   }
 
-  @bind
   handleKeyDown({ keyCode }) {
     const { vise } = this
     let { value, max } = this.props
@@ -164,9 +142,9 @@ export class Slider extends Component {
     return(
       <Container
         {...props}
-        onMouseDown={handleMouseDown}
-        onKeyDown={handleKeyDown}
-        onFocus={handleFocus}
+        onMouseDown={handleMouseDown.bind(this)}
+        onKeyDown={handleKeyDown.bind(this)}
+        onFocus={handleFocus.bind(this)}
         innerRef={e => this.slider = e}
         tabIndex={props.disabled ? -1 : 0}
         focus={focus}
