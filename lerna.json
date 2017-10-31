@@ -6,9 +6,7 @@
   ],
   "ignore": [
     "@slup/lists",
-    "@slup/sidenav",
     "@slup/slider",
-    "@slup/tabs"
   ],
   "commands": {
     "publish": {
