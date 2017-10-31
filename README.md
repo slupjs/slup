@@ -39,37 +39,51 @@ Here's how:
 ## Installation
 
 Any slup package can be installed whit [NPM](http://npmjs.com/) as follows:
-```
+```bash
 npm i -s @slup/<package>
 ```
 
 ## Running the demo
+> NOTE: This process requires you to have installed [lerna](https://lernajs.io/) globally.
 
 - To kick things off, clone the demo and enter that directory:
-```
+```bash
 git clone https://github.com/slupjs/slup && cd slup
 ```
 
-- Install dependencies and run the demo:
-```
-npm install && npm start
+- Install packages and run the demo:
+```bash
+lerna bootstrap # Install packages and symlinks
+cd packages/Site # Go into the demo's site folder
+yarn run compile:build # Build the javascritp SSR and client
+yarn start # Start the demo server
 ```
 
 ## Development setup
 > NOTE: This process requires you to have installed [lerna](https://lernajs.io/) globally.
 
 - To kick things off, clone the demo and enter that directory:
-```
+```bash
 git clone https://github.com/slupjs/slup && cd slup
 ```
 
-- Install dependencies:
-```
-npm install && 
-lerna exec --concurrency 1 -- npm install
+- Install packages:
+```bash
+lerna bootstrap # Install packages and symlinks
 ```
 
-Now feel free to make your changes and create new [PRs](https://github.com/Gejsi/Material/pulls)
+- Then move onto the demo's folder and start the watcher and the server:
+```bash
+cd packages/Site # Go into the demo's site folder
+
+# In a first terminal: 
+yarn run compile:watch # Bundle the application watching for changes
+
+# In a second terminal:
+yarn start # Start the demo server
+```
+
+Now feel free to make your changes and create new [PRs](https://github.com/Gejsi/Material/pulls) 🎉
 
 ## License
 
