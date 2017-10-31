@@ -1,10 +1,7 @@
 import Inferno   from 'inferno'
-import Component from 'inferno-component'
-import { bind }  from 'decko'
-import styled    from 'styled-components'
 
-import { Ripple }     from '@slup/ripple'
-import { lightTheme } from '@slup/theming'
+import { Ripple } from '@slup/ripple'
+import styled, { lightTheme } from '@slup/theming'
 
 const Li = styled.li`
   box-sizing: border-box;
@@ -34,17 +31,12 @@ const Li = styled.li`
   }
 `
 
-export class ListItem extends Component {
-  render(props) {
-    return(
-      <Li  {...props}>
-        {props.children}
+export const ListItem = (props) =>
+  <Li  {...props}>
+    {props.children}
 
-        {props.ripple === false || props.sublist === true
-          ? null
-          : <Ripple {...props.rippleOptions} />
-        }
-      </Li>
-    )
-  }
-}
+    {props.ripple === false || props.sublist === true
+      ? null
+      : <Ripple {...props.rippleOptions} />
+    }
+  </Li>

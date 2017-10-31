@@ -1,6 +1,5 @@
 import Inferno   from 'inferno'
-import Component from 'inferno-component'
-import styled    from 'styled-components'
+import styled    from '@slup/theming'
 
 export const List = styled.ul`
   margin: 0;

@@ -1,6 +1,4 @@
-import styled from 'styled-components'
-
-import { lightTheme } from '@slup/theming'
+import styled, { lightTheme } from '@slup/theming'
 
 export const Subheader = styled.li`
   height: 48px;
