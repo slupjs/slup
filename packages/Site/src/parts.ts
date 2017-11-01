@@ -19,8 +19,8 @@ export default `
       {{HTML}}
     </div>
     <script>window.__ids = {{IDS}}</script>
-    <script src='static/vendor.js'></script>
-    <script src='static/routes.js'></script>
+    <script src='/static/vendor.js'></script>
+    <script src='/static/routes.js'></script>
   </body>
 </html>
 `
