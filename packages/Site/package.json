@@ -33,6 +33,7 @@
     "@slup/theming": "0.0.1",
     "@slup/navbar": "0.0.1",
     "@slup/ripple": "0.0.1",
+    "@slup/icons": "0.0.1",
     "compression": "1.7.1",
     "decko": "1.2.0",
     "express": "4.16.1",

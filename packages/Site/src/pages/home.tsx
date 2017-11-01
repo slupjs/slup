@@ -1,10 +1,31 @@
-import Inferno from 'inferno'
-import { RaisedButton } from '@slup/buttons'
-import { Typography } from '@slup/typography'
+import Inferno, { linkEvent } from 'inferno'
+import styled from '@slup/theming'
 
-export default () => 
-  <div>
-    <RaisedButton>button</RaisedButton>
+import { FlatButton } from '@slup/buttons'
+import { Logo } from '../components/logo'
 
-    <Typography title>TEST</Typography>
-  </div>
+const LogoContainer = styled.div`
+  display: flex;
+  flex: 1;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
+
+/** Redirect helper */
+const redirect = router => 
+  setTimeout(any => router.push('/components/buttons'), 350)
+
+export default (props: Object, context: { router: any }) =>
+  <LogoContainer>
+    <Logo />
+
+    <FlatButton 
+      onClick={linkEvent(context.router, redirect)} 
+      primary
+    >
+      Get started
+    </FlatButton>
+
+  </LogoContainer>

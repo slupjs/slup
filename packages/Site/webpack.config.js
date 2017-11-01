@@ -6,13 +6,6 @@ const Package = join(__dirname, '..')
 const Base = {
   resolve: {
     extensions: [ '.ts', '.tsx', '.js', '.jsx' ],
-
-    alias: {
-      '@slup/slider': join(Package, 'Slider', 'src', 'index'),
-      '@slup/lists': join(Package, 'Lists', 'src', 'index'),
-      '@slup/sidenav': join(Package, 'Sidenav', 'src', 'index'),
-      '@slup/tabs': join(Package, 'Tabs', 'src', 'index')
-    },
     modules: [ join(__dirname, 'node_modules') ]
   },
 
@@ -88,6 +81,8 @@ const Client = {
       'inferno-router',
       'prismjs/prism',
       'prismjs/components/prism-jsx',
+      '@slup/common',
+      '@slup/theming',
       'history/createBrowserHistory'
     ],
     routes: join(__dirname, 'src', 'client')
