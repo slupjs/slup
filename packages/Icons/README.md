@@ -493,22 +493,22 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **deleteForever** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_delete_forever_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/actiondeleteForever'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **delete** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_delete_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
       import Icon from '@slup/icons/actiondelete'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **deleteForever** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_delete_forever_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/actiondeleteForever'
 
       export default () => <Icon />
       ```

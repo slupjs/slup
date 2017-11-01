@@ -24,7 +24,32 @@ const Base = {
         loader: 'awesome-typescript-loader',
         options: {
           useBabel: true,
-          silent: process.argv.indexOf("--json") !== -1
+          babelOptions: { 
+            babelrc: false,
+            'presets': [
+              [join(__dirname, 'node_modules', 'babel-preset-env'), {
+                'targets': {
+                  'browsers': [
+                    'last 2 versions',
+                    'safari >= 7'
+                  ],
+                  'node': '4'
+                }
+              }]
+            ],
+            'plugins': [
+              join(__dirname, 'node_modules', 'babel-plugin-transform-object-rest-spread'),
+              [join(__dirname, 'node_modules', 'babel-plugin-inferno'), { 'imports': true }]
+            ],
+            'env': {
+              'production': {
+                'presets': [
+                  join(__dirname, 'node_modules', 'babel-preset-minify')
+                ]
+              }
+            }
+          },
+          silent: process.argv.indexOf('--json') !== -1
         }
       },
       {
@@ -83,7 +108,7 @@ const Client = {
 }
 
 /** In case we're taking stats we only care about the client */
-if(process.argv.indexOf("--json") !== -1) {
+if(process.argv.indexOf('--json') !== -1) {
   module.exports = Object.assign({}, Base, Client)
 } else {
   module.exports = [
