@@ -19,7 +19,7 @@ const redirect = router =>
 
 export default (props: Object, context: { router: any }) =>
   <LogoContainer>
-    <Logo />
+    <Logo style={{ marginTop: -100 }} />
 
     <FlatButton 
       onClick={linkEvent(context.router, redirect)} 
