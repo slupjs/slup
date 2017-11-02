@@ -17,7 +17,7 @@ export const Title = styled(Typography)`
   margin-left: 16px
 `
 
-export const Header = (props, { router }) => {
+export const Header = ({ onOpen, ...props }, { router }) => {
   return(
     <NavBar> 
       <Grid middle space_between style={{ overflow: 'hidden' }}>
@@ -25,7 +25,7 @@ export const Header = (props, { router }) => {
         <div style={{ display: 'flex', alignItems: 'center' }}>
 
           {/** Icon to open the sidenav */}
-          <IconButton>
+          <IconButton onClick={onOpen}>
             <MenuIcon />
           </IconButton>
 

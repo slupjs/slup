@@ -4,7 +4,7 @@
   "description": "Sidenav element built upon Inferno with the Slup framework",
   "repository": "https://github.com/slupjs/slup/tree/master/packages/Sidenav",
   "main": "dist.js",
-  "module": "src/index.ts",
+  "module": "src/index.tsx",
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {

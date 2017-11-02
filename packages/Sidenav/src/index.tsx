@@ -1,4 +1,4 @@
-import Inferno   from 'inferno'
+import Inferno, { linkEvent } from 'inferno'
 import Component from 'inferno-component'
 import styled, { lightTheme } from '@slup/theming'
 
@@ -56,7 +56,6 @@ const Overlay = styled.div`
 `
 
 export class Sidenav extends Component<any, any> {
-
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown.bind(this))
   }
@@ -66,18 +65,18 @@ export class Sidenav extends Component<any, any> {
   }
 
   handleKeyDown({ keyCode }) {
-    if (this.props.opened && keyCode == 27) {
-      this.props.onClose()
+    if(this.props.opened && keyCode == 27) {
+      /** Normal event listener */
+      if(typeof this.props.onClose == 'function') this.props.onClose()
+      
+      /** Inferno's linkEvent function */
+      if(typeof this.props.onClose == 'object') {
+        this.props.onClose.event(this.props.onClose.data)
+      }
     }
   }
 
-  handleClick(e) {
-    if(this.props.onClose) {
-      this.props.onClose(e)
-    }
-  }
-
-  render(props) {
+  render({ onClose, ...props }) {
     return (
       <div>
         <Drawer {...props} />
@@ -87,7 +86,7 @@ export class Sidenav extends Component<any, any> {
             opened={props.opened}
             permanent={props.permanent}
             responsive={props.responsive}
-            onClick={this.handleClick} />
+            onClick={onClose ? onClose : null} />
         }
       </div>
     )
