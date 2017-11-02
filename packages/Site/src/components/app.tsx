@@ -24,8 +24,6 @@ export class App extends Component<null, { open: boolean }> {
    * @param this The local class
    */
   private toggleNav({ self, value }: { self: any, value: boolean }) {
-    console.log('called', self, value)
-
     self.setState({ open: value })
   }
 
