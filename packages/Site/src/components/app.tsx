@@ -1,6 +1,6 @@
 import { linkEvent } from 'inferno'
 import Component from 'inferno-component'
-import { ThemeProvider, WHITE, DEEP_PURPLE } from '@slup/theming'
+import { ThemeProvider, WHITE, DEEP_PURPLE, BLUE } from '@slup/theming'
 
 import { Header } from './header'
 import { Navigation } from './navigation'
@@ -10,7 +10,7 @@ import { Pages } from '../pages'
 export const THEME = {
   text: WHITE,
   primary: WHITE,
-  secondary: WHITE,
+  secondary: BLUE[500],
   background: DEEP_PURPLE[500]
 }
 
@@ -20,7 +20,7 @@ export class App extends Component<null, { open: boolean }> {
 
   /**
    * Toggles the sidenav
-   * 
+   *
    * @param this The local class
    */
   private toggleNav({ self, value }: { self: any, value: boolean }) {
@@ -33,8 +33,8 @@ export class App extends Component<null, { open: boolean }> {
         <Container>
 
           {/** The page's header */}
-          <Header 
-            onOpen={linkEvent({ value: true, self: this }, this.toggleNav)} 
+          <Header
+            onOpen={linkEvent({ value: true, self: this }, this.toggleNav)}
           />
 
           {/** Sidenav */}

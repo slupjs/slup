@@ -3,33 +3,11 @@ import Component from 'inferno-component'
 
 import { Ripple } from '@slup/ripple'
 import styled, { lightTheme, rgba } from '@slup/theming'
+import { ButtonBase } from './buttonBase'
 
-const FlatBase = styled.button`
-  /* Not changing values */
-  position: relative;
-  font-family: inherit;
-  font-weight: 500;
-  border: none; outline: none;
-  min-height: 36px;
-  min-width: 88px;
-  border-radius: 2px;
-  text-transform: uppercase;
-  font-size: 14px;
-  margin: 0 8px;
-  padding: 0 8px;
+const FlatBase = styled(ButtonBase)`
   transition: background 150ms linear;
-  user-select: none;
   background: transparent;
-
-  /**
-   * Disables blue background on tap in mobile devices.
-   * See:
-   * - https://stackoverflow.com/a/29961714
-   * - #32
-   */
-  -webkit-tap-highlight-color: transparent;
-
-  /* Changing values */
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   color: ${props => props.disabled
     ? rgba(props.theme.text || lightTheme.text, .26)

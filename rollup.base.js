@@ -28,6 +28,7 @@ export const base = {
     '@slup/controls': 'Slup.Controls',
     '@slup/grid': 'Slup.Grid',
     '@slup/icons': 'Slup.Icons',
+    '@slup/lists': 'Slup.Lists',
     '@slup/navbar': 'Slup.Navbar',
     '@slup/sidenav': 'Slup.Sidenav',
     '@slup/slider': 'Slup.Slider',
@@ -42,7 +43,7 @@ export const base = {
   plugins: [
     CJS(),
     RS(),
-    TS({ 
+    TS({
       cacheRoot: join(tmpdir(), '.rpt2_cache'),
       /**
        * Needed to avoid errors with TS and missing types,

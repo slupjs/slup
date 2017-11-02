@@ -17,7 +17,7 @@ export default extend({
     format: 'umd',
 
     /** Name for the umd export */
-    name: 'Slup.Buttons'
+    name: 'Slup.Sidenav'
   },
 
   plugins: [

@@ -1,4 +1,4 @@
-import Inferno   from 'inferno'
+import Inferno from 'inferno'
 
 import styled, { lightTheme, rgba } from '@slup/theming'
 import { Ripple } from '@slup/ripple'

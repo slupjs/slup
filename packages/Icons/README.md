@@ -243,22 +243,22 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **assignmentReturn** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_assignment_return_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/actionassignmentReturn'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **assignmentReturned** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_assignment_returned_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
       import Icon from '@slup/icons/actionassignmentReturned'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **assignmentReturn** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_assignment_return_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/actionassignmentReturn'
 
       export default () => <Icon />
       ```
@@ -293,16 +293,6 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **book** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_book_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/actionbook'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **bookmark** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_bookmark_black_24px.svg">
 
       This icon can be used as follows:
@@ -319,6 +309,16 @@ This command will execute the `install.js` script wich will fetch for all the ic
 
       ```js
       import Icon from '@slup/icons/actionbookmarkBorder'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **book** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_book_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/actionbook'
 
       export default () => <Icon />
       ```
@@ -753,16 +753,6 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **gTranslate** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_g_translate_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/actiongTranslate'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **gavel** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_gavel_black_24px.svg">
 
       This icon can be used as follows:
@@ -809,6 +799,16 @@ This command will execute the `install.js` script wich will fetch for all the ic
 
       ```js
       import Icon from '@slup/icons/actiongroupWork'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **gTranslate** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_g_translate_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/actiongTranslate'
 
       export default () => <Icon />
       ```
@@ -883,22 +883,22 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **http** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_http_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/actionhttp'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **https** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_https_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
       import Icon from '@slup/icons/actionhttps'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **http** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_http_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/actionhttp'
 
       export default () => <Icon />
       ```
@@ -1663,26 +1663,6 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **shop** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_shop_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/actionshop'
-
-      export default () => <Icon />
-      ```
-
-    - ## Icon: **shopTwo** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_shop_two_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/actionshopTwo'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **shoppingBasket** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_shopping_basket_black_24px.svg">
 
       This icon can be used as follows:
@@ -1699,6 +1679,26 @@ This command will execute the `install.js` script wich will fetch for all the ic
 
       ```js
       import Icon from '@slup/icons/actionshoppingCart'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **shop** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_shop_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/actionshop'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **shopTwo** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_shop_two_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/actionshopTwo'
 
       export default () => <Icon />
       ```
@@ -1763,16 +1763,6 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **supervisorAccount** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_supervisor_account_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/actionsupervisorAccount'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **swapHoriz** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_swap_horiz_black_24px.svg">
 
       This icon can be used as follows:
@@ -1783,12 +1773,12 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **swapVert** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_swap_vert_black_24px.svg">
+    - ## Icon: **supervisorAccount** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_supervisor_account_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
-      import Icon from '@slup/icons/actionswapVert'
+      import Icon from '@slup/icons/actionsupervisorAccount'
 
       export default () => <Icon />
       ```
@@ -1799,6 +1789,16 @@ This command will execute the `install.js` script wich will fetch for all the ic
 
       ```js
       import Icon from '@slup/icons/actionswapVerticalCircle'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **swapVert** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_swap_vert_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/actionswapVert'
 
       export default () => <Icon />
       ```
@@ -1843,6 +1843,16 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
+    - ## Icon: **thumbsUpDown** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_thumbs_up_down_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/actionthumbsUpDown'
+
+      export default () => <Icon />
+      ```
+
     - ## Icon: **thumbDown** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_thumb_down_black_24px.svg">
 
       This icon can be used as follows:
@@ -1859,16 +1869,6 @@ This command will execute the `install.js` script wich will fetch for all the ic
 
       ```js
       import Icon from '@slup/icons/actionthumbUp'
-
-      export default () => <Icon />
-      ```
-
-    - ## Icon: **thumbsUpDown** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_thumbs_up_down_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/actionthumbsUpDown'
 
       export default () => <Icon />
       ```
@@ -2595,22 +2595,22 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **notInterested** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_not_interested_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/avnotInterested'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **note** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_note_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
       import Icon from '@slup/icons/avnote'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **notInterested** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_not_interested_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/avnotInterested'
 
       export default () => <Icon />
       ```
@@ -2645,36 +2645,6 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **playArrow** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_play_arrow_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/avplayArrow'
-
-      export default () => <Icon />
-      ```
-
-    - ## Icon: **playCircleFilled** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_play_circle_filled_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/avplayCircleFilled'
-
-      export default () => <Icon />
-      ```
-
-    - ## Icon: **playCircleOutline** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_play_circle_outline_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/avplayCircleOutline'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **playlistAdd** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_playlist_add_black_24px.svg">
 
       This icon can be used as follows:
@@ -2701,6 +2671,36 @@ This command will execute the `install.js` script wich will fetch for all the ic
 
       ```js
       import Icon from '@slup/icons/avplaylistPlay'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **playArrow** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_play_arrow_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/avplayArrow'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **playCircleFilled** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_play_circle_filled_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/avplayCircleFilled'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **playCircleOutline** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_play_circle_outline_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/avplayCircleOutline'
 
       export default () => <Icon />
       ```
@@ -2925,6 +2925,26 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
+    - ## Icon: **videocam** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_videocam_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/avvideocam'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **videocamOff** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_videocam_off_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/avvideocamOff'
+
+      export default () => <Icon />
+      ```
+
     - ## Icon: **videoCall** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_video_call_black_24px.svg">
 
       This icon can be used as follows:
@@ -2951,26 +2971,6 @@ This command will execute the `install.js` script wich will fetch for all the ic
 
       ```js
       import Icon from '@slup/icons/avvideoLibrary'
-
-      export default () => <Icon />
-      ```
-
-    - ## Icon: **videocam** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_videocam_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/avvideocam'
-
-      export default () => <Icon />
-      ```
-
-    - ## Icon: **videocamOff** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_videocam_off_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/avvideocamOff'
 
       export default () => <Icon />
       ```
@@ -3176,6 +3176,16 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
+    - ## Icon: **contacts** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_contacts_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/communicationcontacts'
+
+      export default () => <Icon />
+      ```
+
     - ## Icon: **contactMail** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_contact_mail_black_24px.svg">
 
       This icon can be used as follows:
@@ -3192,16 +3202,6 @@ This command will execute the `install.js` script wich will fetch for all the ic
 
       ```js
       import Icon from '@slup/icons/communicationcontactPhone'
-
-      export default () => <Icon />
-      ```
-
-    - ## Icon: **contacts** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_contacts_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/communicationcontacts'
 
       export default () => <Icon />
       ```
@@ -3256,22 +3256,22 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **importExport** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_import_export_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/communicationimportExport'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **invertColorsOff** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_invert_colors_off_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
       import Icon from '@slup/icons/communicationinvertColorsOff'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **importExport** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_import_export_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/communicationimportExport'
 
       export default () => <Icon />
       ```
@@ -3336,16 +3336,6 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **phone** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_phone_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/communicationphone'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **phonelinkErase** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_phonelink_erase_black_24px.svg">
 
       This icon can be used as follows:
@@ -3382,6 +3372,16 @@ This command will execute the `install.js` script wich will fetch for all the ic
 
       ```js
       import Icon from '@slup/icons/communicationphonelinkSetup'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **phone** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_phone_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/communicationphone'
 
       export default () => <Icon />
       ```
@@ -3948,22 +3948,22 @@ This command will execute the `install.js` script wich will fetch for all the ic
       ```
 - ## Category: **device**
 
-    - ## Icon: **accessAlarm** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_access_alarm_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/deviceaccessAlarm'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **accessAlarms** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_access_alarms_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
       import Icon from '@slup/icons/deviceaccessAlarms'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **accessAlarm** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_access_alarm_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/deviceaccessAlarm'
 
       export default () => <Icon />
       ```
@@ -4969,22 +4969,22 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **formatColorReset** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_format_color_reset_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/editorformatColorReset'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **formatColorText** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_format_color_text_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
       import Icon from '@slup/icons/editorformatColorText'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **formatColorReset** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_format_color_reset_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/editorformatColorReset'
 
       export default () => <Icon />
       ```
@@ -5099,22 +5099,22 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **formatTextdirectionLToR** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_format_textdirection_l_to_r_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/editorformatTextdirectionLToR'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **formatTextdirectionRToL** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_format_textdirection_r_to_l_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
       import Icon from '@slup/icons/editorformatTextdirectionRToL'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **formatTextdirectionLToR** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_format_textdirection_l_to_r_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/editorformatTextdirectionLToR'
 
       export default () => <Icon />
       ```
@@ -5621,22 +5621,22 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **deviceHub** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_device_hub_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/hardwaredeviceHub'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **devicesOther** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_devices_other_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
       import Icon from '@slup/icons/hardwaredevicesOther'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **deviceHub** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_device_hub_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/hardwaredeviceHub'
 
       export default () => <Icon />
       ```
@@ -5851,26 +5851,6 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **phoneAndroid** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_phone_android_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/hardwarephoneAndroid'
-
-      export default () => <Icon />
-      ```
-
-    - ## Icon: **phoneIphone** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_phone_iphone_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/hardwarephoneIphone'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **phonelink** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_phonelink_black_24px.svg">
 
       This icon can be used as follows:
@@ -5887,6 +5867,26 @@ This command will execute the `install.js` script wich will fetch for all the ic
 
       ```js
       import Icon from '@slup/icons/hardwarephonelinkOff'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **phoneAndroid** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_phone_android_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/hardwarephoneAndroid'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **phoneIphone** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_phone_iphone_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/hardwarephoneIphone'
 
       export default () => <Icon />
       ```
@@ -6042,16 +6042,6 @@ This command will execute the `install.js` script wich will fetch for all the ic
       ```
 - ## Category: **image**
 
-    - ## Icon: **addAPhoto** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_add_a_photo_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/imageaddAPhoto'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **addToPhotos** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_add_to_photos_black_24px.svg">
 
       This icon can be used as follows:
@@ -6172,12 +6162,12 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **brightness4** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_brightness_4_black_24px.svg">
+    - ## Icon: **addAPhoto** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_add_a_photo_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
-      import Icon from '@slup/icons/imagebrightness4'
+      import Icon from '@slup/icons/imageaddAPhoto'
 
       export default () => <Icon />
       ```
@@ -6202,6 +6192,16 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
+    - ## Icon: **brightness4** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_brightness_4_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/imagebrightness4'
+
+      export default () => <Icon />
+      ```
+
     - ## Icon: **brightness7** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_brightness_7_black_24px.svg">
 
       This icon can be used as follows:
@@ -6212,22 +6212,22 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **brokenImage** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_broken_image_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/imagebrokenImage'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **brush** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_brush_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
       import Icon from '@slup/icons/imagebrush'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **brokenImage** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_broken_image_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/imagebrokenImage'
 
       export default () => <Icon />
       ```
@@ -6332,22 +6332,22 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **colorLens** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_color_lens_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/imagecolorLens'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **colorize** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_colorize_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
       import Icon from '@slup/icons/imagecolorize'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **colorLens** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_color_lens_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/imagecolorLens'
 
       export default () => <Icon />
       ```
@@ -8615,22 +8615,22 @@ This command will execute the `install.js` script wich will fetch for all the ic
       export default () => <Icon />
       ```
 
-    - ## Icon: **airlineSeatReclineExtra** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_airline_seat_recline_extra_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/notificationairlineSeatReclineExtra'
-
-      export default () => <Icon />
-      ```
-
     - ## Icon: **airlineSeatReclineNormal** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_airline_seat_recline_normal_black_24px.svg">
 
       This icon can be used as follows:
 
       ```js
       import Icon from '@slup/icons/notificationairlineSeatReclineNormal'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **airlineSeatReclineExtra** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_airline_seat_recline_extra_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/notificationairlineSeatReclineExtra'
 
       export default () => <Icon />
       ```
@@ -9265,6 +9265,7 @@ This command will execute the `install.js` script wich will fetch for all the ic
 
       export default () => <Icon />
       ```
+- ## Category: **social**
 
     - ## Icon: **spa** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_spa_black_24px.svg">
 
@@ -9272,17 +9273,6 @@ This command will execute the `install.js` script wich will fetch for all the ic
 
       ```js
       import Icon from '@slup/icons/placesspa'
-
-      export default () => <Icon />
-      ```
-- ## Category: **social**
-
-    - ## Icon: **cake** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_cake_black_24px.svg">
-
-      This icon can be used as follows:
-
-      ```js
-      import Icon from '@slup/icons/socialcake'
 
       export default () => <Icon />
       ```
@@ -9423,6 +9413,16 @@ This command will execute the `install.js` script wich will fetch for all the ic
 
       ```js
       import Icon from '@slup/icons/socialpeople'
+
+      export default () => <Icon />
+      ```
+
+    - ## Icon: **cake** <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_cake_black_24px.svg">
+
+      This icon can be used as follows:
+
+      ```js
+      import Icon from '@slup/icons/socialcake'
 
       export default () => <Icon />
       ```
