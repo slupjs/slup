@@ -3,22 +3,14 @@ import styled from '@slup/theming'
 
 import { FlatButton } from '@slup/buttons'
 import { Logo } from '../components/icons'
-
-const LogoContainer = styled.div`
-  display: flex;
-  flex: 1;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`
+import { CenterContainer } from '../components/container'
 
 /** Redirect helper */
 const redirect = router => 
   setTimeout(any => router.push('/components/buttons'), 350)
 
 export default (props: Object, context: { router: any }) =>
-  <LogoContainer>
+  <CenterContainer>
     <Logo style={{ marginTop: -100 }} />
 
     <FlatButton 
@@ -28,4 +20,4 @@ export default (props: Object, context: { router: any }) =>
       Get started
     </FlatButton>
 
-  </LogoContainer>
+  </CenterContainer>

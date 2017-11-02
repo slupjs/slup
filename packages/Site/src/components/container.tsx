@@ -14,9 +14,19 @@ export const Container = styled.section`
   overflow: auto;
 `
 
+export const CenterContainer = styled.div`
+  display: flex;
+  flex: 1;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
+
 export const Content = ({ children }) =>
   <Grid style={{ paddingTop: 64 }}>
     <Col sm={12}>
       {children}
     </Col>
   </Grid>
+
