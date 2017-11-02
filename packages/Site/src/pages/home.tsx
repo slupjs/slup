@@ -2,7 +2,7 @@ import Inferno, { linkEvent } from 'inferno'
 import styled from '@slup/theming'
 
 import { FlatButton } from '@slup/buttons'
-import { Logo } from '../components/logo'
+import { Logo } from '../components/icons'
 
 const LogoContainer = styled.div`
   display: flex;
