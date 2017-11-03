@@ -17,6 +17,11 @@ export const Title = styled(Typography)`
   margin-left: 16px
 `
 
+/** Redirect helper */
+const redirect = () =>
+  setTimeout(any => window.open('https://github.com/slupjs/slup', '_blank'), 350)
+
+
 export const Header = ({ onOpen, ...props }, { router }) => {
   return(
     <NavBar> 
@@ -34,7 +39,7 @@ export const Header = ({ onOpen, ...props }, { router }) => {
         </div>
 
         <div>
-          <IconButton>
+          <IconButton onClick={redirect}>
             <GitHub />
           </IconButton>
         </div>
