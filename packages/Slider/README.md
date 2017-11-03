@@ -21,10 +21,7 @@ npm install --save @slup/slider
 import { Slider } from '@slup/slider'
 
 export class Test extends Component {
-  state = {
-    value: 0,
-    total: 100
-  }
+  state = { value: 0 }
 
   handleChange(value) {
     this.setState({ value })
@@ -35,7 +32,7 @@ export class Test extends Component {
       <Slider
         onChange={this.handleChange.bind(this)}
         value={this.state.value}
-        max={this.state.total}
+        max={100}
       />
     )
   }

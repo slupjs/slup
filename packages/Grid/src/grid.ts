@@ -5,6 +5,8 @@ export const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
   overflow: auto;
+  flex: 0 0 100%;
+  height: 100%;
   justify-content: ${props =>
     props.center
       ? 'center' /** If we use `props.center` */
@@ -23,7 +25,4 @@ export const Grid = styled.div`
       ? 'flex-end' /** If we use `props.bottom` */
       : 'flex-start' /** Fallback */
   };
-
-  flex: 0 0 100%;
-  height: 100%;
 `

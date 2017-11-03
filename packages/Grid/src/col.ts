@@ -17,9 +17,9 @@ export const Col = styled.div`
     padding-left: ${props => sanitize(props.offset_md || 0)};
     padding-right: ${props => sanitize(props.pull_md || 0)};
     display: ${props => (props.hide_md || props.hide_sm) && !props.show_md
-    ? 'none'
-    : 'initial'
-  };
+      ? 'none'
+      : 'initial'
+    };
   }
 
   @media only screen and (min-width: 960px) {
@@ -30,7 +30,7 @@ export const Col = styled.div`
     (props.hide_lg || props.hide_md || props.hide_sm) && !props.show_lg
       ? 'none'
       : 'initial'
-  };
+    };
   }
 
   @media only screen and (min-width: 1280px) {
@@ -38,8 +38,8 @@ export const Col = styled.div`
     padding-left: ${props => sanitize(props.offset_xl || props.offset_lg || 0)};
     padding-right: ${props => sanitize(props.pull_xl || props.pull_lg || 0)};
     display: ${props => (props.hide_xl || props.hide_lg || props.hide_md || props.hide_sm) && !props.show_xl
-    ? 'none'
-    : 'initial'
-  };
+      ? 'none'
+      : 'initial'
+    };
   }
 `
