@@ -91,7 +91,7 @@ const Client = {
   output: {
     path: join(__dirname, 'dist'),
     filename: '[name].js',
-    publicPath: '/static'
+    publicPath: '/static/'
   },
 
   plugins: [

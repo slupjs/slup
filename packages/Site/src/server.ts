@@ -18,6 +18,7 @@ import { SSR } from '@slup/theming'
 /** Page rendering peices */
 import TEMPLATE from './parts'
 import { routes }  from './routes'
+import { URLs } from './pages'
 
 /** Declare server utilities constants */
 const message = '[:url] in :response-time ms ->> :res[content-length]'
@@ -47,6 +48,7 @@ app.get('*', (req, res) => {
   /** Generate props for the mathing components in the router */
   const props = match(routes, req.url)
   const App = createElement(RouterContext, props)
+  const MatchURL = URLs.filter(item => item.url == req.url)[0]
   
   /** Render to string the generated JSX tree */
   const JSX = renderToStaticMarkup(App)
@@ -59,6 +61,7 @@ app.get('*', (req, res) => {
   res.send(
     TEMPLATE
       .replace(/\r?\n|\r/g, '')
+      .replace('{{TITLE}}', MatchURL ? MatchURL.title : 'Page Not Found')
       .replace('{{CSS}}', css)
       .replace('{{HTML}}', html)
       .replace('{{IDS}}', IDs)

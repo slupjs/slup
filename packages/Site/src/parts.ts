@@ -8,7 +8,7 @@ export default `
     <meta charset=utf-8/>
 
     <!-- Title -->
-    <title>Test</title>
+    <title>{{TITLE}}</title>
     
     <style>
     {{CSS}}

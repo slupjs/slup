@@ -1,8 +1,9 @@
 import { Props } from 'inferno'
+import { flatten } from './utils/flatten'
 
 export interface IRoute {
   url: string
-  title: any
+  title: string
   props?: Props
   list?: IRoute[]
 }
@@ -60,3 +61,7 @@ export const Pages: IRoute[] = [
     ]
   }
 ]
+
+export const URLs: IRoute[] = flatten(Pages
+  .slice()
+  .map(item => item.list ? item.list : item))
