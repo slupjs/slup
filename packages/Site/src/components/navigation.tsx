@@ -5,6 +5,7 @@ import { IRoute } from '../pages'
 
 export interface IProps {
   onClose: Function
+  onRedirect: { event: Function, data: any }
   items: IRoute[]
   opened: boolean
 }
@@ -67,7 +68,12 @@ export class Navigation extends Component<IProps, any> {
    * @param url The new url
    */
   private redirect(url: string) {
-    if(url) this.context.router.push(url)
+    /** If there's no url it means that the item is a sublist opener */
+    if(!url) return
+    
+    this.context.router.push(url)
+    const event = this.props.onRedirect
+    if(event) event.event(event.data)
   }
 
   public render({ items, ...props }) {

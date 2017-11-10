@@ -63,7 +63,8 @@ const Server = {
 
   output: {
     path: join(__dirname, 'dist'),
-    filename: 'server.js'
+    filename: 'server.js',
+    publicPath: '.'
   },
 
   externals: {

@@ -42,6 +42,7 @@ export class App extends Component<null, { open: boolean }> {
             items={Pages}
             opened={this.state.open}
             onClose={linkEvent({ value: false, self: this }, this.toggleNav)}
+            onRedirect={linkEvent({ value: false, self: this }, this.toggleNav)}
           />
 
           <Content>{children}</Content>
