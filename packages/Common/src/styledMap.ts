@@ -20,6 +20,14 @@ export const styledMap = (...args) => (props) => {
      * filter the object to match the wanted prop
      */
     const getKeys: string[] = styleKeys.filter(key => props[key])
+    const possibleKey = getKeys[getKeys.length - 1]
+
+    /**
+     * If we receive a valuable resolver and it is a function
+     */
+    if (getKeys.length && typeof styles[possibleKey] == 'function') {
+      return styles[possibleKey](props)
+    }
 
     /**
      * If a prop is declared return the matching key
