@@ -7,7 +7,7 @@ import { join } from 'path'
 
 export default extend({
   /** Import path */
-  input: join(__dirname, 'src', 'index.tsx'),
+  input: join(__dirname, 'src', 'index.ts'),
 
   output: {
     /** Export path */
@@ -17,7 +17,7 @@ export default extend({
     format: 'umd',
 
     /** Name for the umd export */
-    name: 'Slup.Buttons'
+    name: 'Slup.Slider'
   },
 
   plugins: [

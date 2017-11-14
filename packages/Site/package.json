@@ -35,6 +35,8 @@
     "@slup/icons": "0.0.1",
     "@slup/sidenav": "0.0.1",
     "@slup/lists": "0.0.1",
+    "@slup/slider": "0.0.1",
+    "@slup/tabs": "0.0.1",
     "compression": "1.7.1",
     "decko": "1.2.0",
     "express": "4.16.1",

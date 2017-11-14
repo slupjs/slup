@@ -1,19 +1,11 @@
 import styled, { lightTheme } from '@slup/theming'
 
-import { Container } from './parts'
-
 export const Dots = styled.div`
   display: ${props => props.disabled ? 'none' : 'initial'};
   height: 3px;
   width: 100%;
   position: absolute;
   z-index: 2;
-  ${Container}:focus & {
-    div:first-child {
-      width: 3px;
-      height: 3px;
-    }
-  }
 `
 
 export const Dot = styled.div`

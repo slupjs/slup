@@ -24,9 +24,9 @@ interface IProps {
   selected: number
 }
 
-interface IState { 
-  style: Object, 
-  translate: boolean 
+interface IState {
+  style: Object,
+  translate: boolean
 }
 
 export class Tabs extends Component<IProps, IState> {
@@ -56,7 +56,7 @@ export class Tabs extends Component<IProps, IState> {
   }
 
   componentWillReceiveProps = this.updateIndicator.bind(this)
-  
+
   updateIndicator(newProps?: IProps) {
     /**
      * As selected may be undefined in the componentDidMount
@@ -80,8 +80,8 @@ export class Tabs extends Component<IProps, IState> {
   }
 
   moveScroll(this, direction) {
-    let id    = 0
-    let count = 0
+    let id: any = 0
+    let count   = 0
 
     switch(direction) {
       case 'right':
@@ -107,7 +107,7 @@ export class Tabs extends Component<IProps, IState> {
   /**
    * This helper function checks if a given
    * element has a scrollable content or not.
-   * 
+   *
    * @param {HTMLElement} element
    */
   isScrollable(element) {
@@ -115,7 +115,7 @@ export class Tabs extends Component<IProps, IState> {
     if (element.scrollLeft !== 0) return true
 
     /**
-     * Let's try to increase the scrolling, 
+     * Let's try to increase the scrolling,
      * if it doesn't work the element is
      * not scrollable
      */

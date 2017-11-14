@@ -20,7 +20,7 @@ const Item = styled.div`
   min-width: 148px;
   cursor: pointer;
   user-select: none;
-  font-weight: bolder;
+  font-weight: 500;
   position: relative;
   transition: color 150ms, width 150ms, min-width 200ms, fill 150ms;
   color: ${props => props.selected && props.secondary
@@ -52,7 +52,7 @@ const Item = styled.div`
   }
 
   span {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     white-space: nowrap;
   }
 
@@ -62,7 +62,7 @@ const Item = styled.div`
 `
 
 export const TabIcon = styled.div`
-  margin: 8px 0 6px 0;
+  margin: 8px 0 8px 0;
   fill: inherit;
   display: flex;
   justify-content: center;
