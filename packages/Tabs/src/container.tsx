@@ -55,7 +55,9 @@ export class Tabs extends Component<IProps, IState> {
     window.removeEventListener('resize', this.updateIndicator.bind(this))
   }
 
-  componentWillReceiveProps = this.updateIndicator.bind(this)
+  componentWillReceiveProps(newProps) {
+    this.updateIndicator(newProps)
+  }
 
   updateIndicator(newProps?: IProps) {
     /**
@@ -67,9 +69,11 @@ export class Tabs extends Component<IProps, IState> {
      * 0 is still an acceptable number but would be fals
      * in an ipothetical if statement
      */
-    const selected = isNaN(newProps.selected)
-      ? this.props.selected
-      : newProps.selected
+    const selected = !newProps
+      ? 0
+      : isNaN(newProps.selected)
+        ? this.props.selected
+        : newProps.selected
 
     const Tab = this.scroll.childNodes[selected]
     const { clientWidth: width, offsetLeft: left } = Tab
@@ -79,7 +83,7 @@ export class Tabs extends Component<IProps, IState> {
     this.setState({ style: { left, width } })
   }
 
-  moveScroll(this, direction) {
+  moveScroll({ self, direction }) {
     let id: any = 0
     let count   = 0
 
@@ -87,7 +91,7 @@ export class Tabs extends Component<IProps, IState> {
       case 'right':
         id = setInterval(() => {
           count++
-          this.scroll.scrollLeft += 1
+          self.scroll.scrollLeft += 1
 
           if(count == 100) clearInterval(id)
         }, 0.05)
@@ -96,7 +100,7 @@ export class Tabs extends Component<IProps, IState> {
       case 'left':
         id = setInterval(() => {
           count++
-          this.scroll.scrollLeft -= 1
+          self.scroll.scrollLeft -= 1
 
           if (count == 100) clearInterval(id)
         }, 0.05)
@@ -138,7 +142,7 @@ export class Tabs extends Component<IProps, IState> {
 
         {/* Left scroll arrow */}
         {scrollable
-          ? <Arrow onClick={linkEvent(this, 'left',this.moveScroll)} />
+          ? <Arrow onClick={linkEvent({ self: this, direction: 'left' }, this.moveScroll)} />
           : null
         }
 
@@ -159,7 +163,7 @@ export class Tabs extends Component<IProps, IState> {
 
         {/* Right scroll arrow */}
         {scrollable
-          ? <Arrow right onClick={linkEvent(this, 'right', this.moveScroll)} />
+          ? <Arrow right onClick={linkEvent({ self: this, direction: 'right' }, this.moveScroll)} />
           : null
         }
       </Container>
