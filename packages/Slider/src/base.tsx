@@ -73,17 +73,48 @@ export class Slider extends Component<IBaseProps, IBaseState> {
   }
 
   /**
+   * Changes the value of the slider
+   * depending on the pressed keyboard arrows
+   *
+   * @param  {Class} this The local class
+   * @param  {KeyboardEvent} event The keyboardDown event
+   * @return {null}
+   */
+  private handleKeyDown(self, event: KeyboardEvent) {
+    const { value, max } = self.props
+
+    switch(event.keyCode) {
+      /** Increase the value by 1 */
+      case 38:
+      case 39:
+        const _value = vise(0, value + 1, max)
+        self.emit('change', _value)
+      break
+
+      /** Decrease the value by 1 */
+      case 40:
+      case 37:
+        const newValue = vise(0, value - 1, max)
+        self.emit('change', newValue)
+      break
+      default:
+      break
+    }
+  }
+
+  /**
    * Renders the JSX element
    * @return {JSX Element} The basic slider element
    */
   public baseRender({
-      max, value, focused, customThumb, children,
-      onFocus, onChange, onBlur, ...props
+      max, value, focused, primary, customThumb,
+      children, onFocus, onChange, onBlur, ...props
     }, state?, context?) {
 
     const percentage = value / max * 100 + '%'
     const thumbProps = {
       focused,
+      primary,
       style: { left: percentage }
     }
 
@@ -94,9 +125,14 @@ export class Slider extends Component<IBaseProps, IBaseState> {
         onFocus={onFocus}
         onBlur={onBlur}
         onMouseDown={linkEvent(this, this.handleMouseDown)}
+        onKeyDown={linkEvent(this, this.handleKeyDown)}
       >
         <Line>
-          <Track focused={focused} style={{ width: percentage }} />
+          <Track
+            focused={focused}
+            primary={primary}
+            style={{ width: percentage }}
+          />
         </Line>
 
         {customThumb

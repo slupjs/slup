@@ -31,6 +31,7 @@ export default class extends Component<any, any> {
           onChange={this.onChange.bind(this)}
           max={100}
           value={value}
+          primary
         />
       </div>
     )

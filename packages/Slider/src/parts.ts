@@ -8,7 +8,7 @@ import styled, { lightTheme, rgba } from '@slup/theming'
  * @return {string}     color The backgrund color
  */
 const commonBackground = props => props.primary
-  ? props.theme.primary || lightTheme.primary /** With the primary prop */
+  ? props.theme.primary || lightTheme.primary     /** With the primary prop */
   : props.theme.secondary || lightTheme.secondary /** Otherwise secondary by default */
 
 
@@ -41,7 +41,7 @@ export const Line = styled.div`
  * current value of the slider
  *
  * @type {JSX Element} The track styled element
- * @prop {boolean} primary Weather the slider uses a primary color scheme
+ * @prop {boolean} primary Whether the slider uses a primary color scheme
  */
 export const Track = styled.div`
   height: 100%;
@@ -52,10 +52,11 @@ export const Track = styled.div`
  * The thumb elemtent shows the current value
  *
  * @type {JSX Element} The thumb styled element
- * @prop {boolean} focused Weather the slider is focused or not
+ * @prop {boolean} focused Whether the slider is focused or not
  */
 export const Thumb = styled.div`
   position: absolute;
+  transition: width 200ms, height 200ms, box-shadow 300ms;
   border-radius: 50%;
   z-index: 1;
   transform: translateX(-50%);
@@ -63,4 +64,10 @@ export const Thumb = styled.div`
   height: ${props => props.focused ? 14 : 10}px;
 
   background: ${commonBackground};
+  box-shadow: ${props => props.focused && props.primary                         /** Focused and primary props */
+    ? `0 0 0 14px ${rgba(props.theme.primary || lightTheme.primary, .1)}`
+    : props.focused                                                             /** Default color */
+      ? `0 0 0 14px ${rgba(props.theme.secondary || lightTheme.secondary, .1)}`
+      : 'none'
+  };
 `
