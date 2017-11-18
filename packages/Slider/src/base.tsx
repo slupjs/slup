@@ -35,8 +35,6 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    * @return {null}
    */
   private handleMouseDown(self, event: Event) {
-    console.log('called')
-
     self.setState({ mouseDown: true })
   }
 
@@ -45,8 +43,6 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    */
   private handleMouseUp(self, event: Event) {
     self.setState({ mouseDown: false })
-
-    console.log('mouseup')
   }
 
   /**
