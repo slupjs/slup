@@ -14,7 +14,6 @@ export const THEME = {
   background: DEEP_PURPLE[500]
 }
 
-
 export class App extends Component<null, { open: boolean }> {
   public state = { open: false }
 

@@ -55,4 +55,4 @@ export const base = {
   ]
 }
 
-export default (extend) => Object.assign({}, base, extend)
+export default extend => Object.assign({}, base, extend)
