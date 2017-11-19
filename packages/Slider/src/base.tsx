@@ -112,10 +112,10 @@ export class Slider extends Component<IBaseProps, IBaseState> {
     }, state?, context?) {
 
     const percentage = value / max * 100 + '%'
-    const thumbProps = {
+    const primaryProps = {
       focused,
       primary,
-      style: { left: percentage }
+      value
     }
 
     return(
@@ -128,16 +128,12 @@ export class Slider extends Component<IBaseProps, IBaseState> {
         onKeyDown={linkEvent(this, this.handleKeyDown)}
       >
         <Line>
-          <Track
-            focused={focused}
-            primary={primary}
-            style={{ width: percentage }}
-          />
+          <Track {...primaryProps} style={{ width: percentage }} />
         </Line>
 
         {customThumb
-          ? <customThumb {...thumbProps} />
-          : <Thumb {...thumbProps} />
+          ? <customThumb {...primaryProps} style={{left: percentage}} />
+          : <Thumb {...primaryProps} style={{left: percentage}} />
         }
 
         {children}

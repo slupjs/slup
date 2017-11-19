@@ -5,12 +5,22 @@ import styled, { lightTheme, rgba } from '@slup/theming'
  * background color scheme
  *
  * @param  {IBaseProps} props The element's props
- * @return {string}     color The backgrund color
+ * @return {string}     color The background color
  */
-const commonBackground = props => props.primary
-  ? props.theme.primary || lightTheme.primary     /** With the primary prop */
-  : props.theme.secondary || lightTheme.secondary /** Otherwise secondary by default */
+const commonBackground = props => props.value == 0
+  ? props.theme.background || lightTheme.background
+  : props.primary
+    ? props.theme.primary || lightTheme.primary     /** With the primary prop */
+    : props.theme.secondary || lightTheme.secondary /** Otherwise secondary by default */
 
+/**
+ * Helper function for elements
+ * that have the same color as the line
+ *
+ * @param  {IBaseProps} props The element's props
+ * @return {string}           The line color
+ */
+const lineColor = props => rgba(props.theme.text || lightTheme.text, .3)
 
 /**
  * The container wich contains
@@ -31,9 +41,7 @@ export const Line = styled.div`
   height: 3px;
   width: 100%;
   position: absolute;
-  background: ${props =>
-    rgba(props.theme.text || lightTheme.primary, .3)
-  };
+  background: ${lineColor};
 `
 
 /**
@@ -56,7 +64,7 @@ export const Track = styled.div`
  */
 export const Thumb = styled.div`
   position: absolute;
-  transition: width 200ms, height 200ms, box-shadow 300ms;
+  transition: width 200ms, height 200ms, box-shadow 300ms, background 150ms;
   border-radius: 50%;
   z-index: 1;
   transform: translateX(-50%);
@@ -64,10 +72,15 @@ export const Thumb = styled.div`
   height: ${props => props.focused ? 14 : 10}px;
 
   background: ${commonBackground};
-  box-shadow: ${props => props.focused && props.primary                         /** Focused and primary props */
-    ? `0 0 0 14px ${rgba(props.theme.primary || lightTheme.primary, .1)}`
-    : props.focused                                                             /** Default color */
-      ? `0 0 0 14px ${rgba(props.theme.secondary || lightTheme.secondary, .1)}`
-      : 'none'
+  border: ${props => props.value == 0 ? `2px solid` : 'none'};
+  border-color: ${lineColor};
+
+  box-shadow: ${props => props.focused && props.value == 0                        /** Value of the slider is 0 */
+    ? `0 0 0 14px ${rgba(props.theme.text || lightTheme.text, 0.05)}`
+    : props.focused && props.primary                                              /** Focused and primary props */
+      ? `0 0 0 14px ${rgba(props.theme.primary || lightTheme.primary, .1)}`
+      : props.focused                                                             /** Default color */
+        ? `0 0 0 14px ${rgba(props.theme.secondary || lightTheme.secondary, .1)}`
+        : 'none'
   };
 `
