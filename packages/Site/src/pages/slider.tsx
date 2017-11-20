@@ -4,7 +4,7 @@ import Component from 'inferno-component'
 export default class extends Component<any, any> {
   public state = {
     focused: false,
-    value: 0
+    value: 40
   }
 
   onFocus() {
@@ -31,6 +31,7 @@ export default class extends Component<any, any> {
           onChange={this.onChange.bind(this)}
           max={100}
           value={value}
+          disabled
         />
       </div>
     )

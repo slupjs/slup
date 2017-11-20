@@ -1,26 +1,39 @@
 import styled, { lightTheme, rgba } from '@slup/theming'
 
 /**
+ * Helper function for elements
+ * that have the color of the line
+ *
+ * @param  {IBaseProps} props The element's props
+ * @return {string}           The line color
+ */
+const lineColor = props => rgba(props.theme.text || lightTheme.text, .3)
+
+/**
  * Helper function for elements that have the same
  * background color scheme
  *
  * @param  {IBaseProps} props The element's props
  * @return {string}     color The background color
  */
-const commonBackground = props => props.value == 0
-  ? props.theme.background || lightTheme.background
-  : props.primary
-    ? props.theme.primary || lightTheme.primary     /** With the primary prop */
-    : props.theme.secondary || lightTheme.secondary /** Otherwise secondary by default */
+const commonBackground = props => props.disabled && props.value != 0
+  ? props.theme.text || lightTheme.text
+  : props.value == 0
+    ? props.theme.background || lightTheme.background /** When the value is 0 */
+    : props.primary
+      ? props.theme.primary || lightTheme.primary     /** With the primary prop */
+      : props.theme.secondary || lightTheme.secondary /** Otherwise secondary by default */
+
 
 /**
- * Helper function for elements
- * that have the same color as the line
+ * Helper function for the thumb element
+ * which sets the shadow
  *
- * @param  {IBaseProps} props The element's props
- * @return {string}           The line color
+ * @param  {string} color   The color of the shadow
+ * @param  {number} opacity The opacity of the shadow
+ * @return {string}         The shadow
  */
-const lineColor = props => rgba(props.theme.text || lightTheme.text, .3)
+const setShadow = (color: string, opacity: number) => `0 0 0 14px ${rgba(color, opacity)}`
 
 /**
  * The container wich contains
@@ -35,13 +48,18 @@ export const Container = styled.div`
   outline: none;
   height: 38px;
   width: 100%;
+  pointer-events: ${props => props.disabled ? 'none' : 'unset'};
+  opacity: ${props => props.disabled && props.value != 0 ? .3 : 1};
 `
 
 export const Line = styled.div`
   height: 3px;
   width: 100%;
   position: absolute;
-  background: ${lineColor};
+  background: ${props => props.disabled && props.value != 0
+    ? props.theme.text || lightTheme.text
+    : lineColor
+  };
 `
 
 /**
@@ -53,7 +71,8 @@ export const Line = styled.div`
  */
 export const Track = styled.div`
   height: 100%;
-  background: ${commonBackground}
+  opacity: ${props => props.disabled ? 0 : 1};
+  background: ${commonBackground};
 `
 
 /**
@@ -68,19 +87,22 @@ export const Thumb = styled.div`
   border-radius: 50%;
   z-index: 1;
   transform: translateX(-50%);
-  width:  ${props => props.focused ? 14 : 10}px;
-  height: ${props => props.focused ? 14 : 10}px;
+  width:  ${props => props.disabled ? 8 : props.focused ? 14 : 10}px;
+  height: ${props => props.disabled ? 8 : props.focused ? 14 : 10}px;
 
   background: ${commonBackground};
-  border: ${props => props.value == 0 ? `2px solid` : 'none'};
-  border-color: ${lineColor};
+  border: ${props => props.value == 0 || props.disabled ? `2px solid` : 'none'};
+  border-color: ${props => props.disabled && props.value != 0
+    ? props.theme.background || lightTheme.background
+    : lineColor
+  };
 
-  box-shadow: ${props => props.focused && props.value == 0                        /** Value of the slider is 0 */
-    ? `0 0 0 14px ${rgba(props.theme.text || lightTheme.text, 0.05)}`
-    : props.focused && props.primary                                              /** Focused and primary props */
-      ? `0 0 0 14px ${rgba(props.theme.primary || lightTheme.primary, .1)}`
-      : props.focused                                                             /** Default color */
-        ? `0 0 0 14px ${rgba(props.theme.secondary || lightTheme.secondary, .1)}`
+  box-shadow: ${props => props.focused && props.value == 0                /** Value of the slider is 0 */
+    ? setShadow(props.theme.text || lightTheme.text, 0.05)
+    : props.focused && props.primary                                      /** Focused and primary props */
+      ? setShadow(props.theme.primary || lightTheme.primary, 0.15)
+      : props.focused                                                     /** Default color */
+        ? setShadow(props.theme.secondary || lightTheme.secondary, 0.15)
         : 'none'
   };
 `

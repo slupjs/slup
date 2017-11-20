@@ -107,33 +107,36 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    * @return {JSX Element} The basic slider element
    */
   public baseRender({
-      max, value, focused, primary, customThumb,
+      max, value, focused, primary, disabled, customThumb,
       children, onFocus, onChange, onBlur, ...props
     }, state?, context?) {
 
     const percentage = value / max * 100 + '%'
-    const primaryProps = {
+    const mainProps = {
       focused,
       primary,
-      value
+      value,
+      disabled
     }
 
     return(
       <Container
         innerRef={e => this.slider = e}
-        tabindex={0}
+        tabindex={disabled ? -1 : 0}
         onFocus={onFocus}
         onBlur={onBlur}
         onMouseDown={linkEvent(this, this.handleMouseDown)}
         onKeyDown={linkEvent(this, this.handleKeyDown)}
+        disabled={disabled}
+        value={value}
       >
-        <Line>
-          <Track {...primaryProps} style={{ width: percentage }} />
+        <Line disabled={disabled} value={value}>
+          <Track {...mainProps} style={{ width: percentage }} />
         </Line>
 
         {customThumb
-          ? <customThumb {...primaryProps} style={{left: percentage}} />
-          : <Thumb {...primaryProps} style={{left: percentage}} />
+          ? <customThumb {...mainProps} style={{left: percentage}} />
+          : <Thumb {...mainProps} style={{left: percentage}} />
         }
 
         {children}
