@@ -35,6 +35,7 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    * @return {null}
    */
   private handleMouseDown(self, event: Event) {
+    self.emit('focus')
     self.setState({ mouseDown: true })
   }
 
@@ -42,6 +43,7 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    * Stops the slider from updating its value
    */
   private handleMouseUp(self, event: Event) {
+    self.emit('blur')
     self.setState({ mouseDown: false })
   }
 
@@ -107,7 +109,7 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    * @return {JSX Element} The basic slider element
    */
   public baseRender({
-      max, value, focused, primary, disabled, customThumb,
+      max, value, focused, primary, disabled, CustomThumb,
       children, onFocus, onChange, onBlur, ...props
     }, state?, context?) {
 
@@ -134,8 +136,8 @@ export class Slider extends Component<IBaseProps, IBaseState> {
           <Track {...mainProps} style={{ width: percentage }} />
         </Line>
 
-        {customThumb
-          ? <customThumb {...mainProps} style={{left: percentage}} />
+        {CustomThumb
+          ? <CustomThumb {...mainProps} style={{left: percentage}} />
           : <Thumb {...mainProps} style={{left: percentage}} />
         }
 
