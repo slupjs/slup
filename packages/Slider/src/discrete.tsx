@@ -1,7 +1,12 @@
-import Inferno   from 'inferno'
 import styled, { lightTheme } from '@slup/theming'
+import { Slider } from './base'
+import { Thumb } from './parts'
 
-const Discrete = styled.div`
+export const TThumb = styled(Thumb)`
+  transform: scale(${props => props.focused ? 0 : 1}) translate(-50%, -50%);
+`
+
+export const Indicator = styled.div`
   position: absolute;
   bottom: 35px;
   display: flex;
@@ -22,7 +27,7 @@ const Discrete = styled.div`
   height: 30px; width: 30px;
   transform-origin: bottom;
   transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1), background 150ms;
-  transform: translateX(-50%) scale(0);
+  transform: scale(${props => props.focused ? 1 : 0}) translateX(-50%);
 
   &::before   {
     content: '';
@@ -39,7 +44,21 @@ const Discrete = styled.div`
   }
 `
 
-export const Indicator = (props) =>
-  <Discrete value={props.value} style={{left: (props.value / props.max) * 100 + '%'}}>
-    <span>{Math.floor(props.value)}</span>
-  </Discrete>
+export class DiscreteSlider extends Slider {
+  renderDiscrete(props) {
+    return this.baseRender({
+      ...props,
+      CustomThumb: (__props) =>
+        <div>
+          <TThumb {...__props} />
+          <Indicator {...__props} value={props.value}>
+            {Math.floor(props.value)}
+          </Indicator>
+        </div>
+    })
+  }
+
+  render(props) {
+    return this.renderDiscrete(props)
+  }
+}
