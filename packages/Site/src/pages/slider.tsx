@@ -1,4 +1,4 @@
-import { Slider, DiscreteSlider } from '@slup/slider'
+import { Slider, DiscreteSlider, SteppedSlider } from '@slup/slider'
 import Component from 'inferno-component'
 
 export default class extends Component<any, any> {
@@ -41,6 +41,16 @@ export default class extends Component<any, any> {
           onChange={this.onChange.bind(this)}
           max={100}
           value={value}
+        />
+
+        <SteppedSlider
+          focused={focused}
+          onFocus={this.onFocus.bind(this)}
+          onBlur={this.onBlur.bind(this)}
+          onChange={this.onChange.bind(this)}
+          max={100}
+          value={value}
+          steps={10}
         />
       </div>
     )

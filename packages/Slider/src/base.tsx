@@ -71,6 +71,14 @@ export class Slider extends Component<IBaseProps, IBaseState> {
     /** Ignore moves when unfocused */
     if (!self.state.mouseDown) return
 
+    if (self.props.steps) {
+      const perc  = self.gatherPrgress(event)
+      const value = self.props.max / self.props.steps
+      const index = Math.round(perc / value)
+
+      return this.emit('change', index * value)
+    }
+
     self.emit('change', self.gatherPrgress(event))
   }
 
@@ -83,23 +91,22 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    * @return {null}
    */
   private handleKeyDown(self, event: KeyboardEvent) {
-    const { value, max } = self.props
+    const { value, max, steps } = self.props
+    const percentage = !steps ? 1 : max / steps
 
     switch(event.keyCode) {
       /** Increase the value by 1 */
       case 38:
       case 39:
-        const _value = vise(0, value + 1, max)
+        const _value = vise(0, value + percentage, max)
         self.emit('change', _value)
       break
 
       /** Decrease the value by 1 */
       case 40:
       case 37:
-        const newValue = vise(0, value - 1, max)
+        const newValue = vise(0, value - percentage, max)
         self.emit('change', newValue)
-      break
-      default:
       break
     }
   }

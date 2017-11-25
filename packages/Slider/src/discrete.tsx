@@ -3,7 +3,7 @@ import { Slider } from './base'
 import { Thumb } from './parts'
 
 export const TThumb = styled(Thumb)`
-  transform: scale(${props => props.focused ? 0 : 1}) translateY(-50%);
+  transform: scale(${props => props.focused ? 0 : 1}) translate(-50%, -50%);
 `
 
 export const Indicator = styled.div`
@@ -45,7 +45,7 @@ export const Indicator = styled.div`
 `
 
 export class DiscreteSlider extends Slider {
-  render(props) {
+  renderDiscrete(props) {
     return this.baseRender({
       ...props,
       CustomThumb: (__props) =>
@@ -56,5 +56,9 @@ export class DiscreteSlider extends Slider {
           </Indicator>
         </div>
     })
+  }
+
+  render(props) {
+    return this.renderDiscrete(props)
   }
 }
