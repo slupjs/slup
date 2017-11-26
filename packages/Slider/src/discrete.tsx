@@ -2,6 +2,10 @@ import styled, { lightTheme } from '@slup/theming'
 import { Slider } from './base'
 import { Thumb } from './parts'
 
+const commonBackground = props => props.value == 0
+  ? props.theme.text || lightTheme.text
+  : props.theme.secondary || lightTheme.secondary
+
 export const TThumb = styled(Thumb)`
   transform: scale(${props => props.focused ? 0 : 1}) translate(-50%, -50%);
 `
@@ -13,10 +17,7 @@ export const Indicator = styled.div`
   justify-content: center;
   align-items: center;
   opacity: ${props => props.value == 0 ? '.3' : '1'};
-  background: ${props => props.value == 0
-    ? props.theme.text || lightTheme.text
-    : props.theme.secondary || lightTheme.secondary
-  };
+  background: ${commonBackground};
   color: ${props => props.value == 0
     ? props.theme.background || lightTheme.background
     : 'white'
@@ -37,10 +38,7 @@ export const Indicator = styled.div`
     width: 0; height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid ${props => props.value == 0
-      ? props.theme.text || lightTheme.text
-      : props.theme.secondary || lightTheme.secondary
-    };
+    border-top: 10px solid ${commonBackground};
   }
 `
 

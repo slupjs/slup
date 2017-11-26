@@ -37,5 +37,6 @@ export class SteppedSlider extends DiscreteSlider {
           {dots}
         </div>
       ]
+    })
   }
 }

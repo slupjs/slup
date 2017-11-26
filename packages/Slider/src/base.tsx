@@ -27,6 +27,19 @@ export class Slider extends Component<IBaseProps, IBaseState> {
   }
 
   /**
+   * Change the value of the slider by the current
+   * mouse position and the offset of the container
+   *
+   * @param {MouseEvent} event The mouse position
+   */
+  private gatherProgress({ clientX }) {
+    const { offsetLeft, clientWidth } = this.slider
+    const percentage = (clientX - offsetLeft) / clientWidth
+
+    return vise(0, percentage, 1) * this.props.max
+  }
+
+  /**
    * Handles the mouse movement that
    * changes the slider's value
    *
@@ -35,29 +48,17 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    * @return {null}
    */
   private handleMouseDown(self, event: Event) {
-    self.emit('focus')
     self.setState({ mouseDown: true })
+    self.emit('focus')
+    self.emit('change', self.gatherProgress(event))
   }
 
   /**
    * Stops the slider from updating its value
    */
   private handleMouseUp(self, event: Event) {
-    self.emit('blur')
     self.setState({ mouseDown: false })
-  }
-
-  /**
-   * Change the value of the slider by the current
-   * mouse position and the offset of the container
-   *
-   * @param {MouseEvent} event The mouse position
-   */
-  private gatherPrgress({ clientX }) {
-    const { offsetLeft, clientWidth } = this.slider
-    const percentage = (clientX - offsetLeft) / clientWidth
-
-    return vise(0, percentage, 1) * this.props.max
+    self.emit('blur')
   }
 
   /**
@@ -72,14 +73,14 @@ export class Slider extends Component<IBaseProps, IBaseState> {
     if (!self.state.mouseDown) return
 
     if (self.props.steps) {
-      const perc  = self.gatherPrgress(event)
+      const perc  = self.gatherProgress(event)
       const value = self.props.max / self.props.steps
       const index = Math.round(perc / value)
 
       return this.emit('change', index * value)
     }
 
-    self.emit('change', self.gatherPrgress(event))
+    self.emit('change', self.gatherProgress(event))
   }
 
   /**
@@ -92,21 +93,22 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    */
   private handleKeyDown(self, event: KeyboardEvent) {
     const { value, max, steps } = self.props
-    const percentage = !steps ? 1 : max / steps
+    const percentage: number = !steps ? 1 : max / steps
+    let _value: number
 
     switch(event.keyCode) {
       /** Increase the value by 1 */
       case 38:
       case 39:
-        const _value = vise(0, value + percentage, max)
+        _value = vise(0, value + percentage, max)
         self.emit('change', _value)
       break
 
       /** Decrease the value by 1 */
       case 40:
       case 37:
-        const newValue = vise(0, value - percentage, max)
-        self.emit('change', newValue)
+        _value = vise(0, value - percentage, max)
+        self.emit('change', _value)
       break
     }
   }
