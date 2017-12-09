@@ -18,9 +18,9 @@
 
 > **NOTE: The library isn't complete yet**
 
-Slup was created by our desire for a performing UI framework following strictly [Material Design guidelines](https://material.io/guidelines). It packs lightweight components, based on the blazing-fast React-like library [Inferno](https://infernojs.org) and our own styling method inspired by the well known styled-component, but rewritten in a smaller and lightweight fashion. The speed and small size of our libraries provides some of the most goreous components in the design history with a lightweight and performant approach, perfect for your next PWA or web application. 
+Slup was created by our desire for a performing UI framework following strictly [Material Design guidelines](https://material.io/guidelines). It packs lightweight components, based on the blazing-fast React-like library [Inferno](https://infernojs.org) and our own styling method inspired by the well known styled-component, but rewritten in a smaller and lightweight fashion. The speed and small size of our packages provides some of the most gorgeous components in the design history with a lightweight and performant approach, perfect for your next PWA or web application.
 
-Plus we've also got an amazing support provided by [Typescript](https://www.typescriptlang.org/)(the most loved `compile-to-javascript` language from the comminty)!
+Plus we've also got an amazing support provided by [Typescript](https://www.typescriptlang.org/)(the most loved `compile-to-javascript` language from the community)!
 
 ## Philosophy
 
@@ -33,7 +33,7 @@ Plus we've also got an amazing support provided by [Typescript](https://www.type
 
 ## Getting Started
 
-Slup is divided in **packages**: each pacakge represents a corresponding [Material Design component](https://material.io/guidelines/components), this means that each package can be found at `@slup/<package>` and installed separately improving both **size and speed** of your final bundle.
+Slup is divided in **packages**: each package represents a corresponding [Material Design component](https://material.io/guidelines/components), this means that each package can be found at `@slup/<package>` and installed separately improving both **size and speed** of your final bundle.
 Here's how:
 
 ## Installation
