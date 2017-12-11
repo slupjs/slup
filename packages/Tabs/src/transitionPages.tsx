@@ -1,6 +1,10 @@
 import styled, { lightTheme } from '@slup/theming'
 
-export const TransitionPages = styled.div`
+const Scroll = styled.div`
+  overflow-x: hidden;
+`
+
+export const Pages = styled.div`
   height: 100%;
   width: auto;
   display: flex;
@@ -13,3 +17,8 @@ export const Page = styled.div`
   height: 100%;
   width: 100%;
 `
+
+export const TransitionPages = props =>
+  <Scroll>
+    <Pages {...props} />
+  </Scroll>
