@@ -6,8 +6,10 @@
   ],
   "commands": {
     "publish": {
-      "ignore": [ "@slup/site" ]
+      "ignore": [
+        "@slup/site"
+      ]
     }
   },
-  "version": "0.0.1"
+  "version": "0.1.0"
 }
