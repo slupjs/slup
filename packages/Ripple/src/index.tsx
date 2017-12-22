@@ -98,7 +98,7 @@ export class Ripple extends Component<any, any> {
         innerRef={element => this.ripple = element}
         onMouseDown={linkEvent(this, this.handleMouseDown)}
       >
-        {this.state.ripples.map(props =>
+        {this.state.ripples.map((props, i) =>
           props.isRemovable && props.ended && props.faded
             ? null
             : <Wave 
@@ -107,6 +107,7 @@ export class Ripple extends Component<any, any> {
 
               x={startX || props.x}
               y={startY || props.y}
+              key={i}
             />
         )}
       </Wrapper>
