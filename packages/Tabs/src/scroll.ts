@@ -22,8 +22,9 @@ export const Scroll = styled.div`
 
   div:not(:last-child) {
     width: ${props => props.fit
-      ? 'calc(100vw / ' + (props.children.length - 1) + ')'
-      : 'auto'};
+      ? `calc(100vw / ${props.childCount})`
+      : 'auto'
+    };
   }
 
   @media only screen and (max-width: 480px) {

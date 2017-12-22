@@ -149,6 +149,7 @@ export class Tabs extends Component<IProps, IState> {
         {/* Scroll container */}
         <Scroll
           {...props}
+          childCount={props.children.length}
           innerRef={e => this.scroll = e}
           translate={translate}
           children={[
