@@ -10,7 +10,7 @@ export const Scroll = styled.div`
     ? '16px'
     : null};
   transform: ${props => props.translate && props.scrollable
-    ? 'translateY(15px)'
+    ? 'translateY(16px)'
     : null};
   width: ${props => props.scrollable ? '100%' : 'auto'};
   left: ${props => props.scrollable ? '80px' : 'auto'};

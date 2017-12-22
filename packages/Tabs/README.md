@@ -91,7 +91,7 @@ export class Home extends Component {
 }
 ```
 
-If you also need text you can add it inside a `span` under the `TabIcon`
+You can also add text, if needed, just put it inside a `span` under the `TabIcon`
 
 ```js
 
