@@ -10,8 +10,6 @@ const shadows = [
 export const Card = styled.div`
   border-radius: 2px;
   background: white;
-  width: 320px;
-  height: 340px;
   transition: box-shadow 300ms;
   box-shadow: ${props => props.hoverable
     ? shadows[0]
