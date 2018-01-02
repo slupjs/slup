@@ -9,7 +9,7 @@ import { join } from 'path'
 import { tmpdir } from 'os'
 
 export const base = {
-  /** External dependecies, resolved via commonjs or AMD */
+  /** External dependencies, resolved via commonjs or AMD */
   external: [
     'inferno-component',
     'inferno',
@@ -18,7 +18,7 @@ export const base = {
     '@slup/ripple'
   ],
 
-  /** External dependecies, resolved via commonjs or AMD */
+  /** External dependencies, resolved via commonjs or AMD */
   globals: {
     /** Slup modules */
     '@slup/common': 'Slup.Common',
@@ -34,6 +34,7 @@ export const base = {
     '@slup/slider': 'Slup.Slider',
     '@slup/tabs': 'Slup.Tabs',
     '@slup/typography': 'Slup.Typography',
+    '@slup/card': 'Slup.Card',
 
     /** Other externals */
     'inferno-component': 'Inferno.Component',
