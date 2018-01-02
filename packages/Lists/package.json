@@ -1,6 +1,6 @@
 {
   "name": "@slup/lists",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "description": "List, ListItem elements built upon Inferno with the Slup framework",
   "repository": "https://github.com/slupjs/slup/tree/master/packages/Lists",
   "main": "dist.js",
@@ -8,8 +8,8 @@
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
-    "@slup/ripple": "^0.1.0",
-    "@slup/theming": "^0.1.0"
+    "@slup/ripple": "^0.5.0",
+    "@slup/theming": "^0.5.0"
   },
   "devDependencies": {
     "@types/node": "8.0.34",
@@ -29,5 +29,8 @@
   "scripts": {
     "build": "rollup -c",
     "prepublish": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

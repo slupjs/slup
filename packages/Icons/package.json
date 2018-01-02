@@ -1,6 +1,6 @@
 {
   "name": "@slup/icons",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "description": "Material Design Icons requireable from Inferno ",
   "repository": "https://github.com/slupjs/slup/tree/master/packages/Icons",
   "main": "./icons",
@@ -19,5 +19,8 @@
   },
   "scripts": {
     "prepublish": "tsc install.ts && node install"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

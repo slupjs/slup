@@ -4,15 +4,11 @@
   "packages": [
     "packages/*"
   ],
-  "commands": {
+  "command": {
     "publish": {
-      "ignore": [
-        "@slup/site"
-      ]
+      "message": ":arrow_up: Release %s",
+      "allowBranch": "master"
     }
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "version": "0.1.0"
+  "version": "0.5.0"
 }
