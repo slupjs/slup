@@ -4,7 +4,8 @@ import {
   existsSync, 
   mkdirSync,
   writeFile,
-  appendFile
+  writeFileSync,
+  appendFileSync
 } from 'fs'
 import { resolve } from 'path'
 import { transform } from 'babel-core'
@@ -94,7 +95,7 @@ for (let key in ICONS) {
     const SVG      = TEMPLATE.replace('<svg />', CONTENT)
     const { code } = transform(SVG, OPTIONS)
 
-    writeFile(OUT, code, void 0)
+    writeFileSync(OUT, code)
 
     OUTPUT[key].push({
       short: CAMELCASE,
@@ -115,15 +116,15 @@ writeFile(resolve(BASE, 'data.json'), JSON.stringify(OUTPUT, null, 2), () => {
 
 console.log('📝 Writing docs...')
 
-writeFile(DOCS_OUT, readFileSync(DOCS_IN), void 0)
+writeFileSync(DOCS_OUT, readFileSync(DOCS_IN))
 
 for (let key in OUTPUT) {
-  appendFile(DOCS_OUT, `- ## Category: **${key}**` + '\n', void 0)
+  appendFileSync(DOCS_OUT, `- ## Category: **${key}**` + '\n')
 
   console.log('📝 Created list for:', key)
 
   OUTPUT[key].forEach(({ short, url, package: __package }) => {
-    appendFile(
+    appendFileSync(
       DOCS_OUT, 
       `
     - ## Icon: **${short}** <img src="${url}">
@@ -136,7 +137,6 @@ for (let key in OUTPUT) {
       export default () => <Icon />
       \`\`\`
 `,
-      void 0
     )
 
     console.log('📝 --> Created list for:', short)
