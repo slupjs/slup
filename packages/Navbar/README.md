@@ -20,13 +20,10 @@ npm install --save @slup/navbar
 ```js
 import { Navbar } from '@slup/navbar'
 
-export class Text extends Component {
-  render() {
-    return(
-      <Navbar>/* Icons and Title here */</Navbar>
-    )
-  }
-}
+export const Test = props =>
+  <Navbar>
+    /* Icons and Title here */
+  </Navbar>
 ```
 
 ## Available properties
