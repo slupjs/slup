@@ -35,6 +35,7 @@ export const base = {
     '@slup/tabs': 'Slup.Tabs',
     '@slup/typography': 'Slup.Typography',
     '@slup/card': 'Slup.Card',
+    '@slup/tooltip': 'Slup.Tooltip',
 
     /** Other externals */
     'inferno-component': 'Inferno.Component',

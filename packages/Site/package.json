@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@slup/buttons": "^0.5.0",
+    "@slup/card": "^0.5.0",
     "@slup/common": "^0.5.0",
     "@slup/controls": "^0.5.0",
     "@slup/grid": "^0.5.0",
@@ -37,6 +38,7 @@
     "@slup/slider": "^0.5.0",
     "@slup/tabs": "^0.5.0",
     "@slup/theming": "^0.5.0",
+    "@slup/tooltip": "^0.5.0",
     "@slup/typography": "^0.5.0",
     "compression": "1.7.1",
     "decko": "1.2.0",
