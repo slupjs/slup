@@ -6,7 +6,7 @@ export const Container = styled.div`
   outline: none;
 `
 
-const translate = styledMap('location', {
+const translate: Function = styledMap('location', {
   'top-start':    '0, calc(-100% - 14px)',
   'top-end':      '-100%, calc(-100% - 14px)',
   top:            '-50%, calc(-100% - 14px)',
@@ -21,7 +21,7 @@ const translate = styledMap('location', {
   bottom:         '-50%, 14px'
 })
 
-const translateMobile = styledMap('location', {
+const translateMobile: Function = styledMap('location', {
   'top-start':    '0, calc(-100% - 24px)',
   'top-end':      '-100%, calc(-100% - 24px)',
   top:            '-50%, calc(-100% - 24px)',
@@ -36,7 +36,7 @@ const translateMobile = styledMap('location', {
   bottom:         '-50%, 24px'
 })
 
-const top = styledMap('location', {
+const top: Function = styledMap('location', {
   'top-start': '0',
   'top-end': '0',
   top: '0',
@@ -51,7 +51,7 @@ const top = styledMap('location', {
   bottom: 'auto'
 })
 
-const left = styledMap('location', {
+const left: Function = styledMap('location', {
   'top-start': '0',
   'top-end': '100%',
   top: '50%',
@@ -66,7 +66,7 @@ const left = styledMap('location', {
   bottom: '50%'
 })
 
-const transformOrigin = styledMap('location', {
+const transformOrigin: Function = styledMap('location', {
   'top-start': 'center bottom',
   'top-end': 'center bottom',
   top: 'center bottom',

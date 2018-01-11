@@ -2,14 +2,36 @@ import Inferno, { linkEvent } from 'inferno'
 import Component from 'inferno-component'
 import { Container, Tip } from './container'
 
-export class Tooltip extends Component<any, any> {
+interface IProps {
+  text: string,
+  delay: string,
+  location: string
+}
+
+interface IState {
+  focused: boolean
+}
+
+export class Tooltip extends Component<IProps, IState> {
   state = { focused: false }
 
-  handleFocus(self) {
+  /**
+   * Handles the focus of the tooltip
+   * 
+   * @param   {Class} self The local class
+   * @returns {null}
+   */
+  private handleFocus(self) {
     self.setState({ focused: true })
   }
 
-  handleBlur(self) {
+  /**
+   * Handles the blur of the tooltip
+   * 
+   * @param   {Class} self The local class
+   * @returns {null}
+   */
+  private handleBlur(self) {
     self.setState({ focused: false })
   }
 
