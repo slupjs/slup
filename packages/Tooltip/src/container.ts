@@ -83,6 +83,7 @@ const transformOrigin = styledMap('location', {
 
 export const Tip = styled.div`
   border-radius: 2px;
+  white-space: nowrap;
   z-index: 997;
   pointer-events: none;
   font-size: 10px;
