@@ -1,6 +1,12 @@
 import styled, { GREY } from '@slup/theming'
 import { styledMap } from '@slup/common'
 
+
+/**
+ * The element which contains the tooltip
+ * 
+ * @param {HTMLElement} element
+ */
 export const Container = styled.div`
   position: relative;
   outline: none;
@@ -81,6 +87,11 @@ const transformOrigin: Function = styledMap('location', {
   bottom: 'center top'
 })
 
+/**
+ * The tooltip
+ * 
+ * @param {HTMLElement} element
+ */
 export const Tip = styled.div`
   border-radius: 2px;
   white-space: nowrap;

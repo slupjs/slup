@@ -13,7 +13,7 @@ interface IState {
 }
 
 export class Tooltip extends Component<IProps, IState> {
-  state = { focused: false }
+  public state = { focused: false }
 
   /**
    * Handles the focus of the tooltip
