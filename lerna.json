@@ -7,8 +7,7 @@
   "command": {
     "publish": {
       "message": ":arrow_up: Release %s",
-      "allowBranch": "master",
-      "ignore": "@slup/icons"
+      "allowBranch": "master"
     }
   },
   "version": "0.5.0"
