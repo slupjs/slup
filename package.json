@@ -1,10 +1,13 @@
 {
   "name": "slup",
-  "main": "./packages",
+  "private": true,
   "version": "0.0.1",
   "scripts": {
     "test": "bundlesize"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "bundlesize": [
     {
       "path": "./packages/Theming/dist.js",
@@ -44,7 +47,7 @@
     },
     {
       "path": "./packages/Slider/dist.js",
-      "maxSize": "2.5 kB"
+      "maxSize": "2.65 kB"
     },
     {
       "path": "./packages/Site/dist/vendor.js",
