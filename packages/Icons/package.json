@@ -4,6 +4,7 @@
   "description": "Material Design Icons requireable from Inferno ",
   "repository": "https://github.com/slupjs/slup/tree/master/packages/Icons",
   "main": "./icons",
+  "module": "./icons",
   "author": "Luca <LucaT1@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
