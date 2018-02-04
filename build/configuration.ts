@@ -20,7 +20,7 @@ export const input = entry => ({
   plugins: [
     CJS(),
     RS(),
-    TS.default({
+    (TS as any)({
       cacheRoot: join(tmpdir(), '.rpt2_cache'),
       /**
        * Needed to avoid errors with TS and missing types,

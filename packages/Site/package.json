@@ -6,13 +6,14 @@
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "compile:watch": "webpack --watch --progress",
-    "compile:build": "webpack -p --progress",
-    "compile:stats": "webpack -p --json > stats.json",
+    "compile:watch": "cross-env NODE_ENV=development webpack --watch --progress",
+    "compile:build": "cross-env NODE_ENV=development webpack --progress",
+    "compile:stats": "cross-env NODE_ENV=development webpack --json > stats.json",
     "start": "nodemon dist/server.js",
     "prepublish": "npm run compile:build"
   },
   "devDependencies": {
+    "cross-env": "5.1.3",
     "@types/node": "8.0.34",
     "awesome-typescript-loader": "3.2.3",
     "babel-core": "6.26.0",

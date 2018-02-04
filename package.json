@@ -7,8 +7,8 @@
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
     "prepare": "tsc build/*.ts --lib es7 --types node",
-    "build": "yarn prepare && yarn bootstrap && node build/all && cd packages/Icons && yarn build",
-    "prepublish": "yarn prepare && yarn bootstrap && node build/all && cd packages/Icons && yarn build"
+    "build": "yarn prepare && node build/all  && yarn bootstrap && cd packages/Icons && yarn build",
+    "prepublish": "yarn prepare && node build/all  && yarn bootstrap && cd packages/Icons && yarn build"
   },
   "bundlesize": [
     {
