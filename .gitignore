@@ -1,6 +1,5 @@
 node_modules
-dist.js
-dist.js.map
+dist
 stats.json
 route.js
 route.js.map
