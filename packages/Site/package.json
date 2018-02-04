@@ -20,7 +20,7 @@
     "babel-loader": "7.1.2",
     "babel-plugin-inferno": "3.2.0",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-preset-env": "1.6.0",
+    "babel-preset-env": "1.6.1",
     "nodemon": "1.12.1",
     "typescript": "2.5.3",
     "webpack": "3.6.0"
