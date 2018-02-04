@@ -3,8 +3,8 @@
   "main": "./packages",
   "version": "0.0.1",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "clean": "lerna clean",
+    "bootstrap": "lerna bootstrap --loglevel=verbose",
+    "clean": "lerna clean --loglevel=verbose",
     "prepare": "tsc build/*.ts --lib es7 --types node",
     "build": "yarn prepare && node build/all && cd packages/Icons && yarn && yarn build && cd .. && yarn bootstrap",
     "prepublish": "yarn prepare && node build/all && cd packages/Icons && yarn && yarn build && cd .. && yarn bootstrap"
