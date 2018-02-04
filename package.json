@@ -3,7 +3,11 @@
   "main": "./packages",
   "version": "0.0.1",
   "scripts": {
-    "test": "bundlesize"
+    "test": "bundlesize",
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean",
+    "build": "node build/all && cd packages/Icons && yarn prepublish",
+    "prepublish": "node build/all && cd packages/Icons && yarn prepublish"
   },
   "bundlesize": [
     {
@@ -57,6 +61,7 @@
     "babel-plugin-inferno": "3.4.0",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "bundlesize": "0.15.2",
+    "lerna": "2.8.0",
     "rimraf": "2.6.2",
     "rollup": "0.55.3",
     "rollup-plugin-babel": "3.0.3",
