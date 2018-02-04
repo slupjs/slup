@@ -15,7 +15,7 @@
   },
   "peerDependencies": {
     "inferno": "3.9.0",
-    "inferno-component": "3.9.0"
+    "inferno-component": "3.10.1"
   },
   "publishConfig": {
     "access": "public"
