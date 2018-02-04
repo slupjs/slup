@@ -6,8 +6,8 @@
     "test": "bundlesize",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
-    "build": "node build/all && cd packages/Icons && yarn prepublish",
-    "prepublish": "node build/all && cd packages/Icons && yarn prepublish"
+    "build": "lerna bootstrap && node build/all && cd packages/Icons && yarn build",
+    "prepublish": "lerna bootstrap && node build/all && cd packages/Icons && yarn build"
   },
   "bundlesize": [
     {
@@ -56,6 +56,7 @@
     }
   ],
   "devDependencies": {
+    "@types/node": "9.4.0",
     "babel-core": "6.26.0",
     "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-inferno": "3.4.0",
