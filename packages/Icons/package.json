@@ -13,7 +13,7 @@
     "babel-plugin-transform-es2015-arrow-functions": "6.22.0",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.0",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-preset-minify": "0.2.0",
+    "babel-preset-minify": "0.3.0",
     "icons": "git+https://git@github.com/google/material-design-icons.git",
     "typescript": "2.5.3"
   },
