@@ -9,12 +9,6 @@ import {
 } from 'fs'
 import { join } from 'path'
 import { transform } from 'babel-core'
-import * as isCI from 'is-ci'
-
-if(isCI) {
-  console.log('Don\'t build icons in the CI')
-  process.exit()
-}
 
 /** Paths */
 const BASE = __dirname

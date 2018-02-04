@@ -22,8 +22,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "is-ci": "1.1.0"
   }
 }
