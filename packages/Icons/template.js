@@ -1,4 +1,3 @@
 import Inferno from 'inferno'
 
-export default (props) =>
-  <svg />
+export default props => <svg />

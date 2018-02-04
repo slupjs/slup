@@ -1,4 +1,6 @@
-export * from './raisedButton'
-export * from './flatButton'
-export * from './iconButton'
-export * from './fab'
+import { Fab } from './fab'
+import { RaisedButton } from './raisedButton'
+import { FlatButton } from './flatButton'
+
+export { Fab, RaisedButton, FlatButton }
+export default { Fab, RaisedButton, FlatButton }
