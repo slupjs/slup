@@ -4,7 +4,7 @@ const { existsSync } = require('fs')
 const rollup = require('rollup')
 const { input, output } = require('./configuration')
 
-module.exports = async package => {
+module.exports = package => {
   console.log(package, 'Started working')
 
   const base = join(process.cwd(), 'packages', package)

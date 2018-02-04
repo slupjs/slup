@@ -1,5 +1,6 @@
 node_modules
 dist
+build/*.js
 stats.json
 route.js
 route.js.map
