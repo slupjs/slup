@@ -47,7 +47,7 @@
     "history": "4.7.2",
     "inferno": "3.9.0",
     "inferno-component": "3.9.0",
-    "inferno-router": "3.9.0",
+    "inferno-router": "3.10.1",
     "inferno-server": "3.9.0",
     "morgan": "1.9.0",
     "prismjs": "1.8.1",
