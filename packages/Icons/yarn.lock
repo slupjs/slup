@@ -100,12 +100,12 @@ babel-messages@^6.23.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-inferno@3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-inferno/-/babel-plugin-inferno-3.2.0.tgz#62ae1ac223e74e0d54f29fb196e06e358250d82a"
+babel-plugin-inferno@3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-inferno/-/babel-plugin-inferno-3.4.0.tgz#1e004f33d98ec8482df0d252ecedc9fb355cf699"
   dependencies:
     babel-plugin-syntax-jsx "^6.18.0"
-    inferno-vnode-flags "3.0.0"
+    inferno-vnode-flags "3.10.1"
 
 babel-plugin-minify-builtins@^0.2.0:
   version "0.2.0"
@@ -415,9 +415,9 @@ home-or-tmp@^2.0.0:
   version "3.0.1"
   resolved "git+https://git@github.com/google/material-design-icons.git#224895a86501195e7a7ff3dde18e39f00b8e3d5a"
 
-inferno-vnode-flags@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.0.0.tgz#f396390f3dafae3b76eea04d04eed6cf2004473b"
+inferno-vnode-flags@3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.10.1.tgz#88a4528a3b4df0f33a3ace68dc45f05b651c0e41"
 
 invariant@^2.2.2:
   version "2.2.2"
