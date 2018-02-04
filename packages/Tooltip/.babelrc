@@ -1,6 +1,0 @@
-{
-  "plugins": [
-    ["inferno", {"imports": true}],
-    "transform-object-rest-spread"
-  ]
-}

@@ -3,8 +3,10 @@
   "version": "0.5.0",
   "description": "Controls elements built upon Inferno with the Slup framework",
   "repository": "https://github.com/slupjs/slup/tree/master/packages/Controls",
-  "main": "dist.js",
-  "module": "src/index.ts",
+  "main": "dist/bundle.cjs.js",
+  "module": "dist/bundle.es.js",
+  "browser": "dist/bundle.iife.js",
+  "source": "src/index.ts",
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
