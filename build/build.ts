@@ -1,39 +1,30 @@
-const { join } = require('path')
-const { sync } = require('rimraf')
-const { existsSync } = require('fs')
-const rollup = require('rollup')
-const { input, output } = require('./configuration')
+import { join } from 'path'
+import { sync } from 'rimraf'
+import { existsSync } from 'fs'
+import { rollup } from 'rollup'
+import { input, output } from './configuration'
 
-module.exports = package => {
-  console.log(package, 'Started working')
+export default async pkg => {
+  console.log(pkg, 'Started working')
 
-  const base = join(process.cwd(), 'packages', package)
-  const out  = join(base, 'dist')
+  const base = join(process.cwd(), 'packages', pkg)
+  const out = join(base, 'dist')
   const entry = join(base, 'src', 'index.ts')
 
-  console.log(package, '* Removing old build folder')
+  console.log(pkg, '* Removing old build folder')
   if(existsSync(out)) sync(out)
 
-  console.log(package, '* Generating configuration')
+  console.log(pkg, '* Generating configuration')
 
   const inputOptions = input(entry)
   const outputOptions = output(base)
 
-  console.log(package, '* Bundling')
+  console.log(pkg, '* Bundling')
 
-  return rollup.rollup(inputOptions)
-    .then(handleBundle(package, outputOptions))
-    .catch(onError)
-}
+  const bundle = await rollup(inputOptions as any)
 
-const handleBundle = (package, options) => bundle => 
-  Promise.all(['es', 'cjs', 'amd', 'umd', 'iife'].map(format => {
-    console.log(package, '* Output for', format)
-    bundle.write(options(format))
+  await Promise.all(['es', 'cjs', 'amd', 'umd', 'iife'].map(format => {
+    console.log(pkg, '* Output for', format)
+    bundle.write(outputOptions(format) as any)
   }))
-
-const onError = error => {
-  console.log('------ ERROR ------')
-  console.error(error._babel ? error.codeFrame : error.frame ? error.frame : error)
-  process.exit(1)
 }

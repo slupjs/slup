@@ -1,12 +1,11 @@
-const { join } = require('path')
-const { tmpdir } = require('os')
-const TS = require('rollup-plugin-typescript2')
-const CJS = require('rollup-plugin-commonjs')
-const RS = require('rollup-plugin-node-resolve')
-const BB = require('rollup-plugin-babel')
+import { join } from 'path'
+import { tmpdir } from 'os'
+import * as TS from 'rollup-plugin-typescript2'
+import * as CJS from 'rollup-plugin-commonjs'
+import * as RS from 'rollup-plugin-node-resolve'
+import * as BB from 'rollup-plugin-babel'
 
-
-exports.input = entry => ({
+export const input = entry => ({
   input: entry,
 
   /** External dependencies, resolved via commonjs or AMD */
@@ -21,7 +20,7 @@ exports.input = entry => ({
   plugins: [
     CJS(),
     RS(),
-    TS({
+    TS.default({
       cacheRoot: join(tmpdir(), '.rpt2_cache'),
       /**
        * Needed to avoid errors with TS and missing types,
@@ -42,7 +41,7 @@ exports.input = entry => ({
   ]
 })
 
-exports.output = dir => format => {
+export const output = dir => format => {
   const name = dir.split('/')[dir.split('/').length - 1]
 
   return {

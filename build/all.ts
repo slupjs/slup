@@ -1,12 +1,18 @@
-const build = require('./build')
-const { readdirSync } = require('fs')
-const { join } = require('path')
+import build from './build'
+import { readdirSync } from 'fs'
+import { join } from 'path'
 
-const ignored = [ 'Site', 'Icons' ]
-const packages = readdirSync(join(process.cwd(), 'packages'))
+try {
+  const ignored = ['Site', 'Icons']
+  const packages = readdirSync(join(process.cwd(), 'packages'))
 
-Promise.all(packages
-  .filter(pkg => ignored.indexOf(pkg) === -1)
-  .map(package => build(package))
-)
-.catch(error => console.error(error))
+  packages
+    .filter(pkg => ignored.indexOf(pkg) === -1)
+    .map(pkg => build(pkg))
+} catch(error) {
+
+  console.log('------ ERROR ------')
+  console.error(error._babel ? error.codeFrame : error.frame ? error.frame : error)
+  process.exit(1)
+
+}
