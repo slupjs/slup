@@ -7,4 +7,3 @@ sudo: required
 script:
 - yarn bootstrap --loglevel=verbose
 - yarn prepublish
-- yarn test
