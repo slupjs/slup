@@ -1,6 +1,6 @@
 {
   "name": "@slup/ripple",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Ripple element built upon Inferno with the Slup framework",
   "repository": "https://github.com/slupjs/slup/tree/master/packages/Ripple",
   "main": "dist/bundle.cjs.js",
@@ -10,7 +10,7 @@
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
-    "@slup/theming": "^0.5.0"
+    "@slup/theming": "^0.5.1"
   },
   "peerDependencies": {
     "inferno": "3.9.0",

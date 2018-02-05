@@ -1,6 +1,6 @@
 {
   "name": "@slup/theming",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Theming utility for the slup framework",
   "repository": "https://github.com/slupjs/slup/tree/master/packages/Theming",
   "main": "dist/bundle.cjs.js",
@@ -10,7 +10,7 @@
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
-    "@slup/common": "^0.5.0",
+    "@slup/common": "^0.5.1",
     "stylis": "3.3.1"
   },
   "peerDependencies": {

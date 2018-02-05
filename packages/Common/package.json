@@ -1,6 +1,6 @@
 {
   "name": "@slup/common",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Commons utilities for the Slup framework",
   "repository": "https://github.com/slupjs/slup/tree/master/packages/Common",
   "main": "dist/bundle.cjs.js",

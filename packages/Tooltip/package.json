@@ -1,6 +1,6 @@
 {
   "name": "@slup/tooltip",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Tooltip element built upon Inferno with the Slup framework",
   "repository": "https://github.com/slupjs/slup/tree/master/packages/Tooltip",
   "main": "dist/bundle.cjs.js",
@@ -10,8 +10,8 @@
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
-    "@slup/common": "^0.5.0",
-    "@slup/theming": "^0.5.0"
+    "@slup/common": "^0.5.1",
+    "@slup/theming": "^0.5.1"
   },
   "peerDependencies": {
     "inferno": "3.9.0",
