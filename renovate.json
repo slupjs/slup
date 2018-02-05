@@ -1,4 +1,3 @@
 {
-  "extends": ["config:base", "monorepo:babel"],
-  "enabled": false
+  "extends": ["config:base"]
 }
