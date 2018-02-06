@@ -2004,33 +2004,25 @@ inferno-component@3.10.1:
     inferno-shared "3.10.1"
     inferno-vnode-flags "3.10.1"
 
-inferno-component@3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-3.9.0.tgz#26a653bd9f055df49116facf54321ece990798f8"
+inferno-create-element@3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/inferno-create-element/-/inferno-create-element-3.10.1.tgz#acb921e6c0cc9b0f3d90516062375247c0273df9"
   dependencies:
-    inferno "3.9.0"
-    inferno-shared "3.9.0"
-    inferno-vnode-flags "3.9.0"
+    inferno "3.10.1"
+    inferno-component "3.10.1"
+    inferno-shared "3.10.1"
+    inferno-vnode-flags "3.10.1"
 
-inferno-create-element@3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/inferno-create-element/-/inferno-create-element-3.9.0.tgz#7b7a15a2b3f9ae57e353b29640e01cc6e1abce7d"
-  dependencies:
-    inferno "3.9.0"
-    inferno-component "3.9.0"
-    inferno-shared "3.9.0"
-    inferno-vnode-flags "3.9.0"
-
-inferno-router@3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/inferno-router/-/inferno-router-3.9.0.tgz#15ae0263a8ab724ff939ab18e2f4fa8ccf47b3fb"
+inferno-router@3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/inferno-router/-/inferno-router-3.10.1.tgz#a256cf18ee5c38a10e0eca48a155a6ac5136caa7"
   dependencies:
     history "^4.7.2"
-    inferno "3.9.0"
-    inferno-component "3.9.0"
-    inferno-create-element "3.9.0"
-    inferno-shared "3.9.0"
-    inferno-vnode-flags "3.9.0"
+    inferno "3.10.1"
+    inferno-component "3.10.1"
+    inferno-create-element "3.10.1"
+    inferno-shared "3.10.1"
+    inferno-vnode-flags "3.10.1"
     path-to-regexp "^1.7.0"
     path-to-regexp-es6 "0.0.2"
 
