@@ -2034,13 +2034,13 @@ inferno-router@3.9.0:
     path-to-regexp "^1.7.0"
     path-to-regexp-es6 "0.0.2"
 
-inferno-server@3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/inferno-server/-/inferno-server-3.9.0.tgz#aa3962e5682cda948975953759a600e61995e2c1"
+inferno-server@3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/inferno-server/-/inferno-server-3.10.1.tgz#f83e6298305e6844308493b240827cb8efef5b02"
   dependencies:
-    inferno "3.9.0"
-    inferno-shared "3.9.0"
-    inferno-vnode-flags "3.9.0"
+    inferno "3.10.1"
+    inferno-shared "3.10.1"
+    inferno-vnode-flags "3.10.1"
 
 inferno-shared@3.10.1:
   version "3.10.1"
