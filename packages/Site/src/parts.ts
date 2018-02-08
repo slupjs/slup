@@ -19,6 +19,8 @@ export default `
       {{HTML}}
     </div>
     <script>window.__ids = {{IDS}}</script>
+    <script src='/static/vs/loader.js'></script>
+    <script>require.config({ paths: { vs: '/static/vs' } })</script>
     <script src='/static/vendor.js'></script>
     <script src='/static/routes.js'></script>
   </body>

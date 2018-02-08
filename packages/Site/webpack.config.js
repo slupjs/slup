@@ -1,7 +1,7 @@
 const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { join } = require('path')
 const { tmpdir } = require('os')
-const Package = join(__dirname, '..')
 
 const Base = {
   resolve: {
@@ -80,8 +80,6 @@ const Client = {
       'inferno',
       'inferno-component',
       'inferno-router',
-      'prismjs/prism',
-      'prismjs/components/prism-jsx',
       '@slup/common',
       '@slup/theming',
       'history/createBrowserHistory'
@@ -96,7 +94,11 @@ const Client = {
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' })
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
+    new CopyWebpackPlugin([{
+      from: 'node_modules/monaco-editor/min/vs',
+      to: 'vs',
+    }])
   ],
 
   devtool: 'source-map',

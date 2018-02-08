@@ -5,67 +5,63 @@ import styled    from '@slup/theming'
 import { Card } from '@slup/card'
 import ArrowForward from '../../../Icons/icons/navigation/arrowForward'
 
-import * as CodeMirror from 'codemirror'
-import css from '../utils/codemirrorCSS'
+import * as Marked from 'marked'
 import 'codemirror/mode/jsx/jsx'
+import Editor from '@slup/monaco'
 
-const Container = styled(Card)`
-  height: 50%;  
+
+const Container = styled.div`
+  height: 50%;
   width: 80%;
-  margin: 0 auto;
   display: flex;
-  position: relative;
-  background: transparent;
-  top: 50%;
-  transform: translateY(-50%);
-
-  @media all and (max-width: 960px) { width: 90% }
-
-  @media all and (max-width: 600px) {
-    flex-direction: column;
-    margin: 0;
-    width: 100%;
-    height: 75%;
-  }
+  margin: 0 auto;
 `
 
 const Area = styled.div`
   height: 100%;
-  flex-basis: 50%;
-  color: black;
-  max-width: 50%;
-  background: white;
-  
-  @media all and (max-width: 600px) {
-    height: 50%;
-    flex-basis: 100%;
-    max-width: 100%;
-  }
+  width: 50%;
 `
 
-export class Editor extends Component<any, any> {
-  private area: HTMLTextAreaElement
-  private editor = null
+interface IState { frames: string[] }
 
-  componentDidMount() {
-    this.editor = CodeMirror.fromTextArea(this.area, {
-      value: this.area.value,
-      lineNumbers: true,
-      mode: 'jsx',
-      tabSize: 2
-    })
+export class Ed extends Component<any, any> {
+  private area: HTMLTextAreaElement
+  private url: string = 'https://api.github.com/repos/slupjs/slup/contents/packages/Buttons/README.md'
+  public state = { frames: ['const value: string[] = [\'test\', \'blabla\']'] }
+  
+  private async loadReadme() {
+    const res = await fetch(this.url)
+    const json = await res.json()
+    
+    const lexer = new Marked.Lexer()
+    const tokens = lexer.lex(atob(json.content))
+    const frames = tokens
+      .filter(t => t.type === 'code' && t.lang === 'js')
+      .map(code => code.text)
+
+    this.setState({ frames })
+  }
+
+  public componentDidMount() {
+    this.loadReadme()
+  }
+
+  private editorDidMount(editor) {
+    console.log(editor)
   }
 
   render() {
-    return(
+    console.log(this.state)
+    return (
       <Container>
-        <Area>
-          <style dangerouslySetInnerHTML={{ __html: css }} />
-          <textarea ref={e => this.area = e} />
-        </Area>
-        <Area>
-          Text
-        </Area>
+        {this.state.frames.map(code =>
+          <div>
+            <Area>
+              <Editor editorDidMount={this.editorDidMount.bind(this)} value={code} theme='vs-dark' language='typescript' />
+            </Area>
+            <Area>{code}</Area> {/* TODO */}
+          </div>
+        )}
       </Container>
     )
   }
