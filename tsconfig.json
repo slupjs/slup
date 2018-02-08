@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "importHelpers": true,
+    "jsx": "preserve",
+    "types": [
+      "inferno",
+      "node"
+    ],
+    "lib": [
+      "es6",
+      "es7",
+      "dom"
+    ]
+  }
+}

@@ -3,55 +3,27 @@
   "main": "./packages",
   "version": "0.0.1",
   "scripts": {
-    "test": "bundlesize"
+    "bootstrap": "lerna bootstrap --loglevel=verbose",
+    "clean": "lerna clean --loglevel=verbose",
+    "prepare": "tsc build/*.ts --lib es7 --types node",
+    "build": "yarn prepare && node build/all && cd packages/Icons && yarn && yarn build && cd .. && yarn bootstrap",
+    "prepublish": "yarn prepare && node build/all && cd packages/Icons && yarn && yarn build && cd .. && yarn bootstrap"
   },
-  "bundlesize": [
-    {
-      "path": "./packages/Theming/dist.js",
-      "maxSize": "10.5 kB"
-    },
-    {
-      "path": "./packages/Common/dist.js",
-      "maxSize": "1 kB"
-    },
-    {
-      "path": "./packages/Controls/dist.js",
-      "maxSize": "2.5 kB"
-    },
-    {
-      "path": "./packages/Grid/dist.js",
-      "maxSize": "1 kB"
-    },
-    {
-      "path": "./packages/Navbar/dist.js",
-      "maxSize": "1.5 kB"
-    },
-    {
-      "path": "./packages/Ripple/dist.js",
-      "maxSize": "1.5 kB"
-    },
-    {
-      "path": "./packages/Tabs/dist.js",
-      "maxSize": "2.5 kB"
-    },
-    {
-      "path": "./packages/Sidenav/dist.js",
-      "maxSize": "1.5 kB"
-    },
-    {
-      "path": "./packages/Lists/dist.js",
-      "maxSize": "1.5 kB"
-    },
-    {
-      "path": "./packages/Slider/dist.js",
-      "maxSize": "2.5 kB"
-    },
-    {
-      "path": "./packages/Site/dist/vendor.js",
-      "maxSize": "35 kB"
-    }
-  ],
   "devDependencies": {
-    "bundlesize": "0.15.2"
+    "@types/acorn": "4.0.3",
+    "@types/chokidar": "1.7.4",
+    "@types/node": "9.4.3",
+    "babel-core": "6.26.0",
+    "babel-plugin-external-helpers": "6.22.0",
+    "babel-plugin-inferno": "3.4.0",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "lerna": "2.8.0",
+    "rimraf": "2.6.2",
+    "rollup": "0.55.3",
+    "rollup-plugin-babel": "3.0.3",
+    "rollup-plugin-commonjs": "8.3.0",
+    "rollup-plugin-node-resolve": "3.0.2",
+    "rollup-plugin-typescript2": "0.11.0",
+    "typescript": "2.7.1"
   }
 }

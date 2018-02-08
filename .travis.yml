@@ -5,6 +5,5 @@ node_js:
   - '8'
 sudo: required
 script:
-- yarn global add lerna
-- lerna bootstrap --loglevel=verbose
-- yarn test
+- yarn bootstrap
+- yarn prepublish

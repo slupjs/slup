@@ -7,15 +7,15 @@ import {
   writeFileSync,
   appendFileSync
 } from 'fs'
-import { resolve } from 'path'
+import { join } from 'path'
 import { transform } from 'babel-core'
 
 /** Paths */
-const BASE = resolve(__dirname)
-const ICONS_OUT = resolve(BASE, 'icons')
-const ICONS_BASE = resolve(BASE, 'node_modules', 'icons')
-const DOCS_IN = resolve(BASE, 'README.t.md')
-const DOCS_OUT = resolve(BASE, 'README.md')
+const BASE = __dirname
+const ICONS_OUT = join(BASE, 'icons')
+const ICONS_BASE = join(BASE, 'node_modules', 'icons')
+const DOCS_IN = join(BASE, 'README.t.md')
+const DOCS_OUT = join(BASE, 'README.md')
 
 /** Babel options */
 const OPTIONS = {
@@ -29,7 +29,7 @@ const OPTIONS = {
 }
 
 /** Base template for transpilation */
-const TEMPLATE = readFileSync(resolve(BASE, 'template.js')).toString()
+const TEMPLATE = readFileSync(join(BASE, 'template.js')).toString()
 
 /** List of icons types */
 const ICONS_TYPES = [
@@ -59,7 +59,7 @@ if (!existsSync(ICONS_OUT)) mkdirSync(ICONS_OUT)
 
 /** Generate a tree of icons for each type */
 const ICONS_FOLDERS = ICONS_TYPES.forEach(type => {
-  const path = resolve(ICONS_BASE, type, 'svg', 'production')
+  const path = join(ICONS_BASE, type, 'svg', 'production')
 
 
   ICONS[type] = readdirSync(path) /** List all svgs in the folder */
@@ -72,7 +72,7 @@ const ICONS_FOLDERS = ICONS_TYPES.forEach(type => {
 
 for (let key in ICONS) {
   const CATEGORY = ICONS[key]
-  const OUT_BASE = resolve(ICONS_OUT, key)
+  const OUT_BASE = join(ICONS_OUT, key)
 
   if (!existsSync(OUT_BASE)) mkdirSync(OUT_BASE)
 
@@ -80,11 +80,11 @@ for (let key in ICONS) {
 
   CATEGORY.forEach(icon => {
     const LONG_ICON = 'ic_' + icon + '_24px.svg'
-    const ICON_PATH = resolve(ICONS_BASE, key, 'svg', 'production', LONG_ICON)
+    const ICON_PATH = join(ICONS_BASE, key, 'svg', 'production', LONG_ICON)
 
     /** Remove hypens and replace them with an uppercase next-charter */
     const CAMELCASE = icon.replace(/(-.|_.)/g, x => x[1].toUpperCase()) 
-    const OUT       = resolve(OUT_BASE, CAMELCASE + '.js')
+    const OUT       = join(OUT_BASE, CAMELCASE + '.js')
     const URL       = 'https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_' + icon + '_black_24px.svg'
     const PACKAGE   = '@slup/icons/' + key + CAMELCASE
 
@@ -110,7 +110,7 @@ for (let key in ICONS) {
   })
 }
 
-writeFile(resolve(BASE, 'data.json'), JSON.stringify(OUTPUT, null, 2), () => {
+writeFile(join(BASE, 'data.json'), JSON.stringify(OUTPUT, null, 2), () => {
   console.log('Written stats file! ⚡️')
 })
 

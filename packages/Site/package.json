@@ -1,19 +1,19 @@
 {
   "name": "@slup/site",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": true,
   "repository": "https://github.com/slupjs/slup/tree/master/packages/Site",
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "compile:watch": "webpack --watch --progress",
-    "compile:build": "webpack -p --progress",
-    "compile:stats": "webpack -p --json > stats.json",
+    "compile:watch": "cross-env NODE_ENV=development webpack --watch --progress",
+    "compile:build": "cross-env NODE_ENV=development webpack --progress",
+    "compile:stats": "cross-env NODE_ENV=development webpack --json > stats.json",
     "start": "nodemon dist/server.js",
     "prepublish": "npm run compile:build"
   },
   "devDependencies": {
-    "@types/node": "8.0.34",
+    "@types/node": "8.5.9",
     "awesome-typescript-loader": "3.2.3",
     "babel-core": "6.26.0",
     "babel-loader": "7.1.2",
@@ -46,6 +46,7 @@
     "compression": "1.7.1",
     "express": "4.16.1",
     "history": "4.7.2",
+<<<<<<< HEAD
     "inferno": "3.9.0",
     "inferno-component": "3.9.0",
     "inferno-router": "3.9.0",
@@ -54,5 +55,14 @@
     "monaco-editor": "0.10.1",
     "morgan": "1.9.0",
     "stylis": "3.3.1"
+=======
+    "inferno": "3.10.1",
+    "inferno-component": "3.10.1",
+    "inferno-server": "3.10.1",
+    "inferno-router": "3.10.1",
+    "morgan": "1.9.0",
+    "prismjs": "1.11.0",
+    "stylis": "3.4.8"
+>>>>>>> master
   }
 }

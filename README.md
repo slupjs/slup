@@ -60,7 +60,7 @@ yarn start # Start the demo server
 ```
 
 ## Development setup
-> NOTE: This process requires you to have installed [lerna](https://lernajs.io/) globally.
+> NOTE: This process requires you to have installed [yarn](https://yarnpkg.com/) globally.
 
 - To kick things off, clone the demo and enter that directory:
 ```bash
