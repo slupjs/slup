@@ -15,19 +15,28 @@ const Container = styled.div`
   width: 80%;
   display: flex;
   margin: 0 auto;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `
 
 const Area = styled.div`
   height: 100%;
   width: 50%;
+
+  @media (max-width: 700px) {
+    width: 100%
+  }
 `
 
 interface IState { frames: string[] }
 
-export class Ed extends Component<any, any> {
-  private area: HTMLTextAreaElement
+export class Ed extends Component<any, IState> {
+  private monaco: any
   private url: string = 'https://api.github.com/repos/slupjs/slup/contents/packages/Buttons/README.md'
-  public state = { frames: ['const value: string[] = [\'test\', \'blabla\']'] }
+  
+  public state = { frames: [] }
   
   private async loadReadme() {
     const res = await fetch(this.url)
@@ -46,23 +55,40 @@ export class Ed extends Component<any, any> {
     this.loadReadme()
   }
 
-  private editorDidMount(editor) {
-    console.log(editor)
+  public componentWillMount() {
+    window.addEventListener('resize', this.handleResize.bind(this))
+  }
+  
+  public componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize.bind(this))
+  }
+
+  private handleResize() {
+    this.monaco.editor.layout()
   }
 
   render() {
-    console.log(this.state)
+    const { frames } = this.state
     return (
-      <Container>
-        {this.state.frames.map(code =>
-          <div>
-            <Area>
-              <Editor editorDidMount={this.editorDidMount.bind(this)} value={code} theme='vs-dark' language='typescript' />
-            </Area>
-            <Area>{code}</Area> {/* TODO */}
-          </div>
-        )}
-      </Container>
+      <div style='height: 100%'>
+        {frames.map(code => {
+          return(
+            <Container>
+              <Area>
+                <Editor
+                  ref={e => this.monaco = e}
+                  value={code}
+                  theme='vs-dark'
+                  language='javascript'
+                />
+              </Area>
+              <Area>
+                {code} {/* TODO */}
+              </Area>
+            </Container>
+          )
+        })}
+      </div>
     )
   }
 }
