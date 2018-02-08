@@ -21,6 +21,7 @@
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-env": "1.6.0",
     "copy-webpack-plugin": "4.4.1",
+    "cross-env": "5.1.3",
     "nodemon": "1.12.1",
     "typescript": "2.5.3",
     "webpack": "3.6.0",
@@ -46,16 +47,8 @@
     "compression": "1.7.1",
     "express": "4.16.1",
     "history": "4.7.2",
-<<<<<<< HEAD
-    "inferno": "3.9.0",
-    "inferno-component": "3.9.0",
-    "inferno-router": "3.9.0",
-    "inferno-server": "3.9.0",
     "marked": "0.3.12",
     "monaco-editor": "0.10.1",
-    "morgan": "1.9.0",
-    "stylis": "3.3.1"
-=======
     "inferno": "3.10.1",
     "inferno-component": "3.10.1",
     "inferno-server": "3.10.1",
@@ -63,6 +56,5 @@
     "morgan": "1.9.0",
     "prismjs": "1.11.0",
     "stylis": "3.4.8"
->>>>>>> master
   }
 }
