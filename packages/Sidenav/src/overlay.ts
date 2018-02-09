@@ -1,4 +1,4 @@
-import styled from '@slup/theming'
+import styled, { lightTheme } from '@slup/theming'
 
 export const Drawer = styled.div`
   z-index: 1000;

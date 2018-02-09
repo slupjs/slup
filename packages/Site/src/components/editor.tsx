@@ -3,10 +3,8 @@ import Component from 'inferno-component'
 import styled    from '@slup/theming'
 
 import { Card } from '@slup/card'
-import ArrowForward from '../../../Icons/icons/navigation/arrowForward'
 
 import * as Marked from 'marked'
-import 'codemirror/mode/jsx/jsx'
 import Editor from '@slup/monaco'
 
 
