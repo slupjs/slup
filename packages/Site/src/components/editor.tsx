@@ -10,6 +10,11 @@ import 'codemirror/mode/jsx/jsx'
 import Editor from '@slup/monaco'
 
 
+const Main = styled.div`
+  height: 100%;
+  overflow-x: hidden;
+`
+
 const Container = styled.div`
   height: 50%;
   width: 80%;
@@ -18,15 +23,17 @@ const Container = styled.div`
 
   @media (max-width: 700px) {
     flex-direction: column;
+    width: 90%;
   }
 `
 
 const Area = styled.div`
   height: 100%;
   width: 50%;
+  min-height: 50%;
 
   @media (max-width: 700px) {
-    width: 100%
+    width: 100%;
   }
 `
 
@@ -55,31 +62,25 @@ export class Ed extends Component<any, IState> {
     this.loadReadme()
   }
 
-  public componentWillMount() {
-    window.addEventListener('resize', this.handleResize.bind(this))
-  }
-  
-  public componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize.bind(this))
-  }
-
-  private handleResize() {
-    this.monaco.editor.layout()
-  }
-
   render() {
     const { frames } = this.state
+    const options = {
+      automaticLayout: true,
+      minimap: { 
+        enabled: false 
+      }
+    }
     return (
-      <div style='height: 100%'>
+      <Main>
         {frames.map(code => {
           return(
             <Container>
               <Area>
                 <Editor
-                  ref={e => this.monaco = e}
                   value={code}
                   theme='vs-dark'
                   language='javascript'
+                  options={options}
                 />
               </Area>
               <Area>
@@ -88,7 +89,7 @@ export class Ed extends Component<any, IState> {
             </Container>
           )
         })}
-      </div>
+      </Main>
     )
   }
 }
