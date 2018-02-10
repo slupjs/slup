@@ -1878,9 +1878,9 @@ rollup-plugin-node-resolve@3.0.2:
     is-module "^1.0.0"
     resolve "^1.1.6"
 
-rollup-plugin-typescript2@0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-typescript2/-/rollup-plugin-typescript2-0.11.0.tgz#86a23464e5638b9a2320f86fe14822da66e7b190"
+rollup-plugin-typescript2@0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-typescript2/-/rollup-plugin-typescript2-0.11.1.tgz#c308de734baaed8ed8316dc8501a82a0ced674f4"
   dependencies:
     fs-extra "^5.0.0"
     resolve "^1.5.0"
