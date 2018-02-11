@@ -191,9 +191,9 @@ babel-plugin-external-helpers@6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-inferno@3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-inferno/-/babel-plugin-inferno-3.4.0.tgz#1e004f33d98ec8482df0d252ecedc9fb355cf699"
+babel-plugin-inferno@3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-inferno/-/babel-plugin-inferno-3.5.1.tgz#41b54781283299a4eee869a87017d8942a38f9f1"
   dependencies:
     babel-plugin-syntax-jsx "^6.18.0"
     inferno-vnode-flags "3.10.1"
