@@ -10,5 +10,11 @@ import { Demo } from '../components/demo'
 const redirect = router =>
   setTimeout(any => router.push('/components/buttons'), 350)
 
+
+import { load, transpile } from '../compiler'
+
+(window as any).load = load;
+(window as any).transpile = transpile
+
 export default (props: Object, context: { router: any }) =>
   <Demo />

@@ -2,16 +2,40 @@ import Inferno   from 'inferno'
 import Component from 'inferno-component'
 import styled    from '@slup/theming'
 import { Lexer } from 'marked'
+import {Typography } from '@slup/typography'
 
-import Monaco from '@slup/monaco'
-import {
-  Main,
-  Typo,
-  Blockquote,
-  Container,
-  Area
-} from './editor'
+import { Editor } from './editor'
+import { Evaluate } from './evaluate'
 
+export const Typo = styled(Typography) `
+  width: 80%;
+  color: ${props => props.theme.text};
+  margin: 24px auto;
+  opacity: .87;
+  
+  @media (max-width: 700px) {
+    width: 90%;
+  }
+`
+
+export const Blockquote = styled.blockquote`
+  width: 40%;
+  margin: 0 auto;
+  transform: translateX(-45%);
+  padding-left: 2%;
+  border-left: 4px solid ${props => props.theme.secondary};
+  opacity: 0.87;
+  
+  @media (max-width: 700px) {
+    width: 90%;
+    transform: translateX(0);
+  }
+`
+
+export const Main = styled.div`
+  height: 100%;
+  overflow-x: hidden;
+`
 
 interface IState {
   frames: string[],
@@ -21,7 +45,7 @@ interface IState {
 
 export class Demo extends Component<any, IState> {
   private monaco: any
-  private url: string = 'https://api.github.com/repos/slupjs/slup/contents/packages/Controls/README.md'
+  private url: string = 'https://api.github.com/repos/slupjs/slup/contents/packages/Buttons/README.md'
   
   public state = {
     frames: [],
@@ -62,31 +86,12 @@ export class Demo extends Component<any, IState> {
 
   render() {
     const { frames, title, description } = this.state
-    const options = {
-      automaticLayout: true,
-      minimap: { 
-        enabled: false 
-      }
-    }
+
     return (
       <Main>
         <Typo display2>{title}</Typo>
         <Blockquote>{description}</Blockquote>
-        {frames.map(code =>
-          <Container>
-            <Area>
-              <Monaco
-                value={code}
-                theme='vs-dark'
-                language='javascript'
-                options={options}
-              />
-            </Area>
-            <Area>
-              {code} {/* TODO */}
-            </Area>
-          </Container>
-        )}
+        {frames.map(code => <Editor code={code} />)}
       </Main>
     )
   }
