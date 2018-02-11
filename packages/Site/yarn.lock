@@ -372,12 +372,11 @@ babel-plugin-check-es2015-constants@^6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-inferno@3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-inferno/-/babel-plugin-inferno-3.2.0.tgz#62ae1ac223e74e0d54f29fb196e06e358250d82a"
+babel-plugin-inferno@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-inferno/-/babel-plugin-inferno-4.0.0.tgz#065a4d4fedd59ff85a37ffb665e1d2119186ac8f"
   dependencies:
     babel-plugin-syntax-jsx "^6.18.0"
-    inferno-vnode-flags "3.0.0"
 
 babel-plugin-syntax-async-functions@^6.8.0:
   version "6.13.0"
@@ -2069,10 +2068,6 @@ inferno-server@3.10.1:
 inferno-shared@3.10.1:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-3.10.1.tgz#6ad59d64ca03c0fdcc8495d4864410cafee81332"
-
-inferno-vnode-flags@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.0.0.tgz#f396390f3dafae3b76eea04d04eed6cf2004473b"
 
 inferno-vnode-flags@3.10.1:
   version "3.10.1"

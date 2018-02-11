@@ -191,12 +191,11 @@ babel-plugin-external-helpers@6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-inferno@3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-inferno/-/babel-plugin-inferno-3.4.0.tgz#1e004f33d98ec8482df0d252ecedc9fb355cf699"
+babel-plugin-inferno@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-inferno/-/babel-plugin-inferno-4.0.0.tgz#065a4d4fedd59ff85a37ffb665e1d2119186ac8f"
   dependencies:
     babel-plugin-syntax-jsx "^6.18.0"
-    inferno-vnode-flags "3.10.1"
 
 babel-plugin-syntax-jsx@^6.18.0:
   version "6.18.0"
@@ -1000,10 +999,6 @@ indent-string@^2.1.0:
   resolved "https://registry.yarnpkg.com/indent-string/-/indent-string-2.1.0.tgz#8e2d48348742121b4a8218b7a137e9a52049dc80"
   dependencies:
     repeating "^2.0.0"
-
-inferno-vnode-flags@3.10.1:
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-3.10.1.tgz#88a4528a3b4df0f33a3ace68dc45f05b651c0e41"
 
 inflight@^1.0.4:
   version "1.0.6"
