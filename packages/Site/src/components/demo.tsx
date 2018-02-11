@@ -9,7 +9,7 @@ import { Evaluate } from './evaluate'
 
 export const Typo = styled(Typography) `
   width: 80%;
-  color: ${props => props.theme.text};
+  color: ${props => props.theme.secondary};
   margin: 24px auto;
   opacity: .87;
   
@@ -44,7 +44,6 @@ interface IState {
 }
 
 export class Demo extends Component<any, IState> {
-  private monaco: any
   private url: string = 'https://api.github.com/repos/slupjs/slup/contents/packages/Buttons/README.md'
   
   public state = {

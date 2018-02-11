@@ -13,7 +13,24 @@ interface IState {
 }
 
 export class Tooltip extends Component<IProps, IState> {
-  public state = { focused: false }
+  private tooltip: HTMLDivElement
+  
+  public constructor() {
+    super()
+    this.handleFocus = this.handleFocus.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
+    this.state = { focused: false }
+  }
+
+  public componentDidMount() {
+    this.tooltip.firstChild.addEventListener('focus', this.handleFocus)
+    this.tooltip.firstChild.addEventListener('blur', this.handleBlur)
+  }
+
+  public componentWillUnmount() {
+    this.tooltip.firstChild.removeEventListener('focus', this.handleFocus)
+    this.tooltip.firstChild.removeEventListener('blur', this.handleBlur)
+  }
 
   /**
    * Handles the focus of the tooltip
@@ -21,8 +38,8 @@ export class Tooltip extends Component<IProps, IState> {
    * @param   {Class} self The local class
    * @returns {null}
    */
-  private handleFocus(self) {
-    self.setState({ focused: true })
+  private handleFocus(this) {
+    this.setState({ focused: true })
   }
 
   /**
@@ -31,20 +48,20 @@ export class Tooltip extends Component<IProps, IState> {
    * @param   {Class} self The local class
    * @returns {null}
    */
-  private handleBlur(self) {
-    self.setState({ focused: false })
+  private handleBlur(this) {
+    this.setState({ focused: false })
   }
 
   render(props) {
     return(
       <Container
-        tabIndex={0}
-        onFocus={linkEvent(this, this.handleFocus)}
-        onBlur={linkEvent(this, this.handleBlur)}
-        onMouseOver={linkEvent(this, this.handleFocus)}
-        onMouseOut={linkEvent(this, this.handleBlur)}
-        onTouchStart={linkEvent(this, this.handleFocus)}
-        onTouchEnd={linkEvent(this, this.handleBlur)}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
+        onMouseOver={this.handleFocus}
+        onMouseOut={this.handleBlur}
+        onTouchStart={this.handleFocus}
+        onTouchEnd={this.handleBlur}
+        innerRef={e => this.tooltip = e}
       >
         {props.children}
         <Tip
