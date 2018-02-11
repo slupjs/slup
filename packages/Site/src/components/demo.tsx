@@ -72,23 +72,21 @@ export class Demo extends Component<any, IState> {
       <Main>
         <Typo display2>{title}</Typo>
         <Blockquote>{description}</Blockquote>
-        {frames.map(code => {
-          return(
-            <Container>
-              <Area>
-                <Monaco
-                  value={code}
-                  theme='vs-dark'
-                  language='javascript'
-                  options={options}
-                />
-              </Area>
-              <Area>
-                {code} {/* TODO */}
-              </Area>
-            </Container>
-          )
-        })}
+        {frames.map(code =>
+          <Container>
+            <Area>
+              <Monaco
+                value={code}
+                theme='vs-dark'
+                language='javascript'
+                options={options}
+              />
+            </Area>
+            <Area>
+              {code} {/* TODO */}
+            </Area>
+          </Container>
+        )}
       </Main>
     )
   }
