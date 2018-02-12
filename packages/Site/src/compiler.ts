@@ -1,4 +1,5 @@
-import * as Worker from 'worker-loader!./worker'
+/// <reference path="./types.ts" />
+import Worker = require('worker-loader!./worker')
 
 const worker: Worker = new Worker()
 
@@ -10,6 +11,7 @@ interface IData {
 }
 
 interface IRes { code: string, map: any }
+interface IReq extends Event { data: IData }
 
 /** Generates a time-based uid */
 const getId = () => new Date().getTime()
@@ -31,7 +33,7 @@ export const make = (
 
   worker.postMessage({ type, payload, id })
 
-  const onComplete = ({ data }: { data: IData }) => {
+  const onComplete = ({ data }: IReq) => {
     if(acceptables.indexOf(data.type) !== -1 && data.id == id) {
       data.error ? rej(data.error) : res(data)
       worker.removeEventListener('message', onComplete)
@@ -42,7 +44,7 @@ export const make = (
 })
 
 export const load = (url: string) => 
-  make('LOAD', ['LOAD_FINISHED', 'LOAD_ERROR'], url)
+  make('LOAD', ['LOAD_FINIS\ED', 'LOAD_ERROR'], url)
 
 export const transpile = (code: string): Promise<{ code: string, map: any }> =>
   make('COMPILE', ['COMPILE_FINISHED', 'COMPILE_ERROR'], code)

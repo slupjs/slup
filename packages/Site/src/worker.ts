@@ -15,8 +15,7 @@ ctx.onmessage = ({ data }: { data: IData }) => {
   switch(data.type) {
     case 'LOAD':
       if(!ctx['Babel']) {
-        console.log('loading')
-        self.importScripts(data.payload)
+        (ctx as any).importScripts(data.payload)
       }
 
       ctx.postMessage({ type: 'LOAD_FINISHED', id: data.id })
