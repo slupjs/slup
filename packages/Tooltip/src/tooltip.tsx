@@ -35,7 +35,7 @@ export class Tooltip extends Component<IProps, IState> {
   /**
    * Handles the focus of the tooltip
    * 
-   * @param   {Class} self The local class
+   * @param   {Class} this The local class
    * @returns {null}
    */
   private handleFocus(this) {
@@ -45,7 +45,7 @@ export class Tooltip extends Component<IProps, IState> {
   /**
    * Handles the blur of the tooltip
    * 
-   * @param   {Class} self The local class
+   * @param   {Class} this The local class
    * @returns {null}
    */
   private handleBlur(this) {

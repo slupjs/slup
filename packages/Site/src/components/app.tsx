@@ -1,11 +1,19 @@
 import { linkEvent } from 'inferno'
 import Component from 'inferno-component'
-import { ThemeProvider, darkTheme } from '@slup/theming'
+import { ThemeProvider, WHITE, BLUE, PINK } from '@slup/theming'
 
 import { Header } from './header'
 import { Navigation } from './navigation'
 import { Container, Content } from './container'
 import { Pages } from '../pages'
+
+export const THEME = {
+  text: WHITE,
+  background: '#303030',
+  primary: BLUE[500],
+  secondary: PINK[500],
+  dark: true
+}
 
 export class App extends Component<null, { open: boolean }> {
   public state = { open: false }
@@ -21,7 +29,7 @@ export class App extends Component<null, { open: boolean }> {
 
   public render({ children }) {
     return(
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={THEME}>
         <Container>
 
           {/** The page's header */}

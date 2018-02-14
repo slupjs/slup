@@ -1,21 +1,30 @@
 import Inferno   from 'inferno'
 import Component from 'inferno-component'
-import styled    from '@slup/theming'
+import styled, { rgba }    from '@slup/theming'
 import { Lexer } from 'marked'
-import {Typography } from '@slup/typography'
+import { Typography } from '@slup/typography'
 
 import { Editor } from './editor'
 import { Evaluate } from './evaluate'
 
 export const Typo = styled(Typography) `
   width: 80%;
-  color: ${props => props.theme.secondary};
+  color: ${props => rgba(props.theme.primary, .87)};
   margin: 24px auto;
-  opacity: .87;
+
+  &:after {
+    content: '¬';
+    padding-left: 10px;
+    color: ${props => props.theme.secondary};
+  }
   
   @media (max-width: 700px) {
     width: 90%;
   }
+`
+
+export const Dot = styled.span`
+  color: ${props => props.theme.secondary}; 
 `
 
 export const Blockquote = styled.blockquote`
@@ -23,7 +32,7 @@ export const Blockquote = styled.blockquote`
   margin: 0 auto;
   transform: translateX(-45%);
   padding-left: 2%;
-  border-left: 4px solid ${props => props.theme.secondary};
+  border-left: 4px solid ${props => props.theme.primary};
   opacity: 0.87;
   
   @media (max-width: 700px) {
@@ -65,7 +74,10 @@ export class Demo extends Component<any, IState> {
     
     const lexer = new Lexer()
     const tokens = lexer.lex(atob(json.content))
-    const title: string = tokens.filter(t => t.type === 'html')[1].text
+    const title: string = tokens
+      .filter(t => t.type === 'html')[1].text
+      .replace('Slup -', '')
+
     const description: string = tokens.filter(t => t.type === 'html')[2].text
     
     const frames = tokens
@@ -88,7 +100,7 @@ export class Demo extends Component<any, IState> {
 
     return (
       <Main>
-        <Typo display2>{title}</Typo>
+        <Typo display2>Slup <Dot>•</Dot> {title}</Typo>
         <Blockquote>{description}</Blockquote>
         {frames.map(code => <Editor code={code} />)}
       </Main>
