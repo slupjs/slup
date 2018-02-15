@@ -124,6 +124,8 @@ export const Tip = styled.div`
     font-size: 14px;
     height: 32px;
     padding: 0 16px;
-    transform: ${translateMobile}
+    transform:
+      translate(${translateMobile})
+      scale(${props => props.focused ? 1 : 0});
   }
 `
