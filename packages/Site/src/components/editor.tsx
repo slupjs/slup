@@ -7,15 +7,13 @@ import Monaco from '@slup/monaco'
 import { Evaluate } from './evaluate'
 
 export const Container = styled(Card)`
-  height: 50%;
-  width: 80%;
+  height: 70%;
   display: flex;
-  margin: 48px auto;
+  margin: 32px 0;
   color: black;
 
   @media (max-width: 700px) {
     flex-direction: column;
-    width: 90%;
   }
 `
 
@@ -55,7 +53,7 @@ export class Editor extends Component<IProps, IState> {
     }
 
     return(
-      <Container>
+      <Container raised>
         <Area>
           <Monaco
             value={this.state.code}

@@ -1,13 +1,13 @@
-import Inferno   from 'inferno'
-import Component from 'inferno-component'
-import styled, { rgba }    from '@slup/theming'
-import { Lexer } from 'marked'
-import { Typography } from '@slup/typography'
+import Inferno          from 'inferno'
+import Component        from 'inferno-component'
+import styled, { rgba } from '@slup/theming'
+import { Lexer }        from 'marked'
+import { Typography }   from '@slup/typography'
 
-import { Editor } from './editor'
+import { Editor }   from './editor'
 import { Evaluate } from './evaluate'
 
-export const Typo = styled(Typography) `
+const Typo = styled(Typography)`
   width: 80%;
   color: ${props => rgba(props.theme.primary, .87)};
   margin: 24px auto;
@@ -23,13 +23,13 @@ export const Typo = styled(Typography) `
   }
 `
 
-export const Dot = styled.span`
+const Dot = styled.span`
   color: ${props => props.theme.secondary}; 
 `
 
-export const Blockquote = styled.blockquote`
+const Blockquote = styled.blockquote`
   width: 40%;
-  margin: 0 auto;
+  margin: 0 auto 48px auto;
   transform: translateX(-45%);
   padding-left: 2%;
   border-left: 4px solid ${props => props.theme.primary};
@@ -41,24 +41,41 @@ export const Blockquote = styled.blockquote`
   }
 `
 
-export const Main = styled.div`
+const Main = styled.div`
   height: 100%;
   overflow-x: hidden;
 `
 
+const Box = styled.div`
+  height: 70%;
+  width: 80%;
+  margin: 0 auto;
+
+  p:first-child {
+    margin: 24px 0;
+    color: ${props => props.theme.primary};
+  }
+  
+  @media (max-width: 700px) {
+    width: 90%;
+  }
+`
+
+const isCode = token => token.type === 'code' && token.lang === ('js')
+
 interface IState {
   frames: string[],
   title: string,
-  description: string
+  blockquote: string
 }
 
 export class Demo extends Component<any, IState> {
-  private url: string = 'https://api.github.com/repos/slupjs/slup/contents/packages/Buttons/README.md'
+  private url: string = 'https://api.github.com/repos/slupjs/slup/contents/packages/Controls/README.md'
   
   public state = {
     frames: [],
     title: '',
-    description: ''
+    blockquote: ''
   }
 
   private removeHtmlTags = (string: string) => {
@@ -74,20 +91,42 @@ export class Demo extends Component<any, IState> {
     
     const lexer = new Lexer()
     const tokens = lexer.lex(atob(json.content))
+
     const title: string = tokens
       .filter(t => t.type === 'html')[1].text
       .replace('Slup -', '')
 
-    const description: string = tokens.filter(t => t.type === 'html')[2].text
+    const blockquote: string = tokens.filter(t => t.type === 'html')[2].text
     
     const frames = tokens
-      .filter(t => t.type === 'code' && t.lang === 'js')
-      .map(code => code.text)
+      .reduce((prev, item, index)=> {
+        const code = tokens[index + 1] || {}
+        const paragraph = tokens[index + 2] || {}
+
+        if(
+          item.type == 'heading' && 
+          (item.depth == 2 || item.depth == 4) &&
+          (isCode(code) || isCode(paragraph))
+        ) {
+
+          return  [
+            ...prev,
+            {
+              title: item.text,
+              comment: isCode(paragraph) && code.text,
+              code: isCode(code) ? code.text : paragraph.text
+            }
+          ]
+        }
+
+        return prev
+      }, [])
+      .filter(Boolean)
 
     this.setState({
       frames,
       title: this.removeHtmlTags(title),
-      description: this.removeHtmlTags(description)
+      blockquote: this.removeHtmlTags(blockquote)
     })
   }
 
@@ -95,14 +134,23 @@ export class Demo extends Component<any, IState> {
     this.loadReadme()
   }
 
-  render() {
-    const { frames, title, description } = this.state
+  render(props) {
+    const { frames, title, blockquote } = this.state
 
     return (
       <Main>
         <Typo display2>Slup <Dot>•</Dot> {title}</Typo>
-        <Blockquote>{description}</Blockquote>
-        {frames.map(code => <Editor code={code} />)}
+        <Blockquote>{blockquote}</Blockquote>
+        {frames.map(frame => {
+            return(
+              <Box>
+                <Typography headline>{frame.title}</Typography>
+                <Typography subheading>{frame.comment}</Typography>
+                <Editor code={frame.code} />
+              </Box>
+            )
+          }
+        )}
       </Main>
     )
   }
