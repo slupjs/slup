@@ -3,6 +3,7 @@ import Component        from 'inferno-component'
 import styled, { rgba } from '@slup/theming'
 import { Lexer }        from 'marked'
 import { Typography }   from '@slup/typography'
+import { Divider }      from '@slup/lists'
 
 import { Editor }   from './editor'
 import { Evaluate } from './evaluate'
@@ -50,10 +51,13 @@ const Box = styled.div`
   height: 70%;
   width: 80%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-  p:first-child {
-    margin: 24px 0;
+  p:first-of-type {
     color: ${props => props.theme.primary};
+    margin: 32px 0;
   }
   
   @media (max-width: 700px) {
@@ -61,7 +65,7 @@ const Box = styled.div`
   }
 `
 
-const isCode = token => token.type === 'code' && token.lang === ('js')
+const isCode = token => token.type === 'code' && token.lang === 'js'
 
 interface IState {
   frames: string[],
@@ -104,8 +108,8 @@ export class Demo extends Component<any, IState> {
         const paragraph = tokens[index + 2] || {}
 
         if(
-          item.type == 'heading' && 
-          (item.depth == 2 || item.depth == 4) &&
+          item.type === 'heading' && 
+          (item.depth === 2 || item.depth === 4) &&
           (isCode(code) || isCode(paragraph))
         ) {
 
@@ -134,7 +138,7 @@ export class Demo extends Component<any, IState> {
     this.loadReadme()
   }
 
-  render(props) {
+  render() {
     const { frames, title, blockquote } = this.state
 
     return (
@@ -144,6 +148,7 @@ export class Demo extends Component<any, IState> {
         {frames.map(frame => {
             return(
               <Box>
+                <Divider style={{ width: '100%' }} />
                 <Typography headline>{frame.title}</Typography>
                 <Typography subheading>{frame.comment}</Typography>
                 <Editor code={frame.code} />
