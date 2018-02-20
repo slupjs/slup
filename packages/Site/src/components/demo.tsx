@@ -32,6 +32,7 @@ const Blockquote = styled.blockquote`
   width: 80%;
   margin: 0 auto 32px auto;
   padding-left: 15px;
+  white-space: pre-line;
   border-left: 4px solid ${props => rgba(props.theme.primary, .87)};
 
   p {
@@ -78,7 +79,7 @@ const removeHtmlTags = (string: string) => {
 interface IState {
   frames: string[],
   title: string,
-  blockquote: string | string[]
+  blockquote: string
 }
 
 export class Demo extends Component<any, IState> {
@@ -87,7 +88,7 @@ export class Demo extends Component<any, IState> {
   public state = {
     frames: [],
     title: '',
-    blockquote: []
+    blockquote: ''
   }
 
   private async loadReadme() {
@@ -103,8 +104,10 @@ export class Demo extends Component<any, IState> {
 
     const blockquote: string = tokens
       .filter(t => t.type === 'html')[2].text
-      .replace('<blockquote>', '')
-      .replace('</blockquote>', '')
+      .replace('<blockquote>', '').replace('</blockquote>', '')
+      .split('<br />')
+      .join('')
+      .trim()
 
     const frames = tokens
       .reduce((prev, item, index) => {
@@ -134,7 +137,7 @@ export class Demo extends Component<any, IState> {
     this.setState({
       frames,
       title: removeHtmlTags(title),
-      blockquote: blockquote.split('<br />')
+      blockquote: blockquote
     })
   }
 
@@ -148,11 +151,7 @@ export class Demo extends Component<any, IState> {
     return (
       <Main>
         <Typo display2>Slup <Dot>•</Dot> {title}</Typo>
-        <Blockquote>
-          {blockquote.map(text => 
-            <Typography subheading>{text}</Typography>
-          )}
-        </Blockquote>
+        <Blockquote>{blockquote}</Blockquote>
         {frames.map(frame => {
           return (
             <Box>
@@ -160,8 +159,8 @@ export class Demo extends Component<any, IState> {
               <Typography headline>{frame.title}</Typography>
               {frame.comment
                 ? <Typography subheading style='margin-bottom: 32px'>
-                  {frame.comment}
-                </Typography>
+                    {frame.comment}
+                  </Typography>
                 : null
               }
               <Editor code={frame.code} />
