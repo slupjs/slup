@@ -29,16 +29,17 @@ const Dot = styled.span`
 `
 
 const Blockquote = styled.blockquote`
-  width: 40%;
-  margin: 0 auto 48px auto;
-  transform: translateX(-45%);
-  padding-left: 2%;
-  border-left: 4px solid ${props => props.theme.primary};
-  opacity: 0.87;
+  width: 80%;
+  margin: 0 auto 32px auto;
+  padding-left: 15px;
+  border-left: 4px solid ${props => rgba(props.theme.primary, .87)};
+
+  p {
+    margin: 4px 0;
+  }
   
   @media (max-width: 700px) {
     width: 90%;
-    transform: translateX(0);
   }
 `
 
@@ -66,33 +67,33 @@ const Box = styled.div`
 `
 
 const isCode = token => token.type === 'code' && token.lang === 'js'
+const removeHtmlTags = (string: string) => {
+  return string
+    .replace(/<[^>]*>/g, '')
+    .replace(/\s{2,}/g, '')
+    .trim()
+}
+
 
 interface IState {
   frames: string[],
   title: string,
-  blockquote: string
+  blockquote: string | string[]
 }
 
 export class Demo extends Component<any, IState> {
   private url: string = 'https://api.github.com/repos/slupjs/slup/contents/packages/Controls/README.md'
-  
+
   public state = {
     frames: [],
     title: '',
-    blockquote: ''
+    blockquote: []
   }
 
-  private removeHtmlTags = (string: string) => {
-    return string
-      .replace(/<[^>]*>/g, '')
-      .replace(/\s{2,}/g, '')
-      .trim()
-  }
-  
   private async loadReadme() {
     const res = await fetch(this.url)
     const json = await res.json()
-    
+
     const lexer = new Lexer()
     const tokens = lexer.lex(atob(json.content))
 
@@ -100,20 +101,23 @@ export class Demo extends Component<any, IState> {
       .filter(t => t.type === 'html')[1].text
       .replace('Slup -', '')
 
-    const blockquote: string = tokens.filter(t => t.type === 'html')[2].text
-    
+    const blockquote: string = tokens
+      .filter(t => t.type === 'html')[2].text
+      .replace('<blockquote>', '')
+      .replace('</blockquote>', '')
+
     const frames = tokens
-      .reduce((prev, item, index)=> {
+      .reduce((prev, item, index) => {
         const code = tokens[index + 1] || {}
         const paragraph = tokens[index + 2] || {}
 
-        if(
-          item.type === 'heading' && 
+        if (
+          item.type === 'heading' &&
           (item.depth === 2 || item.depth === 4) &&
           (isCode(code) || isCode(paragraph))
         ) {
 
-          return  [
+          return [
             ...prev,
             {
               title: item.text,
@@ -129,8 +133,8 @@ export class Demo extends Component<any, IState> {
 
     this.setState({
       frames,
-      title: this.removeHtmlTags(title),
-      blockquote: this.removeHtmlTags(blockquote)
+      title: removeHtmlTags(title),
+      blockquote: blockquote.split('<br />')
     })
   }
 
@@ -144,17 +148,26 @@ export class Demo extends Component<any, IState> {
     return (
       <Main>
         <Typo display2>Slup <Dot>•</Dot> {title}</Typo>
-        <Blockquote>{blockquote}</Blockquote>
+        <Blockquote>
+          {blockquote.map(text => 
+            <Typography subheading>{text}</Typography>
+          )}
+        </Blockquote>
         {frames.map(frame => {
-            return(
-              <Box>
-                <Divider style={{ width: '100%' }} />
-                <Typography headline>{frame.title}</Typography>
-                <Typography subheading>{frame.comment}</Typography>
-                <Editor code={frame.code} />
-              </Box>
-            )
-          }
+          return (
+            <Box>
+              <Divider style={{ width: '100%' }} />
+              <Typography headline>{frame.title}</Typography>
+              {frame.comment
+                ? <Typography subheading style='margin-bottom: 32px'>
+                  {frame.comment}
+                </Typography>
+                : null
+              }
+              <Editor code={frame.code} />
+            </Box>
+          )
+        }
         )}
       </Main>
     )
