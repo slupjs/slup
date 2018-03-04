@@ -59,7 +59,7 @@ const Box = styled.div`
 
   p:first-of-type {
     color: ${props => props.theme.primary};
-    margin: 32px 0;
+    margin: 24px 0;
   }
   
   @media (max-width: 700px) {
@@ -160,8 +160,8 @@ export class Demo extends Component<any, IState> {
               {frame.comment
                 ? <Typography
                     subheading
-                    style='margin-bottom: 32px'
-                    dangerouslySetInnerHTML={{ 
+                    style={{ marginBottom: 32, lineHeight: 1.5 }}
+                    dangerouslySetInnerHTML={{
                       __html: frame.comment.replace('<p>', '').replace('</p>', '')
                     }}
                   />

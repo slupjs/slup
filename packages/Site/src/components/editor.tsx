@@ -9,7 +9,7 @@ import { Evaluate } from './evaluate'
 export const Container = styled(Card)`
   height: 70%;
   display: flex;
-  margin-bottom: 48px;
+  margin-bottom: 32px;
   color: black;
 
   @media (max-width: 700px) {

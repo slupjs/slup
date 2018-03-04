@@ -1,5 +1,3 @@
-<demo gif>
-
 <h1 align='center'>Slup - Grid</h1>
 
 This package contains the Grid, a Utility Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
@@ -7,7 +5,8 @@ This package contains the Grid, a Utility Component which is part of a bigger ec
 ## Description
 From Google's [Material Design guidelines](https://material.io/guidelines):
 <blockquote>
-  Material design’s responsive UI is based on a 12-column grid layout. This grid creates visual consistency between layouts, while allowing flexibility across a wide variety of designs.
+  Material design’s responsive UI is based on a 12-column grid layout.<br />
+  This grid creates visual consistency between layouts, while allowing flexibility across a wide variety of designs.
 </blockquote>
 
 ## Installation
