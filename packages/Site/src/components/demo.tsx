@@ -1,7 +1,7 @@
 import Inferno          from 'inferno'
 import Component        from 'inferno-component'
 import styled, { rgba } from '@slup/theming'
-import { Lexer }        from 'marked'
+import * as marked      from 'marked'
 import { Typography }   from '@slup/typography'
 import { Divider }      from '@slup/lists'
 
@@ -95,7 +95,7 @@ export class Demo extends Component<any, IState> {
     const res = await fetch(this.url)
     const json = await res.json()
 
-    const lexer = new Lexer()
+    const lexer = new marked.Lexer()
     const tokens = lexer.lex(atob(json.content))
 
     const title: string = tokens
@@ -111,21 +111,21 @@ export class Demo extends Component<any, IState> {
 
     const frames = tokens
       .reduce((prev, item, index) => {
-        const code = tokens[index + 1] || {}
-        const paragraph = tokens[index + 2] || {}
+        const paragraph = tokens[index + 1] || {}
+        const code = tokens[index + 2] || {}
 
         if (
           item.type === 'heading' &&
           (item.depth === 2 || item.depth === 4) &&
-          (isCode(code) || isCode(paragraph))
+          (isCode(paragraph) || isCode(code))
         ) {
 
           return [
             ...prev,
             {
               title: item.text,
-              comment: isCode(paragraph) && code.text,
-              code: isCode(code) ? code.text : paragraph.text
+              comment: isCode(code) && marked(paragraph.text),
+              code: isCode(paragraph) ? paragraph.text : code.text
             }
           ]
         }
@@ -158,9 +158,13 @@ export class Demo extends Component<any, IState> {
               <Divider style={{ width: '100%' }} />
               <Typography headline>{frame.title}</Typography>
               {frame.comment
-                ? <Typography subheading style='margin-bottom: 32px'>
-                    {frame.comment}
-                  </Typography>
+                ? <Typography
+                    subheading
+                    style='margin-bottom: 32px'
+                    dangerouslySetInnerHTML={{ 
+                      __html: frame.comment.replace('<p>', '').replace('</p>', '')
+                    }}
+                  />
                 : null
               }
               <Editor code={frame.code} />
