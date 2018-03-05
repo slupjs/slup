@@ -48,7 +48,7 @@
     "inferno": "3.10.1",
     "inferno-component": "3.10.1",
     "inferno-server": "3.10.1",
-    "inferno-router": "3.10.1",
+    "inferno-router": "4.0.8",
     "morgan": "1.9.0",
     "prismjs": "1.11.0",
     "stylis": "3.4.8"
