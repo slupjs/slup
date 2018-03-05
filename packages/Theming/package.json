@@ -14,7 +14,7 @@
     "stylis": "3.4.8"
   },
   "peerDependencies": {
-    "inferno": "3.10.1",
+    "inferno": "4.0.8",
     "inferno-component": "3.10.1"
   },
   "publishConfig": {

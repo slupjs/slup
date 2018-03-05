@@ -45,7 +45,7 @@
     "decko": "1.2.0",
     "express": "4.16.1",
     "history": "4.7.2",
-    "inferno": "3.10.1",
+    "inferno": "4.0.8",
     "inferno-component": "3.10.1",
     "inferno-server": "3.10.1",
     "inferno-router": "3.10.1",
