@@ -33,10 +33,6 @@ const Blockquote = styled.blockquote`
   padding-left: 15px;
   white-space: pre-line;
   border-left: 4px solid ${props => rgba(props.theme.primary, .87)};
-
-  p {
-    margin: 4px 0;
-  }
   
   @media (max-width: 700px) {
     width: 90%;
@@ -49,20 +45,28 @@ const Main = styled.div`
 `
 
 const Box = styled.div`
-  height: 70%;
   width: 80%;
   margin: 0 auto;
+  min-height: 600px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
-  p:first-of-type {
-    color: ${props => props.theme.primary};
-    margin: 24px 0;
+  hr {
+    width: 100%;
+    margin-bottom: 24px;
   }
-  
+
   @media (max-width: 700px) {
     width: 90%;
+  }
+`
+
+const Paragraph = styled(Typography)`
+  color: ${props => props.body1 ? props.theme.text : props.theme.primary};
+  margin-bottom: 24px;
+
+  p {
+    margin: 0;
   }
 `
 
@@ -70,13 +74,6 @@ const isCode = (token: IAnyToken) =>
   token.type === 'code' &&
   token.lang === 'js' &&
   token.text.startsWith('// @code')
-
-const removeHtmlTags = (string: string) => {
-  return string
-    .replace(/<[^>]*>/g, '')
-    .replace(/\s{2,}/g, '')
-    .trim()
-}
 
 interface IState {
   frames: string[],
@@ -154,8 +151,8 @@ export class Demo extends Component<{ module: string }, IState> {
 
     return {
       frames,
-      title: removeHtmlTags(title),
-      blockquote: blockquote
+      title,
+      blockquote
     }
   }
 
@@ -167,7 +164,11 @@ export class Demo extends Component<{ module: string }, IState> {
   private getTitle(tokens: IAnyTokenArray): string {
     const HTMLTokens: IToken<'html'>[] = tokens.filter(t => t.type === 'html')
 
-    return HTMLTokens[1].text.replace('Slup -', '')
+    return HTMLTokens[1].text
+      .replace('<h1 align=\'center\'>', '')
+      .replace('</h1>', '')
+      .replace('Slup -', '')
+      .trim()
   }
 
   /**
@@ -185,6 +186,13 @@ export class Demo extends Component<{ module: string }, IState> {
       .join('')
       .trim()
   }
+
+  /**
+   * Useful function that removes `p` tags
+   * @param string The given string
+   */
+  private removeParagraph = (string: string) => 
+    string.replace('<p>', '').replace('</p>', '')
 
   /**
    * Load the README and parse its contents
@@ -205,26 +213,29 @@ export class Demo extends Component<{ module: string }, IState> {
       <Main>
         <Typo display2>Slup <Dot>•</Dot> {title}</Typo>
         <Blockquote>{blockquote}</Blockquote>
-        {frames.map(frame => {
-          return (
-            <Box>
-              <Divider style={{ width: '100%' }} />
-              <Typography headline dangerouslySetInnerHTML={{ __html: frame.title }} />
-              {frame.comment
-                ? <Typography
-                    subheading
-                    style={{ marginBottom: 32, lineHeight: 1.5 }}
-                    dangerouslySetInnerHTML={{
-                      __html: frame.comment
-                    }}
-                  />
-                : null
-              }
-              <Editor code={frame.code} />
-            </Box>
-          )
+        {
+          frames.map(frame => {
+            return (
+              <Box>
+                <Divider />
+                <Paragraph
+                  headline
+                  dangerouslySetInnerHTML={{ __html: this.removeParagraph(frame.title) }}
+                />
+                
+                {frame.comment
+                  ? <Paragraph
+                      body1
+                      dangerouslySetInnerHTML={{ __html: this.removeParagraph(frame.comment) }}
+                    />
+                  : null  
+                }
+                
+                <Editor code={frame.code} />
+              </Box>
+            )
+          })
         }
-        )}
       </Main>
     )
   }

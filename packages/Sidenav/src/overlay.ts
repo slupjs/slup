@@ -2,6 +2,7 @@ import styled, { lightTheme } from '@slup/theming'
 
 export const Drawer = styled.div`
   z-index: 1000;
+  overflow-y: auto;
   transition: max-width 150ms linear, transform 320ms cubic-bezier(0.4, 0.0, 0.2, 1);
   height: 100%;
   width: calc(100% - 64px);

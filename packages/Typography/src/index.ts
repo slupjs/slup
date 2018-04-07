@@ -64,7 +64,6 @@ const smallFontSize = styledMap({
 
 export const Typography = styled.p`
   margin: 0;
-  line-height: 1;
   text-transform: ${props => props.button ? 'uppercase' : 'initial'};
 
   /* Default font size */

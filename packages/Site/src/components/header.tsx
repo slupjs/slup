@@ -21,28 +21,29 @@ const Wrapper = styled.div`
 `
 
 /** Title element with a custom margin */
-export const Title = styled(Typography)`
+const Title = styled(Typography) `
   margin-left: 16px;
   flex: 1;
   align-self: center;
 `
 
 /** Redirect helper */
-const redirect = () =>
-  setTimeout(any => window.open('https://github.com/slupjs/slup', '_blank'), 300)
+const redirect = () => window.open('https://github.com/slupjs/slup', '_blank')
 
 
 export const Header = ({ onOpen, ...props }, { router }) => {
   return(
-    <Navbar primary> 
+    <Navbar primary>
       <Wrapper>
         {/** Icon to open the sidenav */}
-        <IconButton onClick={onOpen}>
-          <MenuIcon />
-        </IconButton>
+        <Tooltip text='Open Menu'>
+          <IconButton onClick={onOpen}>
+            <MenuIcon />
+          </IconButton>
+        </Tooltip>
 
         <Title title>{generateTitle(router.location)}</Title>
-        
+
         <Tooltip text='Github'>
           <IconButton onClick={redirect}>
             <GitHub />

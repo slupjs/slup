@@ -4,21 +4,15 @@ import lozad from 'lozad'
 import styled from '@slup/theming'
 import { Card } from '@slup/card'
 
-export const Container = styled(Card)`
-  height: 500px;
+const Container = styled(Card)`
   display: flex;
-  margin-bottom: 32px;
-  color: black;
-
-  @media (max-width: 700px) {
-    flex-direction: column;
-  }
+  flex: 1;
+  margin-bottom: 36px;
 `
 
-export const IFrame = styled.iframe`
+const IFrame = styled.iframe`
+  flex: 1;
   width: 100%;
-  height: 100%;
-
   border-radius: 2px;
   border: none;
 `
