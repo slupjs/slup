@@ -1,13 +1,11 @@
 import { linkEvent } from 'inferno'
 import Component from 'inferno-component'
+import lozad from 'lozad'
 import styled from '@slup/theming'
 import { Card } from '@slup/card'
-import Monaco from '@slup/monaco'
-
-import { Evaluate } from './evaluate'
 
 export const Container = styled(Card)`
-  height: 70%;
+  height: 500px;
   display: flex;
   margin-bottom: 32px;
   color: black;
@@ -17,55 +15,31 @@ export const Container = styled(Card)`
   }
 `
 
-export const Area = styled.div`
+export const IFrame = styled.iframe`
+  width: 100%;
   height: 100%;
-  width: 50%;
-  min-height: 50%;
 
-  @media (max-width: 700px) {
-    width: 100%;
-  }
+  border-radius: 2px;
+  border: none;
 `
 
-interface IProps {
-  code: string
-}
+export const URL = ''
 
-interface IState { code: string }
+export class Editor extends Component<{ id: string }, null> {
+  private element: HTMLIFrameElement
 
-export class Editor extends Component<IProps, IState> {
-  constructor(props, state) {
-    super(props, state)
-
-    this.state = { code: props.code }
+  /**
+   * Initialize the lozad observer on the iframe
+   */
+  public componentDidMount() {
+    const instance = lozad(this.element as any)
+    instance.observe()
   }
 
-  private handleChange(editor, code) {
-    this.setState({ code })
-  }
-
-  render() {
-    const options = {
-      automaticLayout: true,
-      minimap: {
-        enabled: false
-      }
-    }
-
+  public render({ id }) {
     return(
       <Container raised>
-        <Area>
-          <Monaco
-            value={this.state.code}
-            onChange={this.handleChange.bind(this)}
-            theme='vs-dark'
-            language='javascript'
-            options={options}
-          />
-        </Area>
-        <Area>
-          <Evaluate code={this.state.code} />
-        </Area>
+        <IFrame src={URL + id} innerRef={e => this.element = e} />
       </Container>
     )
   }

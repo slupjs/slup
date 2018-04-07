@@ -1,5 +1,4 @@
 const webpack = require('webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { join } = require('path')
 const { tmpdir } = require('os')
 
@@ -44,11 +43,6 @@ const Base = {
           },
           silent: process.argv.indexOf('--json') !== -1
         }
-      },
-      {
-        test: /\.(js|jsx)?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
       }
     ]
   },
@@ -94,11 +88,7 @@ const Client = {
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
-    new CopyWebpackPlugin([{
-      from: 'node_modules/monaco-editor/min/vs',
-      to: 'vs',
-    }])
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' })
   ],
 
   devtool: 'source-map',

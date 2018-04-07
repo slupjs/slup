@@ -6,7 +6,6 @@ import { Typography }   from '@slup/typography'
 import { Divider }      from '@slup/lists'
 
 import { Editor }   from './editor'
-import { Evaluate } from './evaluate'
 
 const Typo = styled(Typography)`
   width: 80%;
@@ -67,7 +66,11 @@ const Box = styled.div`
   }
 `
 
-const isCode = token => token.type === 'code' && token.lang === 'js'
+const isCode = (token: IAnyToken) =>
+  token.type === 'code' &&
+  token.lang === 'js' &&
+  token.text.startsWith('// @code')
+
 const removeHtmlTags = (string: string) => {
   return string
     .replace(/<[^>]*>/g, '')
@@ -75,15 +78,29 @@ const removeHtmlTags = (string: string) => {
     .trim()
 }
 
-
 interface IState {
   frames: string[],
   title: string,
   blockquote: string
 }
 
-export class Demo extends Component<any, IState> {
-  private url: string = 'https://api.github.com/repos/slupjs/slup/contents/packages/Controls/README.md'
+interface IToken<T> {
+  type: T
+  text?: string
+  depth?: number
+  lang?: string
+}
+
+interface ICodeToken extends IToken<'code'> {
+  lang: string
+}
+
+type IAnyToken = IToken<any>
+type IAnyTokenArray = IAnyToken[]
+type IRawFrames = { id: number, item: IAnyToken }[]
+
+export class Demo extends Component<{ module: string }, IState> {
+  private getURL = mod => `https://api.github.com/repos/slupjs/slup/contents/packages/${mod}/README.md`
 
   public state = {
     frames: [],
@@ -91,58 +108,94 @@ export class Demo extends Component<any, IState> {
     blockquote: ''
   }
 
-  private async loadReadme() {
-    const res = await fetch(this.url)
-    const json = await res.json()
+  /**
+   * Parses the Markdown string from github
+   * 
+   * @param raw THe raw markdown string
+   */
+  private parse(raw: string) {
+    const frames = []
+    const tokens: IAnyTokenArray = marked.lexer(raw)
 
-    const lexer = new marked.Lexer()
-    const tokens = lexer.lex(atob(json.content))
+    const title = this.getTitle(tokens)
+    const blockquote = this.getBlockquote(tokens)
 
-    const title: string = tokens
-      .filter(t => t.type === 'html')[1].text
-      .replace('Slup -', '')
-
-    const blockquote: string = tokens
-      .filter(t => t.type === 'html')[2].text
-      .replace('<blockquote>', '').replace('</blockquote>', '')
-      .split('<br />')
-      .join('')
-      .trim()
-
-    const frames = tokens
-      .reduce((prev, item, index) => {
-        const paragraph = tokens[index + 1] || {}
-        const code = tokens[index + 2] || {}
-
-        if (
-          item.type === 'heading' &&
-          (item.depth === 2 || item.depth === 4) &&
-          (isCode(paragraph) || isCode(code))
-        ) {
-
-          return [
-            ...prev,
-            {
-              title: item.text,
-              comment: isCode(code) && marked(paragraph.text),
-              code: isCode(paragraph) ? paragraph.text : code.text
-            }
-          ]
-        }
-
-        return prev
-      }, [])
+    const rawFrames: IRawFrames = tokens
+      .map((item, id) => isCode(item) && { id, item })
       .filter(Boolean)
 
-    this.setState({
+    rawFrames.forEach(item => {
+      let i = item.id
+
+      while (true) {
+        const token = tokens[i]
+
+        if (token.type === 'heading' && (token.depth === 2 || token.depth === 4)) {
+          const t = tokens.slice(i + 1, item.id)
+
+            // Dirty hack to make the parser work
+            ; (t as any).links = {}
+
+          const rendered = marked.parser(t)
+
+          frames.push({
+            title: marked(token.text),
+            comment: rendered,
+            code: item.item.text
+          })
+
+          break
+        }
+
+        i--
+      }
+
+    })
+
+    return {
       frames,
       title: removeHtmlTags(title),
       blockquote: blockquote
-    })
+    }
   }
 
-  public componentDidMount() {
-    this.loadReadme()
+  /**
+   * Find the title in an array of tokens
+   * 
+   * @param tokens The array of tokens
+   */
+  private getTitle(tokens: IAnyTokenArray): string {
+    const HTMLTokens: IToken<'html'>[] = tokens.filter(t => t.type === 'html')
+
+    return HTMLTokens[1].text.replace('Slup -', '')
+  }
+
+  /**
+   * Find the blockquote in an array of tokens
+   * 
+   * @param tokens The array of tokens
+   */
+  private getBlockquote(tokens: IAnyTokenArray) {
+    const HTMLTokens: IToken<'html'>[] = tokens.filter(t => t.type === 'html')
+
+    return HTMLTokens[2].text
+      .replace('<blockquote>', '')
+      .replace('</blockquote>', '')
+      .split('<br />')
+      .join('')
+      .trim()
+  }
+
+  /**
+   * Load the README and parse its contents
+   */
+  public async componentDidMount() {
+    const res = await fetch(this.getURL(this.props.module))
+    const json = await res.json()
+
+    const parsed = this.parse(atob(json.content))
+
+    this.setState(parsed)
   }
 
   render() {
@@ -156,13 +209,13 @@ export class Demo extends Component<any, IState> {
           return (
             <Box>
               <Divider style={{ width: '100%' }} />
-              <Typography headline>{frame.title}</Typography>
+              <Typography headline dangerouslySetInnerHTML={{ __html: frame.title }} />
               {frame.comment
                 ? <Typography
                     subheading
                     style={{ marginBottom: 32, lineHeight: 1.5 }}
                     dangerouslySetInnerHTML={{
-                      __html: frame.comment.replace('<p>', '').replace('</p>', '')
+                      __html: frame.comment
                     }}
                   />
                 : null
