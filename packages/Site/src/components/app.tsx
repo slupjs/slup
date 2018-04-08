@@ -6,6 +6,7 @@ import { Header } from './header'
 import { Navigation } from './navigation'
 import { Container, Content } from './container'
 import { Pages } from '../pages'
+import { generateTitle } from '../utils/title'
 
 export const THEME = {
   text: WHITE,
@@ -27,7 +28,7 @@ export class App extends Component<null, { open: boolean }> {
     self.setState({ open: value })
   }
 
-  public render({ children }) {
+  public render({ children }, { open }, { router }) {
     return(
       <ThemeProvider theme={THEME}>
         <Container>
@@ -35,6 +36,10 @@ export class App extends Component<null, { open: boolean }> {
           {/** The page's header */}
           <Header
             onOpen={linkEvent({ value: true, self: this }, this.toggleNav)}
+            style={
+              generateTitle(router.location) === 'Home' &&
+              { background: 'transparent', boxShadow: 'none' }
+            }
           />
 
           {/** Sidenav */}

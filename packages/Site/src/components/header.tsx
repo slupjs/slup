@@ -33,7 +33,7 @@ const redirect = () => window.open('https://github.com/slupjs/slup', '_blank')
 
 export const Header = ({ onOpen, ...props }, { router }) => {
   return(
-    <Navbar primary>
+    <Navbar primary {...props}>
       <Wrapper>
         {/** Icon to open the sidenav */}
         <Tooltip text='Open Menu'>

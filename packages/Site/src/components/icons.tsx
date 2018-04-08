@@ -10,7 +10,7 @@ const DASH: string = keyframes`
 
 const Path = styled.path`
   fill: none;
-  stroke: ${props => props.theme.primary};
+  stroke: ${props => props.theme.secondary};
   stroke-miterlimit: 10;
   stroke-width: 40;
   stroke-dasharray: 10000;
