@@ -1,5 +1,3 @@
-<demo gif>
-
 <h1 align='center'>Slup - Navbar</h1>
 
 This package contains the Navbar, a Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)

@@ -1,6 +1,7 @@
 import styled from '@slup/theming'
 
-import { Navbar } from '@slup/navbar'
+import { Navbar } from '../../../Navbar/src/index'
+import { Tooltip } from '../../../Tooltip/src/index'
 import { IconButton } from '@slup/buttons'
 import { Typography } from '@slup/typography'
 import { Grid } from '@slup/grid'
@@ -9,41 +10,46 @@ import { generateTitle } from '../utils/title'
 import MenuIcon from '../../../Icons/icons/navigation/menu'
 import { GitHub } from '../components/icons'
 
-/** Navbar with a dimmed  */
-export const NavBar = (props) => <Navbar style={{ boxShadow: 'none' }} {...props} />
+const Wrapper = styled.div`
+  display: flex;
+  flex: 1;
+  padding: 0 24px;
+
+  @media (max-width: 960px) {
+    padding: 0 16px;
+  }
+`
 
 /** Title element with a custom margin */
-export const Title = styled(Typography)`
-  margin-left: 16px
+const Title = styled(Typography) `
+  margin-left: 16px;
+  flex: 1;
+  align-self: center;
 `
 
 /** Redirect helper */
-const redirect = () =>
-  setTimeout(any => window.open('https://github.com/slupjs/slup', '_blank'), 350)
+const redirect = () => window.open('https://github.com/slupjs/slup', '_blank')
 
 
 export const Header = ({ onOpen, ...props }, { router }) => {
   return(
-    <NavBar> 
-      <Grid middle space_between style={{ overflow: 'hidden' }}>
-
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-
-          {/** Icon to open the sidenav */}
+    <Navbar primary {...props}>
+      <Wrapper>
+        {/** Icon to open the sidenav */}
+        <Tooltip text='Open Menu'>
           <IconButton onClick={onOpen}>
             <MenuIcon />
           </IconButton>
+        </Tooltip>
 
-          <Title title>{generateTitle(router.location)}</Title>
+        <Title title>{generateTitle(router.location)}</Title>
 
-        </div>
-
-        <div>
+        <Tooltip text='Github'>
           <IconButton onClick={redirect}>
             <GitHub />
           </IconButton>
-        </div>
-      </Grid>
-    </NavBar>
+        </Tooltip>
+      </Wrapper>
+    </Navbar>
   )
 }

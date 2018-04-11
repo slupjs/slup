@@ -10,10 +10,8 @@ export const Bar = styled.div`
         height 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
   height: 64px;
   max-height: ${props => props.maxHeight}px;
-  overflow: hidden;
   display: flex;
   align-items: center;
-  padding: 0 16px;
   color: ${props => props.theme.text || lightTheme.text};
   background: ${props => props.primary
     ? darken(0.02, props.theme.primary || lightTheme.primary)

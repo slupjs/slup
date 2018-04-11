@@ -5,9 +5,9 @@ This package contains the Theming, a Utility Component which is part of a bigger
 ## Description
 From Google's [Material Design guidelines](https://material.io/guidelines):
 <blockquote>
-  In Material Design, a primary color refers to a color that appears most frequently in your app.<br /> A secondary color refers to a color used to accent key parts of your UI.
+  In Material Design, a primary color refers to a color that appears most frequently in your app.<br />
+  A secondary color refers to a color used to accent key parts of your UI.
 </blockquote>
-These are some of the values that you are able to modify with the theming component.
 
 
 ## Installation
@@ -17,9 +17,8 @@ npm install --save @slup/theming
 ```
 
 ## Usage
-All material design colors are available in this package
-<br />
-We provide by default `lightTheme`(default one) and a `darkTheme` option.
+All material design colors are available in this package.<br />
+We provide two preset themes: a `lightTheme`(default one) and a `darkTheme` option.
 ```js
 import { ThemeProvider, lightTheme } from '@slup/theming'
 
@@ -34,7 +33,7 @@ import { ThemeProvider, lightTheme } from '@slup/theming'
 | theme          |  object       |  {}           | [Link](#property-theme)|
 
 #### Property: 'theme'
-With this property you can set a custom theme or you can import our preset themes: `lightTheme` or `darkTheme`. The default theme can be seen on the component demons of our other packages.
+With this property you can set a custom theme or you can import our preset themes: `lightTheme` or `darkTheme`. The default theme can be seen on the component demos of our other packages.
 
 ```js
 import {
@@ -60,7 +59,7 @@ const App = () =>
 
 ## Styling
 We've made a reproduction of the styled-components library since we had some problems with compatibility but we also wanted a faster and lighter way of styling our components.
-The syntax is almost identical to [styled-components](https://www.styled-components.com/) so if you want to see all the features that we offer you can take a look at their site.
+The syntax is almost identical to [styled-components](https://www.styled-components.com/) so if you want to see all the features that we offer you can take a look at their documentation.
 
 ```js
 import Inferno from 'inferno'
@@ -113,12 +112,10 @@ render(
 ```
 
 ## Modifying colors
-We have created some useful functions that help us doing modifying colors:
-* `rgba()`
-* `shade()`
+We have created some useful functions that help us modifying colors: `rgba()`, `lighten()` and `darken()`
 
 #### Rgba
-`rgba()` makes an rgba color by taking normal rgb values or an hex color: <br />
+`rgba()` makes an rgba color by taking normal rgb values or an hex color:<br />
 The first parameter is the hex or the rgb color, the second one is the alpha value.
 
 ```js
@@ -130,18 +127,28 @@ const Title = styled.h1`
 `
 ```
 
-#### Shade
-`shade()` is a function that combines two other functions called `lighten()` and `darken()` in Sass.
-
-So `shade()` lightens the color if the first parameter is positive and it darkens it if it is negative: <br />
-The first parameter is the amount of lightness/darkness you want to add,
+#### Lighten
+`ligthen()`, as the name suggests, ligthens the given color
+The first parameter is the amount of lightness you want to add,
 the second one is a string representing the hex or the rgb color.
 
 ```js
 import styled, { shade } from '@slup/theming'
 
 const Box = styled.div`
-  background: ${shade(-1, '#fff')};          // Returns pure black
-  color: ${shade(0.3, 'rgb(66, 134, 244)')}; // Returns rgb(212,227,252)
+  background: ${lighten(0.3, 'rgb(66, 134, 244)')}; // Returns rgb(212,227,252)
+`
+```
+
+#### Darken
+`darken()`, as the name suggests, darkens the given color
+The first parameter is the amount of darkness you want to add,
+the second one is a string representing the hex or the rgb color.
+
+```js
+import styled, { shade } from '@slup/theming'
+
+const Box = styled.div`
+  background: ${darken(1, '#fff')}; // Returns pure black
 `
 ```

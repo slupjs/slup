@@ -24,6 +24,11 @@ export const Pages: IRoute[] = [
         props: { nested: true }
       },
       {
+        title: 'Card',
+        url: '/components/card',
+        props: { nested: true }
+      },
+      {
         title: 'Controls',
         url: '/components/controls',
         props: { nested: true }
@@ -56,6 +61,21 @@ export const Pages: IRoute[] = [
       {
         title: 'Slider',
         url: '/components/slider',
+        props: { nested: true }
+      },
+      {
+        title: 'Tabs',
+        url: '/components/tabs',
+        props: { nested: true }
+      },
+      {
+        title: 'Tooltip',
+        url: '/components/tooltip',
+        props: { nested: true }
+      },
+      {
+        title: 'Typography',
+        url: '/components/typography',
         props: { nested: true }
       },
     ]

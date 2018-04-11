@@ -1,5 +1,3 @@
-<demo gif>
-
 <h1 align='center'>Slup - Grid</h1>
 
 This package contains the Grid, a Utility Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
@@ -7,7 +5,8 @@ This package contains the Grid, a Utility Component which is part of a bigger ec
 ## Description
 From Google's [Material Design guidelines](https://material.io/guidelines):
 <blockquote>
-  Material design’s responsive UI is based on a 12-column grid layout. This grid creates visual consistency between layouts, while allowing flexibility across a wide variety of designs.
+  Material design's responsive UI is based on a 12-column grid layout.<br />
+  This grid creates visual consistency between layouts, while allowing flexibility across a wide variety of designs.
 </blockquote>
 
 ## Installation
@@ -34,8 +33,8 @@ export class Test extends Component {
 ```
 
 ## Available properties
-| Props          |    Type       |    Default    | Documentation                       |
-|-------------   |:-------------:|:-------------:|------:                              |
+| Props          |    Type       |    Default    | Documentation                        |
+|-------------   |:-------------:|:-------------:|------:                               |
 | center         |  boolean      |  false        | [Link](#property-center-grid)        |
 | space_around   |  boolean      |  false        | [Link](#property-space_around-grid)  |
 | space_between  |  boolean      |  false        | [Link](#property-space_between-grid) |
@@ -98,12 +97,10 @@ This property will vertically set the columns to the end of the container
 
 #### Property: 'sm / md / lg / xl' [Col]
 These properties will set the number of columns the `<Col />` should have, based on the device's viewport:
-
 * `sm`: counts for the **small** viewport and up
 * `md`: counts for the **medium** viewport and up
 * `lg`: counts for the **large** viewport and up
 * `xl`: counts for the **extra-large** viewport and up
-
 ```js
 <Grid>
   <Col sm={12} md={6} lg={8} xl={3} />
@@ -116,7 +113,6 @@ This property will offset the columns by using the pixels unit of measure
 * offset_md counts for the **medium** viewport and up
 * offset_lg counts for the **large** viewport and up
 * offset_xl counts for the **extra-large** viewport and up
-
 ```js
 <Grid>
   <Col sm={12} offset={320} offset_md={20} offset_lg={120} offset_xl={50} />
@@ -129,7 +125,6 @@ This property will pull the columns by using the pixels unit of measure
 * pull_md counts for the **medium** viewport and up
 * pull_lg counts for the **large** viewport and up
 * pull_xl counts for the **extra-large** viewport and up
-
 ```js
 <Grid>
   <Col sm={12} pull={320} pull_md={20} pull_lg={120} pull_xl={50} />
@@ -142,7 +137,6 @@ This property will hide the columns in various viewports
 * hide_md counts for the **medium** viewport and up
 * hide_lg counts for the **large** viewport and up
 * hide_xl counts for the **extra-large** viewport and up
-
 ```js
 <Grid>
   <Col sm={12} hide_sm />
@@ -154,7 +148,6 @@ This property will hide the columns in various viewports
 
 #### Property: 'show' [Col]
 This property will show the columns in various viewports, the difference with the 'hide' is that if this property is set for a certain viewport it will not count in the other ones
-
 ```js
 <Grid>
   /* This makes the column visible ONLY on the medium viewport */

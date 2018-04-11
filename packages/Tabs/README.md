@@ -1,5 +1,3 @@
-<demo gif>
-
 <h1 align='center'>Slup - Tabs</h1>
 
 This package contains the Tabs, a Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
@@ -52,8 +50,8 @@ export class Test extends Component {
 }
 ```
 
-#### Icons inside tabs
-This example shows how to use the `TabIcon` component to make tabs contain an icon
+#### Usage [TabIcon]
+This example shows how to use the `TabIcon` component to put an icon in the tabs
 ```js
 import { Tabs, Tab, TabIcon } from '@slup/tabs'
 
@@ -91,21 +89,6 @@ export class Home extends Component {
 }
 ```
 
-You can also add text, if needed, just put it inside a `span` under the `TabIcon`
-
-```js
-
-<Tab
-  onClick={() => this.handleClick(i)}
-  selected={this.state.selected === i}
->
-  <TabIcon>
-    {item.icon}
-  </TabIcon>
-  <span>{item.text}</span>
-</Tab>
-```
-
 
 ## Available properties
 | Props                   |    Type       |    Default    | Documentation                             |
@@ -126,8 +109,6 @@ This property has to be applied to the `Tabs` and to the `Tab` itself to choose 
 This property has to be applied to each `Tab` to make it be interactive
 
 #### Property: 'center' [Tabs]
-**Note: DO NOT use this prop while using the 'scrollable' one**
-
 This property will center each tab
 ```js
 <Tabs selected={this.state.selected} center></Tabs>
@@ -146,8 +127,6 @@ This property will set the background of the indicator to be as the secondary co
 ```
 
 #### Property: 'scrollable' [Tabs]
-**Note: DO NOT use this prop while using the 'center' one**
-
 This property will makes the tabs scrollable by using two buttons instead of the normal scrollbar in a large viewport
 but on mobile it will still be scrollable even without using buttons
 ```js

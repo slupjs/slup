@@ -1,7 +1,6 @@
 const webpack = require('webpack')
 const { join } = require('path')
 const { tmpdir } = require('os')
-const Package = join(__dirname, '..')
 
 const Base = {
   resolve: {
@@ -44,11 +43,6 @@ const Base = {
           },
           silent: process.argv.indexOf('--json') !== -1
         }
-      },
-      {
-        test: /\.(js|jsx)?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
       }
     ]
   },
@@ -80,8 +74,6 @@ const Client = {
       'inferno',
       'inferno-component',
       'inferno-router',
-      'prismjs/prism',
-      'prismjs/components/prism-jsx',
       '@slup/common',
       '@slup/theming',
       'history/createBrowserHistory'
