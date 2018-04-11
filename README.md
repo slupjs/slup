@@ -44,7 +44,7 @@ npm i -s @slup/<package>
 ```
 
 ## Running the demo
-> NOTE: This process requires you to have installed [lerna](https://lernajs.io/) globally.
+> NOTE: This process requires you to have installed [yarn](https://yarnpkg.com/) globally.
 
 - To kick things off, clone the demo and enter that directory:
 ```bash
@@ -53,7 +53,7 @@ git clone https://github.com/slupjs/slup && cd slup
 
 - Install packages and run the demo:
 ```bash
-lerna bootstrap # Install packages and symlinks
+yarn # Install the dependencies and build all the packages
 cd packages/Site # Go into the demo's site folder
 yarn run compile:build # Build the javascritp SSR and client
 yarn start # Start the demo server
@@ -69,7 +69,7 @@ git clone https://github.com/slupjs/slup && cd slup
 
 - Install packages:
 ```bash
-lerna bootstrap # Install packages and symlinks
+yarn # Install the dependencies and build all the packages
 ```
 
 - Then move onto the demo's folder and start the watcher and the server:
