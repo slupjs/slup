@@ -41,7 +41,7 @@
     "@slup/theming": "^0.5.0",
     "@slup/tooltip": "^0.5.0",
     "@slup/typography": "^0.5.0",
-    "compression": "1.7.1",
+    "compression": "1.7.2",
     "express": "4.16.1",
     "history": "4.7.2",
     "inferno": "3.10.1",
