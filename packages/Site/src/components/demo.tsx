@@ -6,69 +6,16 @@ import { Typography }   from '@slup/typography'
 import { Divider }      from '@slup/lists'
 
 import { Editor }   from './editor'
-
-const Typo = styled(Typography)`
-  width: 80%;
-  color: ${props => rgba(props.theme.primary, .87)};
-  margin: 24px auto;
-
-  &:after {
-    content: '¬';
-    padding-left: 10px;
-    color: ${props => props.theme.secondary};
-  }
-  
-  @media (max-width: 700px) {
-    width: 90%;
-  }
-`
-
-const Dot = styled.span`
-  color: ${props => props.theme.secondary}; 
-`
-
-const Blockquote = styled.blockquote`
-  width: 80%;
-  margin: 0 auto 32px auto;
-  padding-left: 15px;
-  white-space: pre-line;
-  border-left: 4px solid ${props => rgba(props.theme.primary, .87)};
-  
-  @media (max-width: 700px) {
-    width: 90%;
-  }
-`
-
-const Main = styled.div`
-  height: 100%;
-  overflow-x: hidden;
-`
-
-const Box = styled.div`
-  width: 80%;
-  margin: 0 auto;
-  min-height: 600px;
-  display: flex;
-  flex-direction: column;
-
-  hr {
-    width: 100%;
-    margin-bottom: 24px;
-  }
-
-  @media (max-width: 700px) {
-    width: 90%;
-  }
-`
-
-const Paragraph = styled(Typography)`
-  color: ${props => props.body1 ? props.theme.text : props.theme.primary};
-  margin-bottom: 24px;
-
-  p {
-    margin: 0;
-  }
-`
+import { Hashtag }  from './icons'
+import {
+  Main,
+  Typo,
+  Dot,
+  Blockquote,
+  Box,
+  Heading,
+  Paragraph
+} from './demoLayout'
 
 const isCode = (token: IAnyToken) =>
   token.type === 'code' &&
@@ -195,6 +142,25 @@ export class Demo extends Component<{ module: string }, IState> {
     string.replace('<p>', '').replace('</p>', '')
 
   /**
+   * This function creates shorter strings
+   * from the headings to make links
+   * @param string The given heading
+   */
+  private createLink = (string: string) =>
+    this.removeParagraph(string)
+      .toLowerCase()
+      .replace(/\s/g, '-')
+      .replace(':', '')
+      .replace(/&#39;/g, '')
+      .replace(/\n/g, '')
+      .replace(/.$/, '')
+      .replace('[', '')
+      .replace(']', '')
+      .replace(',', '')
+      .replace('/', '')
+      .replace('--', '')
+
+  /**
    * Load the README and parse its contents
    */
   public async componentDidMount() {
@@ -218,14 +184,20 @@ export class Demo extends Component<{ module: string }, IState> {
             return (
               <Box>
                 <Divider />
-                <Paragraph
-                  headline
-                  dangerouslySetInnerHTML={{ __html: this.removeParagraph(frame.title) }}
-                />
+                <Heading>
+                  <Paragraph
+                    headline
+                    dangerouslySetInnerHTML={{ __html: this.removeParagraph(frame.title) }}
+                  />
+                  <a id={this.createLink(frame.title)} />
+                  <a href={`#${this.createLink(frame.title)}`}>
+                    <Hashtag />
+                  </a>
+                </Heading>
                 
                 {frame.comment
                   ? <Paragraph
-                      body1
+                      subheading
                       dangerouslySetInnerHTML={{ __html: this.removeParagraph(frame.comment) }}
                     />
                   : null  

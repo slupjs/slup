@@ -23,7 +23,10 @@ export default (props: Object, context: { router: any }) =>
         that strictly follow <a href='https://material.io/guidelines/'>Material Design</a> guidelines
       </Headline>
 
-      <FlatButton secondary>
+      <FlatButton
+        onClick={linkEvent(context.router, redirect)}
+        secondary
+      >
         Get started
       </FlatButton>
 

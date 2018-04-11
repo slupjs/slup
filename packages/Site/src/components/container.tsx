@@ -29,20 +29,17 @@ export const CenterContainer = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    border-bottom: 500px solid transparent;
-		border-left: 500px solid ${props => props.theme.secondary};
+    border-bottom: 450px solid transparent;
+		border-left: 450px solid ${props => props.theme.secondary};
     transition: border-width 150ms;
     
-    @media (max-width: 840px) {
-      border-width: 350px;
+    @media (max-width: 920px), (max-height: 640px) {
+      border-width: 300px;
     }
 
-    @media (max-width: 600px) {
-      border-width: 250px;
-    }
-
-    @media (max-width: 400px) {
-      border-width: 200px;
+    @media (max-width: 660px), (max-height: 500px) {
+      border-left-width: 250px;
+      border-bottom-width: 150px;
     }
   }
 `
