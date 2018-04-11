@@ -42,7 +42,7 @@
     "@slup/tooltip": "^0.5.0",
     "@slup/typography": "^0.5.0",
     "compression": "1.7.1",
-    "express": "4.16.1",
+    "express": "4.16.3",
     "history": "4.7.2",
     "inferno": "3.10.1",
     "inferno-component": "3.10.1",
