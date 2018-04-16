@@ -17,7 +17,7 @@
     "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-inferno": "3.4.0",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "lerna": "2.8.0",
+    "lerna": "2.10.2",
     "rimraf": "2.6.2",
     "rollup": "0.55.5",
     "rollup-plugin-babel": "3.0.3",
