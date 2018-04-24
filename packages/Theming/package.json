@@ -10,10 +10,10 @@
   "license": "MIT",
   "dependencies": {
     "@slup/common": "^0.5.1",
-    "stylis": "3.4.8"
+    "stylis": "3.5.0"
   },
   "peerDependencies": {
-    "inferno": "3.10.1",
+    "inferno": "5.0.4",
     "inferno-component": "3.10.1"
   },
   "publishConfig": {
