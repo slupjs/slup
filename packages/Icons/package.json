@@ -15,7 +15,7 @@
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-minify": "0.3.0",
     "icons": "git+https://git@github.com/google/material-design-icons.git",
-    "typescript": "2.7.1"
+    "typescript": "2.8.3"
   },
   "scripts": {
     "build": "tsc install.ts && node install"
