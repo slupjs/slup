@@ -1,17 +1,19 @@
 import { linkEvent } from 'inferno'
 import Component from 'inferno-component'
-import { ThemeProvider, WHITE, DEEP_PURPLE, BLUE } from '@slup/theming'
+import { ThemeProvider, WHITE, BLUE, PINK } from '@slup/theming'
 
 import { Header } from './header'
 import { Navigation } from './navigation'
 import { Container, Content } from './container'
 import { Pages } from '../pages'
+import { generateTitle } from '../utils/title'
 
 export const THEME = {
   text: WHITE,
-  primary: WHITE,
-  secondary: BLUE[500],
-  background: DEEP_PURPLE[500]
+  background: '#303030',
+  primary: BLUE[500],
+  secondary: PINK[500],
+  dark: true
 }
 
 export class App extends Component<null, { open: boolean }> {
@@ -26,7 +28,7 @@ export class App extends Component<null, { open: boolean }> {
     self.setState({ open: value })
   }
 
-  public render({ children }) {
+  public render({ children }, { open }, { router }) {
     return(
       <ThemeProvider theme={THEME}>
         <Container>
@@ -34,6 +36,10 @@ export class App extends Component<null, { open: boolean }> {
           {/** The page's header */}
           <Header
             onOpen={linkEvent({ value: true, self: this }, this.toggleNav)}
+            style={
+              generateTitle(router.location) === 'Home' &&
+              { background: 'transparent', boxShadow: 'none' }
+            }
           />
 
           {/** Sidenav */}

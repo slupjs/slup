@@ -15,17 +15,8 @@ npm install --save @slup/card
 ```
 
 ## Usage
-```js
-import { Card }  from '@slup/card'
-
-export const Test = props =>
-  <Card>
-    <YourContent>
-  </Card>
-
-```
 We decided that making children components for this package wasn't needed since they are simple containers with some basic styling: the main problem is that they have too many little variations in styles and they can't be changed based on a solid criterion.
-This isn't a big deal though, as shown in this full example, they can be created and used easily.
+This isn't a big deal though, as shown in this example, they can be created and used easily.
 ```js
 import styled         from '@slup/theming'
 import { Card }       from '@slup/card'
@@ -54,7 +45,7 @@ const CardActions = styled.div`
 `
 
 export const Test = props =>
-  <Card style="width: 380px">
+  <Card style='width: 380px'>
     <CardHeader>
       <Typography headline>Title goes here</Typography>
       <Typography caption>Subtitle here</Typography>
@@ -79,7 +70,7 @@ This property will increase the shadow of the `Card`
 ```
 
 #### Property: 'hoverable'
-This property will increase the shadow of the `Card` only when the cursor is over it
+This property will increase the shadow of the `Card` only when the card is hovered
 ```js
 <Card hoverable />
 ```

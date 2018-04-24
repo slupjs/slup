@@ -13,8 +13,14 @@ export const CenterText = styled.div`
   text-align: center;
 `
 
+const CContainer = styled(CenterContainer)`
+  &:after {
+    display: none;
+  }
+`
+
 export default () => 
-  <CenterContainer>
+  <CContainer>
     {/** Main big error code */}
     <Typography display4>404!</Typography>
 
@@ -30,4 +36,4 @@ export default () =>
 
     {/** Spacing */}
     <Spacer space={100} />
-  </CenterContainer>
+  </CContainer>

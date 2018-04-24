@@ -1,8 +1,12 @@
-<demo gif>
-
 <h1 align='center'>Slup - Typography</h1>
 
 This package contains the Typography, a Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
+
+## Description
+From Google's [Material Design guidelines](https://material.io/guidelines):
+<blockquote>
+  Too many type sizes and styles at once can wreck any layout. A typographic scale has a limited set of type sizes that work well together along with the layout grid.
+</blockquote>
 
 ## Installation
 This package can be installed with [NPM](http://npmjs.com/)

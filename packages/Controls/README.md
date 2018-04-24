@@ -1,5 +1,3 @@
-<demo gif>
-
 <h1 align='center'>Slup - Controls</h1>
 
 This package contains the Controls, a Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
@@ -18,7 +16,7 @@ This package can be installed with [NPM](http://npmjs.com/)
 npm install --save @slup/controls
 ```
 
-## Usage
+#### Usage [Checkbox]
 This example includes the **checkbox**
 ```js
 export class Test extends Component {
@@ -41,6 +39,7 @@ export class Test extends Component {
 }
 ```
 
+#### Usage [Switch]
 This example includes the **switch**
 ```js
 export class Test extends Component {
@@ -62,6 +61,8 @@ export class Test extends Component {
   }
 }
 ```
+
+#### Usage [Radio]
 This example includes the **radio**
 ```js
 export class Test extends Component {
@@ -99,7 +100,7 @@ export class Test extends Component {
 | leftLabel / rightLabel      |  string       |  undefined    | [Link](#property-leftlabel--rightlabel) |  
 
 #### Property: 'disabled'
-This property will disabled the controls
+This property will disable the controls
 ```js
 <Checkbox disabled />
 <Switch disabled />
@@ -114,8 +115,8 @@ With this property you can change the size of these two controls
 ```
 
 #### Property: 'leftLabel / rightLabel'
-These properties will provide a left/right-sided `<Label />`  that can display a given string.
-Use `leftLabel` for a left-handed label, `rightLabel` for the same result on the right. Or you can just use them both
+These properties will provide a left/right-sided `<label />`  that can display a given string.
+Use `leftLabel` for a left-handed label, `rightLabel` for the same result on the right.
 
 ```js
 <Checkbox leftLabel='Text' rightLabel='Text' />

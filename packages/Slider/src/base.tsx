@@ -16,14 +16,20 @@ export class Slider extends Component<IBaseProps, IBaseState> {
     }
   }
 
-  public componentWillMount() {
+  public componentDidMount() {
     document.body.addEventListener('mousemove', event => this.handleMouseMove(this, event))
     document.body.addEventListener('mouseup', event => this.handleMouseUp(this, event))
+    this.slider.addEventListener('touchstart', event => this.handleTouchStart(this, event.targetTouches[0]))
+    this.slider.addEventListener('touchmove', event => this.handleMouseMove(this, event.targetTouches[0]))
+    this.slider.addEventListener('touchend', event => this.handleTouchEnd(this, event))
   }
 
   public componentWillUnmount() {
     document.body.removeEventListener('mousemove', event => this.handleMouseMove(this, event))
     document.body.removeEventListener('mouseup', event => this.handleMouseUp(this, event))
+    this.slider.removeEventListener('touchstart', event => this.handleTouchStart(this, event.targetTouches[0]))
+    this.slider.removeEventListener('touchmove', event => this.handleMouseMove(this, event.targetTouches[0]))
+    this.slider.removeEventListener('touchend', event => this.handleTouchEnd(this, event))
   }
 
   /**
@@ -43,20 +49,49 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    * Handles the mouse movement that
    * changes the slider's value
    *
-   * @param  {Class} this  The local class
+   * @param  {Class} self  The local class
    * @param  {MouseEvent} event The mouseDown event
    * @return {null}
    */
-  private handleMouseDown(self, event: Event) {
+  private handleMouseDown(self, event: MouseEvent) {
     self.setState({ mouseDown: true })
-    self.emit('focus')
     self.emit('change', self.gatherProgress(event))
+    self.emit('focus')
   }
 
   /**
-   * Stops the slider from updating its value
+   * Removes the global mouse event state
+   * when the slider is not pressed
+   * 
+   * @param  {Class} self The local class 
+   * @param  {MouseEvent} event The mouseUp event
+   * @return {null}
    */
-  private handleMouseUp(self, event: Event) {
+  private handleMouseUp(self, event: MouseEvent) {
+    self.setState({ mouseDown: false })
+  }
+
+  /**
+   * Handles the mouse movement that
+   * changes the slider's value by touching
+   * 
+   * @param {Class} self The local class 
+   * @param {Touch} event The touchStart event 
+   */
+  private handleTouchStart(self, event: Touch) {
+    self.setState({ mouseDown: true })
+    this.handleMouseMove(self, event)
+    self.emit('focus')
+  }
+
+  /**
+   * Removes the global event state
+   * when the slider is not pressed by touching
+   * 
+   * @param {Class} self The local class 
+   * @param {Touch} event The touchEnd event 
+   */
+  private handleTouchEnd(self, event: TouchEvent) {
     self.setState({ mouseDown: false })
     self.emit('blur')
   }
@@ -64,14 +99,14 @@ export class Slider extends Component<IBaseProps, IBaseState> {
   /**
    * Handles the change of the slider's vlaue
    *
-   * @param  {Class} this  The local class
-   * @param  {MouseEvent} event The mouseMove event
+   * @param  {Class} self  The local class
+   * @param  {(MouseEvent|Touch)} event The event
    * @return {null}
    */
-  private handleMouseMove(self, event: Event) {
+  private handleMouseMove(self, event: MouseEvent | Touch) {
     /** Ignore moves when unfocused */
     if (!self.state.mouseDown) return
-
+    
     if (self.props.steps) {
       const perc  = self.gatherProgress(event)
       const value = self.props.max / self.props.steps
@@ -87,7 +122,7 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    * Changes the value of the slider
    * depending on the pressed keyboard arrows
    *
-   * @param  {Class} this The local class
+   * @param  {Class} self The local class
    * @param  {KeyboardEvent} event The keyboardDown event
    * @return {null}
    */
@@ -97,14 +132,14 @@ export class Slider extends Component<IBaseProps, IBaseState> {
     let _value: number
 
     switch(event.keyCode) {
-      /** Increase the value by 1 */
+      /** Increase the value */
       case 38:
       case 39:
         _value = vise(0, value + percentage, max)
         self.emit('change', _value)
       break
 
-      /** Decrease the value by 1 */
+      /** Decrease the value */
       case 40:
       case 37:
         _value = vise(0, value - percentage, max)

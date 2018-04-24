@@ -1,5 +1,3 @@
-<demo gif>
-
 <h1 align='center'>Slup - Lists</h1>
 
 This package contains the Lists, a Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
@@ -7,8 +5,7 @@ This package contains the Lists, a Material Design Component which is part of a 
 ## Description
 From Google's [Material Design guidelines](https://material.io/guidelines):
 <blockquote>
-  Lists are made up of a continuous column of rows.
-  <br />
+  Lists are made up of a continuous column of rows.<br />
   Each row contains a tile. Primary actions fill the tile, and supplemental actions are represented by icons and text.
 </blockquote>
 
@@ -19,11 +16,7 @@ npm install --save @slup/lists
 ```
 
 ## Usage
-We have also added some utility components to add inside the `ListItem` which are:
-* LeftContent (which is used for items on the left)
-* MainContent (which is used mainly for the text in the center)
-* RightContent (which is used for items on the right)
-
+We have also added some utility components to add inside the `ListItem` which are: `LeftContent`, `MainContent` and `RightContent`
 ```js
 import { List, ListItem } from '@slup/lists'
 
@@ -42,7 +35,6 @@ export class Test extends Component {
 
 #### Nested List
 This example shows that lists can be nested
-
 ```js
 export class Home extends Component {
   state = { visible: false }
@@ -83,7 +75,6 @@ export class Home extends Component {
 
 #### Property: 'ripple'
 This property if set to false will remove the ripple effect from the `ListItem`
-
 ```js
 <List>
   <ListItem ripple={false}>
@@ -94,7 +85,6 @@ This property if set to false will remove the ripple effect from the `ListItem`
 
 #### Property: 'twoline'
 This property will give more height to create a list with two lines of text
-
 ```js
 import {
   List,
@@ -114,7 +104,6 @@ import {
 
 #### Property: 'threeline'
 This property will give more height to create a list with three lines of text
-
 ```js
 import {
   List,
@@ -135,7 +124,6 @@ import {
 
 #### Property: 'hoverable'
 This property if set to false will not change the `ListItem` background on hovering
-
 ```js
 <List>
   <ListItem hoverable={false}>
@@ -145,10 +133,8 @@ This property if set to false will not change the `ListItem` background on hover
 ```
 
 #### Property: 'sublist'
-**Note: if you want a full example about triggering nested lists take a look at [this](#nested-list)**
-
-This property HAVE TO be set to make a nested list
-
+Note: if you want a full example about triggering nested lists take a look at [this](#nested-list)
+This property MUST be set to make a nested list
 ```js
 <List>
   <ListItem sublist visible>
@@ -176,7 +162,6 @@ This property will give some spacing on the left of the list
 
 #### Property: 'avatar' [LeftContent]
 This property will better spacing for an image such as a avatar icon
-
 ```js
 import {
   List,

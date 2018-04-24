@@ -30,12 +30,11 @@ export const input = entry => ({
     }),
     BB({
       exclude: 'node_modules/**',
-      externalHelpers: true,
       babelrc: false,
       plugins: [
         ['inferno', { imports: true }],
         'transform-object-rest-spread',
-        'external-helpers'
+        ['external-helpers']
       ]
     })
   ]
