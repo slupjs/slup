@@ -1925,9 +1925,15 @@ require-main-filename@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-1.0.1.tgz#97f717b69d48784f5f526a6c5aa8ffdda055a4d1"
 
-resolve@^1.1.6, resolve@^1.4.0, resolve@^1.5.0:
+resolve@^1.1.6, resolve@^1.4.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.5.0.tgz#1f09acce796c9a762579f31b2c1cc4c3cddf9f36"
+  dependencies:
+    path-parse "^1.0.5"
+
+resolve@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.7.1.tgz#aadd656374fd298aee895bc026b8297418677fd3"
   dependencies:
     path-parse "^1.0.5"
 
@@ -1974,12 +1980,12 @@ rollup-plugin-node-resolve@3.3.0:
     is-module "^1.0.0"
     resolve "^1.1.6"
 
-rollup-plugin-typescript2@0.11.1:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-typescript2/-/rollup-plugin-typescript2-0.11.1.tgz#c308de734baaed8ed8316dc8501a82a0ced674f4"
+rollup-plugin-typescript2@0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-typescript2/-/rollup-plugin-typescript2-0.13.0.tgz#5fc838657d05af82e04554832cadf06cdb32f657"
   dependencies:
     fs-extra "^5.0.0"
-    resolve "^1.5.0"
+    resolve "^1.7.1"
     rollup-pluginutils "^2.0.1"
     tslib "^1.9.0"
 
