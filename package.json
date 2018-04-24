@@ -12,17 +12,17 @@
   "devDependencies": {
     "@types/acorn": "4.0.3",
     "@types/chokidar": "1.7.4",
-    "@types/node": "9.4.5",
+    "@types/node": "9.6.6",
     "babel-core": "6.26.0",
     "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-inferno": "3.4.0",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "lerna": "2.8.0",
+    "lerna": "2.10.2",
     "rimraf": "2.6.2",
-    "rollup": "0.55.5",
+    "rollup": "0.58.2",
     "rollup-plugin-babel": "3.0.3",
     "rollup-plugin-commonjs": "8.3.0",
-    "rollup-plugin-node-resolve": "3.0.2",
+    "rollup-plugin-node-resolve": "3.3.0",
     "rollup-plugin-typescript2": "0.11.1",
     "typescript": "2.7.1"
   }
