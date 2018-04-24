@@ -22,14 +22,16 @@ export const lightTheme = {
   text: BLACK,
   background: '#FAFAFA',
   primary: BLUE[500],
-  secondary: INDIGO[500]
+  secondary: INDIGO[500],
+  dark: false
 }
 
 export const darkTheme = {
   text: WHITE,
   background: '#303030',
   primary: BLUE[500],
-  secondary: INDIGO[500]
+  secondary: INDIGO[500],
+  dark: true
 }
 
 const generateExports = () => {

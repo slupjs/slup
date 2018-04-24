@@ -1,5 +1,3 @@
-<demo gif>
-
 <h1 align='center'>Slup - Sidenav</h1>
 
 This package contains the Sidenav, a Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
@@ -69,7 +67,7 @@ This property will position the Sidenav to the right of the view
 ```
 
 #### Property: 'responsive'
-This property will close the Sidenav on a small viewport but it will be open it on a bigger one
+This property will close the Sidenav on a small viewport but it will open it on a bigger one
 ```js
 <Sidenav
   opened={this.state.opened}
@@ -89,7 +87,7 @@ This property will make the Sidenav always visible
 ```
 
 #### Property: 'overlay'
-This property if set to false will remove the overlay
+This property will remove the overlay if set to false
 ```js
 <Sidenav
   opened={this.state.opened}

@@ -5,7 +5,9 @@ This package contains the Tooltip, a Material Design Component which is part of 
 ## Description
 From Google's [Material Design guidelines](https://material.io/guidelines):
 <blockquote>
-  Tooltips identify an element when they are activated. They may contain brief helper text about its function. For example, they may contain text information about actionable icons.
+  Tooltips identify an element when they are activated.<br />
+  They may contain brief helper text about its function.<br />
+  For example, they may contain text information about actionable icons.
 </blockquote>
 
 ## Installation

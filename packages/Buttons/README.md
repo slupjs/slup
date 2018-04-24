@@ -1,5 +1,3 @@
-<demo gif>
-
 <h1 align='center'>Slup - Buttons</h1>
 
 This package contains the Buttons, a Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
@@ -7,10 +5,8 @@ This package contains the Buttons, a Material Design Component which is part of 
 ## Description
 From Google's [Material Design guidelines](https://material.io/guidelines):
 <blockquote>
-  Material buttons trigger an ink reaction on press. They may display text, imagery, or both.
-  <br />
-  Flat buttons and raised buttons are the most commonly used types.
-  <br />
+  Material buttons trigger an ink reaction on press. They may display text, imagery, or both.<br />
+  Flat buttons and raised buttons are the most commonly used types.<br />
   A floating action button is used for a promoted action.
 </blockquote>
 
@@ -50,7 +46,7 @@ export const Buttons = () =>
 
 #### Property: 'disabled'
 This property will disable the button
-```html
+```js
 <RaisedButton disabled>Button</RaisedButton>
 <FlatButton disabled>Button</FlatButton>
 <Fab disabled>+</Fab>
@@ -59,7 +55,7 @@ This property will disable the button
 
 #### Property: 'ripple' [RaisedButton, FlatButton, Fab]
 This property if set to false will remove the Ripple effect
-```html
+```js
 <RaisedButton ripple={false}>Button</RaisedButton>
 <FlatButton ripple={false}>Button</FlatButton>
 <Fab ripple={false}>+</Fab>
@@ -69,7 +65,7 @@ This property if set to false will remove the Ripple effect
 It will set the background to the 'secondary' color of the theme for the `RaisedButton` and the `Fab`.
 <br />
 It will only change the color for the `IconButton`
-```html
+```js
 <RaisedButton secondary>Button</RaisedButton>
 <Fab secondary>+</Fab>
 <IconButton secondary>+</IconButton>
@@ -79,7 +75,7 @@ It will only change the color for the `IconButton`
 It will set the background to the 'primary' color of the theme for the `RaisedButton`.
 <br />
 It will set the color to the 'primary' primary color of the theme for the `FlatButton` and `IconButton`
-```html
+```js
 <RaisedButton primary>Button</RaisedButton>
 <FlatButton primary>Button</FlatButton>
 <IconButton primary>+</IconButton>
@@ -87,12 +83,12 @@ It will set the color to the 'primary' primary color of the theme for the `FlatB
 
 #### Property: 'mini' [Fab]
 It will reduce its size
-```html
+```js
 <Fab mini>+</Fab>
 ```
 
 #### Property: 'centerRipple' [IconButton]
 This property if set to false will make the ripple appear on the clicked position instead of starting from the center
-```html
+```js
 <IconButton centerRipple={false}>+</IconButton>
 ```

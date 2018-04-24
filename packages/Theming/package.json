@@ -5,13 +5,12 @@
   "repository": "https://github.com/slupjs/slup/tree/master/packages/Theming",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.es.js",
-  "browser": "dist/bundle.iife.js",
   "source": "src/index.ts",
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
     "@slup/common": "^0.5.1",
-    "stylis": "3.4.8"
+    "stylis": "3.5.0"
   },
   "peerDependencies": {
     "inferno": "3.10.1",

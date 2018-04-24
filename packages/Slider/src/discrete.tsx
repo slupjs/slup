@@ -8,6 +8,7 @@ const commonBackground = props => props.value == 0
 
 export const TThumb = styled(Thumb)`
   transform: scale(${props => props.focused ? 0 : 1}) translate(-50%, -50%);
+  pointer-events: none;
 `
 
 export const Indicator = styled.div`

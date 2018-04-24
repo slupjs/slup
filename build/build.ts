@@ -23,7 +23,7 @@ export default async pkg => {
 
   const bundle = await rollup(inputOptions as any)
 
-  await Promise.all(['es', 'cjs', 'amd', 'umd', 'iife'].map(format => {
+  await Promise.all(['es', 'cjs', 'amd', 'umd'].map(format => {
     console.log(pkg, '* Output for', format)
     bundle.write(outputOptions(format) as any)
   }))
