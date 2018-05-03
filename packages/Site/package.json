@@ -13,7 +13,7 @@
     "prepublish": "npm run compile:build"
   },
   "devDependencies": {
-    "@types/node": "8.5.9",
+    "@types/node": "8.10.12",
     "awesome-typescript-loader": "5.0.0",
     "babel-core": "6.26.0",
     "babel-loader": "7.1.4",
