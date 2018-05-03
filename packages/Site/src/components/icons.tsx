@@ -15,7 +15,7 @@ const Path = styled.path`
   stroke-width: 40;
   stroke-dasharray: 10000;
   stroke-dashoffset: 10000;
-  animation: ${DASH} 5s linear forwards;
+  animation: ${DASH} 6s linear forwards;
 `
 
 const Line = Path.withComponent('line')

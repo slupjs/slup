@@ -5,6 +5,7 @@ import styled, { lightTheme, rgba } from '@slup/theming'
 
 const Item = styled.div`
   -webkit-tap-highlight-color: transparent;
+  text-align: center;
   box-sizing: border-box;
   min-height: 48px;
   max-height: 72px;

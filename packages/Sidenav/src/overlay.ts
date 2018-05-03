@@ -3,7 +3,11 @@ import styled, { lightTheme } from '@slup/theming'
 export const Drawer = styled.div`
   z-index: 1000;
   overflow-y: auto;
-  transition: max-width 150ms linear, transform 320ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition: max-width 150ms linear,
+    transform 320ms ${props => props.opened 
+    ? 'cubic-bezier(0.0, 0.0, 0.2, 1)' 
+    : 'cubic-bezier(0.4, 0.0, 0.6, 1)'
+  };
   height: 100%;
   width: calc(100% - 64px);
   max-width: 320px;

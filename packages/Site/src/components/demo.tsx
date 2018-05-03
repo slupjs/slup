@@ -158,7 +158,6 @@ export class Demo extends Component<{ module: string }, IState> {
       .replace(']', '')
       .replace(',', '')
       .replace('/', '')
-      .replace('--', '')
 
   /**
    * Load the README and parse its contents

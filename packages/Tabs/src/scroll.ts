@@ -2,6 +2,8 @@ import styled, { lightTheme, darken } from '@slup/theming'
 
 export const Scroll = styled.div`
   position: absolute;
+  height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   overflow-x: ${props => props.center ? 'hidden' : 'auto'};
@@ -12,7 +14,6 @@ export const Scroll = styled.div`
   transform: ${props => props.translate && props.scrollable
     ? 'translateY(16px)'
     : null};
-  width: ${props => props.scrollable ? '100%' : 'auto'};
   left: ${props => props.scrollable ? '80px' : 'auto'};
   right: ${props => props.scrollable ? '80px' : 'auto'};
   background: ${props => props.primary
@@ -22,7 +23,7 @@ export const Scroll = styled.div`
 
   div:not(:last-child) {
     width: ${props => props.fit
-      ? `calc(100vw / ${props.childCount})`
+      ? `calc(100% / ${props.childCount})`
       : 'auto'
     };
   }

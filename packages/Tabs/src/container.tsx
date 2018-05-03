@@ -66,7 +66,7 @@ export class Tabs extends Component<IProps, IState> {
      * from the props as a fallback
      *
      * We check if the value is NOT a number, becuase
-     * 0 is still an acceptable number but would be fals
+     * 0 is still an acceptable number but would be false
      * in an ipothetical if statement
      */
     const selected = !newProps
@@ -94,7 +94,7 @@ export class Tabs extends Component<IProps, IState> {
           self.scroll.scrollLeft += 1
 
           if(count == 100) clearInterval(id)
-        }, 0.05)
+        }, 0.03)
       break
 
       case 'left':
@@ -102,8 +102,8 @@ export class Tabs extends Component<IProps, IState> {
           count++
           self.scroll.scrollLeft -= 1
 
-          if (count == 100) clearInterval(id)
-        }, 0.05)
+          if(count == 100) clearInterval(id)
+        }, 0.03)
       break
     }
   }
@@ -155,7 +155,8 @@ export class Tabs extends Component<IProps, IState> {
           children={[
             ...children,
             <Indicator
-              {...props}
+              secondaryIndicator={secondaryIndicator}
+              scrollable={scrollable}
               translate={translate}
               style={style}
             />
