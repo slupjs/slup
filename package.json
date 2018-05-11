@@ -23,7 +23,7 @@
     "rollup-plugin-babel": "3.0.3",
     "rollup-plugin-commonjs": "9.1.0",
     "rollup-plugin-node-resolve": "3.3.0",
-    "rollup-plugin-typescript2": "0.13.0",
+    "rollup-plugin-typescript2": "0.14.0",
     "typescript": "2.7.1"
   }
 }
