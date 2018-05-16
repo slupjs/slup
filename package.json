@@ -19,7 +19,7 @@
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "lerna": "2.10.2",
     "rimraf": "2.6.2",
-    "rollup": "0.58.2",
+    "rollup": "0.59.1",
     "rollup-plugin-babel": "3.0.3",
     "rollup-plugin-commonjs": "9.1.0",
     "rollup-plugin-node-resolve": "3.3.0",
