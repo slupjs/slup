@@ -12,7 +12,7 @@
     "@slup/theming": "^0.5.1"
   },
   "peerDependencies": {
-    "inferno": "5.0.4",
+    "inferno": "5.0.6",
     "inferno-component": "3.10.1"
   },
   "publishConfig": {
