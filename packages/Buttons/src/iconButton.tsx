@@ -3,6 +3,13 @@ import Inferno from 'inferno'
 import styled, { lightTheme, rgba } from '@slup/theming'
 import { Ripple } from '@slup/ripple'
 
+const setColor = (props, alpha) =>
+  props.secondary && !props.disabled
+    ? props.theme.secondary || lightTheme.secondary
+    : props.primary && !props.disabled
+      ? props.theme.primary || lightTheme.primary
+      : rgba(props.theme.text || lightTheme.text, alpha)
+
 const IconBase = styled.button`
   /**
    * Disables blue background on tap in mobile devices.
@@ -25,33 +32,13 @@ const IconBase = styled.button`
   width: 48px;
   height: 48px;
   background: none;
-  fill: ${props => props.secondary && !props.disabled
-    ? props.theme.secondary || lightTheme.secondary
-    : props.primary && !props.disabled
-      ? props.theme.primary || lightTheme.primary
-      : rgba(props.theme.text || lightTheme.text, .87)
-  };
-  color: ${props => props.secondary && !props.disabled
-    ? props.theme.secondary || lightTheme.secondary
-    : props.primary && !props.disabled
-      ? props.theme.primary || lightTheme.primary
-      : rgba(props.theme.text || lightTheme.text, .87)
-  };
+  fill: ${props => setColor(props, .87)};
+  color: ${props => setColor(props, .87)};
 
   &:disabled {
     cursor: not-allowed;
-    fill: ${props => props.secondary && !props.disabled
-      ? props.theme.secondary || lightTheme.secondary
-      : props.primary && !props.disabled
-        ? props.theme.primary || lightTheme.primary
-        : rgba(props.theme.text || lightTheme.text, .38)
-    };
-    color: ${props => props.secondary && !props.disabled
-      ? props.theme.secondary || lightTheme.secondary
-      : props.primary && !props.disabled
-        ? props.theme.primary || lightTheme.primary
-        : rgba(props.theme.text || lightTheme.text, .38)
-    };
+    fill: ${props => setColor(props, .38)};
+    color: ${props => setColor(props, .38)};
   }
 `
 
@@ -61,8 +48,8 @@ export const IconButton = (props) =>
     {props.disabled
       ? null
       : <Ripple
-          startX={props.centerRipple == false ? null : '50%'}
-          startY={props.centerRipple == false ? null : '50%'}
+          startX={props.centerRipple === false ? null : '50%'}
+          startY={props.centerRipple === false ? null : '50%'}
           primary={props.primary}
           secondary={props.secondary}
           {...props.rippleOptions}

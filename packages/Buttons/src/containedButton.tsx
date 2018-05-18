@@ -11,6 +11,7 @@ import { ButtonBase } from './buttonBase'
 
 const RaisedBase = styled(ButtonBase)`
   transition: box-shadow 150ms linear;
+  padding: 0 16px;
 
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   color: ${props => props.disabled
@@ -18,7 +19,7 @@ const RaisedBase = styled(ButtonBase)`
     : props.theme.text || lightTheme.text
   };
 
-  background: ${props => props.theme.dark &&!props.primary && !props.secondary
+  background: ${props => props.theme.dark && !props.primary && !props.secondary
     ? lighten(.1, props.theme.background || lightTheme.background)
     : props.disabled
     ? rgba(props.theme.text || lightTheme.text, .12)
@@ -29,24 +30,26 @@ const RaisedBase = styled(ButtonBase)`
           : darken(.1, props.theme.background || lightTheme.background)
   };
   box-shadow: ${props => props.disabled
-    ? 'initial'
+    ? 'none'
     : `0px 3px 1px -2px rgba(0, 0, 0, 0.2),
       0px 2px 2px 0px rgba(0, 0, 0, 0.14),
-      0px 1px 5px 0px rgba(0, 0, 0, 0.12)`};
+      0px 1px 5px 0px rgba(0, 0, 0, 0.12)`
+  };
 
   &:active {
     box-shadow: ${props => props.disabled
-      ? 'initial'
+      ? 'none'
       : `0px 5px 5px -3px rgba(0, 0, 0, 0.2),
         0px 8px 10px 1px rgba(0, 0, 0, 0.14),
-        0px 3px 14px 2px rgba(0, 0, 0, 0.12)`};
+        0px 3px 14px 2px rgba(0, 0, 0, 0.12)`
+    };
   }
 `
 
-export const RaisedButton = (props) =>
+export const ContainedButton = (props) =>
   <RaisedBase {...props}>
     {props.children}
-    {props.ripple == false || props.disabled
+    {props.ripple === false || props.disabled
       ? null
       : <Ripple {...props.rippleOptions} />
     }

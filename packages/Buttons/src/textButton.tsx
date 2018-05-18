@@ -13,10 +13,11 @@ const setColor = (props, alpha: number) =>
       : rgba(props.theme.text || lightTheme.text, alpha)
 
 
-const FlatBase = styled(ButtonBase) `
+const FlatBase = styled(ButtonBase)`
   transition: background 150ms linear;
   background: transparent;
   cursor: pointer;
+  padding: 0 8px;
   color: ${props => setColor(props, 1)};
 
   &:disabled {
@@ -32,12 +33,12 @@ const FlatBase = styled(ButtonBase) `
   }
 `
 
-export class FlatButton extends Component<any, any> {
+export class TextButton extends Component<any, any> {
   render(props) {
     return (
       <FlatBase {...props}>
         {props.children}
-        {props.ripple == false || props.disabled
+        {props.ripple === false || props.disabled
           ? null
           : <Ripple
             primary={props.primary}

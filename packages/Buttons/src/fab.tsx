@@ -7,13 +7,15 @@ import styled, { lightTheme } from '@slup/theming'
 const Circle = styled.button`
   position: relative;
   font-size: 24px;
-  border: none; outline: none;
+  border: none;
+  outline: none;
   border-radius: 50%;
   cursor: pointer;
   transition: box-shadow 150ms linear;
   user-select: none;
   display: flex;
-  align-items: center; justify-content: center;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14),
     0px 1px 5px 0px rgba(0, 0, 0, 0.12);
