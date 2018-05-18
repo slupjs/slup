@@ -3,6 +3,13 @@ import Inferno   from 'inferno'
 import { Ripple }     from '@slup/ripple'
 import styled, { lightTheme, rgba } from '@slup/theming'
 
+const setColor = (props, alpha) =>
+  props.selected && props.secondary
+    ? props.theme.secondary || lightTheme.secondary
+    : props.selected
+      ? props.theme.text || lightTheme.text
+      : rgba(props.theme.text || lightTheme.text, alpha)
+
 const Item = styled.div`
   -webkit-tap-highlight-color: transparent;
   text-align: center;
@@ -24,32 +31,12 @@ const Item = styled.div`
   font-weight: 500;
   position: relative;
   transition: color 150ms, width 150ms, min-width 200ms, fill 150ms;
-  color: ${props => props.selected && props.secondary
-    ? props.theme.secondary || lightTheme.secondary
-    : props.selected
-      ? props.theme.text || lightTheme.text
-      : rgba(props.theme.text || lightTheme.text, .5)
-  };
-  fill: ${props => props.selected && props.secondary
-    ? props.theme.secondary || lightTheme.secondary
-    : props.selected
-      ? props.theme.text || lightTheme.text
-      : rgba(props.theme.text || lightTheme.text, .5)
-  };
+  color: ${props => setColor(props, .5)};
+  fill: ${props => setColor(props, .5)};
 
   &:hover {
-    color: ${props => props.selected && props.secondary
-      ? props.theme.secondary || lightTheme.secondary
-      : props.selected
-        ? props.theme.text || lightTheme.text
-        : rgba(props.theme.text || lightTheme.text, .7)
-    };
-    fill: ${props => props.selected && props.secondary
-      ? props.theme.secondary || lightTheme.secondary
-      : props.selected
-        ? props.theme.text || lightTheme.text
-        : rgba(props.theme.text || lightTheme.text, .7)
-    };
+    color: ${props => setColor(props, .7)};
+    fill: ${props => setColor(props, .7)};
   }
 
   span {
@@ -67,6 +54,7 @@ export const TabIcon = styled.div`
   fill: inherit;
   display: flex;
   justify-content: center;
+  text-align: center;
 `
 
 export const Tab = (props) =>

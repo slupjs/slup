@@ -2,7 +2,7 @@ import styled, { lightTheme } from '@slup/theming'
 import { Slider } from './base'
 import { Thumb } from './parts'
 
-const commonBackground = props => props.value == 0
+const commonBackground = props => props.value === 0
   ? props.theme.text || lightTheme.text
   : props.theme.secondary || lightTheme.secondary
 
@@ -17,9 +17,9 @@ export const Indicator = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: ${props => props.value == 0 ? '.3' : '1'};
+  opacity: ${props => props.value === 0 ? '.3' : '1'};
   background: ${commonBackground};
-  color: ${props => props.value == 0
+  color: ${props => props.value === 0
     ? props.theme.background || lightTheme.background
     : 'white'
   };
