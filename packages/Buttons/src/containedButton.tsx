@@ -11,10 +11,18 @@ import { ButtonBase } from './buttonBase'
 
 const RaisedBase = styled(ButtonBase)`
   transition: box-shadow 150ms linear;
-  padding: 0 16px;
+  display: flex;
+  align-items: center;
 
+  padding: ${props => props.icon ? '0 16px 0 12px' : '0 16px'};
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  
   color: ${props => props.disabled
+    ? rgba(props.theme.text || lightTheme.text, .26)
+    : props.theme.text || lightTheme.text
+  };
+
+  fill: ${props => props.disabled
     ? rgba(props.theme.text || lightTheme.text, .26)
     : props.theme.text || lightTheme.text
   };
@@ -29,6 +37,7 @@ const RaisedBase = styled(ButtonBase)`
           ? props.theme.secondary || lightTheme.secondary
           : darken(.1, props.theme.background || lightTheme.background)
   };
+
   box-shadow: ${props => props.disabled
     ? 'none'
     : `0px 3px 1px -2px rgba(0, 0, 0, 0.2),
@@ -44,11 +53,19 @@ const RaisedBase = styled(ButtonBase)`
         0px 3px 14px 2px rgba(0, 0, 0, 0.12)`
     };
   }
+
+  span {
+    padding-left: 8px;
+  }
 `
 
 export const ContainedButton = (props) =>
   <RaisedBase {...props}>
-    {props.children}
+    {props.icon ? props.icon : null}
+    {props.icon
+      ? <span>{props.children}</span>
+      : props.children
+    }
     {props.ripple === false || props.disabled
       ? null
       : <Ripple {...props.rippleOptions} />
