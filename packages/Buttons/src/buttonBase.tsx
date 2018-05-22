@@ -20,4 +20,5 @@ export const ButtonBase = styled.button`
   text-transform: uppercase;
   font-size: 14px;
   user-select: none;
+  letter-spacing: 1px;
 `

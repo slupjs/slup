@@ -33,20 +33,15 @@ const FlatBase = styled(ButtonBase)`
   }
 `
 
-export class TextButton extends Component<any, any> {
-  render(props) {
-    return (
-      <FlatBase {...props}>
-        {props.children}
-        {props.ripple === false || props.disabled
-          ? null
-          : <Ripple
-            primary={props.primary}
-            secondary={props.secondary}
-            {...props.rippleOptions}
-          />
-        }
-      </FlatBase>
-    )
-  }
-}
+export const TextButton = props =>
+  <FlatBase {...props}>
+    {props.children}
+    {props.ripple === false || props.disabled
+      ? null
+      : <Ripple
+        primary={props.primary}
+        secondary={props.secondary}
+        {...props.rippleOptions}
+      />
+    }
+  </FlatBase>

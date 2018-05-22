@@ -42,7 +42,7 @@ const IconBase = styled.button`
   }
 `
 
-export const IconButton = (props) =>
+export const IconButton = props =>
   <IconBase {...props}>
     {props.children}
     {props.disabled

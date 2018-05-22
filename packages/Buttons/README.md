@@ -36,15 +36,15 @@ export const Buttons = () =>
 ```
 
 ## Available properties
-| Props               | Type          | Default       | Documentation                                                                       |
-|---------------------|:-------------:|:-------------:|------------------------------------------------------------------------------------:|
-| disabled            |  boolean      |  false        | [Link](#property-disabled)                                                          |
-| ripple              |  boolean      |  true         | [Link](#property-ripple-containedbutton-outlinedbutton-textbutton-fab)              |
-| secondary           |  boolean      |  false        | [Link](#property-secondary-containedbutton-outlinedbutton-fab-iconbutton)           |
-| primary             |  boolean      |  false        | [Link](#property-primary-containedbutton-outlinedbutton-textbutton-iconbutton)      |
-| mini                |  boolean      |  false        | [Link](#property-mini-fab)                                                          |
-| centerRipple        |  boolean      |  true         | [Link](#property-centerripple-iconbutton)                                           |
-| icon                |  function     |  none         | [Link](#property-icon-containedbutton)                                              |
+| Props               | Type          | Default       | Documentation                                                                         |
+|---------------------|:-------------:|:-------------:|--------------------------------------------------------------------------------------:|
+| disabled            |  boolean      |  false        | [Link](#property-disabled)                                                            |
+| ripple              |  boolean      |  true         | [Link](#property-ripple-containedbutton-outlinedbutton-textbutton-fab)                |
+| secondary           |  boolean      |  false        | [Link](#property-secondary-containedbutton-outlinedbutton-fab-iconbutton-extendedfab) |
+| primary             |  boolean      |  false        | [Link](#property-primary-containedbutton-outlinedbutton-textbutton-iconbutton)        |
+| mini                |  boolean      |  false        | [Link](#property-mini-fab)                                                            |
+| centerRipple        |  boolean      |  true         | [Link](#property-centerripple-iconbutton)                                             |
+| icon                |  function     |  none         | [Link](#property-icon-containedbutton-extendedfab)                                    |
 
 #### Property: 'disabled'
 This property will disable the button.
@@ -65,10 +65,10 @@ This property if set to false will remove the Ripple effect.
 <Fab ripple={false}>+</Fab>
 ```
 
-#### Property: 'secondary' [ContainedButton, OutlinedButton, Fab, IconButton]
-It will set the background to the 'secondary' color of the theme for the `ContainedButton` and the `Fab`.
+#### Property: 'secondary' [ContainedButton, OutlinedButton, Fab, IconButton, ExtendedFab]
+This property will set the background to the 'secondary' color of the theme for the `ContainedButton`, the `Fab` and the `ExtendedFab`.
 <br />
-It will only change the color for the `OutlinedButton` and the `IconButton`.
+This property will only change the color for the `OutlinedButton` and the `IconButton`.
 ```js
 <ContainedButton secondary>Button</ContainedButton>
 <OutlinedButton secondary>Button</OutlinedButton>
@@ -77,9 +77,9 @@ It will only change the color for the `OutlinedButton` and the `IconButton`.
 ```
 
 #### Property: 'primary' [ContainedButton, OutlinedButton, TextButton, IconButton]
-It will set the background to the 'primary' color of the theme for the `ContainedButton`.
+This property will set the background to the 'primary' color of the theme for the `ContainedButton`.
 <br />
-It will set the color to the 'primary' primary color of the theme for the `OutlinedButton`, `TextButton` and the `IconButton`.
+This property will set the color to the 'primary' color of the theme for the `OutlinedButton`, the `TextButton` and the `IconButton`.
 ```js
 <ContainedButton primary>Button</ContainedButton>
 <OutlinedButton primary>Button</OutlinedButton>
@@ -88,21 +88,24 @@ It will set the color to the 'primary' primary color of the theme for the `Outli
 ```
 
 #### Property: 'mini' [Fab]
-It will reduce its size
+This property will reduce the size of the component
 ```js
 <Fab mini>+</Fab>
 ```
 
 #### Property: 'centerRipple' [IconButton]
-This property if set to false will make the ripple appear on the clicked position instead of starting from the center.
+This property, if set to false, will make the ripple appear on the clicked position instead of starting from the center.
 ```js
 <IconButton centerRipple={false}>+</IconButton>
 ```
 
-#### Property: 'icon' [ContainedButton]
-This property takes an icon which will be set to the left of the text.
+#### Property: 'icon' [ContainedButton, ExtendedFab]
+This property takes an icon which will be set near the text.
 ```js
 <ContainedButton icon={<Icon />}>
   Button
 </ContainedButton>
+<ExtendedFab icon={<Icon />}>
+  Button
+</ExtendedFab>
 ```

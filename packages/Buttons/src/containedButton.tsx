@@ -59,7 +59,7 @@ const RaisedBase = styled(ButtonBase)`
   }
 `
 
-export const ContainedButton = (props) =>
+export const ContainedButton = props =>
   <RaisedBase {...props}>
     {props.icon ? props.icon : null}
     {props.icon
