@@ -1,5 +1,4 @@
-import { linkEvent } from 'inferno'
-import Component from 'inferno-component'
+import { linkEvent, Component } from 'inferno'
 import lozad from 'lozad'
 import styled from '@slup/theming'
 import { Card } from '@slup/card'

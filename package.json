@@ -5,7 +5,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap --loglevel=verbose",
     "clean": "lerna clean --loglevel=verbose",
-    "prepare": "tsc build/all.ts build/build.ts build/configuration.ts --lib es7 --types node",
+    "prepare": "tsc build/watch.ts build/all.ts build/build.ts build/configuration.ts --lib es7 --types node",
     "build": "yarn prepare && node build/all && cd packages/Icons && yarn && yarn build && cd .. && yarn bootstrap",
     "prepublish": "yarn prepare && node build/all && cd packages/Icons && yarn && yarn build && cd .. && yarn bootstrap"
   },

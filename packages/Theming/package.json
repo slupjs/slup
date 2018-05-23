@@ -10,7 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "@slup/common": "^0.5.1",
-    "stylis": "3.5.0"
+    "stylis": "3.5.0",
+    "unitless-css-property": "1.0.2"
   },
   "peerDependencies": {
     "inferno": "5.0.4",
@@ -18,5 +19,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "inferno-create-element": "5.0.4"
   }
 }

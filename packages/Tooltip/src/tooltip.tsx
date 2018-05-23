@@ -1,11 +1,10 @@
-import Inferno, { linkEvent } from 'inferno'
-import Component from 'inferno-component'
+import Inferno, { linkEvent, Component } from 'inferno'
 import { Container, Tip } from './container'
 
 interface IProps {
   text: string,
-  delay: string,
-  location: string
+  delay?: string,
+  location?: string
 }
 
 interface IState {

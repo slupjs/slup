@@ -1,4 +1,3 @@
-import Inferno from 'inferno'
 import styled, { rgba, lightTheme } from '@slup/theming'
 import { styledMap } from '@slup/common'
 

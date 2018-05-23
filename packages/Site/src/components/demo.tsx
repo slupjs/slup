@@ -1,5 +1,4 @@
-import Inferno          from 'inferno'
-import Component        from 'inferno-component'
+import Inferno, { Component } from 'inferno'
 import styled, { rgba } from '@slup/theming'
 import * as marked      from 'marked'
 import { Typography }   from '@slup/typography'
@@ -203,7 +202,7 @@ export class Demo extends Component<{ module: string }, IState> {
                   : null  
                 }
                 
-                <Editor code={frame.code} />
+                <Editor id={frame.code} />
               </Box>
             )
           })

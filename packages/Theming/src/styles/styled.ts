@@ -1,12 +1,13 @@
-import { createVNode } from 'inferno'
-import Component       from 'inferno-component'
-import { CHANNEL }     from '@slup/common'
+import { Component }     from 'inferno'
+import { createElement } from 'inferno-create-element'
+import { CHANNEL }       from '@slup/common'
 
 /** Styling utils */
 import { getRegisteredStyles, css } from './styles'
 
 /** Typings */
 import { IStyledState, IStyledProps, ITheme, IEmitter } from '../interfaces'
+import { create } from 'domain';
 
 export const styled = (_tag: any) => 
 
@@ -48,7 +49,7 @@ export const styled = (_tag: any) =>
     class Styled extends Component<IStyledProps, IStyledState> {
       /** Preload the state with an empty object */
       public state: IStyledState = {}
-
+      
       /**
        * Reference for itself to check if the actual
        * component we're going to style is yet another
@@ -121,7 +122,7 @@ export const styled = (_tag: any) =>
        * 
        * @param props Props for the component template
        */
-      public render({ children, innerRef, key, theme, ...props }, state): any {
+      public render({ children, innerRef, theme, ...props }, state): any {
         this.mergedProps = {
           ...props,
           theme: state.theme || theme || {}
@@ -144,14 +145,14 @@ export const styled = (_tag: any) =>
         /** Stack up our new styles */
         className += css.call(this, styles.concat(classInterpolations))
 
-        return createVNode(
-          2,
+        return createElement(
           tag,
-          className,
-          children,
-          props,
-          key,
-          innerRef
+          { 
+            ...props, 
+            className, 
+            ...(innerRef ? { ref: innerRef } : {})
+          },
+          children
         )
       }
 

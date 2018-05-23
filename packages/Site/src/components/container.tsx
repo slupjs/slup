@@ -1,10 +1,9 @@
-import Inferno from 'inferno'
 import styled from '@slup/theming'
 
 import { Col, Grid } from '@slup/grid'
 import { Typography } from '@slup/typography'
 
-export const Container = styled.section`
+export const Container = styled.div`
   position: fixed;
   left: 0;
   right: 0;

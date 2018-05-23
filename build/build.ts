@@ -1,10 +1,10 @@
 import { join } from 'path'
 import { sync } from 'rimraf'
 import { existsSync } from 'fs'
-import { rollup } from 'rollup'
+import { rollup, watch as rWatch } from 'rollup'
 import { input, output } from './configuration'
 
-export default async pkg => {
+export const build = async pkg => {
   console.log(pkg, 'Started working')
 
   const base = join(process.cwd(), 'packages', pkg)
@@ -27,4 +27,41 @@ export default async pkg => {
     console.log(pkg, '* Output for', format)
     bundle.write(outputOptions(format) as any)
   }))
+}
+
+export const watch = async pkg => {
+  const base = join(process.cwd(), 'packages', pkg)
+  const entry = join(base, 'src', 'index.ts')
+
+  const inputOptions = input(entry)
+  const outputOptions = output(base)
+
+  const watcher = rWatch({
+    ...inputOptions, 
+    output: outputOptions('es')
+  } as any)
+
+  watcher.on('event', event => {
+    switch(event.code) {
+      case 'START':
+        console.log('Started watching', pkg)
+      break
+    
+      case 'FATAL':
+      case 'ERROR':
+        console.log('Fatal error', event)
+      break
+
+      case 'BUNDLE_START':
+      case 'BUNDLE_END':
+      break // Ignore
+
+      case 'END':
+        console.log(event.code, 'OK')
+      break
+
+      default: console.log(event)
+    
+    }
+  })
 }

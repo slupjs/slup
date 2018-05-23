@@ -10,9 +10,9 @@ import { readFileSync } from 'fs'
 import { join } from 'path'
 
 /** Inferno imports, render utilities */
-import createElement from 'inferno-create-element'
+import { createElement } from 'inferno-create-element'
 import { renderToStaticMarkup } from 'inferno-server'
-import { match, RouterContext } from 'inferno-router'
+import { StaticRouter, matchPath } from 'inferno-router'
 import { SSR } from '@slup/theming'
 
 /** Page rendering peices */
@@ -46,8 +46,8 @@ app.use('/static', express.static(join(process.cwd(), 'dist')))
 /** All-routes matcher. The response is handled by inferno-router */
 app.get('*', (req, res) => {
   /** Generate props for the mathing components in the router */
-  const props = match(routes, req.url)
-  const App = createElement(RouterContext, props)
+  const props = matchPath(routes, req.url)
+  const App =  createElement(StaticRouter, props)
   const MatchURL = URLs.filter(item => item.url == req.url)[0]
   
   /** Render to string the generated JSX tree */

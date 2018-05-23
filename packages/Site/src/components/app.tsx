@@ -1,5 +1,4 @@
-import { linkEvent } from 'inferno'
-import Component from 'inferno-component'
+import { linkEvent, Component } from 'inferno'
 import { ThemeProvider, WHITE, BLUE, PINK } from '@slup/theming'
 
 import { Header } from './header'
@@ -37,7 +36,7 @@ export class App extends Component<null, { open: boolean }> {
           <Header
             onOpen={linkEvent({ value: true, self: this }, this.toggleNav)}
             style={
-              generateTitle(router.location) === 'Home' &&
+              generateTitle(router.route.location) === 'Home' &&
               { background: 'transparent', boxShadow: 'none' }
             }
           />

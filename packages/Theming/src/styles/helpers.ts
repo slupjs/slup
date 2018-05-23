@@ -1,5 +1,5 @@
 /** Utils */
-import { internal_isUnitlessNumber as UNITLESS } from 'inferno'
+import isUnitless from 'unitless-css-property'
 import { memorize } from '@slup/common'
 
 import { handleInterpolation, REGISTERED } from './styles' 
@@ -27,7 +27,7 @@ export const sanitizeStyle = (key: string, value: any) => {
   }
 
   /** Adds `px` where needed */
-  if (!UNITLESS[key] && !isNaN(value) && value !== 0) {
+  if (!isUnitless(key) && !isNaN(value) && value !== 0) {
     return value + 'px'
   }
 

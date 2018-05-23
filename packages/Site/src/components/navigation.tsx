@@ -1,10 +1,10 @@
-import Component from 'inferno-component'
+import { Component, LinkedEvent } from 'inferno'
 import { Sidenav } from '@slup/sidenav'
 import { List, ListItem } from '@slup/lists'
 import { IRoute } from '../pages'
 
 export interface IProps {
-  onClose: Function
+  onClose: Function | LinkedEvent<any, Event>
   onRedirect: { event: Function, data: any }
   items: IRoute[]
   opened: boolean

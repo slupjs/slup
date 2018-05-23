@@ -2,6 +2,24 @@
 # yarn lockfile v1
 
 
-stylis@3.4.8:
-  version "3.4.8"
-  resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.4.8.tgz#94380babbcd4c75726215794ca985b38ec96d1a3"
+"@slup/common@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@slup/common/-/common-0.5.1.tgz#a83d8cebdc53b00f30734938514771463d7a4e42"
+
+hyphenate-style-name@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.2.tgz#31160a36930adaf1fc04c6074f7eb41465d4ec4b"
+
+inferno-create-element@5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/inferno-create-element/-/inferno-create-element-5.0.4.tgz#0cc479f283a5e8ef97cb8b945bb07c6bf6b7b738"
+
+stylis@3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.5.0.tgz#016fa239663d77f868fef5b67cf201c4b7c701e1"
+
+unitless-css-property@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/unitless-css-property/-/unitless-css-property-1.0.2.tgz#dd4b666172fba241fcf50b6b31aee126700b170a"
+  dependencies:
+    hyphenate-style-name "^1.0.1"

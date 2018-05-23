@@ -9,7 +9,7 @@ export const Pages = styled.div`
   width: auto;
   display: flex;
   transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-  transform: ${props => `translateX(-${props.selected * 100}%)`}
+  transform: ${props => `translateX(-${props.selected * 100}%)`};
 `
 
 export const Page = styled.div`

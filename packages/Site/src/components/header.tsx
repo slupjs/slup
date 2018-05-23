@@ -42,7 +42,7 @@ export const Header = ({ onOpen, ...props }, { router }) => {
           </IconButton>
         </Tooltip>
 
-        <Title title>{generateTitle(router.location)}</Title>
+        <Title title>{generateTitle(router.route.location)}</Title>
 
         <Tooltip text='Github'>
           <IconButton onClick={redirect}>

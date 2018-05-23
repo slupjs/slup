@@ -1,4 +1,4 @@
-import { Route, IndexRoute } from 'inferno-router'
+import { Route } from 'inferno-router'
 
 import { URLs } from './pages'
 import NotFound from './pages/404'
@@ -16,14 +16,14 @@ export const load = name => async ({ props }, callback) => {
 
 export const routes = (
   <Route component={App}>
+    {[
+    <Route exact path='/' component={Home} />,
 
-    <IndexRoute component={Home} />
-
-    {URLs.slice().map(item =>
-      <Route path={item.url} getComponent={load(item.title)} />
-    )}
-
+    ...URLs.slice().map(item =>
+      <Route path={item.url} computedMatch={load(item.title)} />
+    ),
+    
     <Route path='*' component={NotFound} />
-
+  ]}
   </Route>
 )

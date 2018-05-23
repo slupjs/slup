@@ -4,8 +4,14 @@ import { flatten } from './utils/flatten'
 export interface IRoute {
   url: string
   title: string
-  props?: Props
+  props?: IProps
   list?: IRoute[]
+}
+
+interface IProps {
+  sublist?: boolean
+  visible?: boolean
+  nested?: boolean
 }
 
 export const Pages: IRoute[] = [

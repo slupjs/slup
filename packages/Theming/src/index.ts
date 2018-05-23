@@ -34,12 +34,14 @@ export const darkTheme = {
   dark: true
 }
 
-const generateExports = () => {
-  const _styled = (element) => styled(element)
+export default new Proxy(function() {}, {
+  get: (target, key) => styled(key),
 
-  HTML_TAGS.forEach(tag => _styled[tag] = styled(tag))
+  apply(target, scope, args) {
+    if(args.length != 1) {
+      throw new TypeError('`styled()` acceps only one parameter')
+    }
 
-  return _styled
-}
-
-export default generateExports()
+    return styled(args[0])
+  }
+})

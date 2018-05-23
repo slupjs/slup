@@ -1,5 +1,8 @@
 import styled, { lightTheme, darken } from '@slup/theming'
 
+export const Bar = styled.div``
+
+/*
 export const Bar = styled.div`
   box-shadow:
     0px 2px 4px -1px rgba(0, 0, 0, 0.2),
@@ -29,3 +32,4 @@ export const Bar = styled.div`
     height: 56px;
   }
 `
+*/

@@ -1,5 +1,4 @@
-import Inferno   from 'inferno'
-import Component from 'inferno-component'
+import Inferno, { Component } from 'inferno'
 
 import { Ripple } from '@slup/ripple'
 import styled, { lightTheme } from '@slup/theming'
