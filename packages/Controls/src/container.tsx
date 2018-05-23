@@ -1,5 +1,3 @@
-import Inferno   from 'inferno'
-
 import styled, { lightTheme } from '@slup/theming'
 
 const Direction = styled.div`

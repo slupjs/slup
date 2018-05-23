@@ -1,4 +1,4 @@
-import Inferno, { linkEvent, Component } from 'inferno'
+import { linkEvent, Component } from 'inferno'
 import { Container, Tip } from './container'
 
 interface IProps {

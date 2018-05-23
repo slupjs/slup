@@ -35,7 +35,6 @@ export const Header = ({ onOpen, ...props }, { router }) => {
   return(
     <Navbar primary {...props}>
       <Wrapper>
-        {/** Icon to open the sidenav */}
         <Tooltip text='Open Menu'>
           <IconButton onClick={onOpen}>
             <MenuIcon />

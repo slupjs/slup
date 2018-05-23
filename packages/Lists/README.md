@@ -46,16 +46,16 @@ export class Home extends Component {
   render() {
     return (
       <List>
-        <ListItem sublist visible={this.state.visible}>
+        <NestedList visible={this.state.visible}>
           {/* This item will trigger the event */}
           <ListItem onClick={this.handleClick.bind(this)}>Trigger</ListItem>
           {/* This is the nested list */}
           <List>
-            <ListItem>Nested</ListItem>
-            <ListItem>Nested</ListItem>
-            <ListItem>Nested</ListItem>
+            <ListItem nested>Nested</ListItem>
+            <ListItem nested>Nested</ListItem>
+            <ListItem nested>Nested</ListItem>
           </List>
-        </ListItem>
+        </NestedList>
       </List>
     )
   }
@@ -70,7 +70,7 @@ export class Home extends Component {
 | threeline      |  boolean      |  false        | [Link](#property-threeline)  |
 | hoverable      |  boolean      |  true         | [Link](#property-hoverable)  |
 | sublist        |  boolean      |  false        | [Link](#property-sublist)    |
-| nested         |  boolean      |  false        | [Link](#property-nested)     |
+| nested         |  boolean      |  false        | [Link](#property-nested-listitem-divider)     |
 | avatar         |  boolean      |  false        | [Link](#property-avatar-leftcontent)     |
 
 #### Property: 'ripple'
@@ -146,17 +146,12 @@ This property MUST be set to make a nested list
 </List>
 ```
 
-#### Property: 'nested'
-This property will give some spacing on the left of the list
-
+#### Property: 'nested' [ListItem, Divider]
+This property will give some spacing on the left
 ```js
 <List>
-  <ListItem sublist visible>
-  <ListItem><SomeText /></ListItem>
-    <List>
-      <ListItem nested><YourContent /></ListItem>
-    </List>
-  </ListItem>
+  <Divider nested />
+  <ListItem nested><YourContent /></ListItem>
 </List>
 ```
 

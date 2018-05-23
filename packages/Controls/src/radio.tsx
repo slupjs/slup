@@ -1,5 +1,4 @@
-import Inferno, { linkEvent, Component } from 'inferno'
-
+import { linkEvent, Component } from 'inferno'
 import styled, { lightTheme, rgba } from '@slup/theming'
 import { Container }  from './container'
 

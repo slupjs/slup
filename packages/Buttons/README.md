@@ -19,76 +19,93 @@ npm install --save @slup/buttons
 ## Usage
 ```js
 import {
-  RaisedButton,
-  FlatButton,
+  ContainedButton,
+  TextButton,
   Fab,
   IconButton
 } from '@slup/buttons'
 
 export const Buttons = () =>
   <div>
-    <RaisedButton>Button</RaisedButton>
-    <FlatButton>Button</FlatButton>
+    <ContainedButton>Button</ContainedButton>
+    <OutlinedButton>Button</OutlinedButton>
+    <TextButton>Button</TextButton>
     <Fab>+</Fab>
     <IconButton>+</IconButton>
   </div>
 ```
 
 ## Available properties
-| Props               | Type          | Default       | Documentation                                                        |
-|---------------------|:-------------:|:-------------:|---------------------------------------------------------------------:|
-| disabled            |  boolean      |  false        | [Link](#property-disabled)                                           |
-| ripple              |  boolean      |  true         | [Link](#property-ripple-raisedbutton-flatbutton-fab)                 |
-| secondary           |  boolean      |  false        | [Link](#property-secondary-raisedbutton-fab-iconbutton)              |
-| primary             |  boolean      |  false        | [Link](#property-primary-raisedbutton-flatbutton-iconbutton)         |
-| mini                |  boolean      |  false        | [Link](#property-mini-fab)                                           |
-| centerRipple        |  boolean      |  true         | [Link](#property-centerripple-iconbutton)                            |
+| Props               | Type          | Default       | Documentation                                                                         |
+|---------------------|:-------------:|:-------------:|--------------------------------------------------------------------------------------:|
+| disabled            |  boolean      |  false        | [Link](#property-disabled)                                                            |
+| ripple              |  boolean      |  true         | [Link](#property-ripple-containedbutton-outlinedbutton-textbutton-fab)                |
+| secondary           |  boolean      |  false        | [Link](#property-secondary-containedbutton-outlinedbutton-fab-iconbutton-extendedfab) |
+| primary             |  boolean      |  false        | [Link](#property-primary-containedbutton-outlinedbutton-textbutton-iconbutton)        |
+| mini                |  boolean      |  false        | [Link](#property-mini-fab)                                                            |
+| centerRipple        |  boolean      |  true         | [Link](#property-centerripple-iconbutton)                                             |
+| icon                |  function     |  none         | [Link](#property-icon-containedbutton-extendedfab)                                    |
 
 #### Property: 'disabled'
-This property will disable the button
+This property will disable the button.
 ```js
-<RaisedButton disabled>Button</RaisedButton>
-<FlatButton disabled>Button</FlatButton>
+<ContainedButton disabled>Button</ContainedButton>
+<OutlinedButton disabled>Button</OutlinedButton>
+<TextButton disabled>Button</TextButton>
 <Fab disabled>+</Fab>
 <IconButton disabled>+</IconButton>
 ```
 
-#### Property: 'ripple' [RaisedButton, FlatButton, Fab]
-This property if set to false will remove the Ripple effect
+#### Property: 'ripple' [ContainedButton, OutlinedButton, TextButton, Fab]
+This property if set to false will remove the Ripple effect.
 ```js
-<RaisedButton ripple={false}>Button</RaisedButton>
-<FlatButton ripple={false}>Button</FlatButton>
+<ContainedButton ripple={false}>Button</ContainedButton>
+<OutlinedButton ripple={false}>Button</OutlinedButton>
+<TextButton ripple={false}>Button</TextButton>
 <Fab ripple={false}>+</Fab>
 ```
 
-#### Property: 'secondary' [RaisedButton, Fab, IconButton]
-It will set the background to the 'secondary' color of the theme for the `RaisedButton` and the `Fab`.
+#### Property: 'secondary' [ContainedButton, OutlinedButton, Fab, IconButton, ExtendedFab]
+This property will set the background to the 'secondary' color of the theme for the `ContainedButton`, the `Fab` and the `ExtendedFab`.
 <br />
-It will only change the color for the `IconButton`
+This property will only change the color for the `OutlinedButton` and the `IconButton`.
 ```js
-<RaisedButton secondary>Button</RaisedButton>
+<ContainedButton secondary>Button</ContainedButton>
+<OutlinedButton secondary>Button</OutlinedButton>
 <Fab secondary>+</Fab>
 <IconButton secondary>+</IconButton>
 ```
 
-#### Property: 'primary' [RaisedButton, FlatButton, IconButton]
-It will set the background to the 'primary' color of the theme for the `RaisedButton`.
+#### Property: 'primary' [ContainedButton, OutlinedButton, TextButton, IconButton]
+This property will set the background to the 'primary' color of the theme for the `ContainedButton`.
 <br />
-It will set the color to the 'primary' primary color of the theme for the `FlatButton` and `IconButton`
+This property will set the color to the 'primary' color of the theme for the `OutlinedButton`, the `TextButton` and the `IconButton`.
 ```js
-<RaisedButton primary>Button</RaisedButton>
-<FlatButton primary>Button</FlatButton>
+<ContainedButton primary>Button</ContainedButton>
+<OutlinedButton primary>Button</OutlinedButton>
+<TextButton primary>Button</TextButton>
 <IconButton primary>+</IconButton>
 ```
 
 #### Property: 'mini' [Fab]
-It will reduce its size
+This property will reduce the size of the component
 ```js
 <Fab mini>+</Fab>
 ```
 
 #### Property: 'centerRipple' [IconButton]
-This property if set to false will make the ripple appear on the clicked position instead of starting from the center
+This property, if set to false, will make the ripple appear on the clicked position instead of starting from the center.
 ```js
 <IconButton centerRipple={false}>+</IconButton>
+```
+
+#### Property: 'icon' [ContainedButton, ExtendedFab]
+This property takes an icon which will be set near the text.
+```js
+<ContainedButton icon={<Icon />}>
+  Button
+</ContainedButton>
+<ExtendedFab icon={<Icon />}>
+  Button
+</ExtendedFab>
 ```

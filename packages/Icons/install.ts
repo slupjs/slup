@@ -21,7 +21,7 @@ const DOCS_OUT = join(BASE, 'README.md')
 const OPTIONS = {
   presets: ['minify'],
   plugins: [
-    'inferno',
+    ['inferno', { imports: true }],
     'transform-es2015-arrow-functions',
     'transform-es2015-modules-commonjs',
     'transform-object-rest-spread'

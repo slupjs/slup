@@ -1,4 +1,3 @@
-import Inferno from 'inferno'
 import styled, { keyframes } from '@slup/theming'
 
 /** The animation for out appearing logo */
@@ -15,12 +14,12 @@ const Path = styled.path`
   stroke-width: 40;
   stroke-dasharray: 10000;
   stroke-dashoffset: 10000;
-  animation: ${DASH} 5s linear forwards;
+  animation: ${DASH} 8s linear forwards;
 `
 
 const Line = Path.withComponent('line')
 const PPath = styled.path`
-  fill: ${props => props.theme.text}
+  fill: ${props => props.theme.text};
 `
 
 export const Logo = (props) =>

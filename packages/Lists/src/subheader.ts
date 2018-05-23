@@ -9,5 +9,6 @@ export const Subheader = styled.li`
   opacity: ${props => props.primary ? '1' : '0.54'};
   color: ${props => props.primary
     ? props.theme.primary || lightTheme.primary
-    : props.theme.text || lightTheme.text};
+    : props.theme.text || lightTheme.text
+  };
 `

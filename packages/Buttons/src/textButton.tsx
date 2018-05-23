@@ -1,5 +1,3 @@
-import Inferno, { Component } from 'inferno'
-
 import { Ripple } from '@slup/ripple'
 import styled, { lightTheme, rgba } from '@slup/theming'
 import { ButtonBase } from './buttonBase'
@@ -12,10 +10,11 @@ const setColor = (props, alpha: number) =>
       : rgba(props.theme.text || lightTheme.text, alpha)
 
 
-const FlatBase = styled(ButtonBase) `
+const FlatBase = styled(ButtonBase)`
   transition: background 150ms linear;
   background: transparent;
   cursor: pointer;
+  padding: 0 8px;
   color: ${props => setColor(props, 1)};
 
   &:disabled {
@@ -31,20 +30,15 @@ const FlatBase = styled(ButtonBase) `
   }
 `
 
-export class FlatButton extends Component<any, any> {
-  render(props) {
-    return (
-      <FlatBase {...props}>
-        {props.children}
-        {props.ripple == false || props.disabled
-          ? null
-          : <Ripple
-            primary={props.primary}
-            secondary={props.secondary}
-            {...props.rippleOptions}
-          />
-        }
-      </FlatBase>
-    )
-  }
-}
+export const TextButton = props =>
+  <FlatBase {...props}>
+    {props.children}
+    {props.ripple === false || props.disabled
+      ? null
+      : <Ripple
+        primary={props.primary}
+        secondary={props.secondary}
+        {...props.rippleOptions}
+      />
+    }
+  </FlatBase>

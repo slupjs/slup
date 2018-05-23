@@ -1,18 +1,20 @@
-import Inferno, { Component } from 'inferno'
+import { Component } from 'inferno'
 
 import { Ripple } from '@slup/ripple'
 import styled, { lightTheme } from '@slup/theming'
 
-const Circle = styled.button`
+export const Circle = styled.button`
   position: relative;
   font-size: 24px;
-  border: none; outline: none;
+  border: none;
+  outline: none;
   border-radius: 50%;
   cursor: pointer;
   transition: box-shadow 150ms linear;
   user-select: none;
   display: flex;
-  align-items: center; justify-content: center;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14),
     0px 1px 5px 0px rgba(0, 0, 0, 0.12);
@@ -25,9 +27,10 @@ const Circle = styled.button`
    */
   -webkit-tap-highlight-color: transparent;
 
-  width: ${props => props.mini ? '40px' : '56px'};
-  height: ${props => props.mini ? '40px' : '56px'};
+  width: ${props => props.mini ? 40 : 56}px;
+  height: ${props => props.mini ? 40 : 56}px;
   color: ${props => props.theme.text || lightTheme.text};
+  fill: ${props => props.theme.text || lightTheme.text};
   background: ${props => props.secondary
     ? props.theme.secondary || lightTheme.secondary
     : props.theme.primary   || lightTheme.primary
@@ -40,16 +43,11 @@ const Circle = styled.button`
   }
 `
 
-export class Fab extends Component<any, any> {
-  render(props) {
-    return(
-      <Circle {...props}>
-        {props.children}
-        {props.ripple == false
-          ? null
-          : <Ripple {...props.rippleOptions} />
-        }
-      </Circle>
-    )
-  }
-}
+export const Fab = props =>
+  <Circle {...props}>
+    {props.children}
+    {props.ripple === false
+      ? null
+      : <Ripple {...props.rippleOptions} />
+    }
+  </Circle>

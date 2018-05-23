@@ -1,7 +1,9 @@
 import { Fab } from './fab'
-import { RaisedButton } from './raisedButton'
+import { ExtendedFab } from './extendedFab'
+import { ContainedButton } from './containedButton'
 import { IconButton } from './iconButton'
-import { FlatButton } from './flatButton'
+import { OutlinedButton } from './outlinedButton'
+import { TextButton } from './textButton'
 
-export { Fab, RaisedButton, FlatButton, IconButton }
-export default { Fab, RaisedButton, FlatButton, IconButton }
+export { Fab, ExtendedFab, ContainedButton, TextButton, IconButton, OutlinedButton }
+export default { Fab, ExtendedFab, ContainedButton, TextButton, IconButton, OutlinedButton }

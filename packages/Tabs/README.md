@@ -16,7 +16,7 @@ npm install --save @slup/tabs
 
 ## Usage
 ```js
-import { Tabs, Tab } from '@slup/tabs'
+import { Tabs, Tab, TransitionPages, Page } from '@slup/tabs'
 
 export class Test extends Component {
   tabs = [
@@ -27,24 +27,34 @@ export class Test extends Component {
 
   state = { selected: 0 }
 
-  handleClick(i) {
+  handleSelectionChange(i) {
     this.setState({ selected: i })
   }
 
   render() {
     return (
-      <Tabs selected={this.state.selected}>
-        {this.tabs.map((item, i) => {
-          return (
-            <Tab
-              onClick={() => this.handleClick(i)}
-              selected={this.state.selected === i}
-            >
-              {item}
-            </Tab>
-          )
-        })}
-      </Tabs>
+      <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <Tabs selected={this.state.selected}>
+          {this.tabs.map((item, i) => {
+            return (
+              <Tab
+                onClick={() => this.handleSelectionChange(i)}
+                selected={this.state.selected === i}
+              >
+                {item}
+              </Tab>
+            )
+          })}
+        </Tabs>
+        <TransitionPages
+          onSwipe={this.handleSelectionChange.bind(this)}
+          selected={this.state.selected}
+        >
+          <Page>1</Page>
+          <Page>2</Page>
+          <Page>3</Page>
+        </TransitionPages>
+      </div>
     )
   }
 }

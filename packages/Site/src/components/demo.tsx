@@ -1,4 +1,4 @@
-import Inferno, { Component } from 'inferno'
+import { Component } from 'inferno'
 import styled, { rgba } from '@slup/theming'
 import * as marked      from 'marked'
 import { Typography }   from '@slup/typography'
@@ -157,7 +157,6 @@ export class Demo extends Component<{ module: string }, IState> {
       .replace(']', '')
       .replace(',', '')
       .replace('/', '')
-      .replace('--', '')
 
   /**
    * Load the README and parse its contents

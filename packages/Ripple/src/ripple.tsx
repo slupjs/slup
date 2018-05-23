@@ -1,4 +1,4 @@
-import Inferno, { linkEvent, Component } from 'inferno'
+import { linkEvent, Component } from 'inferno'
 
 import { Wrapper } from './container'
 import { Wave }    from './wave'

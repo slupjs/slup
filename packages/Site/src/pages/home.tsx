@@ -1,7 +1,7 @@
-import Inferno, { linkEvent } from 'inferno'
+import { linkEvent } from 'inferno'
 import styled from '@slup/theming'
 
-import { FlatButton } from '../../../Buttons/src/index'
+import { ContainedButton } from '../../../Buttons/src/index'
 import { Logo } from '../components/icons'
 import {
   Container,
@@ -12,7 +12,7 @@ import {
 /** Redirect helper */
 const redirect = router =>
   setTimeout(any => router.push('/components/buttons'), 350)
-  
+
 export default (props: Object, context: { router: any }) =>
   <Container>
     <CenterContainer>
@@ -23,12 +23,11 @@ export default (props: Object, context: { router: any }) =>
         that strictly follow <a href='https://material.io/guidelines/'>Material Design</a> guidelines
       </Headline>
 
-      <FlatButton
+      <ContainedButton
         onClick={linkEvent(context.router, redirect)}
         secondary
       >
         Get started
-      </FlatButton>
-
+      </ContainedButton>
     </CenterContainer>
   </Container>

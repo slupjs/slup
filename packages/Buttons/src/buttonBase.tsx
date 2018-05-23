@@ -1,5 +1,3 @@
-import Inferno from 'inferno'
-
 import styled from '@slup/theming'
 
 export const ButtonBase = styled.button`
@@ -14,13 +12,13 @@ export const ButtonBase = styled.button`
   position: relative;
   font-family: inherit;
   font-weight: 500;
-  border: none; outline: none;
+  border: none;
+  outline: none;
   min-height: 36px;
-  min-width: 88px;
-  border-radius: 2px;
+  min-width: 64px;
+  border-radius: 4px;
   text-transform: uppercase;
   font-size: 14px;
-  margin: 0 8px;
-  padding: 0 8px;
   user-select: none;
+  letter-spacing: 1px;
 `
