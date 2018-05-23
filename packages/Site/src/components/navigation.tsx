@@ -71,7 +71,7 @@ export class Navigation extends Component<IProps, any> {
     /** If there's no url it means that the item is a sublist opener */
     if(!url) return
     
-    this.context.router.push(url)
+    this.context.router.history.push(url)
     const event = this.props.onRedirect
     if(event) event.event(event.data)
   }

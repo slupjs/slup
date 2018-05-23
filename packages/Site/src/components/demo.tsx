@@ -108,9 +108,9 @@ export class Demo extends Component<{ module: string }, IState> {
    * @param tokens The array of tokens
    */
   private getTitle(tokens: IAnyTokenArray): string {
-    const HTMLTokens: IToken<'html'>[] = tokens.filter(t => t.type === 'html')
+    const HTMLTokens: IToken<'html'>[] = tokens.filter(t => t.type == 'html')
 
-    return HTMLTokens[1].text
+    return HTMLTokens[0].text
       .replace('<h1 align=\'center\'>', '')
       .replace('</h1>', '')
       .replace('Slup -', '')
@@ -123,9 +123,11 @@ export class Demo extends Component<{ module: string }, IState> {
    * @param tokens The array of tokens
    */
   private getBlockquote(tokens: IAnyTokenArray) {
-    const HTMLTokens: IToken<'html'>[] = tokens.filter(t => t.type === 'html')
+    const HTMLTokens: IToken<'html'>[] = tokens.filter(t => t.type == 'html')
 
-    return HTMLTokens[2].text
+    console.log(HTMLTokens)
+
+    return HTMLTokens[1].text
       .replace('<blockquote>', '')
       .replace('</blockquote>', '')
       .split('<br />')

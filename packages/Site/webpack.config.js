@@ -5,7 +5,8 @@ const { tmpdir } = require('os')
 const Base = {
   resolve: {
     extensions: [ '.ts', '.tsx', '.js', '.jsx' ],
-    modules: [ join(__dirname, 'node_modules') ]
+    modules: [ join(__dirname, 'node_modules') ],
+    mainFields: [ 'browser', 'dev:module', 'module', 'main' ]
   },
 
   module: {

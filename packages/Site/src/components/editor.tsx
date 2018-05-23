@@ -1,5 +1,4 @@
 import { linkEvent, Component } from 'inferno'
-import lozad from 'lozad'
 import styled from '@slup/theming'
 import { Card } from '@slup/card'
 
@@ -24,9 +23,13 @@ export class Editor extends Component<{ id: string }, null> {
   /**
    * Initialize the lozad observer on the iframe
    */
-  public componentDidMount() {
-    const instance = lozad(this.element as any)
-    instance.observe()
+  public async componentDidMount() {
+    if(document) {
+      const lozad = await import('lozad')
+
+      const instance = lozad(this.element as any)
+      instance.observe()
+    }
   }
 
   public render({ id }) {

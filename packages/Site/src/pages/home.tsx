@@ -10,10 +10,10 @@ import {
 } from '../components/container'
 
 /** Redirect helper */
-const redirect = router =>
-  setTimeout(any => router.push('/components/buttons'), 350)
+const redirect = history =>
+  setTimeout(any => history.push('/components/buttons'), 350)
 
-export default (props: Object, context: { router: any }) =>
+export default (props: Object, { router }) =>
   <Container>
     <CenterContainer>
       <Logo />
@@ -24,7 +24,7 @@ export default (props: Object, context: { router: any }) =>
       </Headline>
 
       <ContainedButton
-        onClick={linkEvent(context.router, redirect)}
+        onClick={linkEvent(router.history, redirect)}
         secondary
       >
         Get started

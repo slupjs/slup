@@ -1,19 +1,9 @@
 import { linkEvent, Component } from 'inferno'
-import { ThemeProvider, WHITE, BLUE, PINK } from '@slup/theming'
 
 import { Header } from './header'
 import { Navigation } from './navigation'
-import { Container, Content } from './container'
 import { Pages } from '../pages'
 import { generateTitle } from '../utils/title'
-
-export const THEME = {
-  text: WHITE,
-  background: '#303030',
-  primary: BLUE[500],
-  secondary: PINK[500],
-  dark: true
-}
 
 export class App extends Component<null, { open: boolean }> {
   public state = { open: false }
@@ -27,32 +17,28 @@ export class App extends Component<null, { open: boolean }> {
     self.setState({ open: value })
   }
 
-  public render({ children }, { open }, { router }) {
+  public render(none, { open }, { router }) {
+    console.log(router)
+
     return(
-      <ThemeProvider theme={THEME}>
-        <Container>
+      <div>
+        {/** The page's header */}
+        <Header
+          onOpen={linkEvent({ value: true, self: this }, this.toggleNav)}
+          style={
+            generateTitle(router.route.location) === 'Home' &&
+            { background: 'transparent', boxShadow: 'none' }
+          }
+        />
 
-          {/** The page's header */}
-          <Header
-            onOpen={linkEvent({ value: true, self: this }, this.toggleNav)}
-            style={
-              generateTitle(router.route.location) === 'Home' &&
-              { background: 'transparent', boxShadow: 'none' }
-            }
-          />
-
-          {/** Sidenav */}
-          <Navigation
-            items={Pages}
-            opened={this.state.open}
-            onClose={linkEvent({ value: false, self: this }, this.toggleNav)}
-            onRedirect={linkEvent({ value: false, self: this }, this.toggleNav)}
-          />
-
-          <Content>{children}</Content>
-
-        </Container>
-      </ThemeProvider>
+        {/** Sidenav */}
+        <Navigation
+          items={Pages}
+          opened={this.state.open}
+          onClose={linkEvent({ value: false, self: this }, this.toggleNav)}
+          onRedirect={linkEvent({ value: false, self: this }, this.toggleNav)}
+        />
+      </div>
     )
   }
 }
