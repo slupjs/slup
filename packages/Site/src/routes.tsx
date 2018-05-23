@@ -24,19 +24,18 @@ export const routes = (
     <Container>
       <App />
 
-      <Route exact path='/' component={Home} />
-
       {URLs
         .slice()
         .filter(i => i.url.includes('components'))
-        .map(item => {
-          console.log('registering route', item);
-
-          return <Route exact path={item.url} component={() => <Demo module={item.title} />} />
-        })
+        .map(item => 
+          <Route path={item.url} component={() => <Demo module={item.title} />} />
+        )
       }
 
-      <Route path='404' component={NotFound} />
+      <Route strict path='*' component={NotFound} />
+
+      <Route exact path='/' component={Home} />
+      }
     </Container>
   </ThemeProvider>
 )
