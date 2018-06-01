@@ -93,7 +93,7 @@ export class Switch extends Component<any, any> {
   }
 
   handleKeyDown(this, { keyCode }) {
-    if(keyCode == 32 && this.props.onChange && !this.props.disabled) {
+    if(keyCode === 32 && this.props.onChange && !this.props.disabled) {
       this.props.onChange()
     }
   }
