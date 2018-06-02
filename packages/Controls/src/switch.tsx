@@ -1,6 +1,6 @@
 import { linkEvent, Component } from 'inferno'
 import styled, { lightTheme, rgba, lighten } from '@slup/theming'
-import { Container } from './container'
+import { Container, handleKeyDown } from './container'
 
 const Bar = styled.div`
   width: 36px;
@@ -92,12 +92,6 @@ export class Switch extends Component<any, any> {
     }, 150)
   }
 
-  handleKeyDown(this, { keyCode }) {
-    if(keyCode === 32 && this.props.onChange && !this.props.disabled) {
-      this.props.onChange()
-    }
-  }
-
   render(props) {
     return(
       <Container
@@ -110,7 +104,7 @@ export class Switch extends Component<any, any> {
           {...props}
           onClick={props.onChange}
           tabIndex={0}
-          onKeyDown={linkEvent(this, this.handleKeyDown)}
+          onKeyDown={(e) => handleKeyDown(props, e)}
           onMouseDown={linkEvent(this, this.createWave)}
           onMouseUp={linkEvent(this, this.destroyWave)}
           onFocus={linkEvent(this, this.createWave)}

@@ -1,44 +1,45 @@
 import { linkEvent, Component } from 'inferno'
-import styled, { lightTheme, rgba } from '@slup/theming'
-import { Container }  from './container'
+import styled, { lightTheme, rgba, css } from '@slup/theming'
+import { Container, handleKeyDown }  from './container'
 
 const Border = styled.div`
   /* Geometry */
   width: ${props =>  props.size || 16}px;
   height: ${props => props.size || 16}px;
   border-radius: 50%;
+  outline: none;
+  cursor: pointer;
 
    /* Border colors and transition */
   transition: border 150ms linear;
-  border: 2px solid ${props => props.disabled
-    ? rgba(props.theme.text || lightTheme.text, .3)
-    : props.checked
-      ? props.theme.secondary || lightTheme.secondary
-      : rgba(props.theme.text || lightTheme.text, .7)
+  border: 2px solid ${props => props.checked
+    ? props.theme.secondary || lightTheme.secondary
+    : rgba(props.theme.text || lightTheme.text, .54)
   };
-  position: relative;
   /* Children alignment */
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  /* Cursor properties */
-  cursor: ${props => props.disabled
-    ? 'auto'
-    : 'pointer'
-  };
-  pointer-events: ${props => props.disabled
-    ? 'none'
-    : 'auto'
-  };
-
-  &:focus {
-    outline: none;
+  &:hover span {
+    transform: scale(3);
+    opacity: .1;
   }
+
+  &:focus span, &:active span {
+    transform: scale(3);
+    opacity: .2;
+  }
+
+  ${props => props.disabled && css`
+    border-color: ${rgba(props.theme.text || lightTheme.text, .3)};
+    pointer-events: none;
+  `};
 `
 
 const Circle = styled.div`
-  /* Positioning and styling */
+  /* Geometry */
   width: ${props =>  (props.size || 16) - 6}px;
   height: ${props => (props.size || 16) - 6}px;
   background: ${props => props.disabled
@@ -50,14 +51,14 @@ const Circle = styled.div`
   border-radius: 50%;
 
   /* Transitions and animations */
-  transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1), background 150ms linear;
+  transition: transform 100ms linear, background 100ms linear;
   transform: ${props => props.checked
     ? 'scale(1)'
     : 'scale(0)'
   };
 `
 
-const Wave = styled.div`
+const Wave = styled.span`
   width: ${props =>  props.size || 16}px;
   height: ${props => props.size || 16}px;
   border-radius: 50%;
@@ -66,57 +67,44 @@ const Wave = styled.div`
   pointer-events: none;
   transition: background 150ms linear,
     opacity 150ms linear,
-    transform 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
-  opacity: ${props => props.opacity};
-  transform: ${props => props.transform};
-  background-color: ${props => props.disabled
-    ? 'grey'
-    : props.checked
-      ? props.theme.secondary || lightTheme.secondary
-      : 'grey'};
+    transform 200ms linear;
+  transform: scale(0);
+  opacity: 0;
+  background-color: ${props => props.checked
+    ? props.theme.secondary || lightTheme.secondary
+    : rgba(props.theme.text || lightTheme.text, .3)
+  };
 `
 
 export class Radio extends Component<any, any> {
-  state = {
-    transform: 'scale(0)',
-    opacity: '0.2'
-  }
-
-  createWave(this) {
-    this.setState({
-      transform: 'scale(3)',
-      opacity: '0.2'
-    })
-  }
-
-  destroyWave(this) {
-    this.setState({ opacity: '0.05' })
-
-    setTimeout(() => {
-      this.setState({ transform: 'scale(0)' })
-    }, 150)
-  }
-
   render(props) {
     return (
-      <Container {...props}>
+      <Container
+        onChange={props.onChange}
+        leftLabel={props.leftLabel}
+        rightLabel={props.rightLabel}
+        disabled={props.disabled}
+      >
         <Border
           {...props}
           tabIndex={0}
           onClick={props.onChange}
-          onMouseDown={linkEvent(this, this.createWave)}
-          onMouseUp={linkEvent(this, this.destroyWave)}
-          onFocus={linkEvent(this, this.createWave)}
-          onBlur={linkEvent(this, this.destroyWave)}
+          onKeyDown={(e) => handleKeyDown(props, e)}
         >
 
-          <Circle {...props} />
-
-          <Wave
-            {...props}
-            transform={this.state.transform}
-            opacity={this.state.opacity}
+          <Circle
+            disabled={props.disabled}
+            checked={props.checked}
+            size={props.size}
           />
+
+          {!props.disabled
+            ? <Wave
+                checked={props.checked}
+                size={props.size}
+              />
+            : null
+          }
         </Border>
       </Container>
     )

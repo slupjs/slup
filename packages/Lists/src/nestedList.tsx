@@ -42,7 +42,6 @@ export class NestedList extends Component<{ visible: boolean }, IState> {
    * or to be only the first one, depending on the visiblity of the list.
    */
   private setHeight = () => {
-    console.log('clicked')
     const { visible } = this.props
     const children = this.list.children
 

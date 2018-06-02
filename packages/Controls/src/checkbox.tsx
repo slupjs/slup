@@ -1,34 +1,21 @@
 import { linkEvent, Component } from 'inferno'
-import styled, { lightTheme, rgba } from '@slup/theming'
-import { Container }  from './container'
+import styled, { lightTheme, rgba, css } from '@slup/theming'
+import { Container, handleKeyDown }  from './container'
 
 const Box = styled.div`
-  /**
-  * Disables blue background on tap in mobile devices.
-  * See:
-  * - https://stackoverflow.com/a/29961714
-  * - #32
-  */
-  -webkit-tap-highlight-color: transparent;
-
   border-radius: 2px;
   box-sizing: border-box;
   transition: background 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
     border-color 200ms linear;
   outline: none;
   position: relative;
-  opacity: ${props => props.disabled ? .3 : 1};
   width: ${props => props.size || 18}px;
   height: ${props => props.size || 18}px;
-  border: 2px solid ${props => props.disabled
-    ? props.theme.text || lightTheme.text
-    : props.checked
+  border: 2px solid ${props => props.checked
       ? props.theme.secondary || lightTheme.secondary
       : rgba(props.theme.text || lightTheme.text, .54)
   };
-  background: ${props => props.disabled && props.checked
-    ? props.theme.text || lightTheme.text
-    : props.checked
+  background: ${props => props.checked
       ? props.theme.secondary || lightTheme.secondary
       : 'transparent'
   };
@@ -67,17 +54,17 @@ const Box = styled.div`
     opacity: .1;
   }
   
-  &:focus div {
+  &:focus div, &:active div {
     transform: scale(3);
     opacity: .2;
   }
 
-  &:active div {
-    transform: scale(3);
-    opacity: .2;
-  }
-
-  ${props => props.disabled && `
+  ${props => props.disabled && css`
+    border-color: ${props.theme.text || lightTheme.text};
+    background: ${props.checked
+      ? props.theme.text || lightTheme.text
+      : 'transparent'
+    };
     pointer-events: none;
     opacity: .3;
   `};
@@ -103,27 +90,33 @@ const Wave = styled.div`
   };
 `
 
-export class Checkbox extends Component<any, any> {
-  handleKeyDown(self, { keyCode }: KeyboardEvent) {
-    if(keyCode === 32 && self.props.onChange && !self.props.disabled) {
-      self.props.onChange()
-    }
-  }
+interface IProps {
+  disabled?: boolean
+  checked: boolean
+  size?: number
+  onChange?: () => any
+}
 
-  render(props) {
+export class Checkbox extends Component<IProps, null> {
+  public render(props) {
     return (
-      <Container {...props}>
+      <Container
+        onChange={props.onChange}
+        leftLabel={props.leftLabel}
+        rightLabel={props.rightLabel}
+        disabled={props.disabled}
+      >
         <Box
           {...props}
           onClick={props.onChange}
           tabIndex={0}
-          onKeyDown={linkEvent(this, this.handleKeyDown)}
-          size={props.size || 18}
+          onKeyDown={(e) => handleKeyDown(props, e)}
+          size={props.size || 16}
         >
           {!props.disabled
             ? <Wave
                 checked={props.checked}
-                size={props.size || 18}
+                size={props.size || 16}
               />
             : null
           }
