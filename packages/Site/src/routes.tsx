@@ -1,15 +1,15 @@
-import { Route, Router } from 'inferno-router'
-import { ThemeProvider, WHITE, BLUE, PINK } from '@slup/theming'
-
-import { URLs } from './pages'
-import NotFound from './pages/404'
-import { Demo } from './components/demo'
-import { Container, Content } from './components/container'
-import { App }  from './components/app'
-import Home     from './pages/home'
-
 /** Load fronts and global styles */
 import './globals'
+
+import { BLUE, PINK, ThemeProvider, WHITE } from '@slup/theming'
+import { Container, Content } from './components/container'
+import { Route, Router } from 'inferno-router'
+
+import { App }  from './components/app'
+import { Demo } from './components/demo'
+import Home     from './pages/home'
+import NotFound from './pages/404'
+import { URLs } from './pages'
 
 export const THEME = {
   text: WHITE,
@@ -28,14 +28,13 @@ export const routes = (
         .slice()
         .filter(i => i.url.includes('components'))
         .map(item => 
-          <Route path={item.url} component={() => <Demo module={item.title} />} />
+          <Route computedMatch path={item.url} component={() => <Demo module={item.title} />} />
         )
       }
 
-      <Route strict path='*' component={NotFound} />
-
       <Route exact path='/' component={Home} />
-      }
+
+      <Route path='*' component={NotFound} />
     </Container>
   </ThemeProvider>
 )
