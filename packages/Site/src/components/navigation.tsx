@@ -1,7 +1,8 @@
 import { Component, LinkedEvent } from 'inferno'
-import { Sidenav } from '@slup/sidenav'
-import { List, ListItem } from '@slup/lists'
+import { List, ListItem, NestedList } from '@slup/lists'
+
 import { IRoute } from '../pages'
+import { Sidenav } from '@slup/sidenav'
 
 export interface IProps {
   onClose: Function | LinkedEvent<any, Event>
@@ -33,22 +34,14 @@ export class Navigation extends Component<IProps, any> {
     /** Declare if the sublist should be visible */
     if(props && props.sublist) _props.visible = !!this.state.open[url]
 
-    return(
-      <ListItem onClick={() => this.redirect(url)} {..._props}>
-        {props && props.sublist
-          /** 
-           * If it's a sublist, the text should be wrapped 
-           * as an item that triggers the visibility 
-           */
-          ? <ListItem onClick={() => this.toggleList(url)}>{title}</ListItem>
+    return props && props.sublist 
+      ? <NestedList {..._props}>
+          <ListItem onClick={() => this.toggleList(url)}>{title}</ListItem>
 
-          /** Otherwise just render the title */
-          : title
-        }
-
-        {list && this.renderList(list)}
-      </ListItem>
-    )
+        {this.renderList(list)}
+      </NestedList>
+      
+      : <ListItem onClick={() => this.redirect(url)} {..._props}>{title}</ListItem>
   }
   
   /**
