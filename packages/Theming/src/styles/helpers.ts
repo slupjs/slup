@@ -1,8 +1,8 @@
+import { REGISTERED, handleInterpolation } from './styles'
+
 /** Utils */
 import isUnitless from 'unitless-css-property'
 import { memorize } from '@slup/common'
-
-import { handleInterpolation, REGISTERED } from './styles' 
 
 /**
  * Removes special charters from names, and
@@ -94,5 +94,6 @@ export function sanitizeObject(obj: Object | TemplateStringsArray): string {
  * 
  * @param string The string to be checked
  */
-export const isLastCharDot = (string: string): Boolean =>
+export const isLastCharDot = memorize((string: string): Boolean =>
   string.charCodeAt(string.length - 1) === 46 // .
+)

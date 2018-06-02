@@ -1,7 +1,7 @@
-import styled from '@slup/theming'
+import { Col, Grid } from '@slup/grid';
 
-import { Col, Grid } from '@slup/grid'
-import { Typography } from '@slup/typography'
+import { Typography } from '@slup/typography';
+import styled from '@slup/theming';
 
 export const Container = styled.div`
   position: fixed;

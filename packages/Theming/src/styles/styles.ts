@@ -1,25 +1,25 @@
 /** Utils */
-import { memorize, hash, CHANNEL } from '@slup/common'
+import { CHANNEL, hash, memorize } from '@slup/common'
+import {
+  isLastCharDot,
+  sanitizeName,
+  sanitizeObject,
+  sanitizeStyle
+} from './helpers'
 
+import { Interpolation } from '../interfaces'
+import Plugin from './plugin'
 /** Local helpers */
 import { Sheet } from './sheet'
-import Plugin from './plugin'
-import { 
-  sanitizeName, 
-  sanitizeStyle, 
-  sanitizeObject, 
-  isLastCharDot 
-} from './helpers'
 
 /** 
  * Styles processor
  * 
- * I was sadly forces to do this because of the differences 
+ * I was sadly forced to do this because of the differences 
  * between webpack module resolution and rollup's 
  */
 const Stylis = require('stylis')
 
-import { Interpolation } from '../interfaces'
 
 /** Declare constats used by other modules */
 export const SHEET = new Sheet()
@@ -59,14 +59,17 @@ export function handleInterpolation(interp: Interpolation, selector: boolean): s
     /** 
      * If we recive a function we call it to get
      * the value. That's often used for calculations
-     * of with a ThemeProvider
+     * with a <ThemeProvider />'s `props.theme`
      */
     case 'function':
+      const next = interp(this.mergedProps, this.context)
+
       return handleInterpolation.call(
         this, /** Pass the scope(necessary for themeProviders) */
 
         /** Calls the interpolation with the props and the context */
-        interp(this.mergedProps, this.context)
+        next,
+        typeof next == 'string' && isLastCharDot(next)
       )
   
     case 'object': 

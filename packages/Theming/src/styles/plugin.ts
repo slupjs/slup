@@ -1,7 +1,9 @@
 let queue = []
 let parentQueue = []
 
-
+/**
+ * Cross browser compatibility plugin
+ */
 export default insertRule =>
   function insertionPlugin(
     context,
@@ -51,18 +53,12 @@ export default insertRule =>
         const second = chars.charCodeAt(1)
         let child = content
         switch (second) {
-          // s upports
           case 115:
-          // d ocument
-          // eslint-disable-next-line no-fallthrough
           case 100:
-          // m edia
-          // eslint-disable-next-line no-fallthrough
           case 109: {
             queue.push(chars + '{' + child + '}')
             break
           }
-          // k eyframes
           case 107: {
             chars = chars.substring(1)
             child = chars + '{' + child + '}'
