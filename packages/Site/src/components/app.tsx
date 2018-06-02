@@ -18,8 +18,6 @@ export class App extends Component<null, { open: boolean }> {
   }
 
   public render(none, { open }, { router }) {
-    console.log(router)
-
     return(
       <div>
         {/** The page's header */}
