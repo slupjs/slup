@@ -28,13 +28,13 @@ export const routes = (
         .slice()
         .filter(i => i.url.includes('components'))
         .map(item => 
-          <Route computedMatch path={item.url} component={() => <Demo module={item.title} />} />
+          <Route path={item.url} component={() => <Demo module={item.title} />} />
         )
       }
 
       <Route exact path='/' component={Home} />
 
-      <Route path='*' component={NotFound} />
+      {/*<Route  path='*' component={NotFound} />*/}
     </Container>
   </ThemeProvider>
 )
