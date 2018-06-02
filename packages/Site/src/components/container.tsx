@@ -58,7 +58,7 @@ export const Headline = styled(Typography)`
 `
 
 export const Content = ({ children }) =>
-  <Grid style={{ paddingTop: 64 }}>
+  <Grid style={{ marginTop: 64 }}>
     <Col sm={12}>
       {children}
     </Col>

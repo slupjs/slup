@@ -1,4 +1,4 @@
-import styled, { rgba, darken } from '@slup/theming'
+import styled, { darken, rgba } from '@slup/theming'
 
 import { Typography } from '@slup/typography'
 
@@ -35,6 +35,7 @@ export const Blockquote = styled.blockquote`
 `
 
 export const Main = styled.div`
+  margin-top: 64px;
   height: 100%;
   overflow-x: hidden;
 `
