@@ -1,4 +1,3 @@
-import { linkEvent, Component } from 'inferno'
 import styled, { lightTheme, rgba, css } from '@slup/theming'
 import { Container, handleKeyDown }  from './container'
 
@@ -54,9 +53,14 @@ const Box = styled.div`
     opacity: .1;
   }
   
-  &:focus div, &:active div {
+  &:focus div {
     transform: scale(3);
     opacity: .2;
+  }
+
+  &:active div {
+    transform: scale(3);
+    opacity: .3;
   }
 
   ${props => props.disabled && css`
@@ -95,33 +99,30 @@ interface IProps {
   checked: boolean
   size?: number
   onChange?: () => any
+  leftLabel?: string
+  rightLabel?: string
 }
 
-export class Checkbox extends Component<IProps, null> {
-  public render(props) {
-    return (
-      <Container
-        onChange={props.onChange}
-        leftLabel={props.leftLabel}
-        rightLabel={props.rightLabel}
-        disabled={props.disabled}
-      >
-        <Box
-          {...props}
-          onClick={props.onChange}
-          tabIndex={0}
-          onKeyDown={(e) => handleKeyDown(props, e)}
-          size={props.size || 16}
-        >
-          {!props.disabled
-            ? <Wave
-                checked={props.checked}
-                size={props.size || 16}
-              />
-            : null
-          }
-        </Box>
-      </Container>
-    )
-  }
-}
+export const Checkbox = (props: IProps) =>
+  <Container
+    onChange={props.onChange}
+    leftLabel={props.leftLabel}
+    rightLabel={props.rightLabel}
+    disabled={props.disabled}
+  >
+    <Box
+      {...props}
+      onClick={props.onChange}
+      tabIndex={props.disabled ? -1 : 0}
+      onKeyDown={(e) => handleKeyDown(props, e)}
+      size={props.size || 16}
+    >
+      {!props.disabled
+        ? <Wave
+            checked={props.checked}
+            size={props.size || 16}
+          />
+        : null
+      }
+    </Box>
+  </Container>

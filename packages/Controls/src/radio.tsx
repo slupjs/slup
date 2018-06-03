@@ -1,4 +1,3 @@
-import { linkEvent, Component } from 'inferno'
 import styled, { lightTheme, rgba, css } from '@slup/theming'
 import { Container, handleKeyDown }  from './container'
 
@@ -76,37 +75,41 @@ const Wave = styled.span`
   };
 `
 
-export class Radio extends Component<any, any> {
-  render(props) {
-    return (
-      <Container
-        onChange={props.onChange}
-        leftLabel={props.leftLabel}
-        rightLabel={props.rightLabel}
-        disabled={props.disabled}
-      >
-        <Border
-          {...props}
-          tabIndex={0}
-          onClick={props.onChange}
-          onKeyDown={(e) => handleKeyDown(props, e)}
-        >
+interface IProps {
+  disabled?: boolean
+  checked: boolean
+  size?: number
+  onChange?: () => any
+  leftLabel?: string
+  rightLabel?: string
+}
 
-          <Circle
-            disabled={props.disabled}
+export const Radio = (props: IProps) =>
+  <Container
+    onChange={props.onChange}
+    leftLabel={props.leftLabel}
+    rightLabel={props.rightLabel}
+    disabled={props.disabled}
+  >
+    <Border
+      {...props}
+      tabIndex={props.disabled ? -1 : 0}
+      onClick={props.onChange}
+      onKeyDown={(e) => handleKeyDown(props, e)}
+    >
+
+      <Circle
+        disabled={props.disabled}
+        checked={props.checked}
+        size={props.size}
+      />
+
+      {!props.disabled
+        ? <Wave
             checked={props.checked}
             size={props.size}
           />
-
-          {!props.disabled
-            ? <Wave
-                checked={props.checked}
-                size={props.size}
-              />
-            : null
-          }
-        </Border>
-      </Container>
-    )
-  }
-}
+        : null
+      }
+    </Border>
+  </Container>
