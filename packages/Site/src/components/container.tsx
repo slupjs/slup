@@ -11,7 +11,7 @@ export const Container = styled.div`
   top: 0;
   color: white;
   background: ${props => props.theme.background};
-  overflow: auto;
+  overflow: hidden;
 `
 
 export const CenterContainer = styled.div`

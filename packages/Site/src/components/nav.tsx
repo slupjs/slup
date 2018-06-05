@@ -5,7 +5,7 @@ import { Navigation } from './navigation'
 import { Pages } from '../pages'
 import { generateTitle } from '../utils/title'
 
-export class App extends Component<null, { open: boolean }> {
+export class Nav extends Component<null, { open: boolean }> {
   public state = { open: false }
 
   /**

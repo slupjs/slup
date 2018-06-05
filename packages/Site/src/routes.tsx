@@ -5,7 +5,7 @@ import { BLUE, PINK, ThemeProvider, WHITE } from '@slup/theming'
 import { Container, Content } from './components/container'
 import { Route, Router } from 'inferno-router'
 
-import { App }  from './components/app'
+import { Nav }  from './components/nav'
 import { Demo } from './components/demo'
 import Home     from './pages/home'
 import NotFound from './pages/404'
@@ -22,7 +22,7 @@ export const THEME = {
 export const routes = (
   <ThemeProvider theme={THEME}>
     <Container>
-      <App />
+      <Nav />
 
       {URLs
         .slice()

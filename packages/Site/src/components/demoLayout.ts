@@ -36,8 +36,13 @@ export const Blockquote = styled.blockquote`
 
 export const Main = styled.div`
   margin-top: 64px;
-  height: 100%;
+  height: calc(100% - 64px);
   overflow-x: hidden;
+
+  @media (max-width: 960px) {
+    margin-top: 56px;
+    height: calc(100% - 56px);
+  }
 `
 
 export const Box = styled.div`
@@ -66,6 +71,7 @@ export const Heading = styled.div`
     fill: ${props => rgba(props.theme.text, .8)};
 
     svg {
+      outline: none;
       transition: opacity 100ms;
       opacity: 0;
     }

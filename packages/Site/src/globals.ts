@@ -2,7 +2,8 @@ import { injectGlobal, fontFace } from '@slup/theming'
 
 injectGlobal`
   body {
-    font-family: 'Roboto'
+    font-family: 'Roboto';
+    margin: 0;
   }
 `
 

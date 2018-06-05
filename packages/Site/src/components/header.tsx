@@ -1,11 +1,11 @@
-import { GitHub } from '../components/icons';
-import { IconButton } from '@slup/buttons';
-import MenuIcon from '../../../Icons/icons/navigation/menu';
-import { Navbar } from '../../../Navbar/src/index';
-import { Tooltip } from '../../../Tooltip/src/index';
-import { Typography } from '@slup/typography';
-import { generateTitle } from '../utils/title';
-import styled from '@slup/theming';
+import { GitHub } from '../components/icons'
+import { IconButton } from '@slup/buttons'
+import MenuIcon from '../../../Icons/icons/navigation/menu'
+import { Navbar } from '../../../Navbar/src/index'
+import { Tooltip } from '../../../Tooltip/src/index'
+import { Typography } from '@slup/typography'
+import { generateTitle } from '../utils/title'
+import styled from '@slup/theming'
 
 const Wrapper = styled.div`
   display: flex;
