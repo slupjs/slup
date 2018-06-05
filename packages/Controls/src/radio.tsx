@@ -22,13 +22,18 @@ const Border = styled.div`
   align-items: center;
 
   &:hover span {
-    transform: scale(3);
+    transform: scale(2.8);
     opacity: .1;
   }
 
-  &:focus span, &:active span {
-    transform: scale(3);
+  &:focus span {
+    transform: scale(2.8);
     opacity: .2;
+  }
+
+  &:active span {
+    transform: scale(2.8);
+    opacity: .3;
   }
 
   ${props => props.disabled && css`

@@ -133,7 +133,7 @@ This property if set to false will not change the `ListItem` background on hover
 ```
 
 #### Property: 'sublist'
-Note: if you want a full example about triggering nested lists take a look at [this](#nested-list)
+Note: if you want a full example about triggering nested lists take a look at [this](#nested-list).<br />
 This property MUST be set to make a nested list
 ```js
 <List>

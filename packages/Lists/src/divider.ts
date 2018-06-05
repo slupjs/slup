@@ -7,5 +7,5 @@ export const Divider = styled.hr`
   border: 0;
   background: ${props => props.theme.text || lightTheme.text};
   margin-left: ${props => props.nested ? '72px' : '0'};
-  width: ${props => props.nested ? 'calc(100% - 72px)' : 'auto'};
+  width: ${props => props.nested ? 'calc(100% - 72px)' : '100%'};
 `

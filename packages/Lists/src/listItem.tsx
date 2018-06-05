@@ -1,5 +1,5 @@
 import { Ripple } from '@slup/ripple'
-import styled, { lightTheme } from '@slup/theming'
+import styled, { lightTheme, rgba } from '@slup/theming'
 
 export const Li = styled.li`
   box-sizing: border-box;
@@ -22,7 +22,10 @@ export const Li = styled.li`
 
   &:hover {
     cursor: ${props => props.hoverable === false ? 'text' : 'pointer'};
-    background: ${props => props.hoverable === false ? 'transparent' : 'rgba(158,158,158,0.25)'};
+    background: ${props => props.hoverable === false 
+      ? 'transparent'
+      : rgba(props.theme.text || lightTheme.text, .15)
+    };
   }
 `
 

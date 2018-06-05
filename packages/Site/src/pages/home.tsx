@@ -1,7 +1,7 @@
 import { linkEvent } from 'inferno'
 import styled from '@slup/theming'
 
-import { ContainedButton } from '../../../Buttons/src/index'
+import { ContainedButton } from '@slup/buttons'
 import { Logo } from '../components/icons'
 import {
   Container,
