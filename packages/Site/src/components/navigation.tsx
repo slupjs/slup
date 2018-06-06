@@ -1,8 +1,34 @@
 import { Component, LinkedEvent } from 'inferno'
-import { List, ListItem, NestedList } from '@slup/lists'
+import { List, ListItem, NestedList, Divider } from '@slup/lists'
+import styled from '@slup/theming'
 
-import { IRoute } from '../pages'
+import { IRoute }  from '../pages'
 import { Sidenav } from '@slup/sidenav'
+import { Logo }    from './icons'
+
+const SidenavHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 112px;
+  padding-top: 24px;
+
+  hr {
+    margin: 24px 0 8px 0;
+  }
+
+  svg {
+    height: 80%;
+    width: 80%;
+  }
+
+  svg path, svg line {
+    animation: none;
+    stroke-dashoffset: 0;
+    stroke: ${props => props.theme.primary};
+  }
+`
 
 export interface IProps {
   onClose: Function | LinkedEvent<any, Event>
@@ -72,6 +98,10 @@ export class Navigation extends Component<IProps, any> {
   public render({ items, ...props }) {
     return(
       <Sidenav {...props}>
+        <SidenavHeader>
+          <Logo />
+          <Divider />
+        </SidenavHeader>
         {this.renderList(items)}
       </Sidenav>
     )

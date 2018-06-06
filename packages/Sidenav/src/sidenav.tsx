@@ -12,12 +12,12 @@ export class Sidenav extends Component<any, any> {
   }
 
   handleKeyDown({ keyCode }) {
-    if(this.props.opened && keyCode == 27) {
+    if(this.props.opened && keyCode === 27) {
       /** Normal event listener */
-      if(typeof this.props.onClose == 'function') this.props.onClose()
+      if(typeof this.props.onClose === 'function') this.props.onClose()
       
       /** Inferno's linkEvent function */
-      if(typeof this.props.onClose == 'object') {
+      if(typeof this.props.onClose === 'object') {
         this.props.onClose.event(this.props.onClose.data)
       }
     }
@@ -30,10 +30,11 @@ export class Sidenav extends Component<any, any> {
         {props.overlay == false
           ? null
           : <Overlay
-            opened={props.opened}
-            permanent={props.permanent}
-            responsive={props.responsive}
-            onClick={onClose ? onClose : null} />
+              opened={props.opened}
+              permanent={props.permanent}
+              responsive={props.responsive}
+              onClick={onClose ? onClose : null}
+            />
         }
       </div>
     )
