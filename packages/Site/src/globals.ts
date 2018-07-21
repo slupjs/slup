@@ -1,4 +1,4 @@
-import { injectGlobal, fontFace } from '@slup/theming'
+import { fontFace, injectGlobal } from '@slup/theming'
 
 injectGlobal`
   body {

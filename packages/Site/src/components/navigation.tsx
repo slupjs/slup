@@ -1,8 +1,8 @@
 import { Component, LinkedEvent } from 'inferno'
-import { List, ListItem, NestedList, Divider } from '@slup/lists'
 import styled from '@slup/theming'
 
 import { IRoute }  from '../pages'
+import { List, ListItem, NestedList, Divider } from '@slup/lists'
 import { Sidenav } from '@slup/sidenav'
 import { Logo }    from './icons'
 

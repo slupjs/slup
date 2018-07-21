@@ -9,7 +9,12 @@ import styled, { lightTheme, rgba } from '@slup/theming'
  */
 export const handleKeyDown = (props, { keyCode }: KeyboardEvent) => {
   if (keyCode === 32 && props.onChange && !props.disabled) {
-    props.onChange()
+    if (typeof props.onClose === 'function') props.onClose()
+
+    /** Inferno's linkEvent function */
+    if (typeof props.onClose === 'object') {
+      props.onClose.event(props.onClose.data)
+    }
   }
 }
 

@@ -2,100 +2,6 @@
 # yarn lockfile v1
 
 
-"@slup/buttons@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/buttons/-/buttons-0.5.1.tgz#b46aef065f61324ef4af1bd1c9298896dad0f457"
-  dependencies:
-    "@slup/ripple" "^0.5.1"
-    "@slup/theming" "^0.5.1"
-
-"@slup/card@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/card/-/card-0.5.1.tgz#eeda1e4d817a13887fd4f07b4508ed56c811a402"
-  dependencies:
-    "@slup/theming" "^0.5.1"
-
-"@slup/common@^0.5.0", "@slup/common@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/common/-/common-0.5.1.tgz#a83d8cebdc53b00f30734938514771463d7a4e42"
-
-"@slup/controls@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/controls/-/controls-0.5.1.tgz#aa4c4dda5dcf9365639d25345999568023a1af7f"
-  dependencies:
-    "@slup/theming" "^0.5.1"
-
-"@slup/grid@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/grid/-/grid-0.5.1.tgz#00facb3ffc6bc1e1c74cc4bad96038ab555e278f"
-  dependencies:
-    "@slup/common" "^0.5.1"
-    "@slup/theming" "^0.5.1"
-
-"@slup/icons@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/icons/-/icons-0.5.1.tgz#5debbb4c6554f1ee49f18dd4b8ee35f5cb138914"
-
-"@slup/lists@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/lists/-/lists-0.5.1.tgz#a114b82e5f748a124311e7471fd4500f3ad32b38"
-  dependencies:
-    "@slup/ripple" "^0.5.1"
-    "@slup/theming" "^0.5.1"
-
-"@slup/navbar@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/navbar/-/navbar-0.5.1.tgz#64007c8e12fdfd6bd01470aa154fa69e49480f13"
-  dependencies:
-    "@slup/theming" "^0.5.1"
-
-"@slup/ripple@^0.5.0", "@slup/ripple@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/ripple/-/ripple-0.5.1.tgz#25554948bea9b75b27cbb19db3d94d91cb97c959"
-  dependencies:
-    "@slup/theming" "^0.5.1"
-
-"@slup/sidenav@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/sidenav/-/sidenav-0.5.1.tgz#5ca2e7a60f4ee5ab52d798e330dd5e6d181f02cd"
-  dependencies:
-    "@slup/theming" "^0.5.1"
-
-"@slup/slider@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/slider/-/slider-0.5.1.tgz#c85afc3c3279c785b6476e55bd6920102ff36106"
-  dependencies:
-    "@slup/common" "^0.5.1"
-    "@slup/theming" "^0.5.1"
-
-"@slup/tabs@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/tabs/-/tabs-0.5.1.tgz#9fdb585b14dec899e7975802c3aa76766979d220"
-  dependencies:
-    "@slup/ripple" "^0.5.1"
-    "@slup/theming" "^0.5.1"
-
-"@slup/theming@^0.5.0", "@slup/theming@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/theming/-/theming-0.5.1.tgz#3438fbe23e7f284018f1fde2284ece66fc3eaa5f"
-  dependencies:
-    "@slup/common" "^0.5.1"
-    stylis "3.3.1"
-
-"@slup/tooltip@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/tooltip/-/tooltip-0.5.1.tgz#58330ab727f94b79276768dedb0c1939fa82a83b"
-  dependencies:
-    "@slup/common" "^0.5.1"
-    "@slup/theming" "^0.5.1"
-
-"@slup/typography@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@slup/typography/-/typography-0.5.1.tgz#b5b2f5ecc75f2a7443bc1f58654595816022ab91"
-  dependencies:
-    "@slup/common" "^0.5.1"
-    "@slup/theming" "^0.5.1"
-
 "@types/node@8.5.9":
   version "8.5.9"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.5.9.tgz#7155cfb4ae405bca4dd8df1a214c339e939109bf"
@@ -3515,10 +3421,6 @@ strip-eof@^1.0.0:
 strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
-
-stylis@3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.3.1.tgz#61dd88335a9a8fdcd9b46cb2db0d909d5e14b226"
 
 stylis@3.5.0:
   version "3.5.0"

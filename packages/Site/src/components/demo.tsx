@@ -125,8 +125,6 @@ export class Demo extends Component<{ module: string }, IState> {
   private getBlockquote(tokens: IAnyTokenArray) {
     const HTMLTokens: IToken<'html'>[] = tokens.filter(t => t.type == 'html')
 
-    console.log(HTMLTokens)
-
     return HTMLTokens[1].text
       .replace('<blockquote>', '')
       .replace('</blockquote>', '')

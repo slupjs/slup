@@ -1,9 +1,9 @@
-import { linkEvent, Component } from 'inferno'
-
+import { Component, linkEvent } from 'inferno'
+import { generateTitle } from '../utils/title'
 import { Header } from './header'
 import { Navigation } from './navigation'
 import { Pages } from '../pages'
-import { generateTitle } from '../utils/title'
+
 
 export class Nav extends Component<null, { open: boolean }> {
   public state = { open: false }
@@ -32,7 +32,7 @@ export class Nav extends Component<null, { open: boolean }> {
         {/** Sidenav */}
         <Navigation
           items={Pages}
-          opened={this.state.open}
+          opened={open}
           onClose={linkEvent({ value: false, self: this }, this.toggleNav)}
           onRedirect={linkEvent({ value: false, self: this }, this.toggleNav)}
         />

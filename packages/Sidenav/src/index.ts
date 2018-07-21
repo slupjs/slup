@@ -1,2 +1,2 @@
 export * from './sidenav'
-export * from './overlay'
+export * from './drawer'
