@@ -20,10 +20,7 @@ const RaisedBase = styled(ButtonBase)`
     : props.theme.text || lightTheme.text
   };
 
-  fill: ${props => props.disabled
-    ? rgba(props.theme.text || lightTheme.text, .26)
-    : props.theme.text || lightTheme.text
-  };
+  fill: currentColor;
 
   background: ${props => props.theme.dark && !props.primary && !props.secondary
     ? lighten(.1, props.theme.background || lightTheme.background)
@@ -51,6 +48,23 @@ const RaisedBase = styled(ButtonBase)`
         0px 3px 14px 2px rgba(0, 0, 0, 0.12)`
     };
   }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 4px;
+		transition: opacity 150ms;
+		opacity: 0;
+    background: ${props => props.theme.text || lightTheme.text};
+  }
+
+	&:focus::before {
+		opacity: .2;
+	}
 
   span {
     padding-left: 8px;

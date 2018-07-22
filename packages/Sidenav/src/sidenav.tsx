@@ -45,7 +45,6 @@ export class Sidenav extends Component<IProps, IState> {
 
   private setViewWidth() {
     this.setState({ viewWidth: this.container.clientWidth })
-    console.log(this.state.viewWidth)
   }
 
   private handleKeyDown({ keyCode }: KeyboardEvent) {
