@@ -1,3 +1,4 @@
+import { SHADOW } from '@slup/common'
 import styled, { lightTheme, css } from '@slup/theming'
 
 export const Drawer = styled.div`
@@ -13,9 +14,7 @@ export const Drawer = styled.div`
   width: calc(100% - 64px);
   max-width: 320px;
   background: ${props => props.theme.background || lightTheme.background};
-  box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2),
-    0px 16px 24px 2px rgba(0, 0, 0, 0.14),
-    0px 6px 30px 5px rgba(0, 0, 0, 0.12);
+  box-shadow: ${SHADOW[16]};
   position: fixed;
   top: 0;
   left: 0;

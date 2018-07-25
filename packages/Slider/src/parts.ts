@@ -49,14 +49,14 @@ export const Container = styled.div`
   height: 38px;
   width: 100%;
   pointer-events: ${props => props.disabled ? 'none' : 'unset'};
-  opacity: ${props => props.disabled && props.value != 0 ? .3 : 1};
+  opacity: ${props => props.disabled && props.value !== 0 ? .3 : 1};
 `
 
 export const Line = styled.div`
   height: 3px;
   width: 100%;
   position: absolute;
-  background: ${props => props.disabled && props.value != 0
+  background: ${props => props.disabled && props.value !== 0
     ? props.theme.text || lightTheme.text
     : lineColor
   };
@@ -91,13 +91,13 @@ export const Thumb = styled.div`
   height: ${props => props.disabled ? 8 : props.focused ? 14 : 10}px;
 
   background: ${commonBackground};
-  border: ${props => props.value == 0 || props.disabled ? `2px solid` : 'none'};
-  border-color: ${props => props.disabled && props.value != 0
+  border: ${props => props.value === 0 || props.disabled ? `2px solid` : 'none'};
+  border-color: ${props => props.disabled && props.value !== 0
     ? props.theme.background || lightTheme.background
     : lineColor
   };
 
-  box-shadow: ${props => props.focused && props.value == 0                /** Value of the slider is 0 */
+  box-shadow: ${props => props.focused && props.value === 0                /** Value of the slider is 0 */
     ? setShadow(props.theme.text || lightTheme.text, 0.05)
     : props.focused && props.primary                                      /** Focused and primary props */
       ? setShadow(props.theme.primary || lightTheme.primary, 0.15)

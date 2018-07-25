@@ -55,7 +55,7 @@ export class TransitionPages extends Component<IProps, IState> {
    * @param index the new index
    */
   private emitSwipe(index: number) {
-    if(this.props.onSwipe && typeof this.props.onSwipe == 'function') {
+    if(this.props.onSwipe && typeof this.props.onSwipe === 'function') {
       this.props.onSwipe(index)
     }
   }

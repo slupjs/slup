@@ -1,3 +1,4 @@
+import { SHADOW } from '@slup/common'
 import styled, { lightTheme, rgba, lighten, css } from '@slup/theming'
 import { Container, handleKeyDown } from './container'
 
@@ -41,9 +42,7 @@ const Thumb = styled.div`
   border-radius: 50%;
   position: absolute;
   top: -3px; left: -2px;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: ${SHADOW[1]};
   transition: transform 100ms cubic-bezier(0.4, 0.0, 0.2, 1), background 100ms linear;
   
   transform: ${props => props.checked ? 'translateX(100%)' : 'translateX(0)'};

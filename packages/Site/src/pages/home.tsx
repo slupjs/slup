@@ -3,6 +3,7 @@ import styled from '@slup/theming'
 
 import { ContainedButton } from '@slup/buttons'
 import { Logo } from '../components/icons'
+import { Card } from '@slup/card'
 import {
   Container,
   CenterContainer,
@@ -16,18 +17,8 @@ const redirect = history =>
 export default (props: Object, { router }) =>
   <Container>
     <CenterContainer>
-      <Logo />
-
-      <Headline headline>
-        Lighting-fast, highly customizable and flexible <a href='https://infernojs.org/'>Inferno</a> components<br />
-        that strictly follow <a href='https://material.io/guidelines/'>Material Design</a> guidelines
-      </Headline>
-
-      <ContainedButton
-        onClick={linkEvent(router.history, redirect)}
-        secondary
-      >
-        Get started
-      </ContainedButton>
+      <Card
+        style={{ height: '300px', width: '400px' }}
+      />
     </CenterContainer>
   </Container>

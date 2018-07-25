@@ -1,4 +1,4 @@
-import Inferno, { render } from 'inferno'
+import { render } from 'inferno'
 import { Router } from 'inferno-router'
 import { routes } from './routes'
 import { hydrate } from '@slup/theming'

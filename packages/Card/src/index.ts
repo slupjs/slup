@@ -1,25 +1,25 @@
-import styled from '@slup/theming'
-
-/** The only needed shadows: 0, 2 and 8 depth */
-const shadows = [
-  'none',
-  '0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)',
-  '0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12)'
-]
+import styled, { css, lightTheme, rgba } from '@slup/theming'
+import { SHADOW } from '@slup/common'
 
 export const Card = styled.div`
-  border-radius: 2px;
+  border-radius: 4px;
   background: white;
-  transition: box-shadow 300ms;
-  box-shadow: ${props => props.hoverable
-    ? shadows[0]
-    : props.raised ? shadows[2] : shadows[1]
-  };
+  box-shadow: ${props => props.raised ? SHADOW[8] : SHADOW[1]};
+
+  ${props => props.hoverable && css`
+    transition: box-shadow 300ms, border-color 300ms;
+    box-shadow: ${SHADOW[0]};
+    border: 1px solid ${rgba(props.theme.text || lightTheme.text, .12)};
+  `}
 
   &:hover {
-    box-shadow: ${props => props.hoverable
-      ? shadows[2]
-      : props.raised ? shadows[2] : shadows[1]
+    box-shadow: ${props => props.hoverable || props.raised
+      ? SHADOW[8]
+      : SHADOW[1]
     };
+    
+    ${props => props.hoverable && css`
+      border-color: transparent;
+    `}
   }
 `
