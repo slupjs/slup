@@ -1,3 +1,4 @@
+import { EASING } from '@slup/common'
 import styled, { lightTheme } from '@slup/theming'
 import { Slider } from './base'
 import { Thumb } from './parts'
@@ -28,7 +29,7 @@ export const Indicator = styled.div`
   user-select: none;
   height: 30px; width: 30px;
   transform-origin: bottom;
-  transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1), background 150ms;
+  transition: transform 300ms ${EASING['standard']}, background 150ms;
   transform: scale(${props => props.focused ? 1 : 0}) translateX(-50%);
 
   &::before   {

@@ -1,10 +1,11 @@
+import { EASING } from '@slup/common'
 import styled, { lightTheme, rgba, css } from '@slup/theming'
 import { Container, handleKeyDown }  from './container'
 
 const Box = styled.div`
   border-radius: 2px;
   box-sizing: border-box;
-  transition: background 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+  transition: background 300ms ${EASING['standard']},
     border-color 200ms linear;
   outline: none;
   position: relative;

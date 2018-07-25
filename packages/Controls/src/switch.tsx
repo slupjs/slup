@@ -1,4 +1,4 @@
-import { SHADOW } from '@slup/common'
+import { SHADOW, EASING } from '@slup/common'
 import styled, { lightTheme, rgba, lighten, css } from '@slup/theming'
 import { Container, handleKeyDown } from './container'
 
@@ -43,7 +43,7 @@ const Thumb = styled.div`
   position: absolute;
   top: -3px; left: -2px;
   box-shadow: ${SHADOW[1]};
-  transition: transform 100ms cubic-bezier(0.4, 0.0, 0.2, 1), background 100ms linear;
+  transition: transform 100ms ${EASING['standard']}, background 100ms linear;
   
   transform: ${props => props.checked ? 'translateX(100%)' : 'translateX(0)'};
 

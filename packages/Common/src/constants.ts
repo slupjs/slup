@@ -25,3 +25,15 @@ export const SHADOW: ShadowSet = {
   16: 'rgba(0, 0, 0, 0.2) 0px 8px 10px -5px, rgba(0, 0, 0, 0.14) 0px 16px 24px 2px, rgba(0, 0, 0, 0.12) 0px 6px 30px 5px',
   24: 'rgba(0, 0, 0, 0.2) 0px 11px 15px -7px, rgba(0, 0, 0, 0.14) 0px 24px 38px 3px, rgba(0, 0, 0, 0.12) 0px 9px 46px 8px'
 }
+
+type EasingSet = {
+  'standard': string
+  'decelerate': string
+  'accelerate': string
+}
+
+export const EASING: EasingSet = {
+  'standard': 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+  'decelerate': 'cubic-bezier(0.0, 0.0, 0.2, 1)',
+  'accelerate': 'cubic-bezier(0.4, 0.0, 1, 1)'
+}

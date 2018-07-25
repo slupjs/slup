@@ -1,3 +1,4 @@
+import { EASING } from '@slup/common'
 import styled, { rgba, lightTheme } from '@slup/theming'
 
 export const Wave = styled.div`
@@ -24,8 +25,8 @@ export const Wave = styled.div`
     : 1 /** Otherwise show it */
   };
   transition:
-    transform 900ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    opacity   250ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    transform 900ms ${EASING['standard']},
+    opacity   250ms ${EASING['standard']};
   transform: scale(${props => props.scale});
   border-radius: 50%;
 `

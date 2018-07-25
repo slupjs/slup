@@ -1,5 +1,5 @@
+import { styledMap, EASING } from '@slup/common'
 import styled, { GREY } from '@slup/theming'
-import { styledMap } from '@slup/common'
 
 
 /**
@@ -109,9 +109,9 @@ export const Tip = styled.div`
   top: ${top};
   left: ${left};
   transition: opacity 150ms, transform 150ms
-    ${props => props.focused
-    ? 'cubic-bezier(0.0, 0.0, 0.2, 1)' // Entrance with deceleration curve
-    : 'cubic-bezier(0.4, 0.0, 1, 1)'   // Exit with the acceleration curve
+  ${props => props.focused
+    ? EASING['decelerate']    // Entrance with deceleration curve
+    : EASING['accelerate']   // Exit with the acceleration curve
   };
   transition-delay: ${props => props.delay};
   opacity: ${props => props.focused ? 0.9 : 0};

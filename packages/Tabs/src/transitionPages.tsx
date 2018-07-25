@@ -1,3 +1,4 @@
+import { EASING } from '@slup/common'
 import { linkEvent, Component } from 'inferno'
 import styled from '@slup/theming'
 
@@ -10,7 +11,7 @@ export const Pages = styled.div`
   height: 100%;
   width: auto;
   display: flex;
-  transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition: transform 300ms ${EASING['standard']};
   transform: ${props => `translateX(-${props.selected * 100}%)`};
 `
 

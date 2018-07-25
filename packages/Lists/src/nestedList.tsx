@@ -1,5 +1,6 @@
 import { Component } from 'inferno'
 
+import { EASING } from '@slup/common'
 import styled from '@slup/theming'
 import { Li } from './listItem'
 
@@ -8,7 +9,7 @@ const Sublist = styled(Li)`
   overflow: hidden;
   padding: 0;
   transition: ${props => props.clicked
-    ? 'height 300ms cubic-bezier(0.4, 0.0, 0.2, 1)'
+    ? `height 300ms ${EASING['standard']}`
     : 'initial'
   };
 

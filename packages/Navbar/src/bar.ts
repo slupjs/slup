@@ -1,11 +1,11 @@
-import { SHADOW } from '@slup/common'
+import { SHADOW, EASING } from '@slup/common'
 import styled, { lightTheme, darken } from '@slup/theming'
 
 export const Bar = styled.div`
   box-shadow: ${SHADOW[4]};
   transition:
-    max-height 150ms cubic-bezier(0.4, 0.0, 0.2, 1),
-        height 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    max-height 150ms ${EASING['standard']},
+        height 150ms ${EASING['standard']};
   height: 64px;
   max-height: ${props => props.maxHeight}px;
   display: flex;

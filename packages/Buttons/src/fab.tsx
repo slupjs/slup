@@ -14,7 +14,7 @@ export const Circle = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: ${SHADOW[2]};
+  box-shadow: ${SHADOW[6]};
 
   /** 
    * Disables blue background on tap in mobile devices.
@@ -27,14 +27,14 @@ export const Circle = styled.button`
   width: ${props => props.mini ? 40 : 56}px;
   height: ${props => props.mini ? 40 : 56}px;
   color: ${props => props.theme.text || lightTheme.text};
-  fill: ${props => props.theme.text || lightTheme.text};
+  fill: currentColor;
   background: ${props => props.secondary
     ? props.theme.secondary || lightTheme.secondary
     : props.theme.primary   || lightTheme.primary
   };
 
   &:active {
-    box-shadow: ${SHADOW[8]};
+    box-shadow: ${SHADOW[12]};
   }
 `
 

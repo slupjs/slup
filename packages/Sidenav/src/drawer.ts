@@ -1,13 +1,13 @@
-import { SHADOW } from '@slup/common'
+import { SHADOW, EASING } from '@slup/common'
 import styled, { lightTheme, css } from '@slup/theming'
 
 export const Drawer = styled.div`
   z-index: 1000;
   overflow-y: auto;
   transition: max-width 150ms linear, ${props => !props.touched && css`
-    transform 300ms ${props.opened
-      ? 'cubic-bezier(0.0, 0.0, 0.2, 1)'
-      : 'cubic-bezier(0.4, 0.0, 0.6, 1)'
+    transform ${props.opened
+      ? `250ms ${EASING['decelerate']}`
+      : `200ms ${EASING['accelerate']}`
     }
   `};
   height: 100%;

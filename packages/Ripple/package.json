@@ -9,6 +9,7 @@
   "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
+    "@slup/common": "^0.5.1",
     "@slup/theming": "^0.5.1"
   },
   "peerDependencies": {
