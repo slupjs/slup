@@ -2,7 +2,6 @@ import styled, { lightTheme, darken } from '@slup/theming'
 
 export const Scroll = styled.div`
   position: absolute;
-  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -11,9 +10,12 @@ export const Scroll = styled.div`
   padding-bottom: ${props => props.translate && props.scrollable
     ? '16px'
     : null};
-  transform: ${props => props.translate && props.scrollable
-    ? 'translateY(16px)'
+  margin-top: ${props => props.translate && props.scrollable
+    ? '14px'
     : null};
+  height: ${props => props.translate && props.scrollable
+    ? 'auto'
+    : '100%'};
   left: ${props => props.scrollable ? '80px' : 'auto'};
   right: ${props => props.scrollable ? '80px' : 'auto'};
   background: ${props => props.primary

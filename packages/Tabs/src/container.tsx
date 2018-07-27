@@ -50,7 +50,7 @@ export class Tabs extends Component<IProps, IState> {
 
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     window.removeEventListener('resize', this.updateIndicator.bind(this))
   }
 
