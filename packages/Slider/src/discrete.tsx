@@ -1,16 +1,10 @@
 import { EASING } from '@slup/common'
 import styled, { lightTheme } from '@slup/theming'
 import { Slider } from './base'
-import { Thumb } from './parts'
 
 const commonBackground = props => props.value === 0
   ? props.theme.text || lightTheme.text
   : props.theme.secondary || lightTheme.secondary
-
-export const TThumb = styled(Thumb)`
-  transform: scale(${props => props.focused ? 0 : 1}) translate(-50%, -50%);
-  pointer-events: none;
-`
 
 export const Indicator = styled.div`
   position: absolute;
@@ -28,8 +22,8 @@ export const Indicator = styled.div`
   font-size: 12px;
   user-select: none;
   height: 30px; width: 30px;
-  transform-origin: bottom;
-  transition: transform 300ms ${EASING['standard']}, background 150ms;
+  transform-origin: bottom left;
+  transition: transform 300ms ${EASING['standard']};
   transform: scale(${props => props.focused ? 1 : 0}) translateX(-50%);
 
   &::before   {
@@ -44,21 +38,4 @@ export const Indicator = styled.div`
   }
 `
 
-export class DiscreteSlider extends Slider {
-  renderDiscrete(props) {
-    return this.baseRender({
-      ...props,
-      CustomThumb: (__props) =>
-        <div>
-          <TThumb {...__props} />
-          <Indicator {...__props} value={props.value}>
-            {Math.floor(props.value)}
-          </Indicator>
-        </div>
-    })
-  }
-
-  render(props) {
-    return this.renderDiscrete(props)
-  }
-}
+export const DiscreteSlider = (props) => <Slider discrete {...props} />

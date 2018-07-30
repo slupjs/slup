@@ -42,18 +42,27 @@ const setShadow = (color: string, opacity: number) => `0 0 0 14px ${rgba(color, 
  * @type {JSX Element} The container element
  */
 export const Container = styled.div`
+  /**
+   * Disables blue background on tap in mobile devices.
+   * See:
+   * - https://stackoverflow.com/a/29961714
+   * - #32
+   */
+  -webkit-tap-highlight-color: transparent;
+
   position: relative;
   display: flex;
   align-items: center;
   outline: none;
   height: 38px;
   width: 100%;
+  cursor: pointer;
   pointer-events: ${props => props.disabled ? 'none' : 'unset'};
   opacity: ${props => props.disabled && props.value !== 0 ? .3 : 1};
 `
 
 export const Line = styled.div`
-  height: 3px;
+  height: 2px;
   width: 100%;
   position: absolute;
   background: ${props => props.disabled && props.value !== 0
@@ -87,8 +96,8 @@ export const Thumb = styled.div`
   border-radius: 50%;
   z-index: 1;
   transform: translateX(-50%);
-  width:  ${props => props.disabled ? 8 : props.focused ? 14 : 10}px;
-  height: ${props => props.disabled ? 8 : props.focused ? 14 : 10}px;
+  width:  ${props => props.disabled ? 8 : 12}px;
+  height: ${props => props.disabled ? 8 : 12}px;
 
   background: ${commonBackground};
   border: ${props => props.value === 0 || props.disabled ? `2px solid` : 'none'};

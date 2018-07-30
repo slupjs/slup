@@ -1,8 +1,9 @@
-import Inferno, { linkEvent, Component } from 'inferno'
+import { linkEvent, Component } from 'inferno'
 
 import { IBaseProps, IBaseState } from './interfaces'
 import { capitalize, vise } from '@slup/common'
 import { Container, Line, Track, Thumb } from './parts'
+import { Indicator } from './discrete'
 
 export class Slider extends Component<IBaseProps, IBaseState> {
   public state = { mouseDown: false }
@@ -18,17 +19,11 @@ export class Slider extends Component<IBaseProps, IBaseState> {
   public componentDidMount() {
     document.body.addEventListener('mousemove', event => this.handleMouseMove(this, event))
     document.body.addEventListener('mouseup', event => this.handleMouseUp(this, event))
-    this.slider.addEventListener('touchstart', event => this.handleTouchStart(this, event.targetTouches[0]))
-    this.slider.addEventListener('touchmove', event => this.handleMouseMove(this, event.targetTouches[0]))
-    this.slider.addEventListener('touchend', event => this.handleTouchEnd(this, event))
   }
 
   public componentWillUnmount() {
     document.body.removeEventListener('mousemove', event => this.handleMouseMove(this, event))
     document.body.removeEventListener('mouseup', event => this.handleMouseUp(this, event))
-    this.slider.removeEventListener('touchstart', event => this.handleTouchStart(this, event.targetTouches[0]))
-    this.slider.removeEventListener('touchmove', event => this.handleMouseMove(this, event.targetTouches[0]))
-    this.slider.removeEventListener('touchend', event => this.handleTouchEnd(this, event))
   }
 
   /**
@@ -67,6 +62,14 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    * @return {null}
    */
   private handleMouseUp(self, event: MouseEvent) {
+    if (self.props.steps && self.state.mouseDown === true) {
+      const perc = self.gatherProgress(event)
+      const value = self.props.max / self.props.steps
+      const index = Math.round(perc / value)
+
+      self.setState({ mouseDown: false })
+      return this.emit('change', index * value)
+    }
     self.setState({ mouseDown: false })
   }
 
@@ -77,7 +80,7 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    * @param {Class} self The local class 
    * @param {Touch} event The touchStart event 
    */
-  private handleTouchStart(self, event: Touch) {
+  private handleTouchStart(self, event: TouchEvent) {
     self.setState({ mouseDown: true })
     this.handleMouseMove(self, event)
     self.emit('focus')
@@ -102,7 +105,7 @@ export class Slider extends Component<IBaseProps, IBaseState> {
    * @param  {(MouseEvent|Touch)} event The event
    * @return {null}
    */
-  private handleMouseMove(self, event: MouseEvent | Touch) {
+  private handleMouseMove(self, event: MouseEvent | TouchEvent) {
     /** Ignore moves when unfocused */
     if (!self.state.mouseDown) return
     
@@ -146,13 +149,9 @@ export class Slider extends Component<IBaseProps, IBaseState> {
       break
     }
   }
-
-  /**
-   * Renders the JSX element
-   * @return {JSX Element} The basic slider element
-   */
-  public baseRender({
-      max, value, focused, primary, disabled, CustomThumb,
+  
+  public render({
+      max, value, focused, primary, disabled, discrete, dots,
       children, onFocus, onChange, onBlur, ...props
     }, state?, context?) {
 
@@ -164,7 +163,7 @@ export class Slider extends Component<IBaseProps, IBaseState> {
       disabled
     }
 
-    return(
+    return (
       <Container
         innerRef={e => this.slider = e}
         tabindex={disabled ? -1 : 0}
@@ -172,28 +171,30 @@ export class Slider extends Component<IBaseProps, IBaseState> {
         onBlur={onBlur}
         onMouseDown={linkEvent(this, this.handleMouseDown)}
         onKeyDown={linkEvent(this, this.handleKeyDown)}
+        onTouchStart={e => this.handleTouchStart(this, e.targetTouches[0])}
+        onTouchMove={e => this.handleMouseMove(this, e.targetTouches[0])}
+        onTouchEnd={e => this.handleTouchEnd(this, e)}
         disabled={disabled}
         value={value}
+        {...props}
       >
         <Line disabled={disabled} value={value}>
           <Track {...mainProps} style={{ width: percentage }} />
         </Line>
 
-        {CustomThumb
-          ? <CustomThumb {...mainProps} style={{left: percentage}} />
-          : <Thumb {...mainProps} style={{left: percentage}} />
+        <Thumb {...mainProps} style={{ left: percentage }} />
+        
+        {discrete
+          ? <Indicator {...mainProps} value={value} style={{ left: percentage }}>
+              {Math.floor(value)}
+            </Indicator>
+          : null
         }
+
+        {dots ? dots : null}
 
         {children}
       </Container>
     )
-  }
-
-  /**
-   * Alias the inferno's render to the `baseRender`
-   * if the class isn't inherited
-   */
-  public render(props, state, context) {
-    return this.baseRender(props, state, context)
   }
 }
