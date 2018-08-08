@@ -1,46 +1,70 @@
-import styled, { lightTheme } from '@slup/theming'
+import styled, { lightTheme, rgba } from '@slup/theming'
 import { Slider } from './base'
 
-export const Dots = styled.div`
-  display: ${props => props.disabled ? 'none' : 'initial'};
+const Dots = styled.div`
   height: 2px;
-  width: 100%;
   position: absolute;
-  z-index: 2;
+  left: 0;
+  right: 0;
 `
 
-export const Dot = styled.div`
+const Dot = styled.span`
   height: 2px;
   width: 2px;
   border-radius: 50%;
   position: absolute;
-  background: ${props => props.theme.text || lightTheme.text};
 `
 
-export class SteppedSlider extends Slider<any, any> {
+const dotsBackground = (props, text, primary, secondary) => props.disabled
+  ? rgba(text || lightTheme.text, 0.4)
+  : props.primary
+    ? primary || lightTheme.primary
+    : secondary || lightTheme.secondary
+
+
+export class SteppedSlider extends Slider {
   render(props) {
-		const dots = [<Dot style={{ left: '100%', transform: 'translateX(-100%)' }} id={props.steps + 1} />]
-
-		if (props.steps) {
+    const { primary, secondary, text, background } = this.context.__slup__.state
+    
+    const dots = []
+    
+    if (props.steps) {
 			const stepValue = props.max / props.steps
-
+      
 			for (let i = 0; i < props.steps; i++) {
 				dots.push(
 					<Dot
-						style={{ left: stepValue * i + '%', transform: `translateX(-${stepValue * i}%)` }}
-						id={i}
+            style={{
+              left: stepValue * i + '%',
+              transform: `translateX(-${stepValue * i}%)`,
+              background: props.value >= (stepValue * i)
+                ? rgba(background || lightTheme.background, .87)
+                : dotsBackground(props, text, primary, secondary)
+            }}
 					/>
 				)
 			}
+
+      dots.push(
+        <Dot
+          style={{
+            left: '100%',
+            transform: 'translateX(-100%)',
+            background: props.value === props.max
+              ? rgba(background || lightTheme.background, .87)
+              : dotsBackground(props, text, primary, secondary)
+          }}
+        />
+      )
 		}
 
     return(
 			<Slider
 				discrete
 				dots={
-					<div style={{ width: '100%', height: 2 }}>
+          <Dots>
 						{dots}
-					</div>
+          </Dots>
 				}
 				{...props}
 			/>

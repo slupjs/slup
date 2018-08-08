@@ -24,15 +24,7 @@ export class Test extends Component {
     value: 0
   }
 
-  onFocus() {
-    this.setState({ focused: true })
-  }
-
-  onBlur() {
-    this.setState({ focused: false })
-  }
-
-  onChange(value) {
+  handleChange(value) {
     this.setState({ value })
   }
 
@@ -40,9 +32,9 @@ export class Test extends Component {
     return (
       <Slider
         focused={this.state.focused}
-        onFocus={this.onFocus.bind(this)}
-        onBlur={this.onBlur.bind(this)}
-        onChange={this.onChange.bind(this)}
+        onFocus={() => this.setState({ focused: true })}
+        onBlur={() => this.setState({ focused: false })}
+        onChange={this.handleChange.bind(this)}
         value={this.state.value}
         max={100}
       />
@@ -61,15 +53,7 @@ export class Test extends Component {
     value: 0
   }
 
-  onFocus() {
-    this.setState({ focused: true })
-  }
-
-  onBlur() {
-    this.setState({ focused: false })
-  }
-
-  onChange(value) {
+  handleChange(value) {
     this.setState({ value })
   }
 
@@ -77,9 +61,9 @@ export class Test extends Component {
     return (
       <DiscreteSlider
         focused={this.state.focused}
-        onFocus={this.onFocus.bind(this)}
-        onBlur={this.onBlur.bind(this)}
-        onChange={this.onChange.bind(this)}
+        onFocus={() => this.setState({ focused: true })}
+        onBlur={() => this.setState({ focused: false })}
+        onChange={this.handleChange.bind(this)}
         value={this.state.value}
         max={100}
       />
@@ -98,15 +82,7 @@ export class Test extends Component {
     value: 0
   }
 
-  onFocus() {
-    this.setState({ focused: true })
-  }
-
-  onBlur() {
-    this.setState({ focused: false })
-  }
-
-  onChange(value) {
+  handleChange(value) {
     this.setState({ value })
   }
 
@@ -114,11 +90,12 @@ export class Test extends Component {
     return (
       <SteppedSlider
         focused={this.state.focused}
-        onFocus={this.onFocus.bind(this)}
-        onBlur={this.onBlur.bind(this)}
-        onChange={this.onChange.bind(this)}
+        onFocus={() => this.setState({ focused: true })}
+        onBlur={() => this.setState({ focused: false })}
+        onChange={this.handleChange.bind(this)}
         value={this.state.value}
         max={100}
+        steps={10}
       />
     )
   }
@@ -129,10 +106,14 @@ export class Test extends Component {
 | Props       |    Type       |    Default    | Documentation               |
 |-------------|:-------------:|:-------------:|------:                      |
 | focused     |  boolean      |  false        | [Link](#property-focused)   |
+| onFocus     |  function     |  none         | [Link](#property-onfocus)   |
+| onBlur      |  function     |  none         | [Link](#property-onblur)    |
 | onChange    |  function     |  none         | [Link](#property-onchange)  |
 | value       |  number       |  0            | [Link](#property-value)     |
 | max         |  number       |  0            | [Link](#property-max)       |
 | disabled    |  boolean      |  false        | [Link](#property-disabled)  |
+| steps       |  number       |  0            | [Link](#property-steps)     |
+| primary     |  boolean      |  false        | [Link](#property-primary)   |
 
 #### Property: 'focused'
 This property sets the focus of the slider
@@ -144,43 +125,54 @@ This property sets the focus of the slider
 />
 ```
 
+#### Property: 'onFocus'
+This property handles the 'focus' event of the slider
+```js
+<Slider
+  onFocus={() => this.setState({ focused: true })}
+/>
+```
+
+#### Property: 'onBlur'
+This property handles the 'blur' event of the slider
+```js
+<Slider
+  onBlur={() => this.setState({ focused: false })}
+/>
+```
+
 #### Property: 'onChange'
 This property handles the 'change' event of the slider
 ```js
-<Slider
-  onChange={this.handleChange.bind(this)}
-  value={this.state.value}
-  max={100}
-/>
+<Slider onChange={this.handleChange.bind(this)} />
 ```
 
 #### Property: 'value'
 This property handles the changing value of the slider
 ```js
-<Slider
-  onChange={this.handleChange.bind(this)}
-  value={this.state.value}
-  max={100}
-/>
+<Slider value={40} />
 ```
 
 #### Property: 'max'
 This property takes the maximum value that the slider can have
 ```js
-<Slider
-  onChange={this.handleChange.bind(this)}
-  value={this.state.value}
-  max={100}
-/>
+<Slider max={100} />
 ```
 
 #### Property: 'disabled'
 This property disables the slider
 ```js
-<Slider
-  onChange={this.handleChange.bind(this)}
-  value={this.state.value}
-  max={100}
-  disabled
-/>
+<Slider disabled />
+```
+
+#### Property: 'steps'
+This property makes the value change in discrete increments
+```js
+<Slider steps={10} />
+```
+
+#### Property: 'primary'
+This property makes the slider use the primary color of the theme
+```js
+<Slider primary />
 ```

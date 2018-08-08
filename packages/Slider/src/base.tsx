@@ -3,7 +3,7 @@ import { linkEvent, Component } from 'inferno'
 import { IBaseProps, IBaseState } from './interfaces'
 import { capitalize, vise } from '@slup/common'
 import { Container, Line, Track, Thumb } from './parts'
-import { Indicator } from './discrete'
+import { Indicator, Svg } from './discrete'
 
 export class Slider extends Component<IBaseProps, IBaseState> {
   public state = { mouseDown: false }
@@ -11,7 +11,7 @@ export class Slider extends Component<IBaseProps, IBaseState> {
 
   private emit(type: string, value?: any) {
     const eventName = 'on' + capitalize(type)
-    if(typeof this.props[eventName] == 'function') {
+    if	(typeof this.props[eventName] === 'function') {
       this.props[eventName](value)
     }
   }
@@ -51,6 +51,13 @@ export class Slider extends Component<IBaseProps, IBaseState> {
     self.setState({ mouseDown: true })
     self.emit('change', self.gatherProgress(event))
     self.emit('focus')
+    if (self.props.steps && self.state.mouseDown === true) {
+      const perc = self.gatherProgress(event)
+      const value = self.props.max / self.props.steps
+      const index = Math.round(perc / value)
+
+      return self.emit('change', index * value)
+    }
   }
 
   /**
@@ -68,7 +75,7 @@ export class Slider extends Component<IBaseProps, IBaseState> {
       const index = Math.round(perc / value)
 
       self.setState({ mouseDown: false })
-      return this.emit('change', index * value)
+      return self.emit('change', index * value)
     }
     self.setState({ mouseDown: false })
   }
@@ -151,10 +158,10 @@ export class Slider extends Component<IBaseProps, IBaseState> {
   }
   
   public render({
-      max, value, focused, primary, disabled, discrete, dots,
+      max, value, focused, primary, disabled, discrete, dots, steps,
       children, onFocus, onChange, onBlur, ...props
-    }, state?, context?) {
-
+    }) {
+      
     const percentage = value / max * 100 + '%'
     const mainProps = {
       focused,
@@ -176,17 +183,23 @@ export class Slider extends Component<IBaseProps, IBaseState> {
         onTouchEnd={e => this.handleTouchEnd(this, e)}
         disabled={disabled}
         value={value}
+        primary={primary}
         {...props}
       >
-        <Line disabled={disabled} value={value}>
+        <Line disabled={disabled} value={value} primary={primary}>
           <Track {...mainProps} style={{ width: percentage }} />
         </Line>
 
-        <Thumb {...mainProps} style={{ left: percentage }} />
+        <Thumb
+          discrete={discrete}
+					{...mainProps}
+					style={{ left: percentage }}
+				/>
         
-        {discrete
+        {discrete && !disabled
           ? <Indicator {...mainProps} value={value} style={{ left: percentage }}>
               {Math.floor(value)}
+              <Svg />
             </Indicator>
           : null
         }

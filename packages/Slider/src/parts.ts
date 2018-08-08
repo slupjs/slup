@@ -1,39 +1,28 @@
-import styled, { lightTheme, rgba } from '@slup/theming'
-
-/**
- * Helper function for elements
- * that have the color of the line
- *
- * @param  {IBaseProps} props The element's props
- * @return {string}           The line color
- */
-const lineColor = props => rgba(props.theme.text || lightTheme.text, .3)
+import styled, { lightTheme, rgba, lighten, css, darken } from '@slup/theming'
 
 /**
  * Helper function for elements that have the same
  * background color scheme
  *
  * @param  {IBaseProps} props The element's props
- * @return {string}     color The background color
+ * @return {string}           The background color
  */
-const commonBackground = props => props.disabled && props.value != 0
-  ? props.theme.text || lightTheme.text
-  : props.value == 0
-    ? props.theme.background || lightTheme.background /** When the value is 0 */
-    : props.primary
-      ? props.theme.primary || lightTheme.primary     /** With the primary prop */
-      : props.theme.secondary || lightTheme.secondary /** Otherwise secondary by default */
+export const commonBackground = props => props.primary
+  ? props.theme.primary || lightTheme.primary
+  : props.theme.secondary || lightTheme.secondary
 
 
 /**
  * Helper function for the thumb element
  * which sets the shadow
  *
+ * @param  {number} spread 	The spread of the shadow
  * @param  {string} color   The color of the shadow
  * @param  {number} opacity The opacity of the shadow
  * @return {string}         The shadow
  */
-const setShadow = (color: string, opacity: number) => `0 0 0 14px ${rgba(color, opacity)}`
+const setShadow = (spread: number, color: string, opacity: number) =>
+  `0 0 0 ${spread}px ${rgba(color, opacity)}`
 
 /**
  * The container wich contains
@@ -58,16 +47,19 @@ export const Container = styled.div`
   width: 100%;
   cursor: pointer;
   pointer-events: ${props => props.disabled ? 'none' : 'unset'};
-  opacity: ${props => props.disabled && props.value !== 0 ? .3 : 1};
+
+  &:active div:nth-child(2) {
+    box-shadow: ${props => setShadow(24, commonBackground(props), .18)};
+  }
 `
 
 export const Line = styled.div`
   height: 2px;
   width: 100%;
   position: absolute;
-  background: ${props => props.disabled && props.value !== 0
-    ? props.theme.text || lightTheme.text
-    : lineColor
+  background: ${props => props.disabled
+    ? rgba(props.theme.text || lightTheme.text, .14)
+    : rgba(commonBackground(props), .24)
   };
 `
 
@@ -80,8 +72,12 @@ export const Line = styled.div`
  */
 export const Track = styled.div`
   height: 100%;
-  opacity: ${props => props.disabled ? 0 : 1};
-  background: ${commonBackground};
+  background: ${props => props.disabled
+		? props.theme.dark
+			? darken(.5, props.theme.text || lightTheme.text)
+			: lighten(.5, props.theme.text || lightTheme.text)
+		: commonBackground(props)
+  };
 `
 
 /**
@@ -91,27 +87,31 @@ export const Track = styled.div`
  * @prop {boolean} focused Whether the slider is focused or not
  */
 export const Thumb = styled.div`
-  position: absolute;
-  transition: width 200ms, height 200ms, box-shadow 300ms, background 150ms;
+  position: relative;
+  transition: box-shadow 150ms, background 150ms;
   border-radius: 50%;
   z-index: 1;
   transform: translateX(-50%);
-  width:  ${props => props.disabled ? 8 : 12}px;
-  height: ${props => props.disabled ? 8 : 12}px;
+  width:  12px;
+  height: 12px;
+	background: ${commonBackground};
+  
 
-  background: ${commonBackground};
-  border: ${props => props.value === 0 || props.disabled ? `2px solid` : 'none'};
-  border-color: ${props => props.disabled && props.value !== 0
-    ? props.theme.background || lightTheme.background
-    : lineColor
-  };
-
-  box-shadow: ${props => props.focused && props.value === 0                /** Value of the slider is 0 */
-    ? setShadow(props.theme.text || lightTheme.text, 0.05)
-    : props.focused && props.primary                                      /** Focused and primary props */
-      ? setShadow(props.theme.primary || lightTheme.primary, 0.15)
-      : props.focused                                                     /** Default color */
-        ? setShadow(props.theme.secondary || lightTheme.secondary, 0.15)
-        : 'none'
-  };
+  ${props => props.disabled && css`
+    width: 8px;
+    height: 8px;
+    background: ${props.theme.dark
+			? darken(.5, props.theme.text || lightTheme.text)
+			: lighten(.5, props.theme.text || lightTheme.text)
+		};
+    border: 4px solid ${props.theme.background || lightTheme.background};
+  `}
+	
+  ${props => props.focused && css`
+    box-shadow: ${setShadow(12, commonBackground(props), .12)};
+  `}
+  
+	&:hover {
+		box-shadow: ${props => setShadow(12, commonBackground(props), .15)};
+	}
 `

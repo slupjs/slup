@@ -1,6 +1,7 @@
 export interface IBaseProps {
   max: number
   value: number
+  steps: number
   primary: boolean
   focused: boolean
   disabled: boolean
