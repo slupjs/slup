@@ -5,9 +5,12 @@
  * @param customProps The props that should be passed to the component
  * @param Component   The component which will receive the props
  */
-export const withProps = (customProps: Object) => Component => {
+export const withProps = (customProps: Object | Function) => Component => {
   const WrappedComponent = props =>
-    <Component {...props} {...customProps} />
+    <Component
+      {...props}
+      {...(typeof customProps === 'function' ? customProps(props) : customProps)}
+    />
     
   return WrappedComponent
 }
