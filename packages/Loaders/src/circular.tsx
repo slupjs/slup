@@ -66,7 +66,7 @@ export const CircularProgress = ({ size, value, secondary, ...otherProps }) =>
 	<Container size={size} {...otherProps}>
 		<Svg viewBox='25 25 50 50' value={value}>
       <Path cx='50' cy='50' r='20' pathLength='100'
-        stroke-dashoffset={value !== undefined ? Math.floor(100 - value) + 'px' : 0}
+        stroke-dashoffset={value !== undefined ? 100 - value + 'px' : 0}
         value={value}
         secondary={secondary}
       />
