@@ -1,17 +1,13 @@
-import { linkEvent, Component } from 'inferno'
+import { Component } from 'inferno'
 import { Container, Tip } from './container'
 
 interface IProps {
-  text: string,
-  delay?: string,
+  text: string
+  delay?: string
   location?: string
 }
 
-interface IState {
-  focused: boolean
-}
-
-export class Tooltip extends Component<IProps, IState> {
+export class Tooltip extends Component<IProps, { focused: boolean }> {
   private tooltip: HTMLDivElement
   
   public constructor() {

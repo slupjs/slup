@@ -33,6 +33,7 @@
     "@slup/grid": "^0.5.0",
     "@slup/icons": "^0.5.0",
     "@slup/lists": "^0.5.0",
+    "@slup/loaders": "^0.5.0",
     "@slup/navbar": "^0.5.0",
     "@slup/ripple": "^0.5.0",
     "@slup/sidenav": "^0.5.0",

@@ -1,0 +1,22 @@
+{
+  "name": "@slup/loaders",
+  "version": "0.5.1",
+  "description": "Progress indicators built upon Inferno with the Slup framework",
+  "repository": "https://github.com/slupjs/slup/tree/master/packages/Navbar",
+  "main": "dist/bundle.cjs.js",
+  "module": "dist/bundle.es.js",
+  "source": "src/index.ts",
+  "author": "Luca <LucaT1@users.noreply.github.com>, Gejsi <Gejsi@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@slup/common": "^0.5.1",
+    "@slup/theming": "^0.5.1"
+  },
+  "peerDependencies": {
+    "inferno": "5.0.4",
+    "inferno-component": "3.10.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
