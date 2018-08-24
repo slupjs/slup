@@ -1,4 +1,5 @@
-import styled, { lightTheme, keyframes, css } from '@slup/theming'
+import styled, { lightTheme, css } from '@slup/theming'
+import { Rotate, ChangeDash } from './keyframes'
 
 const Container = styled.div`
   position: relative;
@@ -9,12 +10,6 @@ const Container = styled.div`
     content: '';
     display: block;
     padding-top: 100%;
-  }
-`
-
-const Rotate = keyframes`
-  100% {
-    transform: rotate(360deg);
   }
 `
 
@@ -30,21 +25,6 @@ const Svg = styled.svg`
   ${props => props.value === undefined && css`
     animation: ${Rotate} 2s linear infinite;
   `}
-`
-
-const ChangeDash = keyframes`
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -10px;
-  }
-  100% {
-    stroke-dasharray: 89, 200;
-  	stroke-dashoffset: -100px;
-  }
 `
 
 const Path = styled.circle`
