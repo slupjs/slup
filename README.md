@@ -55,7 +55,7 @@ git clone https://github.com/slupjs/slup && cd slup
 ```bash
 yarn # Install the dependencies and build all the packages
 cd packages/Site # Go into the demo's site folder
-yarn run compile:build # Build the javascritp SSR and client
+yarn compile:build # Build the javascritp SSR and client
 yarn start # Start the demo server
 ```
 
@@ -77,7 +77,7 @@ yarn # Install the dependencies and build all the packages
 cd packages/Site # Go into the demo's site folder
 
 # In a first terminal: 
-yarn run compile:watch # Bundle the application watching for changes
+yarn compile:watch # Bundle the application watching for changes
 
 # In a second terminal:
 yarn start # Start the demo server

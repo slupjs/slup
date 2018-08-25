@@ -32,10 +32,10 @@ export class Test extends Component {
   render() {
     return (
       <div>
-        /* Simple button to trigger the sidenav */
+        {/* Simple button to trigger the sidenav */}
         <button onClick={this.handleClick.bind(this)}>Trigger</button>
 
-        /* The component itself */
+        {/* The component itself */}
         <Sidenav
           opened={this.state.opened}
           onClose={this.handleClose.bind(this)}
@@ -48,26 +48,34 @@ export class Test extends Component {
 
 ## Available properties
 | Props          |    Type       |    Default    | Documentation                |
-|-------------   |:-------------:|:-------------:|------:                       |
-| opened         |  boolean      |  false        | [Link](#usage)               |
-| onClose        |  function     |  none         | [Link](#usage)               |
+|-------------   |:-------------:|:-------------:|-----------------------------:|
+| opened         |  boolean      |  false        | [Link](#property-opened)     |
+| onClose        |  function     |  none         | [Link](#property-onclose)    |
 | right          |  boolean      |  false        | [Link](#property-right)      |
 | responsive     |  boolean      |  false        | [Link](#property-responsive) |
 | permanent      |  boolean      |  false        | [Link](#property-permanent)  |
 | overlay        |  boolean      |  true         | [Link](#property-overlay)    |
 
-#### Property: 'right'
-This property will position the Sidenav to the right of the view
+#### Property: 'opened'
+This property the sidenav visible if set to true  
 ```js
 <Sidenav
   opened={this.state.opened}
   onClose={this.handleClose.bind(this)}
-  right
+/>
+```
+
+#### Property: 'onClose'
+This property handles the event that occurs when the overlay is clicked/swiped
+```js
+<Sidenav
+  opened={this.state.opened}
+  onClose={this.handleClose.bind(this)}
 />
 ```
 
 #### Property: 'responsive'
-This property will close the Sidenav on a small viewport but it will open it on a bigger one
+This property closes the Sidenav on a small viewport but it will open it on a bigger one
 ```js
 <Sidenav
   opened={this.state.opened}
@@ -77,7 +85,7 @@ This property will close the Sidenav on a small viewport but it will open it on 
 ```
 
 #### Property: 'permanent'
-This property will make the Sidenav always visible
+This property makes the Sidenav always visible
 ```js
 <Sidenav
   opened={this.state.opened}
@@ -87,7 +95,7 @@ This property will make the Sidenav always visible
 ```
 
 #### Property: 'overlay'
-This property will remove the overlay if set to false
+This property removes the overlay if set to false
 ```js
 <Sidenav
   opened={this.state.opened}
