@@ -1,4 +1,11 @@
-import styled from '@slup/theming'
+import styled, { lightTheme, rgba } from '@slup/theming'
+
+export const setColor = (props, alpha: number) =>
+	props.primary
+		? rgba(props.theme.primary || lightTheme.primary, alpha)
+		: props.secondary
+			? rgba(props.theme.secondary || lightTheme.secondary, alpha)
+			: rgba(props.theme.text || lightTheme.text, alpha)
 
 export const ButtonBase = styled.button`
   /**
@@ -10,6 +17,8 @@ export const ButtonBase = styled.button`
   -webkit-tap-highlight-color: transparent;
 
   position: relative;
+	display: flex;
+  align-items: center;
   font-family: inherit;
   font-weight: 500;
   border: none;
@@ -21,4 +30,10 @@ export const ButtonBase = styled.button`
   font-size: 14px;
   user-select: none;
   letter-spacing: 1px;
+	fill: currentColor;
+	cursor: pointer;
+
+	&:disabled {
+		cursor: not-allowed;
+	}
 `

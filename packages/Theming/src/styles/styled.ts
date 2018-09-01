@@ -7,7 +7,6 @@ import { getRegisteredStyles, css } from './styles'
 
 /** Typings */
 import { IStyledState, IStyledProps, ITheme, IEmitter } from '../interfaces'
-import { create } from 'domain';
 
 export const styled = (_tag: any) => 
 

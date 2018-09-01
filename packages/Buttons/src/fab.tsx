@@ -3,6 +3,8 @@ import { Ripple } from '@slup/ripple'
 import styled, { lightTheme } from '@slup/theming'
 
 export const Circle = styled.button`
+	-webkit-tap-highlight-color: transparent;
+
   position: relative;
   font-size: 24px;
   border: none;
@@ -15,15 +17,7 @@ export const Circle = styled.button`
   align-items: center;
   justify-content: center;
   box-shadow: ${SHADOW[6]};
-
-  /** 
-   * Disables blue background on tap in mobile devices.
-   * See: 
-   * - https://stackoverflow.com/a/29961714
-   * - #32
-   */
-  -webkit-tap-highlight-color: transparent;
-
+	
   width: ${props => props.mini ? 40 : 56}px;
   height: ${props => props.mini ? 40 : 56}px;
   color: ${props => props.theme.text || lightTheme.text};

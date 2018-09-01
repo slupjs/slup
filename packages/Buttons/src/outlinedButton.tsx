@@ -1,26 +1,17 @@
 import { Ripple } from '@slup/ripple'
 import styled, { lightTheme, rgba } from '@slup/theming'
-import { ButtonBase } from './buttonBase'
-
-const setColor = (props, alpha) =>
-  props.primary
-    ? rgba(props.theme.primary || lightTheme.primary, alpha)
-    : props.secondary
-      ? rgba(props.theme.secondary || lightTheme.secondary, alpha)
-      : rgba(props.theme.text || lightTheme.text, alpha)
+import { ButtonBase, setColor } from './buttonBase'
 
 const OutlinedBase = styled(ButtonBase)`
-  padding: 0 16px;
   transition: background 150ms linear;
   background: transparent;
-  cursor: pointer;
+	padding: ${props => props.icon ? '0 16px 0 12px' : '0 16px'};
   border: 1px solid ${props => rgba(props.theme.text || lightTheme.text, .12)};
-  color: ${props => setColor(props, .87)};
+  color: ${props => setColor(props, 1)};
 
   &:disabled {
     border-color: ${props => rgba(props.theme.text || lightTheme.text, .08)};
     color: ${props => rgba(props.theme.text || lightTheme.text, .38)};
-    cursor: not-allowed;
   }
 
   &:focus {
@@ -30,7 +21,11 @@ const OutlinedBase = styled(ButtonBase)`
 
 export const OutlinedButton = props =>
   <OutlinedBase {...props}>
-    {props.children}
+		{props.icon ? props.icon : null}
+		{props.icon
+			? <span style={{ paddingLeft: 8 }}>{props.children}</span>
+			: props.children
+		}
     {props.ripple === false || props.disabled
       ? null
       : <Ripple

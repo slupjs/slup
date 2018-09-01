@@ -12,17 +12,13 @@ const ExtendedCircle = styled(Circle)`
   border-radius: 32px;
   letter-spacing: 1px;
   padding: ${props => props.icon ? '0 20px 0 16px' : '0 20px'};
-
-  span {
-    padding-left: 8px;
-  }
 `
 
 export const ExtendedFab = props =>
   <ExtendedCircle {...props}>
     {props.icon ? props.icon : null}
     {props.icon
-      ? <span>{props.children}</span>
+			? <span style={{ paddingLeft: 8 }}>{props.children}</span>
       : props.children
     }
     {props.ripple === false

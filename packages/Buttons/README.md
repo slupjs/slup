@@ -99,13 +99,11 @@ This property, if set to false, will make the ripple appear on the clicked posit
 <IconButton centerRipple={false}>+</IconButton>
 ```
 
-#### Property: 'icon' [ContainedButton, ExtendedFab]
+#### Property: 'icon' [ContainedButton, OutlinedButton, TextButton, ExtendedFab]
 This property takes an icon which will be set near the text.
 ```js
-<ContainedButton icon={<Icon />}>
-  Button
-</ContainedButton>
-<ExtendedFab icon={<Icon />}>
-  Button
-</ExtendedFab>
+<ContainedButton icon={<Icon />}>Button</ContainedButton>
+<OutlinedButton icon={<Icon />}>Button</OutlinedButton>
+<TextButton icon={<Icon />}>Button</TextButton>
+<ExtendedFab icon={<Icon />}>Button</ExtendedFab>
 ```

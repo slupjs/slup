@@ -10,18 +10,13 @@ import { ButtonBase } from './buttonBase'
 
 const RaisedBase = styled(ButtonBase)`
   transition: box-shadow 150ms linear;
-  display: flex;
-  align-items: center;
 
   padding: ${props => props.icon ? '0 16px 0 12px' : '0 16px'};
-  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   
   color: ${props => props.disabled
     ? rgba(props.theme.text || lightTheme.text, .26)
     : props.theme.text || lightTheme.text
   };
-
-  fill: currentColor;
 
   background: ${props => props.theme.dark && !props.primary && !props.secondary
     ? lighten(.1, props.theme.background || lightTheme.background)
@@ -62,17 +57,13 @@ const RaisedBase = styled(ButtonBase)`
 	&:focus::before {
 		opacity: .15;
 	}
-
-  span {
-    padding-left: 8px;
-  }
 `
 
 export const ContainedButton = props =>
   <RaisedBase {...props}>
     {props.icon ? props.icon : null}
     {props.icon
-      ? <span>{props.children}</span>
+      ? <span style={{ paddingLeft: 8 }}>{props.children}</span>
       : props.children
     }
     {props.ripple === false || props.disabled
