@@ -17,7 +17,8 @@ const IconBase = styled.button`
   align-items: center;
   width: 48px;
   height: 48px;
-  background: none;
+	transition: background 150ms linear;
+  background: transparent;
   fill: currentColor;
   color: ${props => setColor(props, .87)};
 
@@ -25,6 +26,18 @@ const IconBase = styled.button`
     cursor: not-allowed;
     color: ${props => setColor(props, .38)};
   }
+
+	&:hover:not(:disabled) {
+		background: ${props => setColor(props, .08)};
+	}
+
+	&:focus {
+		background: ${props => setColor(props, .14)};
+		
+		&:hover:not(:disabled) {
+			background: ${props => setColor(props, .14)};
+		}
+	}
 `
 
 export const IconButton = props =>
