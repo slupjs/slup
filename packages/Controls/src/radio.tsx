@@ -3,8 +3,8 @@ import { Container, handleKeyDown }  from './container'
 
 const Border = styled.div`
   /* Geometry */
-  width: ${props =>  props.size || 16}px;
-  height: ${props => props.size || 16}px;
+  width: ${props =>  props.size}px;
+  height: ${props => props.size}px;
   border-radius: 50%;
   outline: none;
   cursor: pointer;
@@ -44,8 +44,8 @@ const Border = styled.div`
 
 const Circle = styled.div`
   /* Geometry */
-  width: ${props =>  (props.size || 16) - 6}px;
-  height: ${props => (props.size || 16) - 6}px;
+  width: ${props =>  props.size - 6}px;
+  height: ${props => props.size - 6}px;
   background: ${props => props.disabled
     ? rgba(props.theme.text || lightTheme.text, .3)
     : props.checked
@@ -63,8 +63,8 @@ const Circle = styled.div`
 `
 
 const Wave = styled.span`
-  width: ${props =>  props.size || 16}px;
-  height: ${props => props.size || 16}px;
+  width: ${props =>  props.size}px;
+  height: ${props => props.size}px;
   border-radius: 50%;
   position: absolute;
   z-index: -1;
@@ -83,7 +83,6 @@ const Wave = styled.span`
 interface IProps {
   disabled?: boolean
   checked: boolean
-  size?: number
   onChange?: () => any
   leftLabel?: string
   rightLabel?: string
@@ -98,21 +97,21 @@ export const Radio = (props: IProps) =>
   >
     <Border
       {...props}
-      tabIndex={props.disabled ? -1 : 0}
+      tabIndex={props.disabled || !props.checked ? -1 : 0}
       onClick={props.onChange}
-      onKeyDown={(e) => handleKeyDown(props, e)}
+      size={16}
     >
 
       <Circle
         disabled={props.disabled}
         checked={props.checked}
-        size={props.size}
+        size={16}
       />
 
       {!props.disabled
         ? <Wave
             checked={props.checked}
-            size={props.size}
+            size={16}
           />
         : null
       }

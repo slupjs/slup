@@ -70,16 +70,16 @@ export class Test extends Component {
     checked: 0
   }
 
-  handleChange(i) {
+  handleChange(value, i) {
     this.setState({ checked: i })
   }
 
   render() {
     return(
-      <div>
-        {[0, 1, 2].map(i =>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        {['React', 'Inferno', 'Preact'].map((value, i) =>
           <Radio
-            onChange={e => this.handleChange.call(this, i)}
+            onChange={() => this.handleChange.call(this, value, i)}
             checked={this.state.checked === i}
           />
         )}
@@ -93,29 +93,37 @@ export class Test extends Component {
 ## Available properties
 | Props                       |    Type       |    Default    | Documentation                           |
 |-----------------------------|:-------------:|:-------------:|---------------------------------------: |
-| onChange                    |  function     |  none         | [Link](#usage)                          |
-| checked                     |  boolean      |  false        | [Link](#usage)                          |
+| onChange                    |  function     |  none         | [Link](#property-onchange)              |
+| checked                     |  boolean      |  false        | [Link](#property-checked)               |
 | disabled                    |  boolean      |  false        | [Link](#property-disabled)              |
-| size                        |  number       |  16           | [Link](#property-size-checkbox-radio)   |
 | leftLabel / rightLabel      |  string       |  undefined    | [Link](#property-leftlabel--rightlabel) |  
 
+#### Property: 'onChange'
+This property handles the activation of the controls.
+```js
+<Checkbox onChange={() => console.log('activated')} />
+<Switch onChange={() => console.log('activated')} />
+<Radio onChange={() => console.log('activated')} />
+```
+
+#### Property: 'checked'
+This property handles the state of the controls.
+```js
+<Checkbox checked />
+<Switch checked />
+<Radio checked />
+```
+
 #### Property: 'disabled'
-This property will disable the controls
+This property disables the controls.
 ```js
 <Checkbox disabled />
 <Switch disabled />
 <Radio disabled />
 ```
 
-#### Property: 'size' [Checkbox, Radio]
-With this property you can change the size of these two controls
-```js
-<Checkbox size={56} />
-<Radio size={32} />
-```
-
 #### Property: 'leftLabel / rightLabel'
-These properties will provide a left/right-sided `<label />`  that can display a given string.
+These properties provides a left/right-sided `<label />`  that can display a given string.
 Use `leftLabel` for a left-handed label, `rightLabel` for the same result on the right.
 
 ```js

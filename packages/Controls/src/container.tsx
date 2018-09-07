@@ -9,11 +9,11 @@ import styled, { lightTheme, rgba } from '@slup/theming'
  */
 export const handleKeyDown = (props, { keyCode }: KeyboardEvent) => {
   if (keyCode === 32 && props.onChange && !props.disabled) {
-    if (typeof props.onClose === 'function') props.onClose()
+    if (typeof props.onChange === 'function') props.onChange()
 
     /** Inferno's linkEvent function */
-    if (typeof props.onClose === 'object') {
-      props.onClose.event(props.onClose.data)
+    if (typeof props.onChange === 'object') {
+      props.onChange.event(props.onChange.data)
     }
   }
 }
@@ -42,30 +42,29 @@ const Label = styled.label`
 `
 
 export const Container = (props) =>
-  <div>
-    <Base>
-      {props.leftLabel
-        ? <Label {...props} onClick={props.disabled 
-              ? null 
-              : props.onChange
-            }>
-            {props.leftLabel}
-          </Label>
+  <Base>
+    {props.leftLabel
+      ? <Label
+          {...props}
+          onClick={props.disabled ? null : props.onChange}
+        >
+          {props.leftLabel}
+        </Label>
 
-        : null
-      }
+      : null
+    }
 
-      {props.children}
+    {props.children}
 
-      {props.rightLabel
-        ? <Label {...props} right onClick={props.disabled 
-              ? null
-              : props.onChange
-            }>
-            {props.rightLabel}
-          </Label>
+    {props.rightLabel
+      ? <Label
+          {...props}
+          right
+          onClick={props.disabled ? null : props.onChange}
+        >
+          {props.rightLabel}
+        </Label>
 
-        : null
-      }
-    </Base>
-  </div>
+      : null
+    }
+  </Base>

@@ -9,15 +9,15 @@ const Box = styled.div`
     border-color 200ms linear;
   outline: none;
   position: relative;
-  width: ${props => props.size || 18}px;
-  height: ${props => props.size || 18}px;
+  width: ${props => props.size}px;
+  height: ${props => props.size}px;
   border: 2px solid ${props => props.checked
-      ? props.theme.secondary || lightTheme.secondary
-      : rgba(props.theme.text || lightTheme.text, .54)
+    ? props.theme.secondary || lightTheme.secondary
+    : rgba(props.theme.text || lightTheme.text, .54)
   };
   background: ${props => props.checked
-      ? props.theme.secondary || lightTheme.secondary
-      : 'transparent'
+    ? props.theme.secondary || lightTheme.secondary
+    : 'transparent'
   };
   cursor: pointer;
 
@@ -98,7 +98,6 @@ const Wave = styled.div`
 interface IProps {
   disabled?: boolean
   checked: boolean
-  size?: number
   onChange?: () => any
   leftLabel?: string
   rightLabel?: string
@@ -116,12 +115,12 @@ export const Checkbox = (props: IProps) =>
       onClick={props.onChange}
       tabIndex={props.disabled ? -1 : 0}
       onKeyDown={(e) => handleKeyDown(props, e)}
-      size={props.size || 16}
+      size={16}
     >
       {!props.disabled
         ? <Wave
             checked={props.checked}
-            size={props.size || 16}
+            size={16}
           />
         : null
       }
