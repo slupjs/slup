@@ -1,25 +1,21 @@
 import { Component } from 'inferno'
-import styled, { rgba } from '@slup/theming'
 import * as marked      from 'marked'
-import { Typography }   from '@slup/typography'
 import { Divider }      from '@slup/lists'
 
 import { Editor }   from './editor'
-import { Hashtag }  from './icons'
 import {
   Main,
   Typo,
   Dot,
   Blockquote,
   Box,
-  Heading,
   Paragraph
 } from './demoLayout'
 
 const isCode = (token: IAnyToken) =>
   token.type === 'code' &&
-  token.lang === 'js' &&
-  token.text.startsWith('// @code')
+  token.lang === 'js' //&&
+  //token.text.startsWith('// @code')
 
 interface IState {
   frames: string[],
@@ -141,24 +137,6 @@ export class Demo extends Component<{ module: string }, IState> {
     string.replace('<p>', '').replace('</p>', '')
 
   /**
-   * This function creates shorter strings
-   * from the headings to make links
-   * @param string The given heading
-   */
-  private createLink = (string: string) =>
-    this.removeParagraph(string)
-      .toLowerCase()
-      .replace(/\s/g, '-')
-      .replace(':', '')
-      .replace(/&#39;/g, '')
-      .replace(/\n/g, '')
-      .replace(/.$/, '')
-      .replace('[', '')
-      .replace(']', '')
-      .replace(',', '')
-      .replace('/', '')
-
-  /**
    * Load the README and parse its contents
    */
   public async componentDidMount() {
@@ -182,16 +160,10 @@ export class Demo extends Component<{ module: string }, IState> {
             return (
               <Box>
                 <Divider />
-                <Heading>
-                  <Paragraph
-                    headline
-                    dangerouslySetInnerHTML={{ __html: this.removeParagraph(frame.title) }}
-                  />
-                  <a id={this.createLink(frame.title)} />
-                  <a href={`#${this.createLink(frame.title)}`}>
-                    <Hashtag />
-                  </a>
-                </Heading>
+                <Paragraph
+                  headline
+                  dangerouslySetInnerHTML={{ __html: this.removeParagraph(frame.title) }}
+                />
                 
                 {frame.comment
                   ? <Paragraph

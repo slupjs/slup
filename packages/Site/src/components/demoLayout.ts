@@ -1,4 +1,4 @@
-import styled, { darken, rgba } from '@slup/theming'
+import styled, { lighten, rgba } from '@slup/theming'
 
 import { Typography } from '@slup/typography'
 
@@ -62,35 +62,18 @@ export const Box = styled.div`
   }
 `
 
-export const Heading = styled.div`
-  display: flex;
-
-  a:last-child {
-    height: 20px;
-    transform: translate(50%, 25%);
-    fill: ${props => rgba(props.theme.text, .8)};
-
-    svg {
-      outline: none;
-      transition: opacity 100ms;
-      opacity: 0;
-    }
-  }
-
-  &:hover {
-    a:last-child svg {
-      opacity: 1;
-    }
-  }
-`
-
 export const Paragraph = styled(Typography)`
   color: ${props => props.subheading ? props.theme.text : props.theme.primary};
   margin-bottom: 24px;
+  line-height: ${props => props.subheading ? 1.5 : 1};
 
   strong a {
     color: ${props => props.theme.text};
     font-weight: 500;
+  }
+
+  code {
+    background: ${props => lighten(.1, props.theme.background)};
   }
 
   p {
