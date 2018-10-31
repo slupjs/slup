@@ -1,6 +1,6 @@
 <h1 align='center'>Slup - Loaders</h1>
 
-This package contains the progress indicators, Material Design Components which are part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
+This package contains the progress indicators, a Material Design set of components which are part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
 
 ## Description
 From Google's [Material Design guidelines](https://material.io/guidelines):

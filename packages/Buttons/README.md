@@ -1,6 +1,6 @@
 <h1 align='center'>Slup - Buttons</h1>
 
-This package contains the Buttons, a Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
+This package contains the Buttons, a Material Design set of components which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
 
 ## Description
 From Google's [Material Design guidelines](https://material.io/guidelines):

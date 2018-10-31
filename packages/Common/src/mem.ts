@@ -3,7 +3,7 @@ const cache = {}
 /**
  * Stores a series of values that are returned from
  * the same function. Particularly useful when results are predictable
- * and often repetitive. Spped up things ⚡️
+ * and often repetitive. Speed up things ⚡️
  * 
  * @param fn The function that generates the values
  */

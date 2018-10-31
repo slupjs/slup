@@ -1,6 +1,6 @@
 <h1 align='center'>Slup - Controls</h1>
 
-This package contains the Controls, a Material Design Component which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
+This package contains the Controls, a Material Design set of components which is part of a bigger ecosystem called [Slup](https://github.com/gejsi/material)
 
 ## Description
 From Google's [Material Design guidelines](https://material.io/guidelines):
